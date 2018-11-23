@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="这是二级标题">
+<meta name="description" content="1.词法分析器的功能词法分析器读入表示源程序的字符流，按照程序功能等价的要求，将其转换成对应的单词序列，并剔除其中的空格、注解等不影响程序的字符 1.1单词的分类和表示单词是程序语言中具有独立意义的最小语法单位&amp;emsp;&amp;emsp;（1）关键字：也叫基本字，多用来作为语句的标识&amp;emsp;&amp;emsp;（2）标识符：用来表示各种名字，如变量名、过程名和数组名&amp;emsp;&amp;emsp;（3）常数：分为">
 <meta name="keywords" content="编译原理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="编译原理词法分析">
 <meta property="og:url" content="http://yoursite.com/2018/11/21/编译原理词法分析/index.html">
 <meta property="og:site_name" content="MybRose_blog">
-<meta property="og:description" content="这是二级标题">
+<meta property="og:description" content="1.词法分析器的功能词法分析器读入表示源程序的字符流，按照程序功能等价的要求，将其转换成对应的单词序列，并剔除其中的空格、注解等不影响程序的字符 1.1单词的分类和表示单词是程序语言中具有独立意义的最小语法单位&amp;emsp;&amp;emsp;（1）关键字：也叫基本字，多用来作为语句的标识&amp;emsp;&amp;emsp;（2）标识符：用来表示各种名字，如变量名、过程名和数组名&amp;emsp;&amp;emsp;（3）常数：分为">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-21T12:44:35.672Z">
+<meta property="og:updated_time" content="2018-11-23T13:32:58.292Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编译原理词法分析">
-<meta name="twitter:description" content="这是二级标题">
+<meta name="twitter:description" content="1.词法分析器的功能词法分析器读入表示源程序的字符流，按照程序功能等价的要求，将其转换成对应的单词序列，并剔除其中的空格、注解等不影响程序的字符 1.1单词的分类和表示单词是程序语言中具有独立意义的最小语法单位&amp;emsp;&amp;emsp;（1）关键字：也叫基本字，多用来作为语句的标识&amp;emsp;&amp;emsp;（2）标识符：用来表示各种名字，如变量名、过程名和数组名&amp;emsp;&amp;emsp;（3）常数：分为">
 
 
 
@@ -354,7 +354,15 @@
       
 
       
-        <h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2>
+        <h2 id="1-词法分析器的功能"><a href="#1-词法分析器的功能" class="headerlink" title="1.词法分析器的功能"></a>1.词法分析器的功能</h2><p>词法分析器读入表示源程序的字符流，按照程序功能等价的要求，将其转换成对应的单词序列，并剔除其中的空格、注解等不影响程序的字符</p>
+<h3 id="1-1单词的分类和表示"><a href="#1-1单词的分类和表示" class="headerlink" title="1.1单词的分类和表示"></a>1.1单词的分类和表示</h3><p>单词是程序语言中具有独立意义的最小语法单位<br>&emsp;&emsp;（1）关键字：也叫基本字，多用来作为语句的标识<br>&emsp;&emsp;（2）标识符：用来表示各种名字，如变量名、过程名和数组名<br>&emsp;&emsp;（3）常数：分为整常数、实常数和字符串常数<br>&emsp;&emsp;（4）运算符：又可以分为算术运算符（+-=）；逻辑运算符（not or and）；以及关系运算符（&lt;&gt; &gt;= &lt;=）<br>&emsp;&emsp;（5）分界符：又叫界限符（,;()）<br>把单词表示成<strong>二元组</strong>：（种别，属性值）</p>
+<h3 id="1-2源程序的输入缓冲和预处理"><a href="#1-2源程序的输入缓冲和预处理" class="headerlink" title="1.2源程序的输入缓冲和预处理"></a>1.2源程序的输入缓冲和预处理</h3><p>1.超前搜索和回退<br>&emsp;&emsp;例如对单词&lt;&gt;，&gt;=<br>2.缓冲区<br>&emsp;&emsp;1）双缓冲区<br>&emsp;&emsp;<strong>开始指针</strong>：指向当前识别单词的第一个字符<br>&emsp;&emsp;<strong>向前指针</strong>：指向当前读入的字符<br>&emsp;&emsp;2）带标记的缓冲区<br>&emsp;&emsp;在缓冲区两部分的结尾处各设置了一个“标志”，每次移动向前指针只要测试是否遇到了<strong>eof</strong>，如果是，则判断是否为缓冲区某半部分的末尾，不是则不进行进一步的测试<br>3.空白字符的剔除<br>&emsp;&emsp;放在输入串被放在缓冲区之前完成，进行适当的<strong>预处理</strong></p>
+<h3 id="1-3词法分析阶段的错误处理"><a href="#1-3词法分析阶段的错误处理" class="headerlink" title="1.3词法分析阶段的错误处理"></a>1.3词法分析阶段的错误处理</h3><p>错误通常包括以下几种<br>(1)非法字符：@<br>(2)单词拼写错误：began<br>(3)注解或字符常数不封闭：/*…<br>(4)变量重复<br>对错误的处理：<br>1.检查<br>2.错误恢复和续编译<br>&emsp;最简单的错误恢复策略为<strong>紧急方式恢复</strong></p>
+<h2 id="2-单词的描述"><a href="#2-单词的描述" class="headerlink" title="2.单词的描述"></a>2.单词的描述</h2><h3 id="2-1正则文法"><a href="#2-1正则文法" class="headerlink" title="2.1正则文法"></a>2.1正则文法</h3><p>正则文法描述的是<strong>T</strong>上的正则语言</p>
+<h3 id="2-2正则表达式"><a href="#2-2正则表达式" class="headerlink" title="2.2正则表达式"></a>2.2正则表达式</h3><p>正则式，正规式<br>正则表达式所表示的语言称为<strong>正则集</strong></p>
+<h3 id="2-3正则表达式与正则文法的等价性"><a href="#2-3正则表达式与正则文法的等价性" class="headerlink" title="2.3正则表达式与正则文法的等价性"></a>2.3正则表达式与正则文法的等价性</h3><p>1.为正则文法的每个产生式构造一个<strong>正则表达式方程式</strong><br>方程式构造规则<br>2.解联立方程组，求等价的正则表达式r<br>代入消元规则<br><strong><em>正则定义式</em></strong><br>对于任意在字母表上的正则表达式r，形如A-&gt;r的式子</p>
+<h3 id="2-4有穷状态自动机"><a href="#2-4有穷状态自动机" class="headerlink" title="2.4有穷状态自动机"></a>2.4有穷状态自动机</h3><p>有穷状态控制器</p>
+
       
     </div>
     
@@ -526,7 +534,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#这是二级标题"><span class="nav-number">1.</span> <span class="nav-text">这是二级标题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-词法分析器的功能"><span class="nav-number">1.</span> <span class="nav-text">1.词法分析器的功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1单词的分类和表示"><span class="nav-number">1.1.</span> <span class="nav-text">1.1单词的分类和表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2源程序的输入缓冲和预处理"><span class="nav-number">1.2.</span> <span class="nav-text">1.2源程序的输入缓冲和预处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3词法分析阶段的错误处理"><span class="nav-number">1.3.</span> <span class="nav-text">1.3词法分析阶段的错误处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-单词的描述"><span class="nav-number">2.</span> <span class="nav-text">2.单词的描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1正则文法"><span class="nav-number">2.1.</span> <span class="nav-text">2.1正则文法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2正则表达式"><span class="nav-number">2.2.</span> <span class="nav-text">2.2正则表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3正则表达式与正则文法的等价性"><span class="nav-number">2.3.</span> <span class="nav-text">2.3正则表达式与正则文法的等价性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4有穷状态自动机"><span class="nav-number">2.4.</span> <span class="nav-text">2.4有穷状态自动机</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -585,7 +593,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共79字</span>
+  <span class="post-count">博客全站共742字</span>
 </div>
         
 
