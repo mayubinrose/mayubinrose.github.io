@@ -88,8 +88,11 @@
 <meta property="og:description" content="词法分析器的功能词法分析器读入表示源程序的字符流，按照程序功能等价的要求，将其转换成对应的单词序列，并剔除其中的空格、注解等不影响程序的字符 单词的分类和表示单词是程序语言中具有独立意义的最小语法单位&amp;emsp;&amp;emsp;（1）关键字：也叫基本字，多用来作为语句的标识&amp;emsp;&amp;emsp;（2）标识符：用来表示各种名字，如变量名、过程名和数组名&amp;emsp;&amp;emsp;（3）常数：分为整常数、实">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/11/21/编译原理词法分析/p1.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/21/编译原理词法分析/p3.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/21/编译原理词法分析/p2.png">
-<meta property="og:updated_time" content="2018-11-24T12:17:11.970Z">
+<meta property="og:image" content="http://yoursite.com/2018/11/21/编译原理词法分析/p4.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/21/编译原理词法分析/p5.png">
+<meta property="og:updated_time" content="2018-11-25T03:56:05.014Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编译原理词法分析">
 <meta name="twitter:description" content="词法分析器的功能词法分析器读入表示源程序的字符流，按照程序功能等价的要求，将其转换成对应的单词序列，并剔除其中的空格、注解等不影响程序的字符 单词的分类和表示单词是程序语言中具有独立意义的最小语法单位&amp;emsp;&amp;emsp;（1）关键字：也叫基本字，多用来作为语句的标识&amp;emsp;&amp;emsp;（2）标识符：用来表示各种名字，如变量名、过程名和数组名&amp;emsp;&amp;emsp;（3）常数：分为整常数、实">
@@ -366,7 +369,11 @@
 <h2 id="正则表达式与正则文法的等价性"><a href="#正则表达式与正则文法的等价性" class="headerlink" title="正则表达式与正则文法的等价性"></a>正则表达式与正则文法的等价性</h2><p>1.为正则文法的每个产生式构造一个<strong>正则表达式方程式</strong><br>方程式构造规则<br>2.解联立方程组，求等价的正则表达式r<br>代入消元规则<br><strong><em>正则定义式</em></strong><br>对于任意在字母表上的正则表达式r，形如A-&gt;r的式子</p>
 <h2 id="有穷状态自动机"><a href="#有穷状态自动机" class="headerlink" title="有穷状态自动机"></a>有穷状态自动机</h2><p>有穷状态控制器：从输入带上读入字符，每读一个字符，读头就指向下一个待读入的字符<br>有穷状态自动机是一个五元组：状态的非空有穷集合；状态转移函数；开始状态；终止状态；接收状态</p>
 <h2 id="正则表达式转换成状态转换图"><a href="#正则表达式转换成状态转换图" class="headerlink" title="正则表达式转换成状态转换图"></a>正则表达式转换成状态转换图</h2><p><img src="/2018/11/21/编译原理词法分析/p1.png" alt="sss"></p>
-<h2 id="由正则文法构造状态转换图"><a href="#由正则文法构造状态转换图" class="headerlink" title="由正则文法构造状态转换图"></a>由正则文法构造状态转换图</h2><p><img src="/2018/11/21/编译原理词法分析/p2.png" alt="qqq"></p>
+<h1 id="单词的识别"><a href="#单词的识别" class="headerlink" title="单词的识别"></a>单词的识别</h1><p>如何利用有穷状态自动机来进行单词的识别</p>
+<h2 id="有穷状态自动机和单词识别的关系"><a href="#有穷状态自动机和单词识别的关系" class="headerlink" title="有穷状态自动机和单词识别的关系"></a>有穷状态自动机和单词识别的关系</h2><p>一个字符一个字符的逐步识别，看成有限个状态的变换</p>
+<h2 id="单词识别的状态转换图表示"><a href="#单词识别的状态转换图表示" class="headerlink" title="单词识别的状态转换图表示"></a>单词识别的状态转换图表示</h2><p><img src="/2018/11/21/编译原理词法分析/p3.png" alt="zzz" title="识别基本单词的状态转换图"><br><img src="/2018/11/21/编译原理词法分析/p2.png" alt="qqq" title="由正则文法构造状态转换图"></p>
+<h2 id="几种典型的单词识别问题"><a href="#几种典型的单词识别问题" class="headerlink" title="几种典型的单词识别问题"></a>几种典型的单词识别问题</h2><p>主要是超前搜索和回退。回退一般用栈来实现</p>
+<h2 id="状态转换图的实现"><a href="#状态转换图的实现" class="headerlink" title="状态转换图的实现"></a>状态转换图的实现</h2><p>单词的<strong>识别规则库</strong><br>实现方式<br>访问速度快但是浪费空间多<br><img src="/2018/11/21/编译原理词法分析/p4.png" alt="a" title="状态矩阵"><br>访问速度慢但是节省空间<br><img src="/2018/11/21/编译原理词法分析/p5.png" alt="a" title="邻接表"></p>
 
       
     </div>
@@ -543,7 +550,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#词法分析器的功能"><span class="nav-number">1.</span> <span class="nav-text">词法分析器的功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单词的分类和表示"><span class="nav-number">1.1.</span> <span class="nav-text">单词的分类和表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源程序的输入缓冲和预处理"><span class="nav-number">1.2.</span> <span class="nav-text">源程序的输入缓冲和预处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#词法分析阶段的错误处理"><span class="nav-number">1.3.</span> <span class="nav-text">词法分析阶段的错误处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单词的描述"><span class="nav-number">2.</span> <span class="nav-text">单词的描述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#正则文法"><span class="nav-number">2.1.</span> <span class="nav-text">正则文法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式"><span class="nav-number">2.2.</span> <span class="nav-text">正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式与正则文法的等价性"><span class="nav-number">2.3.</span> <span class="nav-text">正则表达式与正则文法的等价性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有穷状态自动机"><span class="nav-number">2.4.</span> <span class="nav-text">有穷状态自动机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式转换成状态转换图"><span class="nav-number">2.5.</span> <span class="nav-text">正则表达式转换成状态转换图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#由正则文法构造状态转换图"><span class="nav-number">2.6.</span> <span class="nav-text">由正则文法构造状态转换图</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#词法分析器的功能"><span class="nav-number">1.</span> <span class="nav-text">词法分析器的功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单词的分类和表示"><span class="nav-number">1.1.</span> <span class="nav-text">单词的分类和表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源程序的输入缓冲和预处理"><span class="nav-number">1.2.</span> <span class="nav-text">源程序的输入缓冲和预处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#词法分析阶段的错误处理"><span class="nav-number">1.3.</span> <span class="nav-text">词法分析阶段的错误处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单词的描述"><span class="nav-number">2.</span> <span class="nav-text">单词的描述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#正则文法"><span class="nav-number">2.1.</span> <span class="nav-text">正则文法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式"><span class="nav-number">2.2.</span> <span class="nav-text">正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式与正则文法的等价性"><span class="nav-number">2.3.</span> <span class="nav-text">正则表达式与正则文法的等价性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有穷状态自动机"><span class="nav-number">2.4.</span> <span class="nav-text">有穷状态自动机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式转换成状态转换图"><span class="nav-number">2.5.</span> <span class="nav-text">正则表达式转换成状态转换图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单词的识别"><span class="nav-number">3.</span> <span class="nav-text">单词的识别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#有穷状态自动机和单词识别的关系"><span class="nav-number">3.1.</span> <span class="nav-text">有穷状态自动机和单词识别的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单词识别的状态转换图表示"><span class="nav-number">3.2.</span> <span class="nav-text">单词识别的状态转换图表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几种典型的单词识别问题"><span class="nav-number">3.3.</span> <span class="nav-text">几种典型的单词识别问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态转换图的实现"><span class="nav-number">3.4.</span> <span class="nav-text">状态转换图的实现</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -600,7 +607,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共1.2k字</span>
+  <span class="post-count">博客全站共1.5k字</span>
 </div>
         
 
