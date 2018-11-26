@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="第一篇文章,">
+  <meta name="keywords" content="编译原理,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta name="keywords" content="第一篇文章">
+<meta name="description" content="自底向上的语法分析概述输入串出发反复归约，最后可以得到文法的开始符号，则输入串是相应文法的一个句子。在分析的过程中，寻找当前句型最左的和某个产生式的右部相匹配的子串最右推导为规范推导 最左归约为规范归约 移进归约分析一张分析表，一个输入缓冲区，一个分析栈，一个输出缓冲区格局：栈+输入缓冲区剩余内容 优先法思想：根据归约的先后次序为句型中相邻的文法符号规定优先关系句柄内相邻符号同时归约，是同优先级的">
+<meta name="keywords" content="编译原理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第一篇文章">
-<meta property="og:url" content="http://yoursite.com/2018/11/20/hello-world/index.html">
+<meta property="og:title" content="自底向上的语法分析">
+<meta property="og:url" content="http://yoursite.com/2018/11/26/自底向上的语法分析/index.html">
 <meta property="og:site_name" content="MybRose_blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="自底向上的语法分析概述输入串出发反复归约，最后可以得到文法的开始符号，则输入串是相应文法的一个句子。在分析的过程中，寻找当前句型最左的和某个产生式的右部相匹配的子串最右推导为规范推导 最左归约为规范归约 移进归约分析一张分析表，一个输入缓冲区，一个分析栈，一个输出缓冲区格局：栈+输入缓冲区剩余内容 优先法思想：根据归约的先后次序为句型中相邻的文法符号规定优先关系句柄内相邻符号同时归约，是同优先级的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-21T00:37:23.104Z">
+<meta property="og:updated_time" content="2018-11-26T12:58:06.147Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第一篇文章">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="自底向上的语法分析">
+<meta name="twitter:description" content="自底向上的语法分析概述输入串出发反复归约，最后可以得到文法的开始符号，则输入串是相应文法的一个句子。在分析的过程中，寻找当前句型最左的和某个产生式的右部相匹配的子串最右推导为规范推导 最左归约为规范归约 移进归约分析一张分析表，一个输入缓冲区，一个分析栈，一个输出缓冲区格局：栈+输入缓冲区剩余内容 优先法思想：根据归约的先后次序为句型中相邻的文法符号规定优先关系句柄内相邻符号同时归约，是同优先级的">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/20/hello-world/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/26/自底向上的语法分析/">
 
 
 
 
 
-  <title>第一篇文章 | MybRose_blog</title>
+  <title>自底向上的语法分析 | MybRose_blog</title>
   
 
 
@@ -265,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/20/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/26/自底向上的语法分析/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mayubin">
@@ -282,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">第一篇文章</h1>
+          <h1 class="post-title" itemprop="name headline">自底向上的语法分析</h1>
         
 
         <div class="post-meta">
@@ -294,8 +294,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-20T15:17:59+08:00">
-                2018-11-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-26T17:52:00+08:00">
+                2018-11-26
               </time>
             
 
@@ -317,8 +317,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/TheOne/" itemprop="url" rel="index">
-                    <span itemprop="name">TheOne</span>
+                  <a href="/categories/编译原理/" itemprop="url" rel="index">
+                    <span itemprop="name">编译原理</span>
                   </a>
                 </span>
 
@@ -354,16 +354,18 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+        <h1 id="自底向上的语法分析概述"><a href="#自底向上的语法分析概述" class="headerlink" title="自底向上的语法分析概述"></a>自底向上的语法分析概述</h1><p>输入串出发反复归约，最后可以得到文法的开始符号，则输入串是相应文法的一个句子。在分析的过程中，寻找当前句型最左的和某个产生式的右部相匹配的子串<br><strong>最右推导为规范推导 最左归约为规范归约</strong></p>
+<h2 id="移进归约分析"><a href="#移进归约分析" class="headerlink" title="移进归约分析"></a>移进归约分析</h2><p>一张分析表，一个输入缓冲区，一个分析栈，一个输出缓冲区<br><strong>格局</strong>：栈+输入缓冲区剩余内容</p>
+<h2 id="优先法"><a href="#优先法" class="headerlink" title="优先法"></a>优先法</h2><p>思想：根据归约的先后次序为句型中相邻的文法符号规定优先关系<br>句柄内相邻符号同时归约，是同优先级的<br>句柄两端符号的优先级要高于句柄外与之相邻的符号<br>简单优先文法：如果各文法符号之间的优先关系互不冲突(至多存在一种优先关系)，则可识别任意句型的句柄<br>算符优先文法：仅对文法中可能在句型中相邻的终结符定义优先关系，并且各终结符对之间的优先关系互不冲突。</p>
+<h2 id="状态法"><a href="#状态法" class="headerlink" title="状态法"></a>状态法</h2><p>根据句柄的识别状态来识别句柄<br>1.移进归约冲突<br>2.归约归约冲突</p>
+<h1 id="算符优先分析法"><a href="#算符优先分析法" class="headerlink" title="算符优先分析法"></a>算符优先分析法</h1><p>将句型中的终结符当作算符，然后定义算符之间的某种优先关系，利用优先关系来寻找句柄进行归约</p>
+<h2 id="算符优先文法"><a href="#算符优先文法" class="headerlink" title="算符优先文法"></a>算符优先文法</h2><p>表达式的运算次序和运算对象没有关系，而只和运算符的优先级有关系<br>如果文法G中不存在具有相邻非终结符的产生式，则称为算符文法。在无ε产生式的算符文法Ｇ中，如果任意一对终结符之间至多有一种优先关系，则称为算符优先文法。</p>
+<h2 id="算符优先矩阵的构造"><a href="#算符优先矩阵的构造" class="headerlink" title="算符优先矩阵的构造"></a>算符优先矩阵的构造</h2><p>FIRSTOP(A)={b|A+b…或者A+Bb…, b∈T, B ∈V} （最左终结符集合）<br>LASTOP(A)={b|A+…b或者A+…bB, b∈T, B ∈V} （最右终结符集合）<br>终结符的优先关系小于FIRSTOP大于LASTOP</p>
+<h2 id="算符优先分析算法"><a href="#算符优先分析算法" class="headerlink" title="算符优先分析算法"></a>算符优先分析算法</h2><p><strong>素短语</strong>至少包含一个终结符，除自身以外不再包含其他含终结符的短语<br>栈内优先级高则归约否则移进</p>
+<h2 id="优先函数"><a href="#优先函数" class="headerlink" title="优先函数"></a>优先函数</h2><p>分成栈内优先函数和栈外优先函数</p>
+<h2 id="算符优先分析的出错处理"><a href="#算符优先分析的出错处理" class="headerlink" title="算符优先分析的出错处理"></a>算符优先分析的出错处理</h2><p>语法错误：1.栈顶的终结符号和当前输入符号之间不存在任何优先关系(修改栈，输入)2.发现被归约对象但不是任何产生式的右部(继续将这些符号出栈)</p>
+<h1 id="LR分析法"><a href="#LR分析法" class="headerlink" title="LR分析法"></a>LR分析法</h1><p>L:自左向右扫描输入符号R:构造最右推导的逆过程</p>
+<h2 id="LR分析算法"><a href="#LR分析算法" class="headerlink" title="LR分析算法"></a>LR分析算法</h2>
       
     </div>
     
@@ -380,7 +382,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/第一篇文章/" rel="tag"># 第一篇文章</a>
+            <a href="/tags/编译原理/" rel="tag"># 编译原理</a>
           
         </div>
       
@@ -393,15 +395,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/11/25/自顶向下的语法分析/" rel="next" title="自顶向下的语法分析">
+                <i class="fa fa-chevron-left"></i> 自顶向下的语法分析
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/21/编译原理词法分析/" rel="prev" title="编译原理词法分析">
-                编译原理词法分析 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -535,7 +537,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#自底向上的语法分析概述"><span class="nav-number">1.</span> <span class="nav-text">自底向上的语法分析概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#移进归约分析"><span class="nav-number">1.1.</span> <span class="nav-text">移进归约分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优先法"><span class="nav-number">1.2.</span> <span class="nav-text">优先法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态法"><span class="nav-number">1.3.</span> <span class="nav-text">状态法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算符优先分析法"><span class="nav-number">2.</span> <span class="nav-text">算符优先分析法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算符优先文法"><span class="nav-number">2.1.</span> <span class="nav-text">算符优先文法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算符优先矩阵的构造"><span class="nav-number">2.2.</span> <span class="nav-text">算符优先矩阵的构造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算符优先分析算法"><span class="nav-number">2.3.</span> <span class="nav-text">算符优先分析算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优先函数"><span class="nav-number">2.4.</span> <span class="nav-text">优先函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算符优先分析的出错处理"><span class="nav-number">2.5.</span> <span class="nav-text">算符优先分析的出错处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LR分析法"><span class="nav-number">3.</span> <span class="nav-text">LR分析法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LR分析算法"><span class="nav-number">3.1.</span> <span class="nav-text">LR分析算法</span></a></li></ol></li></ol></div>
             
 
           </div>
