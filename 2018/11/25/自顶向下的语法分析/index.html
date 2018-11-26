@@ -87,10 +87,12 @@
 <meta property="og:site_name" content="MybRose_blog">
 <meta property="og:description" content="语法分析概述语法分析是编译程序的核心部分，其任务是检查词法分析器输出的单词序列是否为源语言中的句子，也就是是否符合源语言的语法规则主要有两种方式1.产生句子的方式：从开始符号逐步推导出单词序列，自顶向下分析（递归子程序法，预测分析法LL(1)）2.识别句子的方式：逐步将构成程序的单词序列归约成文法的开始符号，自底向上分析（算符优先分析法，LR(0),SLR(1),LR(1),LALR(1)）这两种">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-25T07:22:35.779Z">
+<meta property="og:image" content="http://yoursite.com/2018/11/25/自顶向下的语法分析/p1.png">
+<meta property="og:updated_time" content="2018-11-26T04:06:14.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自顶向下的语法分析">
 <meta name="twitter:description" content="语法分析概述语法分析是编译程序的核心部分，其任务是检查词法分析器输出的单词序列是否为源语言中的句子，也就是是否符合源语言的语法规则主要有两种方式1.产生句子的方式：从开始符号逐步推导出单词序列，自顶向下分析（递归子程序法，预测分析法LL(1)）2.识别句子的方式：逐步将构成程序的单词序列归约成文法的开始符号，自底向上分析（算符优先分析法，LR(0),SLR(1),LR(1),LALR(1)）这两种">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/25/自顶向下的语法分析/p1.png">
 
 
 
@@ -357,8 +359,13 @@
         <h1 id="语法分析概述"><a href="#语法分析概述" class="headerlink" title="语法分析概述"></a>语法分析概述</h1><p>语法分析是编译程序的核心部分，其任务是检查词法分析器输出的<strong>单词序列是否为源语言中的句子</strong>，也就是是否符合源语言的语法规则<br>主要有两种方式<br>1.产生句子的方式：从开始符号逐步推导出单词序列，自顶向下分析（递归子程序法，预测分析法LL(1)）<br>2.识别句子的方式：逐步将构成程序的单词序列归约成文法的开始符号，自底向上分析（算符优先分析法，LR(0),SLR(1),LR(1),LALR(1)）<br>这两种方式都是自左向右地扫描输入单词序列，针对输入单词序列建立一颗语法分析树<br>语法分析处理时的恢复策略：紧急方式恢复策略（丢弃直到发现同步记号：; end）短语级恢复策略（对剩余输入做局部纠正）</p>
 <h1 id="自顶向下的语法分析面临的问题与文法的改造"><a href="#自顶向下的语法分析面临的问题与文法的改造" class="headerlink" title="自顶向下的语法分析面临的问题与文法的改造"></a>自顶向下的语法分析面临的问题与文法的改造</h1><h2 id="面临的问题"><a href="#面临的问题" class="headerlink" title="面临的问题"></a>面临的问题</h2><p>1.二义性问题<br>解决方法：改造文法，引入新的文法变量或者根据优先级关系，保证高优先级运算符优先的原则<br>2.回溯问题：多个候选式<br>3.左递归引起的无穷推导问题</p>
 <h2 id="对上下文无关文法的改造"><a href="#对上下文无关文法的改造" class="headerlink" title="对上下文无关文法的改造"></a>对上下文无关文法的改造</h2><p>1.消除二义性<br>2.消除左递归：A→Aα|β替换为A→βA’     A’ →αA’ |ε 间接左递归只要采用代入法变为直接左递归就可以<br>3.提取左因子：将公共前缀提取出来<br>解决以上三个问题才能实现确定的自顶向下分析</p>
-<h2 id="LL-1-文法"><a href="#LL-1-文法" class="headerlink" title="LL(1)文法"></a>LL(1)文法</h2><p>第一个终结符是指符号串的第一个符号，并且是终结符，可以称为首符号，引入首符号集<br>FIRST(α)={a|α     aβ，aT，β(V∪T)*}</p>
-
+<h2 id="LL-1-文法"><a href="#LL-1-文法" class="headerlink" title="LL(1)文法"></a>LL(1)文法</h2><p>FIRST(X):可以从X推导出的所有串首终结符构成的的集合，如果可以推出空串<br>FIRST(α)={a|α     aβ，aT，β(V∪T)*}<br>计算FIRST集：产生式右部的第一个是终结符，直接加，是非终结符，将该非终结符的FIRST集加入到产生式左部的FIRST集中。不断循环调用直到没有新的可以加入。<br>FOLLOW(A):可能在某个句型中紧跟在A后边的终结符的集合，如果A是句型的最右符号，则将结束符#加入到FOLLOWa(A)中。<br>计算FOLLOW(A)集合：首先将#放入FOLLOW(S)中，因为S是开始符号，#输入右端的结束标记。计算的符号的后面跟着终结符则直接加入，产生式左部的FOLLOW集合可以在产生式右部的最后一个非终结符的FOLLOW集，不断循环直到没有新的可以加入。<br>SELECT(产生式)：若产生式右部不为空，则为产生式右部的第一个非终结符的FIRST集，或产生式右部的第一个终结符，若右部为空，则为产生式左部的FOLLOW集。<br><strong>相同产生式左部的SELECT集不相交则为LL(1)文法</strong></p>
+<h1 id="预测分析法"><a href="#预测分析法" class="headerlink" title="预测分析法"></a>预测分析法</h1><p>该方法是一种高效的自顶向下的分析方法。预测分析程序采用该方法实现语法分析，所以叫预测分析器，又可以在无附加条件时对LL(1)文法实现确定的自顶向下分析，有时也叫LL(1)分析器。</p>
+<h2 id="预测分析器的构成"><a href="#预测分析器的构成" class="headerlink" title="预测分析器的构成"></a>预测分析器的构成</h2><p><img src="/2018/11/25/自顶向下的语法分析/p1.png" alt="q"></p>
+<h2 id="预测分析表的构造"><a href="#预测分析表的构造" class="headerlink" title="预测分析表的构造"></a>预测分析表的构造</h2><p>分析栈中一开始存放栈底符号#和文法的开始符号，然后根据栈顶符号A和读入的符号查看分析表M决定执行相应的动作<br>计算方法：计算FIRST和FOLLOW集合进行填表操作</p>
+<h2 id="预测分析中的错误处理"><a href="#预测分析中的错误处理" class="headerlink" title="预测分析中的错误处理"></a>预测分析中的错误处理</h2><p>错误有：栈顶终结符号和下一个输入符号不匹配，栈顶是语法变量A，a是下一个输入符号M[A,a]是空白表项  紧急方式错误恢复策略：发现错误时跳过一些输入符号，直到下一个语法成分包含的第一个符号为止（同步记号）<br>使用方法：<br>M[A,a]表项是synch，表明a属于follow(A)，弹出A，继续执行下面的分析<br>1.如果表项M[A, a]为空，则跳过输入符号a；<br>2.如果表项是synch，则弹出栈顶的语法变量并试图恢复分析；<br>3.如果栈顶的记号与输入符号不匹配，则从栈顶弹出该记号</p>
+<h1 id="递归下降分析法"><a href="#递归下降分析法" class="headerlink" title="递归下降分析法"></a>递归下降分析法</h1><h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><p>为每个语法变量编写一个处理子程序，终结符直接匹配，非终结符就调用处理子程序</p>
+<h2 id="语法图和递归子程序法"><a href="#语法图和递归子程序法" class="headerlink" title="语法图和递归子程序法"></a>语法图和递归子程序法</h2>
       
     </div>
     
@@ -530,7 +537,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#语法分析概述"><span class="nav-number">1.</span> <span class="nav-text">语法分析概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自顶向下的语法分析面临的问题与文法的改造"><span class="nav-number">2.</span> <span class="nav-text">自顶向下的语法分析面临的问题与文法的改造</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#面临的问题"><span class="nav-number">2.1.</span> <span class="nav-text">面临的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对上下文无关文法的改造"><span class="nav-number">2.2.</span> <span class="nav-text">对上下文无关文法的改造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LL-1-文法"><span class="nav-number">2.3.</span> <span class="nav-text">LL(1)文法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#语法分析概述"><span class="nav-number">1.</span> <span class="nav-text">语法分析概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自顶向下的语法分析面临的问题与文法的改造"><span class="nav-number">2.</span> <span class="nav-text">自顶向下的语法分析面临的问题与文法的改造</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#面临的问题"><span class="nav-number">2.1.</span> <span class="nav-text">面临的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对上下文无关文法的改造"><span class="nav-number">2.2.</span> <span class="nav-text">对上下文无关文法的改造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LL-1-文法"><span class="nav-number">2.3.</span> <span class="nav-text">LL(1)文法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预测分析法"><span class="nav-number">3.</span> <span class="nav-text">预测分析法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#预测分析器的构成"><span class="nav-number">3.1.</span> <span class="nav-text">预测分析器的构成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预测分析表的构造"><span class="nav-number">3.2.</span> <span class="nav-text">预测分析表的构造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预测分析中的错误处理"><span class="nav-number">3.3.</span> <span class="nav-text">预测分析中的错误处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#递归下降分析法"><span class="nav-number">4.</span> <span class="nav-text">递归下降分析法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本思想"><span class="nav-number">4.1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法图和递归子程序法"><span class="nav-number">4.2.</span> <span class="nav-text">语法图和递归子程序法</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -587,7 +594,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共2k字</span>
+  <span class="post-count">博客全站共2.7k字</span>
 </div>
         
 
