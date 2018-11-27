@@ -87,10 +87,12 @@
 <meta property="og:site_name" content="MybRose_blog">
 <meta property="og:description" content="自底向上的语法分析概述输入串出发反复归约，最后可以得到文法的开始符号，则输入串是相应文法的一个句子。在分析的过程中，寻找当前句型最左的和某个产生式的右部相匹配的子串最右推导为规范推导 最左归约为规范归约 移进归约分析一张分析表，一个输入缓冲区，一个分析栈，一个输出缓冲区格局：栈+输入缓冲区剩余内容 优先法思想：根据归约的先后次序为句型中相邻的文法符号规定优先关系句柄内相邻符号同时归约，是同优先级的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-26T12:58:06.147Z">
+<meta property="og:image" content="http://yoursite.com/2018/11/26/自底向上的语法分析/p1.png">
+<meta property="og:updated_time" content="2018-11-27T06:25:29.895Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自底向上的语法分析">
 <meta name="twitter:description" content="自底向上的语法分析概述输入串出发反复归约，最后可以得到文法的开始符号，则输入串是相应文法的一个句子。在分析的过程中，寻找当前句型最左的和某个产生式的右部相匹配的子串最右推导为规范推导 最左归约为规范归约 移进归约分析一张分析表，一个输入缓冲区，一个分析栈，一个输出缓冲区格局：栈+输入缓冲区剩余内容 优先法思想：根据归约的先后次序为句型中相邻的文法符号规定优先关系句柄内相邻符号同时归约，是同优先级的">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/26/自底向上的语法分析/p1.png">
 
 
 
@@ -365,7 +367,11 @@
 <h2 id="优先函数"><a href="#优先函数" class="headerlink" title="优先函数"></a>优先函数</h2><p>分成栈内优先函数和栈外优先函数</p>
 <h2 id="算符优先分析的出错处理"><a href="#算符优先分析的出错处理" class="headerlink" title="算符优先分析的出错处理"></a>算符优先分析的出错处理</h2><p>语法错误：1.栈顶的终结符号和当前输入符号之间不存在任何优先关系(修改栈，输入)2.发现被归约对象但不是任何产生式的右部(继续将这些符号出栈)</p>
 <h1 id="LR分析法"><a href="#LR分析法" class="headerlink" title="LR分析法"></a>LR分析法</h1><p>L:自左向右扫描输入符号R:构造最右推导的逆过程</p>
-<h2 id="LR分析算法"><a href="#LR分析算法" class="headerlink" title="LR分析算法"></a>LR分析算法</h2>
+<h2 id="LR分析算法"><a href="#LR分析算法" class="headerlink" title="LR分析算法"></a>LR分析算法</h2><p>句柄：非形式的，句柄是和某个产生式右部匹配的字符串，把句柄归约成产生式左部的非终结符，可以得到最右推导的逆过程的一步<br>举例：E-&gt;E+E|E<em>E|-E|(E)|id，对于id+id</em>id，其中一个最右推导为E-&gt;E+E-&gt;E+E<em>E-&gt;E+E</em>id-&gt;E+id<em>id-&gt;id+id</em>id。在id+id<em>id归约成E+id</em>id的过程中，最左边的id是句柄。E+id<em>id归约成E+E</em>id时，最左边的id是句柄，把E+E<em>id归约成E+E</em>E时，id是句柄。把E+E<em>E归约成E+E时E</em>E是句柄。E+E归约成E时，E+E是句柄。<br>前缀：如abc的前缀是a,ab,abc<br>活前缀：举个例子，比如E+E<em>E归约成E+E，句柄是E</em>E，那么它的活前缀就是E、E+、E+E、E+E<em>、E+E</em>E。又比如id+id<em>id归约成E+id</em>id，句柄是最左边的id，那么它的活前缀是id，因为不能超过句柄<br><img src="/2018/11/26/自底向上的语法分析/p1.png" alt="sds" title="LR分析结构图"></p>
+<h2 id="LR-0-分析表的构造"><a href="#LR-0-分析表的构造" class="headerlink" title="LR(0)分析表的构造"></a>LR(0)分析表的构造</h2><p>项目集闭包：从一个项目出发e-可达的所有项目集合<br>后继项目：识别一个非终结符后进入的项目<br>闭包之间的转移：GO(I,X)=CLOSURE({A→αX.β| A→α.Xβ∈I}<br>归约归约冲突 移进归约冲突</p>
+<h2 id="SLR-1-分析表的构造"><a href="#SLR-1-分析表的构造" class="headerlink" title="SLR(1)分析表的构造"></a>SLR(1)分析表的构造</h2><p><strong><em>在FOLLOW集中才可以进行归约否则进行移入</em></strong>只能排除不合理归约但是不能找到正确的归约<br>还是有移入归约冲突，归约归约冲突</p>
+<h2 id="LR-1-分析表的构造"><a href="#LR-1-分析表的构造" class="headerlink" title="LR(1)分析表的构造"></a>LR(1)分析表的构造</h2><p>在特定位置，A的后继符集合是FOLLOW(A)的子集<br>[A→α.β, a]的项为LR(1)项，a为一个终结符表示在当前状态下，A后面必须紧跟终结符，称为该项的<strong>展望符</strong></p>
+
       
     </div>
     
@@ -537,7 +543,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#自底向上的语法分析概述"><span class="nav-number">1.</span> <span class="nav-text">自底向上的语法分析概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#移进归约分析"><span class="nav-number">1.1.</span> <span class="nav-text">移进归约分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优先法"><span class="nav-number">1.2.</span> <span class="nav-text">优先法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态法"><span class="nav-number">1.3.</span> <span class="nav-text">状态法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算符优先分析法"><span class="nav-number">2.</span> <span class="nav-text">算符优先分析法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算符优先文法"><span class="nav-number">2.1.</span> <span class="nav-text">算符优先文法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算符优先矩阵的构造"><span class="nav-number">2.2.</span> <span class="nav-text">算符优先矩阵的构造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算符优先分析算法"><span class="nav-number">2.3.</span> <span class="nav-text">算符优先分析算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优先函数"><span class="nav-number">2.4.</span> <span class="nav-text">优先函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算符优先分析的出错处理"><span class="nav-number">2.5.</span> <span class="nav-text">算符优先分析的出错处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LR分析法"><span class="nav-number">3.</span> <span class="nav-text">LR分析法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LR分析算法"><span class="nav-number">3.1.</span> <span class="nav-text">LR分析算法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#自底向上的语法分析概述"><span class="nav-number">1.</span> <span class="nav-text">自底向上的语法分析概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#移进归约分析"><span class="nav-number">1.1.</span> <span class="nav-text">移进归约分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优先法"><span class="nav-number">1.2.</span> <span class="nav-text">优先法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态法"><span class="nav-number">1.3.</span> <span class="nav-text">状态法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算符优先分析法"><span class="nav-number">2.</span> <span class="nav-text">算符优先分析法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算符优先文法"><span class="nav-number">2.1.</span> <span class="nav-text">算符优先文法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算符优先矩阵的构造"><span class="nav-number">2.2.</span> <span class="nav-text">算符优先矩阵的构造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算符优先分析算法"><span class="nav-number">2.3.</span> <span class="nav-text">算符优先分析算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优先函数"><span class="nav-number">2.4.</span> <span class="nav-text">优先函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算符优先分析的出错处理"><span class="nav-number">2.5.</span> <span class="nav-text">算符优先分析的出错处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LR分析法"><span class="nav-number">3.</span> <span class="nav-text">LR分析法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LR分析算法"><span class="nav-number">3.1.</span> <span class="nav-text">LR分析算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LR-0-分析表的构造"><span class="nav-number">3.2.</span> <span class="nav-text">LR(0)分析表的构造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SLR-1-分析表的构造"><span class="nav-number">3.3.</span> <span class="nav-text">SLR(1)分析表的构造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LR-1-分析表的构造"><span class="nav-number">3.4.</span> <span class="nav-text">LR(1)分析表的构造</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -594,7 +600,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共3.4k字</span>
+  <span class="post-count">博客全站共3.9k字</span>
 </div>
         
 
