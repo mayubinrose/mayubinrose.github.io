@@ -92,7 +92,15 @@
 <meta property="og:image" content="http://yoursite.com/2018/11/29/语义分析与中间代码生成/p3.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/29/语义分析与中间代码生成/p4.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/29/语义分析与中间代码生成/p5.png">
-<meta property="og:updated_time" content="2018-12-01T09:55:25.679Z">
+<meta property="og:image" content="http://yoursite.com/2018/11/29/语义分析与中间代码生成/p6.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/29/语义分析与中间代码生成/p7.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/29/语义分析与中间代码生成/p9.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/29/语义分析与中间代码生成/p8.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/29/语义分析与中间代码生成/p10.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/29/语义分析与中间代码生成/p11.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/29/语义分析与中间代码生成/p12.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/29/语义分析与中间代码生成/p13.png">
+<meta property="og:updated_time" content="2018-12-01T12:58:53.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="语义分析与中间代码生成">
 <meta name="twitter:description" content="中间代码的形式抽象语法树，逆波兰表示，三地址码，DAG图 逆波兰表示后缀表示法：运算顺序就是运算符出现的顺序。中缀表达式a:=ab+cd，前缀表达式：:=a+abcd，后缀表达式：abcbd+:= 三地址码代码的每条指令最多只能包含三个地址，即两个操作地址和一个结果地址。三地址码中地址的形式：名字、常量、编译器生成的临时变量。常用的实现方式有三元式和四元式 图表示无回路有向图(DAG)可以消除公共">
@@ -369,8 +377,16 @@
 <h2 id="类型等价"><a href="#类型等价" class="headerlink" title="类型等价"></a>类型等价</h2><p>结构等价：下面的条件之一成立：1.T1和T2是相同的基本类型；2.T1和T2是将同一类型构造符应用于结构等价的类型上形成的；3.T1是表示T2的类型名。如果将类型名看作只代表他们自己的话，前两个条件将导致类型表达式的<strong>名字等价</strong>两个类型表达式名字等价当且仅当他们完全相同<br><img src="/2018/11/29/语义分析与中间代码生成/p4.png" alt="sd" title="等价实例"></p>
 <h2 id="声明语句的文法"><a href="#声明语句的文法" class="headerlink" title="声明语句的文法"></a>声明语句的文法</h2><p><img src="/2018/11/29/语义分析与中间代码生成/p5.png" alt="sd" title="声明语句的文法"></p>
 <h2 id="过程内声明语句的翻译"><a href="#过程内声明语句的翻译" class="headerlink" title="过程内声明语句的翻译"></a>过程内声明语句的翻译</h2><p>声明语句的翻译就是在符号表中为每个局部名字创建一个表项，同时维护该名字的类型及相对地址等信息</p>
-<h1 id="赋值语句的翻译"><a href="#赋值语句的翻译" class="headerlink" title="赋值语句的翻译"></a>赋值语句的翻译</h1><p>辅助子程序：gencode(code) ：产生一条中间代码 newtemp：产生新的临时变量 lookup：检查符号表中是否出现某名字<br>语义属性设置：中间代码序列：code 地址：addr 下一条四元式序号：nextquad</p>
-<h2 id="简单赋值语句的翻译"><a href="#简单赋值语句的翻译" class="headerlink" title="简单赋值语句的翻译"></a>简单赋值语句的翻译</h2><p>主要任务：生成对表达式求值的三地址码</p>
+<h1 id="赋值语句的翻译"><a href="#赋值语句的翻译" class="headerlink" title="赋值语句的翻译"></a>赋值语句的翻译</h1><p>辅助子程序：gencode(code) ：产生一条中间代码 newtemp：产生新的临时变量 lookup：检查符号表中是否出现某名字，如果有，则返回指向该表项的指针<br>语义属性设置：中间代码序列：code 地址：addr 下一条四元式序号：nextquad</p>
+<h2 id="简单赋值语句的翻译"><a href="#简单赋值语句的翻译" class="headerlink" title="简单赋值语句的翻译"></a>简单赋值语句的翻译</h2><p>主要任务：生成对表达式求值的三地址码<br><img src="/2018/11/29/语义分析与中间代码生成/p6.png" alt="sd" title="简单赋值语句的翻译"></p>
+<h2 id="数组元素的寻址"><a href="#数组元素的寻址" class="headerlink" title="数组元素的寻址"></a>数组元素的寻址</h2><p>Elist.array，用来记录指向符号表中相应数组名字表项的指针。<br>Elist.ndim，用来记录Elist中下标表达式的个数，即Elist的维数。<br>Elist.addr，用来临时存放Elist的下标表达式计算出来的值。<br>limit(array, j)，返回nj，即由array指示的数组的第j维的维长<br><img src="/2018/11/29/语义分析与中间代码生成/p7.png" alt="sd" title="数组元素的寻址计算"></p>
+<h2 id="带有数组引用的赋值语句的翻译"><a href="#带有数组引用的赋值语句的翻译" class="headerlink" title="带有数组引用的赋值语句的翻译"></a>带有数组引用的赋值语句的翻译</h2><p><img src="/2018/11/29/语义分析与中间代码生成/p9.png" alt="sd" title="赋值语句的翻译"><br><img src="/2018/11/29/语义分析与中间代码生成/p8.png" alt="sd" title="赋值语句的翻译"><br><img src="/2018/11/29/语义分析与中间代码生成/p10.png" alt="sd" title="例：A为一个10*20的整型数组"></p>
+<h1 id="类型检查"><a href="#类型检查" class="headerlink" title="类型检查"></a>类型检查</h1><p>发现程序错误的能力，确定这些类型表达式是否符合一定的规则，这些规则的集合通常称为源程序的类型系统</p>
+<h2 id="类型检查的规则"><a href="#类型检查的规则" class="headerlink" title="类型检查的规则"></a>类型检查的规则</h2><p><strong>类型综合</strong>：从子表达式的类型确定表达式的类型，要求名字在引用之前必须先进行声明，典型的逻辑规则：if f的类型为s→t and x的类型为s then 表达式f(x)的类型为t<br><strong>类型推断</strong>：根据语言的使用方式来确定其类型，通常用于从函数体推断函数类型，逻辑规则：if f(x)是一个表达式，对于其赋值情况和参数计算方式，then  f具有类型α→β (两个类型变量α和β) and x具有类型α </p>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p><img src="/2018/11/29/语义分析与中间代码生成/p11.png" alt="sd" title="类型转换实例"></p>
+<h1 id="控制结构的翻译"><a href="#控制结构的翻译" class="headerlink" title="控制结构的翻译"></a>控制结构的翻译</h1><p>控制语句的翻译与布尔表达式的翻译有关，布尔表达式的两个作用：计算逻辑值和改变控制流程</p>
+<h2 id="布尔表达式的翻译"><a href="#布尔表达式的翻译" class="headerlink" title="布尔表达式的翻译"></a>布尔表达式的翻译</h2><p><strong>not&gt;and&gt;or</strong><br><img src="/2018/11/29/语义分析与中间代码生成/p12.png" alt="sd" title="实例"></p>
+<h2 id="常见控制结构的翻译"><a href="#常见控制结构的翻译" class="headerlink" title="常见控制结构的翻译"></a>常见控制结构的翻译</h2><p><img src="/2018/11/29/语义分析与中间代码生成/p13.png" alt="sd" title="常见控制结构的翻译"></p>
 
       
     </div>
@@ -543,7 +559,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#中间代码的形式"><span class="nav-number">1.</span> <span class="nav-text">中间代码的形式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#逆波兰表示"><span class="nav-number">1.1.</span> <span class="nav-text">逆波兰表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三地址码"><span class="nav-number">1.2.</span> <span class="nav-text">三地址码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图表示"><span class="nav-number">1.3.</span> <span class="nav-text">图表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明语句的翻译"><span class="nav-number">1.4.</span> <span class="nav-text">声明语句的翻译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类型表达式"><span class="nav-number">1.4.1.</span> <span class="nav-text">类型表达式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型等价"><span class="nav-number">1.5.</span> <span class="nav-text">类型等价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明语句的文法"><span class="nav-number">1.6.</span> <span class="nav-text">声明语句的文法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程内声明语句的翻译"><span class="nav-number">1.7.</span> <span class="nav-text">过程内声明语句的翻译</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#赋值语句的翻译"><span class="nav-number">2.</span> <span class="nav-text">赋值语句的翻译</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单赋值语句的翻译"><span class="nav-number">2.1.</span> <span class="nav-text">简单赋值语句的翻译</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#中间代码的形式"><span class="nav-number">1.</span> <span class="nav-text">中间代码的形式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#逆波兰表示"><span class="nav-number">1.1.</span> <span class="nav-text">逆波兰表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三地址码"><span class="nav-number">1.2.</span> <span class="nav-text">三地址码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图表示"><span class="nav-number">1.3.</span> <span class="nav-text">图表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明语句的翻译"><span class="nav-number">1.4.</span> <span class="nav-text">声明语句的翻译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类型表达式"><span class="nav-number">1.4.1.</span> <span class="nav-text">类型表达式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型等价"><span class="nav-number">1.5.</span> <span class="nav-text">类型等价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明语句的文法"><span class="nav-number">1.6.</span> <span class="nav-text">声明语句的文法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程内声明语句的翻译"><span class="nav-number">1.7.</span> <span class="nav-text">过程内声明语句的翻译</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#赋值语句的翻译"><span class="nav-number">2.</span> <span class="nav-text">赋值语句的翻译</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单赋值语句的翻译"><span class="nav-number">2.1.</span> <span class="nav-text">简单赋值语句的翻译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组元素的寻址"><span class="nav-number">2.2.</span> <span class="nav-text">数组元素的寻址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带有数组引用的赋值语句的翻译"><span class="nav-number">2.3.</span> <span class="nav-text">带有数组引用的赋值语句的翻译</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类型检查"><span class="nav-number">3.</span> <span class="nav-text">类型检查</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类型检查的规则"><span class="nav-number">3.1.</span> <span class="nav-text">类型检查的规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型转换"><span class="nav-number">3.2.</span> <span class="nav-text">类型转换</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#控制结构的翻译"><span class="nav-number">4.</span> <span class="nav-text">控制结构的翻译</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#布尔表达式的翻译"><span class="nav-number">4.1.</span> <span class="nav-text">布尔表达式的翻译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见控制结构的翻译"><span class="nav-number">4.2.</span> <span class="nav-text">常见控制结构的翻译</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -600,7 +616,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共6.5k字</span>
+  <span class="post-count">博客全站共6.9k字</span>
 </div>
         
 
