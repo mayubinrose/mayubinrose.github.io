@@ -89,7 +89,9 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/11/28/语法指导翻译与属性文法/p1.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/28/语法指导翻译与属性文法/p2.png">
-<meta property="og:updated_time" content="2018-11-28T13:40:41.749Z">
+<meta property="og:image" content="http://yoursite.com/2018/11/28/语法指导翻译与属性文法/p3.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/28/语法指导翻译与属性文法/p4.png">
+<meta property="og:updated_time" content="2018-11-29T06:38:22.847Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="语法指导翻译与属性文法">
 <meta name="twitter:description" content="语法指导翻译概述编译程序划分成前端和后端，前端包括词法分析，语法分析，语义分析，中间代码生成，符号表的建立，以及和机器无关的中间代码优化。后端通常包括和机器相关的代码优化，目标代码生成，相关的错误处理以及符号表的访问语义分析器的主要任务是检查各个语法结构的静态语义，即验证语法正确的程序结构是否真正有意义，也称为静态语义分析或静态检查类型检查：操作数和操作符的类型是否相容；控制流检查：控制流转向目标">
@@ -366,7 +368,9 @@
 <h2 id="属性计算示例"><a href="#属性计算示例" class="headerlink" title="属性计算示例"></a>属性计算示例</h2><p>抽象语法树是把分析树中对语义无关紧要的成分去掉，是分析树的抽象形式。<br>构造表达式的抽象语法树使用的函数<br>1.mknode(op, left, right) 建立一个标记为op的运算符结点，两个域left和right分别是指向左右运算对象的指针。<br>2.mkleaf(id, entry) 建立一个标记为id的标识符结点，其域entry是指向该标识符在符号表中相应表项的指针。<br>3.mkleaf(num, val) 建立一个标记为num的数结点，其域val用于保存该数的值。<br><img src="/2018/11/28/语法指导翻译与属性文法/p1.png" alt="sl" title="构造表达式的抽象语法树的语法指导定义"><br><img src="/2018/11/28/语法指导翻译与属性文法/p2.png" alt="sl" title="在自顶向下分析过程中构造语法树"></p>
 <h1 id="翻译模式（SDT）"><a href="#翻译模式（SDT）" class="headerlink" title="翻译模式（SDT）"></a>翻译模式（SDT）</h1><p>翻译模式是语法制导定义的一种实现形式。其中属性与文法符号相关联，语义规则(也称为语义动作)用花括号｛ ｝括起来，可插入到产生式右部任何合适的位置。</p>
 <h2 id="翻译模式有语义动作的执行时机"><a href="#翻译模式有语义动作的执行时机" class="headerlink" title="翻译模式有语义动作的执行时机"></a>翻译模式有语义动作的执行时机</h2><p>翻译模式设计的前提：保证语义动作不会引用还没计算出来的属性值<br>1.只有综合属性的情况：直接把赋值动作放在相应的产生式右部的末尾<br>2.既有综合属性又有继承属性：产生式右边的符号的继承属性必须在这个符号以前的动作中计算出来。一个动作不能引用这个动作右边符号的综合属性。产生式左边非终结符号的综合属性只有在它所引用的所有属性都计算出来以后才能计算。计算这种属性的动作通常可放在产生式右部的末尾。</p>
-<h2 id="S-属性定义的自底向上翻译"><a href="#S-属性定义的自底向上翻译" class="headerlink" title="S-属性定义的自底向上翻译"></a>S-属性定义的自底向上翻译</h2><p>后缀式语法指导翻译模式：将语义规则放在产生式末尾形成语法翻译</p>
+<h2 id="S-属性定义的自底向上翻译"><a href="#S-属性定义的自底向上翻译" class="headerlink" title="S-属性定义的自底向上翻译"></a>S-属性定义的自底向上翻译</h2><p>后缀式语法指导翻译模式：将语义规则放在产生式末尾形成语法翻译。归约前调用相应的语义子程序，完成翻译的任务</p>
+<h2 id="L-属性定义的自顶向下翻译"><a href="#L-属性定义的自顶向下翻译" class="headerlink" title="L-属性定义的自顶向下翻译"></a>L-属性定义的自顶向下翻译</h2><p>消除左递归：1.只有简单语义动作时的左递归消除，带着语义动作走2.S-属性定义的左递归消除。例如：A→A1Y｛A.a:=g(A1.a,Y.y)}  A→X ｛A.a:=f(X.x)} 消除后： A→X｛R.i:=f(X.x} R｛A.a:=R.s}  R→Y ｛R1.i:=g(R.i,Y.y)} R｛R.s:=R1.s}      R→ε  ｛R.s:=R.i}<br>引入继承属性R.i来收集应用函数g的计算结果。其初始值为A.a:=f(X.x）引入综合属性R.s在R结束生成Y时复制R.i的值。<br><img src="/2018/11/28/语法指导翻译与属性文法/p3.png" alt="yuan" title="未消除前的计算"><br><img src="/2018/11/28/语法指导翻译与属性文法/p4.png" alt="yuan" title="消除后的计算"></p>
+<h2 id="L-属性定义的自底向上翻译"><a href="#L-属性定义的自底向上翻译" class="headerlink" title="L-属性定义的自底向上翻译"></a>L-属性定义的自底向上翻译</h2><p>关键：如何自底向上地计算继承属性<br>修改文法：1.计算继承属性的动作嵌入在非终结符的前面，而将计算综合属性的动作放在产生式的末尾2.在每个嵌入动作处引入一个<strong>标记性非终结符</strong>不同位置对应的标记不同<strong>形如M-&gt;ε的产生式</strong>3.如果标记性非终结符M取代了某个产生式A→α{a}β中的动作a，则为M设置继承属性来复制动作a所需要的A或α中符号的继承属性；以与动作a相同的方式计算属性，只不过要将这些属性置为M的综合属性。</p>
 
       
     </div>
@@ -406,6 +410,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/29/语义分析与中间代码生成/" rel="prev" title="语义分析与中间代码生成">
+                语义分析与中间代码生成 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -484,7 +492,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -539,7 +547,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#语法指导翻译概述"><span class="nav-number">1.</span> <span class="nav-text">语法指导翻译概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#语法指导定义（SDD"><span class="nav-number">2.</span> <span class="nav-text">语法指导定义（SDD)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#属性计算"><span class="nav-number">3.</span> <span class="nav-text">属性计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖图"><span class="nav-number">3.1.</span> <span class="nav-text">依赖图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性的计算顺序"><span class="nav-number">3.2.</span> <span class="nav-text">属性的计算顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S-属性定义"><span class="nav-number">3.3.</span> <span class="nav-text">S-属性定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-属性定义"><span class="nav-number">3.4.</span> <span class="nav-text">L-属性定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性计算示例"><span class="nav-number">3.5.</span> <span class="nav-text">属性计算示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#翻译模式（SDT）"><span class="nav-number">4.</span> <span class="nav-text">翻译模式（SDT）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#翻译模式有语义动作的执行时机"><span class="nav-number">4.1.</span> <span class="nav-text">翻译模式有语义动作的执行时机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S-属性定义的自底向上翻译"><span class="nav-number">4.2.</span> <span class="nav-text">S-属性定义的自底向上翻译</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#语法指导翻译概述"><span class="nav-number">1.</span> <span class="nav-text">语法指导翻译概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#语法指导定义（SDD"><span class="nav-number">2.</span> <span class="nav-text">语法指导定义（SDD)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#属性计算"><span class="nav-number">3.</span> <span class="nav-text">属性计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖图"><span class="nav-number">3.1.</span> <span class="nav-text">依赖图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性的计算顺序"><span class="nav-number">3.2.</span> <span class="nav-text">属性的计算顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S-属性定义"><span class="nav-number">3.3.</span> <span class="nav-text">S-属性定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-属性定义"><span class="nav-number">3.4.</span> <span class="nav-text">L-属性定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性计算示例"><span class="nav-number">3.5.</span> <span class="nav-text">属性计算示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#翻译模式（SDT）"><span class="nav-number">4.</span> <span class="nav-text">翻译模式（SDT）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#翻译模式有语义动作的执行时机"><span class="nav-number">4.1.</span> <span class="nav-text">翻译模式有语义动作的执行时机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S-属性定义的自底向上翻译"><span class="nav-number">4.2.</span> <span class="nav-text">S-属性定义的自底向上翻译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-属性定义的自顶向下翻译"><span class="nav-number">4.3.</span> <span class="nav-text">L-属性定义的自顶向下翻译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-属性定义的自底向上翻译"><span class="nav-number">4.4.</span> <span class="nav-text">L-属性定义的自底向上翻译</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -596,7 +604,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共5.5k字</span>
+  <span class="post-count">博客全站共6.5k字</span>
 </div>
         
 
