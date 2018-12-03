@@ -79,22 +79,18 @@
 
 
 
-<meta name="description" content="语法分析概述语法分析是编译程序的核心部分，其任务是检查词法分析器输出的单词序列是否为源语言中的句子，也就是是否符合源语言的语法规则主要有两种方式1.产生句子的方式：从开始符号逐步推导出单词序列，自顶向下分析（递归子程序法，预测分析法LL(1)）2.识别句子的方式：逐步将构成程序的单词序列归约成文法的开始符号，自底向上分析（算符优先分析法，LR(0),SLR(1),LR(1),LALR(1)）这两种">
+<meta name="description" content="与存储组织相关的源语言概念与特征给定一个源程序，编译程序必须根据源语言的特征为源程序中的许多问题做出决策，包括何时、怎样为名字分配内存地址。静态策略：在编译时即可做出决定的策略动态策略：直到程序执行时才能做出决定的策略 名字及其绑定“名字”、“变量”和“标识符” 的区别与联系名字和变量分别表示编译时的名字和运行时该名字所代表的内存位置。标识符则是一个字符串，用于指示数据对象、过程、类或对象的入口。">
 <meta name="keywords" content="编译原理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="自顶向下的语法分析">
-<meta property="og:url" content="http://yoursite.com/2018/11/25/自顶向下的语法分析/index.html">
+<meta property="og:title" content="运行时的存储组织">
+<meta property="og:url" content="http://yoursite.com/2018/12/03/运行时的存储组织/index.html">
 <meta property="og:site_name" content="MybRose_blog">
-<meta property="og:description" content="语法分析概述语法分析是编译程序的核心部分，其任务是检查词法分析器输出的单词序列是否为源语言中的句子，也就是是否符合源语言的语法规则主要有两种方式1.产生句子的方式：从开始符号逐步推导出单词序列，自顶向下分析（递归子程序法，预测分析法LL(1)）2.识别句子的方式：逐步将构成程序的单词序列归约成文法的开始符号，自底向上分析（算符优先分析法，LR(0),SLR(1),LR(1),LALR(1)）这两种">
+<meta property="og:description" content="与存储组织相关的源语言概念与特征给定一个源程序，编译程序必须根据源语言的特征为源程序中的许多问题做出决策，包括何时、怎样为名字分配内存地址。静态策略：在编译时即可做出决定的策略动态策略：直到程序执行时才能做出决定的策略 名字及其绑定“名字”、“变量”和“标识符” 的区别与联系名字和变量分别表示编译时的名字和运行时该名字所代表的内存位置。标识符则是一个字符串，用于指示数据对象、过程、类或对象的入口。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/11/25/自顶向下的语法分析/p1.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/25/自顶向下的语法分析/p2.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/25/自顶向下的语法分析/p3.png">
-<meta property="og:updated_time" content="2018-11-26T04:13:35.644Z">
+<meta property="og:updated_time" content="2018-12-03T13:27:59.633Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="自顶向下的语法分析">
-<meta name="twitter:description" content="语法分析概述语法分析是编译程序的核心部分，其任务是检查词法分析器输出的单词序列是否为源语言中的句子，也就是是否符合源语言的语法规则主要有两种方式1.产生句子的方式：从开始符号逐步推导出单词序列，自顶向下分析（递归子程序法，预测分析法LL(1)）2.识别句子的方式：逐步将构成程序的单词序列归约成文法的开始符号，自底向上分析（算符优先分析法，LR(0),SLR(1),LR(1),LALR(1)）这两种">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/25/自顶向下的语法分析/p1.png">
+<meta name="twitter:title" content="运行时的存储组织">
+<meta name="twitter:description" content="与存储组织相关的源语言概念与特征给定一个源程序，编译程序必须根据源语言的特征为源程序中的许多问题做出决策，包括何时、怎样为名字分配内存地址。静态策略：在编译时即可做出决定的策略动态策略：直到程序执行时才能做出决定的策略 名字及其绑定“名字”、“变量”和“标识符” 的区别与联系名字和变量分别表示编译时的名字和运行时该名字所代表的内存位置。标识符则是一个字符串，用于指示数据对象、过程、类或对象的入口。">
 
 
 
@@ -124,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/25/自顶向下的语法分析/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/03/运行时的存储组织/">
 
 
 
 
 
-  <title>自顶向下的语法分析 | MybRose_blog</title>
+  <title>运行时的存储组织 | MybRose_blog</title>
   
 
 
@@ -269,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/25/自顶向下的语法分析/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/03/运行时的存储组织/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mayubin">
@@ -286,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">自顶向下的语法分析</h1>
+          <h1 class="post-title" itemprop="name headline">运行时的存储组织</h1>
         
 
         <div class="post-meta">
@@ -298,8 +294,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-25T14:10:07+08:00">
-                2018-11-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-03T21:10:56+08:00">
+                2018-12-03
               </time>
             
 
@@ -358,17 +354,9 @@
       
 
       
-        <h1 id="语法分析概述"><a href="#语法分析概述" class="headerlink" title="语法分析概述"></a>语法分析概述</h1><p>语法分析是编译程序的核心部分，其任务是检查词法分析器输出的<strong>单词序列是否为源语言中的句子</strong>，也就是是否符合源语言的语法规则<br>主要有两种方式<br>1.产生句子的方式：从开始符号逐步推导出单词序列，自顶向下分析（递归子程序法，预测分析法LL(1)）<br>2.识别句子的方式：逐步将构成程序的单词序列归约成文法的开始符号，自底向上分析（算符优先分析法，LR(0),SLR(1),LR(1),LALR(1)）<br>这两种方式都是自左向右地扫描输入单词序列，针对输入单词序列建立一颗语法分析树<br>语法分析处理时的恢复策略：紧急方式恢复策略（丢弃直到发现同步记号：; end）短语级恢复策略（对剩余输入做局部纠正）</p>
-<h1 id="自顶向下的语法分析面临的问题与文法的改造"><a href="#自顶向下的语法分析面临的问题与文法的改造" class="headerlink" title="自顶向下的语法分析面临的问题与文法的改造"></a>自顶向下的语法分析面临的问题与文法的改造</h1><h2 id="面临的问题"><a href="#面临的问题" class="headerlink" title="面临的问题"></a>面临的问题</h2><p>1.二义性问题<br>解决方法：改造文法，引入新的文法变量或者根据优先级关系，保证高优先级运算符优先的原则<br>2.回溯问题：多个候选式<br>3.左递归引起的无穷推导问题</p>
-<h2 id="对上下文无关文法的改造"><a href="#对上下文无关文法的改造" class="headerlink" title="对上下文无关文法的改造"></a>对上下文无关文法的改造</h2><p>1.消除二义性<br>2.消除左递归：A→Aα|β替换为A→βA’     A’ →αA’ |ε 间接左递归只要采用代入法变为直接左递归就可以<br>3.提取左因子：将公共前缀提取出来<br>解决以上三个问题才能实现确定的自顶向下分析</p>
-<h2 id="LL-1-文法"><a href="#LL-1-文法" class="headerlink" title="LL(1)文法"></a>LL(1)文法</h2><p>FIRST(X):可以从X推导出的所有串首终结符构成的的集合，如果可以推出空串<br>FIRST(α)={a|α     aβ，aT，β(V∪T)*}<br>计算FIRST集：产生式右部的第一个是终结符，直接加，是非终结符，将该非终结符的FIRST集加入到产生式左部的FIRST集中。不断循环调用直到没有新的可以加入。<br>FOLLOW(A):可能在某个句型中紧跟在A后边的终结符的集合，如果A是句型的最右符号，则将结束符#加入到FOLLOWa(A)中。<br>计算FOLLOW(A)集合：首先将#放入FOLLOW(S)中，因为S是开始符号，#输入右端的结束标记。计算的符号的后面跟着终结符则直接加入，产生式左部的FOLLOW集合可以在产生式右部的最后一个非终结符的FOLLOW集，不断循环直到没有新的可以加入。<br>SELECT(产生式)：若产生式右部不为空，则为产生式右部的第一个非终结符的FIRST集，或产生式右部的第一个终结符，若右部为空，则为产生式左部的FOLLOW集。<br><strong>相同产生式左部的SELECT集不相交则为LL(1)文法</strong></p>
-<h1 id="预测分析法"><a href="#预测分析法" class="headerlink" title="预测分析法"></a>预测分析法</h1><p>该方法是一种高效的自顶向下的分析方法。预测分析程序采用该方法实现语法分析，所以叫预测分析器，又可以在无附加条件时对LL(1)文法实现确定的自顶向下分析，有时也叫LL(1)分析器。</p>
-<h2 id="预测分析器的构成"><a href="#预测分析器的构成" class="headerlink" title="预测分析器的构成"></a>预测分析器的构成</h2><p><img src="/2018/11/25/自顶向下的语法分析/p1.png" alt="q"></p>
-<h2 id="预测分析表的构造"><a href="#预测分析表的构造" class="headerlink" title="预测分析表的构造"></a>预测分析表的构造</h2><p>分析栈中一开始存放栈底符号#和文法的开始符号，然后根据栈顶符号A和读入的符号查看分析表M决定执行相应的动作<br>计算方法：计算FIRST和FOLLOW集合进行填表操作</p>
-<h2 id="预测分析中的错误处理"><a href="#预测分析中的错误处理" class="headerlink" title="预测分析中的错误处理"></a>预测分析中的错误处理</h2><p>错误有：栈顶终结符号和下一个输入符号不匹配，栈顶是语法变量A，a是下一个输入符号M[A,a]是空白表项  紧急方式错误恢复策略：发现错误时跳过一些输入符号，直到下一个语法成分包含的第一个符号为止（同步记号）<br>使用方法：<br>M[A,a]表项是synch，表明a属于follow(A)，弹出A，继续执行下面的分析<br>1.如果表项M[A, a]为空，则跳过输入符号a；<br>2.如果表项是synch，则弹出栈顶的语法变量并试图恢复分析；<br>3.如果栈顶的记号与输入符号不匹配，则从栈顶弹出该记号</p>
-<h1 id="递归下降分析法"><a href="#递归下降分析法" class="headerlink" title="递归下降分析法"></a>递归下降分析法</h1><h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><p>为每个语法变量编写一个处理子程序，终结符直接匹配，非终结符就调用处理子程序</p>
-<h2 id="语法图和递归子程序法"><a href="#语法图和递归子程序法" class="headerlink" title="语法图和递归子程序法"></a>语法图和递归子程序法</h2><p><img src="/2018/11/25/自顶向下的语法分析/p2.png" alt="sss"></p>
-<h2 id="语法图的化简与实现"><a href="#语法图的化简与实现" class="headerlink" title="语法图的化简与实现"></a>语法图的化简与实现</h2><p>左右因子提取和消除尾递归<br><img src="/2018/11/25/自顶向下的语法分析/p3.png" alt="sss"></p>
+        <h1 id="与存储组织相关的源语言概念与特征"><a href="#与存储组织相关的源语言概念与特征" class="headerlink" title="与存储组织相关的源语言概念与特征"></a>与存储组织相关的源语言概念与特征</h1><p>给定一个源程序，编译程序必须根据源语言的特征为源程序中的许多问题做出决策，包括何时、怎样为名字分配内存地址。<br><strong>静态策略</strong>：在编译时即可做出决定的策略<br><strong>动态策略</strong>：直到程序执行时才能做出决定的策略</p>
+<h2 id="名字及其绑定"><a href="#名字及其绑定" class="headerlink" title="名字及其绑定"></a>名字及其绑定</h2><p>“名字”、“变量”和“标识符” 的区别与联系<br>名字和变量分别表示编译时的名字和运行时该名字所代表的内存位置。<br>标识符则是一个字符串，用于指示数据对象、过程、类或对象的入口。<br>所有标识符都是名字，但并不是所有的名字都是标识符，名字还可以是表达式。例如，名字x.y可能表示x所代表结构的域y。<br>同一标识符可以被声明多次，但每个声明都引入一个新的变量。即使每个标识符只被声明一次，局部于某个递归过程的标识符在不同的运行时刻也将指向不同的内存位置。<br><strong>环境</strong>：是一个从名字到内存位置的映射<strong>状态</strong>：是一个从内存位置到它所保存的值的映射</p>
+<h2 id="声明的作用域"><a href="#声明的作用域" class="headerlink" title="声明的作用域"></a>声明的作用域</h2><p>x的声明的作用域是程序中的这样一段区域，在该区域中，x的引用均指向x的这一声明。<br>对于某种程序设计语言，如果只通过考察其程序就可以确定某个声明的作用域，则称该语言使用<strong>静态作用域</strong>；否则称该语言使用<strong>动态作用域</strong><br>静态作用域规则：如果名字x的声明D属于程序块B，则D的作用域是B的所有语句，只有满足如下条件的程序块B’除外：B’嵌套在B中(可以是任意的嵌套深度)，且B’中具有同一名字x的一个新的声明。<br>显式访问控制：</p>
 
       
     </div>
@@ -399,8 +387,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/24/编译原理第二章/" rel="next" title="编译原理第二章">
-                <i class="fa fa-chevron-left"></i> 编译原理第二章
+              <a href="/2018/12/03/符号表管理/" rel="next" title="符号表管理">
+                <i class="fa fa-chevron-left"></i> 符号表管理
               </a>
             
           </div>
@@ -408,10 +396,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/26/自底向上的语法分析/" rel="prev" title="自底向上的语法分析">
-                自底向上的语法分析 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -545,7 +529,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#语法分析概述"><span class="nav-number">1.</span> <span class="nav-text">语法分析概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自顶向下的语法分析面临的问题与文法的改造"><span class="nav-number">2.</span> <span class="nav-text">自顶向下的语法分析面临的问题与文法的改造</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#面临的问题"><span class="nav-number">2.1.</span> <span class="nav-text">面临的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对上下文无关文法的改造"><span class="nav-number">2.2.</span> <span class="nav-text">对上下文无关文法的改造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LL-1-文法"><span class="nav-number">2.3.</span> <span class="nav-text">LL(1)文法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预测分析法"><span class="nav-number">3.</span> <span class="nav-text">预测分析法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#预测分析器的构成"><span class="nav-number">3.1.</span> <span class="nav-text">预测分析器的构成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预测分析表的构造"><span class="nav-number">3.2.</span> <span class="nav-text">预测分析表的构造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预测分析中的错误处理"><span class="nav-number">3.3.</span> <span class="nav-text">预测分析中的错误处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#递归下降分析法"><span class="nav-number">4.</span> <span class="nav-text">递归下降分析法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本思想"><span class="nav-number">4.1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法图和递归子程序法"><span class="nav-number">4.2.</span> <span class="nav-text">语法图和递归子程序法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法图的化简与实现"><span class="nav-number">4.3.</span> <span class="nav-text">语法图的化简与实现</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#与存储组织相关的源语言概念与特征"><span class="nav-number">1.</span> <span class="nav-text">与存储组织相关的源语言概念与特征</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#名字及其绑定"><span class="nav-number">1.1.</span> <span class="nav-text">名字及其绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明的作用域"><span class="nav-number">1.2.</span> <span class="nav-text">声明的作用域</span></a></li></ol></li></ol></div>
             
 
           </div>

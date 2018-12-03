@@ -79,22 +79,18 @@
 
 
 
-<meta name="description" content="语法分析概述语法分析是编译程序的核心部分，其任务是检查词法分析器输出的单词序列是否为源语言中的句子，也就是是否符合源语言的语法规则主要有两种方式1.产生句子的方式：从开始符号逐步推导出单词序列，自顶向下分析（递归子程序法，预测分析法LL(1)）2.识别句子的方式：逐步将构成程序的单词序列归约成文法的开始符号，自底向上分析（算符优先分析法，LR(0),SLR(1),LR(1),LALR(1)）这两种">
+<meta name="description" content="符号表的作用协助进行语义检查(如检查一个名字的引用和之前的声明是否相符)和中间代码生成在目标代码生成阶段，当需要为名字分配地址时，符号表中的信息将是地址分配的主要依据编译器用符号表来记录、收集和查找出现在源程序中的各种名字及其语义信息。符号表是以名字为关键字来记录其信息的数据结构，其上支持的两个最基本操作应该是添加表项和查找表项，这两个操作必须是高效的  符号表中存放的信息记录源程序中出现的各种名">
 <meta name="keywords" content="编译原理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="自顶向下的语法分析">
-<meta property="og:url" content="http://yoursite.com/2018/11/25/自顶向下的语法分析/index.html">
+<meta property="og:title" content="符号表管理">
+<meta property="og:url" content="http://yoursite.com/2018/12/03/符号表管理/index.html">
 <meta property="og:site_name" content="MybRose_blog">
-<meta property="og:description" content="语法分析概述语法分析是编译程序的核心部分，其任务是检查词法分析器输出的单词序列是否为源语言中的句子，也就是是否符合源语言的语法规则主要有两种方式1.产生句子的方式：从开始符号逐步推导出单词序列，自顶向下分析（递归子程序法，预测分析法LL(1)）2.识别句子的方式：逐步将构成程序的单词序列归约成文法的开始符号，自底向上分析（算符优先分析法，LR(0),SLR(1),LR(1),LALR(1)）这两种">
+<meta property="og:description" content="符号表的作用协助进行语义检查(如检查一个名字的引用和之前的声明是否相符)和中间代码生成在目标代码生成阶段，当需要为名字分配地址时，符号表中的信息将是地址分配的主要依据编译器用符号表来记录、收集和查找出现在源程序中的各种名字及其语义信息。符号表是以名字为关键字来记录其信息的数据结构，其上支持的两个最基本操作应该是添加表项和查找表项，这两个操作必须是高效的  符号表中存放的信息记录源程序中出现的各种名">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/11/25/自顶向下的语法分析/p1.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/25/自顶向下的语法分析/p2.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/25/自顶向下的语法分析/p3.png">
-<meta property="og:updated_time" content="2018-11-26T04:13:35.644Z">
+<meta property="og:updated_time" content="2018-12-03T13:09:41.158Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="自顶向下的语法分析">
-<meta name="twitter:description" content="语法分析概述语法分析是编译程序的核心部分，其任务是检查词法分析器输出的单词序列是否为源语言中的句子，也就是是否符合源语言的语法规则主要有两种方式1.产生句子的方式：从开始符号逐步推导出单词序列，自顶向下分析（递归子程序法，预测分析法LL(1)）2.识别句子的方式：逐步将构成程序的单词序列归约成文法的开始符号，自底向上分析（算符优先分析法，LR(0),SLR(1),LR(1),LALR(1)）这两种">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/25/自顶向下的语法分析/p1.png">
+<meta name="twitter:title" content="符号表管理">
+<meta name="twitter:description" content="符号表的作用协助进行语义检查(如检查一个名字的引用和之前的声明是否相符)和中间代码生成在目标代码生成阶段，当需要为名字分配地址时，符号表中的信息将是地址分配的主要依据编译器用符号表来记录、收集和查找出现在源程序中的各种名字及其语义信息。符号表是以名字为关键字来记录其信息的数据结构，其上支持的两个最基本操作应该是添加表项和查找表项，这两个操作必须是高效的  符号表中存放的信息记录源程序中出现的各种名">
 
 
 
@@ -124,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/25/自顶向下的语法分析/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/03/符号表管理/">
 
 
 
 
 
-  <title>自顶向下的语法分析 | MybRose_blog</title>
+  <title>符号表管理 | MybRose_blog</title>
   
 
 
@@ -269,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/25/自顶向下的语法分析/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/03/符号表管理/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mayubin">
@@ -286,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">自顶向下的语法分析</h1>
+          <h1 class="post-title" itemprop="name headline">符号表管理</h1>
         
 
         <div class="post-meta">
@@ -298,8 +294,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-25T14:10:07+08:00">
-                2018-11-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-03T20:17:33+08:00">
+                2018-12-03
               </time>
             
 
@@ -358,17 +354,17 @@
       
 
       
-        <h1 id="语法分析概述"><a href="#语法分析概述" class="headerlink" title="语法分析概述"></a>语法分析概述</h1><p>语法分析是编译程序的核心部分，其任务是检查词法分析器输出的<strong>单词序列是否为源语言中的句子</strong>，也就是是否符合源语言的语法规则<br>主要有两种方式<br>1.产生句子的方式：从开始符号逐步推导出单词序列，自顶向下分析（递归子程序法，预测分析法LL(1)）<br>2.识别句子的方式：逐步将构成程序的单词序列归约成文法的开始符号，自底向上分析（算符优先分析法，LR(0),SLR(1),LR(1),LALR(1)）<br>这两种方式都是自左向右地扫描输入单词序列，针对输入单词序列建立一颗语法分析树<br>语法分析处理时的恢复策略：紧急方式恢复策略（丢弃直到发现同步记号：; end）短语级恢复策略（对剩余输入做局部纠正）</p>
-<h1 id="自顶向下的语法分析面临的问题与文法的改造"><a href="#自顶向下的语法分析面临的问题与文法的改造" class="headerlink" title="自顶向下的语法分析面临的问题与文法的改造"></a>自顶向下的语法分析面临的问题与文法的改造</h1><h2 id="面临的问题"><a href="#面临的问题" class="headerlink" title="面临的问题"></a>面临的问题</h2><p>1.二义性问题<br>解决方法：改造文法，引入新的文法变量或者根据优先级关系，保证高优先级运算符优先的原则<br>2.回溯问题：多个候选式<br>3.左递归引起的无穷推导问题</p>
-<h2 id="对上下文无关文法的改造"><a href="#对上下文无关文法的改造" class="headerlink" title="对上下文无关文法的改造"></a>对上下文无关文法的改造</h2><p>1.消除二义性<br>2.消除左递归：A→Aα|β替换为A→βA’     A’ →αA’ |ε 间接左递归只要采用代入法变为直接左递归就可以<br>3.提取左因子：将公共前缀提取出来<br>解决以上三个问题才能实现确定的自顶向下分析</p>
-<h2 id="LL-1-文法"><a href="#LL-1-文法" class="headerlink" title="LL(1)文法"></a>LL(1)文法</h2><p>FIRST(X):可以从X推导出的所有串首终结符构成的的集合，如果可以推出空串<br>FIRST(α)={a|α     aβ，aT，β(V∪T)*}<br>计算FIRST集：产生式右部的第一个是终结符，直接加，是非终结符，将该非终结符的FIRST集加入到产生式左部的FIRST集中。不断循环调用直到没有新的可以加入。<br>FOLLOW(A):可能在某个句型中紧跟在A后边的终结符的集合，如果A是句型的最右符号，则将结束符#加入到FOLLOWa(A)中。<br>计算FOLLOW(A)集合：首先将#放入FOLLOW(S)中，因为S是开始符号，#输入右端的结束标记。计算的符号的后面跟着终结符则直接加入，产生式左部的FOLLOW集合可以在产生式右部的最后一个非终结符的FOLLOW集，不断循环直到没有新的可以加入。<br>SELECT(产生式)：若产生式右部不为空，则为产生式右部的第一个非终结符的FIRST集，或产生式右部的第一个终结符，若右部为空，则为产生式左部的FOLLOW集。<br><strong>相同产生式左部的SELECT集不相交则为LL(1)文法</strong></p>
-<h1 id="预测分析法"><a href="#预测分析法" class="headerlink" title="预测分析法"></a>预测分析法</h1><p>该方法是一种高效的自顶向下的分析方法。预测分析程序采用该方法实现语法分析，所以叫预测分析器，又可以在无附加条件时对LL(1)文法实现确定的自顶向下分析，有时也叫LL(1)分析器。</p>
-<h2 id="预测分析器的构成"><a href="#预测分析器的构成" class="headerlink" title="预测分析器的构成"></a>预测分析器的构成</h2><p><img src="/2018/11/25/自顶向下的语法分析/p1.png" alt="q"></p>
-<h2 id="预测分析表的构造"><a href="#预测分析表的构造" class="headerlink" title="预测分析表的构造"></a>预测分析表的构造</h2><p>分析栈中一开始存放栈底符号#和文法的开始符号，然后根据栈顶符号A和读入的符号查看分析表M决定执行相应的动作<br>计算方法：计算FIRST和FOLLOW集合进行填表操作</p>
-<h2 id="预测分析中的错误处理"><a href="#预测分析中的错误处理" class="headerlink" title="预测分析中的错误处理"></a>预测分析中的错误处理</h2><p>错误有：栈顶终结符号和下一个输入符号不匹配，栈顶是语法变量A，a是下一个输入符号M[A,a]是空白表项  紧急方式错误恢复策略：发现错误时跳过一些输入符号，直到下一个语法成分包含的第一个符号为止（同步记号）<br>使用方法：<br>M[A,a]表项是synch，表明a属于follow(A)，弹出A，继续执行下面的分析<br>1.如果表项M[A, a]为空，则跳过输入符号a；<br>2.如果表项是synch，则弹出栈顶的语法变量并试图恢复分析；<br>3.如果栈顶的记号与输入符号不匹配，则从栈顶弹出该记号</p>
-<h1 id="递归下降分析法"><a href="#递归下降分析法" class="headerlink" title="递归下降分析法"></a>递归下降分析法</h1><h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><p>为每个语法变量编写一个处理子程序，终结符直接匹配，非终结符就调用处理子程序</p>
-<h2 id="语法图和递归子程序法"><a href="#语法图和递归子程序法" class="headerlink" title="语法图和递归子程序法"></a>语法图和递归子程序法</h2><p><img src="/2018/11/25/自顶向下的语法分析/p2.png" alt="sss"></p>
-<h2 id="语法图的化简与实现"><a href="#语法图的化简与实现" class="headerlink" title="语法图的化简与实现"></a>语法图的化简与实现</h2><p>左右因子提取和消除尾递归<br><img src="/2018/11/25/自顶向下的语法分析/p3.png" alt="sss"></p>
+        <h1 id="符号表的作用"><a href="#符号表的作用" class="headerlink" title="符号表的作用"></a>符号表的作用</h1><p>协助进行语义检查(如检查一个名字的引用和之前的声明是否相符)和中间代码生成<br>在目标代码生成阶段，当需要为名字分配地址时，符号表中的信息将是地址分配的主要依据<br>编译器用符号表来记录、收集和查找出现在源程序中的各种名字及其语义信息。<br>符号表是以名字为关键字来记录其信息的数据结构，其上支持的两个最基本操作应该是添加表项和查找表项，这两个操作必须是高效的 </p>
+<h1 id="符号表中存放的信息"><a href="#符号表中存放的信息" class="headerlink" title="符号表中存放的信息"></a>符号表中存放的信息</h1><p>记录源程序中出现的各种名字及其属性信息是符号表的首要任务。显然同一个名字在一段程序中应该表示同一个对象，即同一个符号表中不能出现相同的名字，因此名字可以作为符号表的关键字。</p>
+<h2 id="符号表中的名字"><a href="#符号表中的名字" class="headerlink" title="符号表中的名字"></a>符号表中的名字</h2><p>名字字段长度固定：名字项的长度大小取决于标识符允许的最大长度，不适于标识符长度变化范围较大的语言，空间浪费<br>名字字段长度可变：标识符的长度没有限制，符号表上的操作复杂而低效 </p>
+<h2 id="符号表中的属性"><a href="#符号表中的属性" class="headerlink" title="符号表中的属性"></a>符号表中的属性</h2><p>符号所表达的含义不同，符号表中需要存放的属性也就不同<br>方法1：建立多个符号表来管理源程序中出现的各种符号，如常数表、变量表、函数表、数组表等<br>问题：可能出现不同种类符号重名的问题<br>方法2：建立一张共用的大表来管理各种符号，需要在符号表增设一个标志来表明符号的种属<br>问题：不同种类符号所需存放属性信息在数量上的差异将会造成符号表的空间浪费  </p>
+<h2 id="符号的地址属性"><a href="#符号的地址属性" class="headerlink" title="符号的地址属性"></a>符号的地址属性</h2><p>如果采用静态存储分配策略，则符号x绑定的地址等于静态分配的基址base加上符号x的偏移量offset<br>如果采用的是栈式存储分配或堆式存储分配等动态分配策略，则符号是在程序执行过程中和地址动态绑定的。<br>如栈式存储分配时，i的地址是以栈指针sp为基址加上i相对于活动记录起始地址的偏移量offset i<br><strong>符号表中各符号的地址属性就是该符号相对于第一个符号的偏移地址</strong></p>
+<h1 id="符号表的组织结构"><a href="#符号表的组织结构" class="headerlink" title="符号表的组织结构"></a>符号表的组织结构</h1><h2 id="符号表的线性表实现"><a href="#符号表的线性表实现" class="headerlink" title="符号表的线性表实现"></a>符号表的线性表实现</h2><p>数组实现：插入n个符号、执行e次查找操作的时间复杂度为T(n, e) = O(n(n+e))<br>有序数组实现：插入n个符号、执行e次查找操作的时间复杂度为T(n, e)≤ O(n+e)log n+O(n2)<br>有序符号表结构只有在下面的情况下才能取得较好效果：和插入操作次数相比，符号表表项上的查找操作次数占绝对多数，即e&gt;&gt;n。</p>
+<h2 id="符号表的散列表实现"><a href="#符号表的散列表实现" class="headerlink" title="符号表的散列表实现"></a>符号表的散列表实现</h2><p>引入散列表不仅可以提高lookup操作的效率，同时也可以提高insert操作的效率，所以在许多实际编译器的符号表实现中均采用了散列技术</p>
+<h1 id="符号表与作用域"><a href="#符号表与作用域" class="headerlink" title="符号表与作用域"></a>符号表与作用域</h1><h2 id="程序块结构的符号表"><a href="#程序块结构的符号表" class="headerlink" title="程序块结构的符号表"></a>程序块结构的符号表</h2><p>每个程序块建立一个符号表，程序块内的符号记录在该程序块所对应的符号表中,还要建立起这些符号表之间的联系,以刻画出符号的嵌套作用域。实现的问题：有时需要维护的符号表数量太大</p>
+<h2 id="程序块结构符号表的其他实现"><a href="#程序块结构符号表的其他实现" class="headerlink" title="程序块结构符号表的其他实现"></a>程序块结构符号表的其他实现</h2><p>将所有块的符号表放在一个大数组中，然后再引入一个程序块表来描述各程序块的符号表在大数组中的位置及其相互关系<br>将符号所属程序块编号放在符号表表项中。查找某个符号的名字name时，只有当name和符号表中的名字字符串完全匹配，且符号表表项中的块编号和当前处理的块编号完全相同时才算查找成功。程序块编号可以通过在语法制导定义中的块开始处和块结束处添加适当的语义规则计算得出。<br>程序块满足最近嵌套原则</p>
+<h2 id="C语言的符号表"><a href="#C语言的符号表" class="headerlink" title="C语言的符号表"></a>C语言的符号表</h2><p>一个完整的C程序由一个或多个相对独立的函数组成，函数之间的通信依靠参数传递和全局变量<br>全局变量和函数名的作用域是整个程序，而其余变量的作用域则是定义它们的函数<br>如果采取将每个函数分别编译成目标代码然后连接装配成一个可执行程序的处理方式，则每个函数中的符号经一遍处理即可，而且源程序中的多个函数是一个接一个处理的，不会出现交叉</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>符号表用来存放编译器各阶段收集来的各种名字的类型和特征等有关信息，并供编译程序用于语法检查、语义检查、生成中间代码及生成目标代码等；<br>源程序中会出现各种各样的名字，如函数名、函数参数名、函数中的局部变量名、全局变量名、数组名、结构名、文件名等，相应的属性可以是种属、类型、地址等。<br>根据符号所需的属性个数和类型的不同，可以组成不同的符号表，也可以组成统一的符号表，在组成统一符号表时，需要采用恰当的组织结构，以便可以对其进行高效处理。<br>随着程序规模的扩大，符号名的数量会很大，因而必须关注符号表的组织和高效管理。无序线性符号表、有序线性符号表、散列表示符号表具有不同性能的组织形式。<br>符号表管理中必须关注到语言所规定的符号的作用域，特别是在嵌套结构的程序中，符号的作用域是分层的。<br>C语言符号表的管理</p>
 
       
     </div>
@@ -399,8 +395,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/24/编译原理第二章/" rel="next" title="编译原理第二章">
-                <i class="fa fa-chevron-left"></i> 编译原理第二章
+              <a href="/2018/12/02/Javaee的一点点知识/" rel="next" title="SSM(Spring+SpringMVC+MyBatis)">
+                <i class="fa fa-chevron-left"></i> SSM(Spring+SpringMVC+MyBatis)
               </a>
             
           </div>
@@ -409,8 +405,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/26/自底向上的语法分析/" rel="prev" title="自底向上的语法分析">
-                自底向上的语法分析 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/03/运行时的存储组织/" rel="prev" title="运行时的存储组织">
+                运行时的存储组织 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -545,7 +541,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#语法分析概述"><span class="nav-number">1.</span> <span class="nav-text">语法分析概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自顶向下的语法分析面临的问题与文法的改造"><span class="nav-number">2.</span> <span class="nav-text">自顶向下的语法分析面临的问题与文法的改造</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#面临的问题"><span class="nav-number">2.1.</span> <span class="nav-text">面临的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对上下文无关文法的改造"><span class="nav-number">2.2.</span> <span class="nav-text">对上下文无关文法的改造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LL-1-文法"><span class="nav-number">2.3.</span> <span class="nav-text">LL(1)文法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预测分析法"><span class="nav-number">3.</span> <span class="nav-text">预测分析法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#预测分析器的构成"><span class="nav-number">3.1.</span> <span class="nav-text">预测分析器的构成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预测分析表的构造"><span class="nav-number">3.2.</span> <span class="nav-text">预测分析表的构造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预测分析中的错误处理"><span class="nav-number">3.3.</span> <span class="nav-text">预测分析中的错误处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#递归下降分析法"><span class="nav-number">4.</span> <span class="nav-text">递归下降分析法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本思想"><span class="nav-number">4.1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法图和递归子程序法"><span class="nav-number">4.2.</span> <span class="nav-text">语法图和递归子程序法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法图的化简与实现"><span class="nav-number">4.3.</span> <span class="nav-text">语法图的化简与实现</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#符号表的作用"><span class="nav-number">1.</span> <span class="nav-text">符号表的作用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#符号表中存放的信息"><span class="nav-number">2.</span> <span class="nav-text">符号表中存放的信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#符号表中的名字"><span class="nav-number">2.1.</span> <span class="nav-text">符号表中的名字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#符号表中的属性"><span class="nav-number">2.2.</span> <span class="nav-text">符号表中的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#符号的地址属性"><span class="nav-number">2.3.</span> <span class="nav-text">符号的地址属性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#符号表的组织结构"><span class="nav-number">3.</span> <span class="nav-text">符号表的组织结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#符号表的线性表实现"><span class="nav-number">3.1.</span> <span class="nav-text">符号表的线性表实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#符号表的散列表实现"><span class="nav-number">3.2.</span> <span class="nav-text">符号表的散列表实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#符号表与作用域"><span class="nav-number">4.</span> <span class="nav-text">符号表与作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#程序块结构的符号表"><span class="nav-number">4.1.</span> <span class="nav-text">程序块结构的符号表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序块结构符号表的其他实现"><span class="nav-number">4.2.</span> <span class="nav-text">程序块结构符号表的其他实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C语言的符号表"><span class="nav-number">4.3.</span> <span class="nav-text">C语言的符号表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.4.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
             
 
           </div>
