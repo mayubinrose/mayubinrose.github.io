@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Git,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="#将当前目录变为仓库：git init将文件添加到暂存区：git add 文件名 [可选：另一个文件名]将暂存区提交到仓库：git commit –m “描述”先有本地库，后有远程库，将本地库push到远程库第一次将本地仓库推送到GitHub上：git push –u origin master关联本地仓库和GitHub库：git remote add origin 网站上的仓库地址查询仓库状态：">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git">
+<meta property="og:url" content="http://yoursite.com/2018/12/05/Git/index.html">
+<meta property="og:site_name" content="MybRose_blog">
+<meta property="og:description" content="#将当前目录变为仓库：git init将文件添加到暂存区：git add 文件名 [可选：另一个文件名]将暂存区提交到仓库：git commit –m “描述”先有本地库，后有远程库，将本地库push到远程库第一次将本地仓库推送到GitHub上：git push –u origin master关联本地仓库和GitHub库：git remote add origin 网站上的仓库地址查询仓库状态：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-08T02:07:47.022Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git">
+<meta name="twitter:description" content="#将当前目录变为仓库：git init将文件添加到暂存区：git add 文件名 [可选：另一个文件名]将暂存区提交到仓库：git commit –m “描述”先有本地库，后有远程库，将本地库push到远程库第一次将本地仓库推送到GitHub上：git push –u origin master关联本地仓库和GitHub库：git remote add origin 网站上的仓库地址查询仓库状态：">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Mayubin'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/05/Git/">
+
+
+
+
+
+  <title>Git | MybRose_blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/mayubinrose"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MybRose_blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/05/Git/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mayubin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MybRose_blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Git</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-05T17:32:36+08:00">
+                2018-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#<br>将当前目录变为仓库：git init<br>将文件添加到暂存区：git add 文件名 [可选：另一个文件名]<br>将暂存区提交到仓库：git commit –m “描述”<br>先有本地库，后有远程库，将本地库push到远程库<br>第一次将本地仓库推送到GitHub上：git push –u origin master<br>关联本地仓库和GitHub库：git remote add origin 网站上的仓库地址<br>查询仓库状态：git status<br>注意，分支推送顺序的写法是&lt;来源地&gt;:&lt;目的地&gt;，所以git pull是&lt;远程分支&gt;:&lt;本地分支&gt;，而git push是&lt;本地分支&gt;:&lt;远程分支&gt;。<br>$ git log –pretty=oneline<br>$ git reset –hard HEAD^<br>$ git reset –hard 1094a<br>git reflog<br>git checkout – readme.txt意思就是，把readme.txt文件在工作区的修改全部撤销，这里有两种情况：<br>一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；<br>一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态<br>git reset HEAD <file>可以把暂存区的修改撤销掉（unstage），重新放回工作区<br>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout – file。<br>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD <file>，就回到了场景1，第二步按场景1操作。<br>git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。<br>git remote add origin <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:michaelliao/learngit.git添加后，远程库的名字就是origin，这是Git默认的叫法，也可以改成别的，但是origin这个名字一看就知道是远程库。<br>git push -u origin master把本地库的内容推送到远程，用git push命令，实际上是把当前分支master推送到远程。<br>由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令<br>一开始的时候，master分支是一条线，Git用master指向最新的提交，再用HEAD指向master，就能确定当前分支，以及当前分支的提交点：</file></file></p>
+<p>git checkout命令加上-b参数表示创建并切换，相当于以下两条命令：git branch dev  git checkout dev<br>git merge命令用于合并指定分支到当前分支。<br>git branch -d dev：删除分支</p>
+<p>在实际开发中，我们应该按照几个基本原则进行分支管理：<br>首先，master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；<br>那在哪干活呢？干活都在dev分支上，也就是说，dev分支是不稳定的，到某个时候，比如1.0版本发布时，再把dev分支合并到master上，在master分支发布1.0版本；<br>你和你的小伙伴们每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可以了。</p>
+<p>Git还提供了一个stash功能，可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作<br>工作区是干净的，刚才的工作现场存到哪去了？用git stash list命令看看：<br>工作现场还在，Git把stash内容存在某个地方了，但是需要恢复一下，有两个办法：<br>一是用git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除；<br>另一种方式是用git stash pop，恢复的同时把stash内容也删了：</p>
+<h2 id="Feature分支"><a href="#Feature分支" class="headerlink" title="Feature分支"></a>Feature分支</h2><p>开发一个新feature，最好新建一个分支；<br>如果要丢弃一个没有被合并过的分支，可以通过git branch -D <name>强行删除</name></p>
+<h2 id="多人协作"><a href="#多人协作" class="headerlink" title="多人协作"></a>多人协作</h2><p>master分支是主分支，因此要时刻与远程同步；<br>dev分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；<br>bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；<br>feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。<br>现在，你的小伙伴要在dev分支上开发，就必须创建远程origin的dev分支到本地，于是他用这个命令创建本地dev分支：git checkout -b dev origin/dev<br>多人协作<br>阅读: 499206<br>当你从远程仓库克隆时，实际上Git自动把本地的master分支和远程的master分支对应起来了，并且，远程仓库的默认名称是origin。</p>
+<p>要查看远程库的信息，用git remote：</p>
+<p>$ git remote<br>origin<br>或者，用git remote -v显示更详细的信息：</p>
+<p>$ git remote -v<br>origin  <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:michaelliao/learngit.git (fetch)<br>origin  <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:michaelliao/learngit.git (push)<br>上面显示了可以抓取和推送的origin的地址。如果没有推送权限，就看不到push的地址。</p>
+<p>推送分支<br>推送分支，就是把该分支上的所有本地提交推送到远程库。推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：</p>
+<p>$ git push origin master<br>如果要推送其他分支，比如dev，就改成：</p>
+<p>$ git push origin dev<br>但是，并不是一定要把本地分支往远程推送，那么，哪些分支需要推送，哪些不需要呢？</p>
+<p>master分支是主分支，因此要时刻与远程同步；</p>
+<p>dev分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；</p>
+<p>bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；</p>
+<p>feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。</p>
+<p>总之，就是在Git中，分支完全可以在本地自己藏着玩，是否推送，视你的心情而定！</p>
+<p>抓取分支<br>多人协作时，大家都会往master和dev分支上推送各自的修改。</p>
+<p>现在，模拟一个你的小伙伴，可以在另一台电脑（注意要把SSH Key添加到GitHub）或者同一台电脑的另一个目录下克隆：</p>
+<p>$ git clone <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:michaelliao/learngit.git<br>Cloning into ‘learngit’…<br>remote: Counting objects: 40, done.<br>remote: Compressing objects: 100% (21/21), done.<br>remote: Total 40 (delta 14), reused 40 (delta 14), pack-reused 0<br>Receiving objects: 100% (40/40), done.<br>Resolving deltas: 100% (14/14), done.<br>当你的小伙伴从远程库clone时，默认情况下，你的小伙伴只能看到本地的master分支。不信可以用git branch命令看看：</p>
+<p>$ git branch</p>
+<ul>
+<li>master<br>现在，你的小伙伴要在dev分支上开发，就必须创建远程origin的dev分支到本地，于是他用这个命令创建本地dev分支：</li>
+</ul>
+<p>$ git checkout -b dev origin/dev<br>现在，他就可以在dev上继续修改，然后，时不时地把dev分支push到远程：</p>
+<p>$ git add env.txt</p>
+<p>$ git commit -m “add env”<br>[dev 7a5e5dd] add env<br> 1 file changed, 1 insertion(+)<br> create mode 100644 env.txt</p>
+<p>$ git push origin dev<br>Counting objects: 3, done.<br>Delta compression using up to 4 threads.<br>Compressing objects: 100% (2/2), done.<br>Writing objects: 100% (3/3), 308 bytes | 308.00 KiB/s, done.<br>Total 3 (delta 0), reused 0 (delta 0)<br>To github.com:michaelliao/learngit.git<br>   f52c633..7a5e5dd  dev -&gt; dev<br> 你的小伙伴已经向origin/dev分支推送了他的提交，而碰巧你也对同样的文件作了修改，并试图推送：</p>
+<p>$ cat env.txt<br>env</p>
+<p>$ git add env.txt</p>
+<p>$ git commit -m “add new env”<br>[dev 7bd91f1] add new env<br> 1 file changed, 1 insertion(+)<br> create mode 100644 env.txt</p>
+<p>$ git push origin dev<br>To github.com:michaelliao/learngit.git<br> ! [rejected]        dev -&gt; dev (non-fast-forward)<br>error: failed to push some refs to <a href="mailto:&#39;git@github.com" target="_blank" rel="noopener">&#39;git@github.com</a>:michaelliao/learngit.git’<br>hint: Updates were rejected because the tip of your current branch is behind<br>hint: its remote counterpart. Integrate the remote changes (e.g.<br>hint: ‘git pull …’) before pushing again.<br>hint: See the ‘Note about fast-forwards’ in ‘git push –help’ for details.<br>推送失败，因为你的小伙伴的最新提交和你试图推送的提交有冲突，解决办法也很简单，Git已经提示我们，先用git pull把最新的提交从origin/dev抓下来，然后，在本地合并，解决冲突，再推送：</p>
+<p>$ git pull<br>There is no tracking information for the current branch.<br>Please specify which branch you want to merge with.<br>See git-pull(1) for details.</p>
+<pre><code>git pull &lt;remote&gt; &lt;branch&gt;
+</code></pre><p>If you wish to set tracking information for this branch you can do so with:</p>
+<pre><code>git branch --set-upstream-to=origin/&lt;branch&gt; dev
+</code></pre><p>git pull也失败了，原因是没有指定本地dev分支与远程origin/dev分支的链接，根据提示，设置dev和origin/dev的链接：</p>
+<p>$ git branch –set-upstream-to=origin/dev dev<br>Branch ‘dev’ set up to track remote branch ‘dev’ from ‘origin’.<br>再pull：</p>
+<p>$ git pull<br>Auto-merging env.txt<br>CONFLICT (add/add): Merge conflict in env.txt<br>Automatic merge failed; fix conflicts and then commit the result.<br>这回git pull成功，但是合并有冲突，需要手动解决，解决的方法和分支管理中的解决冲突完全一样。解决后，提交，再push：</p>
+<p>$ git commit -m “fix env conflict”<br>[dev 57c53ab] fix env conflict</p>
+<p>$ git push origin dev<br>Counting objects: 6, done.<br>Delta compression using up to 4 threads.<br>Compressing objects: 100% (4/4), done.<br>Writing objects: 100% (6/6), 621 bytes | 621.00 KiB/s, done.<br>Total 6 (delta 0), reused 0 (delta 0)<br>To github.com:michaelliao/learngit.git<br>   7a5e5dd..57c53ab  dev -&gt; dev<br> 因此，多人协作的工作模式通常是这样：<br>首先，可以试图用git push origin <branch-name>推送自己的修改；<br>如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；<br>如果合并有冲突，则解决冲突，并在本地提交；<br>没有冲突或者解决掉冲突后，再用git push origin <branch-name>推送就能成功！<br>如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令git branch –set-upstream-to <branch-name> origin/<branch-name>。<br>$ git log –graph –pretty=oneline –abbrev-commit：有图的历史提交的commit</branch-name></branch-name></branch-name></branch-name></p>
+<h1 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h1><h2 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h2><p>默认标签是打在最新提交的commit上的，找到对应的分支，然后git tag <name>打标签 注意，标签不是按时间顺序列出，而是按字母排序的。可以用git show <tagname>查看标签信息：</tagname></name></p>
+<h2 id="删除标签"><a href="#删除标签" class="headerlink" title="删除标签"></a>删除标签</h2><p>命令git push origin <tagname>可以推送一个本地标签；<br>命令git push origin –tags可以推送全部未推送过的本地标签；<br>命令git tag -d <tagname>可以删除一个本地标签；<br>命令git push origin :refs/tags/<tagname>可以删除一个远程标签</tagname></tagname></tagname></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Git/" rel="tag"># Git</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/03/运行时的存储组织/" rel="next" title="运行时的存储组织">
+                <i class="fa fa-chevron-left"></i> 运行时的存储组织
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/06/SpringBoot/" rel="prev" title="SpringBoot">
+                SpringBoot <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/touxiang.png" alt="Mayubin">
+            
+              <p class="site-author-name" itemprop="name">Mayubin</p>
+              <p class="site-description motion-element" itemprop="description">这个人很懒，什么都没有写</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Feature分支"><span class="nav-number">1.</span> <span class="nav-text">Feature分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多人协作"><span class="nav-number">2.</span> <span class="nav-text">多人协作</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#标签管理"><span class="nav-number"></span> <span class="nav-text">标签管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建标签"><span class="nav-number">1.</span> <span class="nav-text">创建标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除标签"><span class="nav-number">2.</span> <span class="nav-text">删除标签</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+    <div id="music163player">
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=29578009&auto=1&height=66">
+      </iframe>
+    </div>
+    </div>
+    
+  </aside>
+
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mayubin</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i>
+
+</div>
+
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共13.6k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
