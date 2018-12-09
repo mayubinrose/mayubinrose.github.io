@@ -88,7 +88,7 @@
 <meta property="og:description" content="自底向上的语法分析概述输入串出发反复归约，最后可以得到文法的开始符号，则输入串是相应文法的一个句子。在分析的过程中，寻找当前句型最左的和某个产生式的右部相匹配的子串最右推导为规范推导 最左归约为规范归约 移进归约分析一张分析表，一个输入缓冲区，一个分析栈，一个输出缓冲区格局：栈+输入缓冲区剩余内容 优先法思想：根据归约的先后次序为句型中相邻的文法符号规定优先关系句柄内相邻符号同时归约，是同优先级的">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/11/26/自底向上的语法分析/p1.png">
-<meta property="og:updated_time" content="2018-11-28T03:29:58.082Z">
+<meta property="og:updated_time" content="2018-12-09T04:38:08.325Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自底向上的语法分析">
 <meta name="twitter:description" content="自底向上的语法分析概述输入串出发反复归约，最后可以得到文法的开始符号，则输入串是相应文法的一个句子。在分析的过程中，寻找当前句型最左的和某个产生式的右部相匹配的子串最右推导为规范推导 最左归约为规范归约 移进归约分析一张分析表，一个输入缓冲区，一个分析栈，一个输出缓冲区格局：栈+输入缓冲区剩余内容 优先法思想：根据归约的先后次序为句型中相邻的文法符号规定优先关系句柄内相邻符号同时归约，是同优先级的">
@@ -364,9 +364,9 @@
 <h2 id="算符优先文法"><a href="#算符优先文法" class="headerlink" title="算符优先文法"></a>算符优先文法</h2><p>表达式的运算次序和运算对象没有关系，而只和运算符的优先级有关系<br>如果文法G中不存在具有相邻非终结符的产生式，则称为算符文法。在无ε产生式的算符文法Ｇ中，如果任意一对终结符之间至多有一种优先关系，则称为算符优先文法。</p>
 <h2 id="算符优先矩阵的构造"><a href="#算符优先矩阵的构造" class="headerlink" title="算符优先矩阵的构造"></a>算符优先矩阵的构造</h2><p>FIRSTOP(A)={b|A+b…或者A+Bb…, b∈T, B ∈V} （最左终结符集合）<br>LASTOP(A)={b|A+…b或者A+…bB, b∈T, B ∈V} （最右终结符集合）<br>终结符的优先关系小于FIRSTOP大于LASTOP</p>
 <h2 id="算符优先分析算法"><a href="#算符优先分析算法" class="headerlink" title="算符优先分析算法"></a>算符优先分析算法</h2><p><strong>素短语</strong>至少包含一个终结符，除自身以外不再包含其他含终结符的短语<br>栈内优先级高则归约否则移进</p>
-<h2 id="优先函数"><a href="#优先函数" class="headerlink" title="优先函数"></a>优先函数</h2><p>分成栈内优先函数和栈外优先函数</p>
+<h2 id="优先函数"><a href="#优先函数" class="headerlink" title="优先函数"></a>优先函数</h2><p>分成栈内优先函数和栈外优先函数，可能不存在对应优先关系表的优先函数，若存在也不唯一。存在的话，可以通过三个步骤构造优先函数<br>1.画图：a&gt;=b 从fa画一条弧线到gb，如果a&lt;=b，从gb画一条弧线到fa<br>2.数数：从一个节点出发能到达的节点(沿着线随意走的经过点，包括它自己)<br>3.检查：是否与原来的关系矛盾</p>
 <h2 id="算符优先分析的出错处理"><a href="#算符优先分析的出错处理" class="headerlink" title="算符优先分析的出错处理"></a>算符优先分析的出错处理</h2><p>语法错误：1.栈顶的终结符号和当前输入符号之间不存在任何优先关系(修改栈，输入)2.发现被归约对象但不是任何产生式的右部(继续将这些符号出栈)</p>
-<h1 id="LR分析法"><a href="#LR分析法" class="headerlink" title="LR分析法"></a>LR分析法</h1><p>L:自左向右扫描输入符号R:构造最右推导的逆过程</p>
+<h1 id="LR分析法"><a href="#LR分析法" class="headerlink" title="LR分析法"></a>LR分析法</h1><p>L:自左向右扫描输入符号R:构造最右推导的逆过程<br>LR文法不是二义的，二义文法一定不是LR的</p>
 <h2 id="LR分析算法"><a href="#LR分析算法" class="headerlink" title="LR分析算法"></a>LR分析算法</h2><p>句柄：非形式的，句柄是和某个产生式右部匹配的字符串，把句柄归约成产生式左部的非终结符，可以得到最右推导的逆过程的一步<br>举例：E-&gt;E+E|E<em>E|-E|(E)|id，对于id+id</em>id，其中一个最右推导为E-&gt;E+E-&gt;E+E<em>E-&gt;E+E</em>id-&gt;E+id<em>id-&gt;id+id</em>id。在id+id<em>id归约成E+id</em>id的过程中，最左边的id是句柄。E+id<em>id归约成E+E</em>id时，最左边的id是句柄，把E+E<em>id归约成E+E</em>E时，id是句柄。把E+E<em>E归约成E+E时E</em>E是句柄。E+E归约成E时，E+E是句柄。<br>前缀：如abc的前缀是a,ab,abc<br>活前缀：举个例子，比如E+E<em>E归约成E+E，句柄是E</em>E，那么它的活前缀就是E、E+、E+E、E+E<em>、E+E</em>E。又比如id+id<em>id归约成E+id</em>id，句柄是最左边的id，那么它的活前缀是id，因为不能超过句柄<br><img src="/2018/11/26/自底向上的语法分析/p1.png" alt="sds" title="LR分析结构图"></p>
 <h2 id="LR-0-分析表的构造"><a href="#LR-0-分析表的构造" class="headerlink" title="LR(0)分析表的构造"></a>LR(0)分析表的构造</h2><p>项目集闭包：从一个项目出发e-可达的所有项目集合<br>后继项目：识别一个非终结符后进入的项目<br>闭包之间的转移：GO(I,X)=CLOSURE({A→αX.β| A→α.Xβ∈I}<br>归约归约冲突 移进归约冲突</p>
 <h2 id="SLR-1-分析表的构造"><a href="#SLR-1-分析表的构造" class="headerlink" title="SLR(1)分析表的构造"></a>SLR(1)分析表的构造</h2><p><strong><em>在FOLLOW集中才可以进行归约否则进行移入</em></strong>只能排除不合理归约但是不能找到正确的归约<br>还是有移入归约冲突，归约归约冲突</p>
@@ -607,7 +607,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共13.6k字</span>
+  <span class="post-count">博客全站共13.7k字</span>
 </div>
         
 
