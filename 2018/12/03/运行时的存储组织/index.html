@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="MybRose_blog">
 <meta property="og:description" content="与存储组织相关的源语言概念与特征给定一个源程序，编译程序必须根据源语言的特征为源程序中的许多问题做出决策，包括何时、怎样为名字分配内存地址。静态策略：在编译时即可做出决定的策略动态策略：直到程序执行时才能做出决定的策略 名字及其绑定“名字”、“变量”和“标识符” 的区别与联系名字和变量分别表示编译时的名字和运行时该名字所代表的内存位置。标识符则是一个字符串，用于指示数据对象、过程、类或对象的入口。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-03T13:27:59.633Z">
+<meta property="og:updated_time" content="2018-12-11T09:01:26.922Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运行时的存储组织">
 <meta name="twitter:description" content="与存储组织相关的源语言概念与特征给定一个源程序，编译程序必须根据源语言的特征为源程序中的许多问题做出决策，包括何时、怎样为名字分配内存地址。静态策略：在编译时即可做出决定的策略动态策略：直到程序执行时才能做出决定的策略 名字及其绑定“名字”、“变量”和“标识符” 的区别与联系名字和变量分别表示编译时的名字和运行时该名字所代表的内存位置。标识符则是一个字符串，用于指示数据对象、过程、类或对象的入口。">
@@ -356,8 +356,16 @@
       
         <h1 id="与存储组织相关的源语言概念与特征"><a href="#与存储组织相关的源语言概念与特征" class="headerlink" title="与存储组织相关的源语言概念与特征"></a>与存储组织相关的源语言概念与特征</h1><p>给定一个源程序，编译程序必须根据源语言的特征为源程序中的许多问题做出决策，包括何时、怎样为名字分配内存地址。<br><strong>静态策略</strong>：在编译时即可做出决定的策略<br><strong>动态策略</strong>：直到程序执行时才能做出决定的策略</p>
 <h2 id="名字及其绑定"><a href="#名字及其绑定" class="headerlink" title="名字及其绑定"></a>名字及其绑定</h2><p>“名字”、“变量”和“标识符” 的区别与联系<br>名字和变量分别表示编译时的名字和运行时该名字所代表的内存位置。<br>标识符则是一个字符串，用于指示数据对象、过程、类或对象的入口。<br>所有标识符都是名字，但并不是所有的名字都是标识符，名字还可以是表达式。例如，名字x.y可能表示x所代表结构的域y。<br>同一标识符可以被声明多次，但每个声明都引入一个新的变量。即使每个标识符只被声明一次，局部于某个递归过程的标识符在不同的运行时刻也将指向不同的内存位置。<br><strong>环境</strong>：是一个从名字到内存位置的映射<strong>状态</strong>：是一个从内存位置到它所保存的值的映射</p>
-<h2 id="声明的作用域"><a href="#声明的作用域" class="headerlink" title="声明的作用域"></a>声明的作用域</h2><p>x的声明的作用域是程序中的这样一段区域，在该区域中，x的引用均指向x的这一声明。<br>对于某种程序设计语言，如果只通过考察其程序就可以确定某个声明的作用域，则称该语言使用<strong>静态作用域</strong>；否则称该语言使用<strong>动态作用域</strong><br>静态作用域规则：如果名字x的声明D属于程序块B，则D的作用域是B的所有语句，只有满足如下条件的程序块B’除外：B’嵌套在B中(可以是任意的嵌套深度)，且B’中具有同一名字x的一个新的声明。<br>显式访问控制：</p>
-
+<h2 id="声明的作用域"><a href="#声明的作用域" class="headerlink" title="声明的作用域"></a>声明的作用域</h2><p>x的声明的作用域是程序中的这样一段区域，在该区域中，x的引用均指向x的这一声明。<br>对于某种程序设计语言，如果只通过考察其程序就可以确定某个声明的作用域，则称该语言使用<strong>静态作用域</strong>；否则称该语言使用<strong>动态作用域</strong><br>静态作用域规则：如果名字x的声明D属于程序块B，则D的作用域是B的所有语句，只有满足如下条件的程序块B’除外：B’嵌套在B中(可以是任意的嵌套深度)，且B’中具有同一名字x的一个新的声明。<br>显式访问控制：类和结构为其成员引入了一种新的作用域如果p是某个带有域(成员)x的类的对象，则p.x中x的引用将指向该类定义中的域x<br>动态作用域相对于时间</p>
+<h2 id="过程及其活动"><a href="#过程及其活动" class="headerlink" title="过程及其活动"></a>过程及其活动</h2><p>把一个标识符和一组语句联系起来的，该标识符是过程名，这组语句是过程体。过程体的每次执行叫做该过程的一个活动</p>
+<h2 id="参数传递方式"><a href="#参数传递方式" class="headerlink" title="参数传递方式"></a>参数传递方式</h2><p>1.传值：被调用过程为每个形参开辟一个称为形式单元的存储单元，用于存放相应实参的值，调用过程计算实参，并把右值放在相应的形式单元中<br>2.传地址：把实参的地址传递给被调用过程<br>3.传值结果：将传值和传地址两种方式结合起来<br>4.传名：用实参表达式对形参进行文字替换，类似于宏替换</p>
+<h1 id="存储组织"><a href="#存储组织" class="headerlink" title="存储组织"></a>存储组织</h1><h2 id="运行时内存的划分"><a href="#运行时内存的划分" class="headerlink" title="运行时内存的划分"></a>运行时内存的划分</h2><p>为运行目标程序，编译器需要先获得一块存储区，并划分成块</p>
+<h2 id="活动记录"><a href="#活动记录" class="headerlink" title="活动记录"></a>活动记录</h2><p>过程的每个活动所需要的信息用一块连续的存储区来管理，这块存储区叫做活动记录。采用栈式存储分配机制<br>连接数据：返回地址，动态链，只指向调用者的活动记录。静态链，访问存放在其他活动记录中的非局部数据<br>形式单元：存放相应的实在参数的地址或值。<br>局部数据区：局部变量、内情向量、临时工作单元(如存放对表达式求值的结果)。</p>
+<h2 id="局部数据的组织"><a href="#局部数据的组织" class="headerlink" title="局部数据的组织"></a>局部数据的组织</h2><p>局部数据域在编译过程中处理声明语句时进行分配<br>变量所需的存储空间可以根据其类型而静态确定。<br>一个过程所声明的局部变量，按这些变量声明时出现的次序，在局部数据域中依次分配空间。<br>局部数据的地址可以用相对于某个位置的地址来表示。<br>数据对象的存储安排还有对齐的问题，整数必须放在内存中特定的位置</p>
+<h2 id="全局存储分配策略"><a href="#全局存储分配策略" class="headerlink" title="全局存储分配策略"></a>全局存储分配策略</h2><p>静态存储分配策略：如果在编译时能确定数据空间的大小，则可采用静态分配方法：在编译时刻为每个数据项目确定出在运行时刻的存储空间中的位置<br>动态存储分配策略：如果在编译时不能确定运行时数据空间的大小，则必须采用动态分配方法。允许递归过程及动态申请、释放内存。</p>
+<h1 id="静态存储分配策略"><a href="#静态存储分配策略" class="headerlink" title="静态存储分配策略"></a>静态存储分配策略</h1><p>如果在编译时就能确定一个程序在运行时所需要的存储空间的大小，在编译时就能安排好目标程序运行时的全部数据空间，确定每个数据项的地址</p>
+<h1 id="栈式存储分配策略"><a href="#栈式存储分配策略" class="headerlink" title="栈式存储分配策略"></a>栈式存储分配策略</h1><p>过程的每次调用都将触发一个活动，过程的每个活动所需要的数据被组织成活动记录，必须保存每个活动相应的数据区内容，引入一个运行栈，让过程的每次执行和过程的活动记录相对应。每调用一次过程，就把该过程的活动记录压入栈中，返回时弹出。</p>
+<h2 id="调用序列和返回序列"><a href="#调用序列和返回序列" class="headerlink" title="调用序列和返回序列"></a>调用序列和返回序列</h2>
       
     </div>
     
@@ -533,7 +541,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#与存储组织相关的源语言概念与特征"><span class="nav-number">1.</span> <span class="nav-text">与存储组织相关的源语言概念与特征</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#名字及其绑定"><span class="nav-number">1.1.</span> <span class="nav-text">名字及其绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明的作用域"><span class="nav-number">1.2.</span> <span class="nav-text">声明的作用域</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#与存储组织相关的源语言概念与特征"><span class="nav-number">1.</span> <span class="nav-text">与存储组织相关的源语言概念与特征</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#名字及其绑定"><span class="nav-number">1.1.</span> <span class="nav-text">名字及其绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明的作用域"><span class="nav-number">1.2.</span> <span class="nav-text">声明的作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程及其活动"><span class="nav-number">1.3.</span> <span class="nav-text">过程及其活动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数传递方式"><span class="nav-number">1.4.</span> <span class="nav-text">参数传递方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#存储组织"><span class="nav-number">2.</span> <span class="nav-text">存储组织</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时内存的划分"><span class="nav-number">2.1.</span> <span class="nav-text">运行时内存的划分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#活动记录"><span class="nav-number">2.2.</span> <span class="nav-text">活动记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局部数据的组织"><span class="nav-number">2.3.</span> <span class="nav-text">局部数据的组织</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局存储分配策略"><span class="nav-number">2.4.</span> <span class="nav-text">全局存储分配策略</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#静态存储分配策略"><span class="nav-number">3.</span> <span class="nav-text">静态存储分配策略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#栈式存储分配策略"><span class="nav-number">4.</span> <span class="nav-text">栈式存储分配策略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#调用序列和返回序列"><span class="nav-number">4.1.</span> <span class="nav-text">调用序列和返回序列</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -590,7 +598,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共13.7k字</span>
+  <span class="post-count">博客全站共14.9k字</span>
 </div>
         
 
