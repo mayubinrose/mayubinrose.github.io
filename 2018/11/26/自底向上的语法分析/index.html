@@ -88,7 +88,7 @@
 <meta property="og:description" content="自底向上的语法分析概述输入串出发反复归约，最后可以得到文法的开始符号，则输入串是相应文法的一个句子。在分析的过程中，寻找当前句型最左的和某个产生式的右部相匹配的子串最右推导为规范推导 最左归约为规范归约 移进归约分析一张分析表，一个输入缓冲区，一个分析栈，一个输出缓冲区格局：栈+输入缓冲区剩余内容 优先法思想：根据归约的先后次序为句型中相邻的文法符号规定优先关系句柄内相邻符号同时归约，是同优先级的">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/11/26/自底向上的语法分析/p1.png">
-<meta property="og:updated_time" content="2018-12-09T04:38:08.325Z">
+<meta property="og:updated_time" content="2018-12-13T11:11:20.711Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自底向上的语法分析">
 <meta name="twitter:description" content="自底向上的语法分析概述输入串出发反复归约，最后可以得到文法的开始符号，则输入串是相应文法的一个句子。在分析的过程中，寻找当前句型最左的和某个产生式的右部相匹配的子串最右推导为规范推导 最左归约为规范归约 移进归约分析一张分析表，一个输入缓冲区，一个分析栈，一个输出缓冲区格局：栈+输入缓冲区剩余内容 优先法思想：根据归约的先后次序为句型中相邻的文法符号规定优先关系句柄内相邻符号同时归约，是同优先级的">
@@ -374,6 +374,7 @@
 <h2 id="LALR-1-分析表的构造"><a href="#LALR-1-分析表的构造" class="headerlink" title="LALR(1)分析表的构造"></a>LALR(1)分析表的构造</h2><p>合并同心项目集，会产生归约归约冲突，不会有移入归约冲突可能会推迟错误的发现<br>形式上与LR(1)相同，大小上与LR(0)/SLR相同，分析能力介于SLR与LR(1)之间</p>
 <h2 id="二义性文法的应用"><a href="#二义性文法的应用" class="headerlink" title="二义性文法的应用"></a>二义性文法的应用</h2><p>任何一个二义性文法都不是LR的，某些二义性文法对语言的说明和实现非常有用，只要指明消除二义性的规则，还是少用</p>
 <h2 id="LR分析中的出错处理"><a href="#LR分析中的出错处理" class="headerlink" title="LR分析中的出错处理"></a>LR分析中的出错处理</h2><p>紧急方式的错误恢复：从栈顶开始退栈，直至发现在某个语法变量A上具有转移的状态S为止, A通常是主要程序结构的语法变量。丢弃零个或多个输入符号，直至找到符号a FOLLOW(A) 为止。分析器把状态goto[S，A]压进栈，并恢复正常分析</p>
+<p>SLR(1)判断规则<br>方法一：画出文法的LR(0)自动机，如果没有移进–规约冲突，即shift–reduce 冲突，则该文法是SLP(1)文法<br>LR(1)&gt;LALR(1)&gt;SLR(1)&gt;LR(0)</p>
 
       
     </div>
@@ -495,7 +496,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -607,7 +608,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共14.9k字</span>
+  <span class="post-count">博客全站共16.1k字</span>
 </div>
         
 

@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="符号表的作用协助进行语义检查(如检查一个名字的引用和之前的声明是否相符)和中间代码生成在目标代码生成阶段，当需要为名字分配地址时，符号表中的信息将是地址分配的主要依据编译器用符号表来记录、收集和查找出现在源程序中的各种名字及其语义信息。符号表是以名字为关键字来记录其信息的数据结构，其上支持的两个最基本操作应该是添加表项和查找表项，这两个操作必须是高效的  符号表中存放的信息记录源程序中出现的各种名">
+<meta name="description" content="优化的种类机器相关性：寄存器，多处理器，特殊指令优化，无用指令消除优化范围：局部优化：单个剧本快范围内的优化，常量合并优化，公共子表达式删除。计算强度消弱和无用代码删除。全局优化：基于循环的优化：循环不变优化，归纳变量删除，计算强度消弱优化语言级：针对中间代码，针对机器语言 公共子表达式消除复制传播复制传播变换的思想是在复制语句f := g之后尽可能用g代替f，复制传播变换本身并不是优化，但它给其">
 <meta name="keywords" content="编译原理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="符号表管理">
-<meta property="og:url" content="http://yoursite.com/2018/12/03/符号表管理/index.html">
+<meta property="og:title" content="代码优化">
+<meta property="og:url" content="http://yoursite.com/2018/12/12/代码优化/index.html">
 <meta property="og:site_name" content="MybRose_blog">
-<meta property="og:description" content="符号表的作用协助进行语义检查(如检查一个名字的引用和之前的声明是否相符)和中间代码生成在目标代码生成阶段，当需要为名字分配地址时，符号表中的信息将是地址分配的主要依据编译器用符号表来记录、收集和查找出现在源程序中的各种名字及其语义信息。符号表是以名字为关键字来记录其信息的数据结构，其上支持的两个最基本操作应该是添加表项和查找表项，这两个操作必须是高效的  符号表中存放的信息记录源程序中出现的各种名">
+<meta property="og:description" content="优化的种类机器相关性：寄存器，多处理器，特殊指令优化，无用指令消除优化范围：局部优化：单个剧本快范围内的优化，常量合并优化，公共子表达式删除。计算强度消弱和无用代码删除。全局优化：基于循环的优化：循环不变优化，归纳变量删除，计算强度消弱优化语言级：针对中间代码，针对机器语言 公共子表达式消除复制传播复制传播变换的思想是在复制语句f := g之后尽可能用g代替f，复制传播变换本身并不是优化，但它给其">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-03T13:09:41.158Z">
+<meta property="og:updated_time" content="2018-12-12T12:13:37.798Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="符号表管理">
-<meta name="twitter:description" content="符号表的作用协助进行语义检查(如检查一个名字的引用和之前的声明是否相符)和中间代码生成在目标代码生成阶段，当需要为名字分配地址时，符号表中的信息将是地址分配的主要依据编译器用符号表来记录、收集和查找出现在源程序中的各种名字及其语义信息。符号表是以名字为关键字来记录其信息的数据结构，其上支持的两个最基本操作应该是添加表项和查找表项，这两个操作必须是高效的  符号表中存放的信息记录源程序中出现的各种名">
+<meta name="twitter:title" content="代码优化">
+<meta name="twitter:description" content="优化的种类机器相关性：寄存器，多处理器，特殊指令优化，无用指令消除优化范围：局部优化：单个剧本快范围内的优化，常量合并优化，公共子表达式删除。计算强度消弱和无用代码删除。全局优化：基于循环的优化：循环不变优化，归纳变量删除，计算强度消弱优化语言级：针对中间代码，针对机器语言 公共子表达式消除复制传播复制传播变换的思想是在复制语句f := g之后尽可能用g代替f，复制传播变换本身并不是优化，但它给其">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/03/符号表管理/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/12/代码优化/">
 
 
 
 
 
-  <title>符号表管理 | MybRose_blog</title>
+  <title>代码优化 | MybRose_blog</title>
   
 
 
@@ -265,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/03/符号表管理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/12/代码优化/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mayubin">
@@ -282,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">符号表管理</h1>
+          <h1 class="post-title" itemprop="name headline">代码优化</h1>
         
 
         <div class="post-meta">
@@ -294,8 +294,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-03T20:17:33+08:00">
-                2018-12-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-12T19:35:19+08:00">
+                2018-12-12
               </time>
             
 
@@ -354,17 +354,17 @@
       
 
       
-        <h1 id="符号表的作用"><a href="#符号表的作用" class="headerlink" title="符号表的作用"></a>符号表的作用</h1><p>协助进行语义检查(如检查一个名字的引用和之前的声明是否相符)和中间代码生成<br>在目标代码生成阶段，当需要为名字分配地址时，符号表中的信息将是地址分配的主要依据<br>编译器用符号表来记录、收集和查找出现在源程序中的各种名字及其语义信息。<br>符号表是以名字为关键字来记录其信息的数据结构，其上支持的两个最基本操作应该是添加表项和查找表项，这两个操作必须是高效的 </p>
-<h1 id="符号表中存放的信息"><a href="#符号表中存放的信息" class="headerlink" title="符号表中存放的信息"></a>符号表中存放的信息</h1><p>记录源程序中出现的各种名字及其属性信息是符号表的首要任务。显然同一个名字在一段程序中应该表示同一个对象，即同一个符号表中不能出现相同的名字，因此名字可以作为符号表的关键字。</p>
-<h2 id="符号表中的名字"><a href="#符号表中的名字" class="headerlink" title="符号表中的名字"></a>符号表中的名字</h2><p>名字字段长度固定：名字项的长度大小取决于标识符允许的最大长度，不适于标识符长度变化范围较大的语言，空间浪费<br>名字字段长度可变：标识符的长度没有限制，符号表上的操作复杂而低效 </p>
-<h2 id="符号表中的属性"><a href="#符号表中的属性" class="headerlink" title="符号表中的属性"></a>符号表中的属性</h2><p>符号所表达的含义不同，符号表中需要存放的属性也就不同<br>方法1：建立多个符号表来管理源程序中出现的各种符号，如常数表、变量表、函数表、数组表等<br>问题：可能出现不同种类符号重名的问题<br>方法2：建立一张共用的大表来管理各种符号，需要在符号表增设一个标志来表明符号的种属<br>问题：不同种类符号所需存放属性信息在数量上的差异将会造成符号表的空间浪费  </p>
-<h2 id="符号的地址属性"><a href="#符号的地址属性" class="headerlink" title="符号的地址属性"></a>符号的地址属性</h2><p>如果采用静态存储分配策略，则符号x绑定的地址等于静态分配的基址base加上符号x的偏移量offset<br>如果采用的是栈式存储分配或堆式存储分配等动态分配策略，则符号是在程序执行过程中和地址动态绑定的。<br>如栈式存储分配时，i的地址是以栈指针sp为基址加上i相对于活动记录起始地址的偏移量offset i<br><strong>符号表中各符号的地址属性就是该符号相对于第一个符号的偏移地址</strong></p>
-<h1 id="符号表的组织结构"><a href="#符号表的组织结构" class="headerlink" title="符号表的组织结构"></a>符号表的组织结构</h1><h2 id="符号表的线性表实现"><a href="#符号表的线性表实现" class="headerlink" title="符号表的线性表实现"></a>符号表的线性表实现</h2><p>数组实现：插入n个符号、执行e次查找操作的时间复杂度为T(n, e) = O(n(n+e))<br>有序数组实现：插入n个符号、执行e次查找操作的时间复杂度为T(n, e)≤ O(n+e)log n+O(n2)<br>有序符号表结构只有在下面的情况下才能取得较好效果：和插入操作次数相比，符号表表项上的查找操作次数占绝对多数，即e&gt;&gt;n。</p>
-<h2 id="符号表的散列表实现"><a href="#符号表的散列表实现" class="headerlink" title="符号表的散列表实现"></a>符号表的散列表实现</h2><p>引入散列表不仅可以提高lookup操作的效率，同时也可以提高insert操作的效率，所以在许多实际编译器的符号表实现中均采用了散列技术</p>
-<h1 id="符号表与作用域"><a href="#符号表与作用域" class="headerlink" title="符号表与作用域"></a>符号表与作用域</h1><h2 id="程序块结构的符号表"><a href="#程序块结构的符号表" class="headerlink" title="程序块结构的符号表"></a>程序块结构的符号表</h2><p>每个程序块建立一个符号表，程序块内的符号记录在该程序块所对应的符号表中,还要建立起这些符号表之间的联系,以刻画出符号的嵌套作用域。实现的问题：有时需要维护的符号表数量太大</p>
-<h2 id="程序块结构符号表的其他实现"><a href="#程序块结构符号表的其他实现" class="headerlink" title="程序块结构符号表的其他实现"></a>程序块结构符号表的其他实现</h2><p>将所有块的符号表放在一个大数组中，然后再引入一个程序块表来描述各程序块的符号表在大数组中的位置及其相互关系<br>将符号所属程序块编号放在符号表表项中。查找某个符号的名字name时，只有当name和符号表中的名字字符串完全匹配，且符号表表项中的块编号和当前处理的块编号完全相同时才算查找成功。程序块编号可以通过在语法制导定义中的块开始处和块结束处添加适当的语义规则计算得出。<br>程序块满足最近嵌套原则</p>
-<h2 id="C语言的符号表"><a href="#C语言的符号表" class="headerlink" title="C语言的符号表"></a>C语言的符号表</h2><p>一个完整的C程序由一个或多个相对独立的函数组成，函数之间的通信依靠参数传递和全局变量<br>全局变量和函数名的作用域是整个程序，而其余变量的作用域则是定义它们的函数<br>如果采取将每个函数分别编译成目标代码然后连接装配成一个可执行程序的处理方式，则每个函数中的符号经一遍处理即可，而且源程序中的多个函数是一个接一个处理的，不会出现交叉</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>符号表用来存放编译器各阶段收集来的各种名字的类型和特征等有关信息，并供编译程序用于语法检查、语义检查、生成中间代码及生成目标代码等；<br>源程序中会出现各种各样的名字，如函数名、函数参数名、函数中的局部变量名、全局变量名、数组名、结构名、文件名等，相应的属性可以是种属、类型、地址等。<br>根据符号所需的属性个数和类型的不同，可以组成不同的符号表，也可以组成统一的符号表，在组成统一符号表时，需要采用恰当的组织结构，以便可以对其进行高效处理。<br>随着程序规模的扩大，符号名的数量会很大，因而必须关注符号表的组织和高效管理。无序线性符号表、有序线性符号表、散列表示符号表具有不同性能的组织形式。<br>符号表管理中必须关注到语言所规定的符号的作用域，特别是在嵌套结构的程序中，符号的作用域是分层的。<br>C语言符号表的管理</p>
+        <h1 id="优化的种类"><a href="#优化的种类" class="headerlink" title="优化的种类"></a>优化的种类</h1><p>机器相关性：寄存器，多处理器，特殊指令优化，无用指令消除<br>优化范围：局部优化：单个剧本快范围内的优化，常量合并优化，公共子表达式删除。计算强度消弱和无用代码删除。全局优化：基于循环的优化：循环不变优化，归纳变量删除，计算强度消弱<br>优化语言级：针对中间代码，针对机器语言</p>
+<h2 id="公共子表达式消除"><a href="#公共子表达式消除" class="headerlink" title="公共子表达式消除"></a>公共子表达式消除</h2><h2 id="复制传播"><a href="#复制传播" class="headerlink" title="复制传播"></a>复制传播</h2><p>复制传播变换的思想是在复制语句f := g之后尽可能用g代替f，复制传播变换本身并不是优化，但它给其它优化带来机会</p>
+<h2 id="无用代码删除"><a href="#无用代码删除" class="headerlink" title="无用代码删除"></a>无用代码删除</h2><p>无用代码是指的是计算结果以后不被引用的语句</p>
+<h2 id="代码外提"><a href="#代码外提" class="headerlink" title="代码外提"></a>代码外提</h2><p>将循环不变计算从循环中移除到循环的前面</p>
+<h2 id="强度消弱"><a href="#强度消弱" class="headerlink" title="强度消弱"></a>强度消弱</h2><p>实现同样的运算可以有多种方式，用计算较快的运算代替慢的</p>
+<h1 id="控制流分析"><a href="#控制流分析" class="headerlink" title="控制流分析"></a>控制流分析</h1><p>对循环优化-&gt;分析控制流程。首先要将程序划分为基本块集合并转换成流图，然后从流图中找出循环</p>
+<h2 id="基本块"><a href="#基本块" class="headerlink" title="基本块"></a>基本块</h2><p>基本块(basic block)是一个连续的语句序列，控制流从它的开始进入，并从它的末尾离开，中间不存在中断或分支(末尾除外)</p>
+<h2 id="流图"><a href="#流图" class="headerlink" title="流图"></a>流图</h2><p>程序的控制流信息可以用流图表示，节点为基本块的有向图。以程序的第一个语句作为入口语句的节点称为初始节点如果在某个执行序列中B2跟随在Bl之后，则从Bl到B2有一条有向边。如果从Bl的最后一条语句有条件或无条件转移到B2的第一个语句；或者按程序正文的次序B2紧跟在Bl之后，并且Bl不是结束于无条件转移，则称B1是B2的前驱，而B2是Bl的后继</p>
+<h1 id="局部优化"><a href="#局部优化" class="headerlink" title="局部优化"></a>局部优化</h1><p>基本块的功能实际上就是计算一组表达式，，这些表达式是在基本块出口活跃的变量的值。如果两个基本块计算一组同样的表达式，则称它们是等价的。 可以对基本块应用很多变换而不改变它所计算的表达式集合，许多这样的变换对改进最终由某基本块生成的代码的质量很有用。<br>利用基本块的dag表示可以实现一些常用的对基本块的变换<br>⑴ 局部公共子表达式删除。<br>⑵ 无用代码删除。<br>⑶ 交换两个独立的相邻语句的次序，以便减少某个临时值需要保存在寄存器中的时间。<br>⑷ 使用代数规则重新排列三地址码的运算对象的顺序，以便简化计算过程。</p>
+<h1 id="循环优化"><a href="#循环优化" class="headerlink" title="循环优化"></a>循环优化</h1><p>循环不变计算的检测<br>代码外提<br>归纳变量删除和强度削弱</p>
+<h1 id="全局优化"><a href="#全局优化" class="headerlink" title="全局优化"></a>全局优化</h1><p>全局公共子表达式的删除<br>复制传播</p>
 
       
     </div>
@@ -395,8 +395,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/02/Javaee的一点点知识/" rel="next" title="SSM(Spring+SpringMVC+MyBatis)">
-                <i class="fa fa-chevron-left"></i> SSM(Spring+SpringMVC+MyBatis)
+              <a href="/2018/12/06/SpringBoot/" rel="next" title="SpringBoot">
+                <i class="fa fa-chevron-left"></i> SpringBoot
               </a>
             
           </div>
@@ -404,10 +404,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/03/运行时的存储组织/" rel="prev" title="运行时的存储组织">
-                运行时的存储组织 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -541,7 +537,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#符号表的作用"><span class="nav-number">1.</span> <span class="nav-text">符号表的作用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#符号表中存放的信息"><span class="nav-number">2.</span> <span class="nav-text">符号表中存放的信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#符号表中的名字"><span class="nav-number">2.1.</span> <span class="nav-text">符号表中的名字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#符号表中的属性"><span class="nav-number">2.2.</span> <span class="nav-text">符号表中的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#符号的地址属性"><span class="nav-number">2.3.</span> <span class="nav-text">符号的地址属性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#符号表的组织结构"><span class="nav-number">3.</span> <span class="nav-text">符号表的组织结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#符号表的线性表实现"><span class="nav-number">3.1.</span> <span class="nav-text">符号表的线性表实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#符号表的散列表实现"><span class="nav-number">3.2.</span> <span class="nav-text">符号表的散列表实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#符号表与作用域"><span class="nav-number">4.</span> <span class="nav-text">符号表与作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#程序块结构的符号表"><span class="nav-number">4.1.</span> <span class="nav-text">程序块结构的符号表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序块结构符号表的其他实现"><span class="nav-number">4.2.</span> <span class="nav-text">程序块结构符号表的其他实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C语言的符号表"><span class="nav-number">4.3.</span> <span class="nav-text">C语言的符号表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.4.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#优化的种类"><span class="nav-number">1.</span> <span class="nav-text">优化的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#公共子表达式消除"><span class="nav-number">1.1.</span> <span class="nav-text">公共子表达式消除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制传播"><span class="nav-number">1.2.</span> <span class="nav-text">复制传播</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无用代码删除"><span class="nav-number">1.3.</span> <span class="nav-text">无用代码删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码外提"><span class="nav-number">1.4.</span> <span class="nav-text">代码外提</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强度消弱"><span class="nav-number">1.5.</span> <span class="nav-text">强度消弱</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#控制流分析"><span class="nav-number">2.</span> <span class="nav-text">控制流分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本块"><span class="nav-number">2.1.</span> <span class="nav-text">基本块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流图"><span class="nav-number">2.2.</span> <span class="nav-text">流图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#局部优化"><span class="nav-number">3.</span> <span class="nav-text">局部优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#循环优化"><span class="nav-number">4.</span> <span class="nav-text">循环优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#全局优化"><span class="nav-number">5.</span> <span class="nav-text">全局优化</span></a></li></ol></div>
             
 
           </div>

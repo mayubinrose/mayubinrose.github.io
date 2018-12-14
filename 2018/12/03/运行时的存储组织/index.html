@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="MybRose_blog">
 <meta property="og:description" content="与存储组织相关的源语言概念与特征给定一个源程序，编译程序必须根据源语言的特征为源程序中的许多问题做出决策，包括何时、怎样为名字分配内存地址。静态策略：在编译时即可做出决定的策略动态策略：直到程序执行时才能做出决定的策略 名字及其绑定“名字”、“变量”和“标识符” 的区别与联系名字和变量分别表示编译时的名字和运行时该名字所代表的内存位置。标识符则是一个字符串，用于指示数据对象、过程、类或对象的入口。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-11T13:20:49.012Z">
+<meta property="og:updated_time" content="2018-12-12T11:34:06.076Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运行时的存储组织">
 <meta name="twitter:description" content="与存储组织相关的源语言概念与特征给定一个源程序，编译程序必须根据源语言的特征为源程序中的许多问题做出决策，包括何时、怎样为名字分配内存地址。静态策略：在编译时即可做出决定的策略动态策略：直到程序执行时才能做出决定的策略 名字及其绑定“名字”、“变量”和“标识符” 的区别与联系名字和变量分别表示编译时的名字和运行时该名字所代表的内存位置。标识符则是一个字符串，用于指示数据对象、过程、类或对象的入口。">
@@ -366,6 +366,7 @@
 <h1 id="静态存储分配策略"><a href="#静态存储分配策略" class="headerlink" title="静态存储分配策略"></a>静态存储分配策略</h1><p>如果在编译时就能确定一个程序在运行时所需要的存储空间的大小，在编译时就能安排好目标程序运行时的全部数据空间，确定每个数据项的地址</p>
 <h1 id="栈式存储分配策略"><a href="#栈式存储分配策略" class="headerlink" title="栈式存储分配策略"></a>栈式存储分配策略</h1><p>过程的每次调用都将触发一个活动，过程的每个活动所需要的数据被组织成活动记录，必须保存每个活动相应的数据区内容，引入一个运行栈，让过程的每次执行和过程的活动记录相对应。每调用一次过程，就把该过程的活动记录压入栈中，返回时弹出。</p>
 <h2 id="调用序列和返回序列"><a href="#调用序列和返回序列" class="headerlink" title="调用序列和返回序列"></a>调用序列和返回序列</h2><p>过程调用和过程返回都需要执行一些代码来管理活动记录栈，保存或恢复机器状态等</p>
+<p>运行时的存储分配策略分为静态和动态分配，动态又分为栈式和堆式，C语言的静态变量采用静态分配，而自动类变量采用栈式分配，使用malloc申请的内存单元为动态分配</p>
 
       
     </div>
@@ -487,7 +488,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -599,7 +600,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共14.9k字</span>
+  <span class="post-count">博客全站共16.1k字</span>
 </div>
         
 
