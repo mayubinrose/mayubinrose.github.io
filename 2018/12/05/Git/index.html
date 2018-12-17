@@ -79,18 +79,21 @@
 
 
 
-<meta name="description" content="#将当前目录变为仓库：git init将文件添加到暂存区：git add 文件名 [可选：另一个文件名]将暂存区提交到仓库：git commit –m “描述”先有本地库，后有远程库，将本地库push到远程库第一次将本地仓库推送到GitHub上：git push –u origin master关联本地仓库和GitHub库：git remote add origin 网站上的仓库地址查询仓库状态：">
+<meta name="description" content="什么是Git目前世界上最先进的分布式版本控制系统 创建版本库版本库就是一个仓库，里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪将当前目录变为仓库：git init将文件添加到暂存区：git add 文件名 [可选：另一个文件名]将暂存区提交到仓库：git commit –m “描述” 时光机穿梭掌握仓库当前的状态：git status  查看某个具体文件的改变：git">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git">
 <meta property="og:url" content="http://yoursite.com/2018/12/05/Git/index.html">
 <meta property="og:site_name" content="MybRose_blog">
-<meta property="og:description" content="#将当前目录变为仓库：git init将文件添加到暂存区：git add 文件名 [可选：另一个文件名]将暂存区提交到仓库：git commit –m “描述”先有本地库，后有远程库，将本地库push到远程库第一次将本地仓库推送到GitHub上：git push –u origin master关联本地仓库和GitHub库：git remote add origin 网站上的仓库地址查询仓库状态：">
+<meta property="og:description" content="什么是Git目前世界上最先进的分布式版本控制系统 创建版本库版本库就是一个仓库，里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪将当前目录变为仓库：git init将文件添加到暂存区：git add 文件名 [可选：另一个文件名]将暂存区提交到仓库：git commit –m “描述” 时光机穿梭掌握仓库当前的状态：git status  查看某个具体文件的改变：git">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-08T02:07:47.022Z">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/p1.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/05/Git/p2.png">
+<meta property="og:updated_time" content="2018-12-17T10:48:56.998Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git">
-<meta name="twitter:description" content="#将当前目录变为仓库：git init将文件添加到暂存区：git add 文件名 [可选：另一个文件名]将暂存区提交到仓库：git commit –m “描述”先有本地库，后有远程库，将本地库push到远程库第一次将本地仓库推送到GitHub上：git push –u origin master关联本地仓库和GitHub库：git remote add origin 网站上的仓库地址查询仓库状态：">
+<meta name="twitter:description" content="什么是Git目前世界上最先进的分布式版本控制系统 创建版本库版本库就是一个仓库，里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪将当前目录变为仓库：git init将文件添加到暂存区：git add 文件名 [可选：另一个文件名]将暂存区提交到仓库：git commit –m “描述” 时光机穿梭掌握仓库当前的状态：git status  查看某个具体文件的改变：git">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/05/Git/p1.png">
 
 
 
@@ -354,49 +357,24 @@
       
 
       
-        <p>#<br>将当前目录变为仓库：git init<br>将文件添加到暂存区：git add 文件名 [可选：另一个文件名]<br>将暂存区提交到仓库：git commit –m “描述”<br>先有本地库，后有远程库，将本地库push到远程库<br>第一次将本地仓库推送到GitHub上：git push –u origin master<br>关联本地仓库和GitHub库：git remote add origin 网站上的仓库地址<br>查询仓库状态：git status<br>注意，分支推送顺序的写法是&lt;来源地&gt;:&lt;目的地&gt;，所以git pull是&lt;远程分支&gt;:&lt;本地分支&gt;，而git push是&lt;本地分支&gt;:&lt;远程分支&gt;。<br>$ git log –pretty=oneline<br>$ git reset –hard HEAD^<br>$ git reset –hard 1094a<br>git reflog<br>git checkout – readme.txt意思就是，把readme.txt文件在工作区的修改全部撤销，这里有两种情况：<br>一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；<br>一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态<br>git reset HEAD <file>可以把暂存区的修改撤销掉（unstage），重新放回工作区<br>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout – file。<br>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD <file>，就回到了场景1，第二步按场景1操作。<br>git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。<br>git remote add origin <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:michaelliao/learngit.git添加后，远程库的名字就是origin，这是Git默认的叫法，也可以改成别的，但是origin这个名字一看就知道是远程库。<br>git push -u origin master把本地库的内容推送到远程，用git push命令，实际上是把当前分支master推送到远程。<br>由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令<br>一开始的时候，master分支是一条线，Git用master指向最新的提交，再用HEAD指向master，就能确定当前分支，以及当前分支的提交点：</file></file></p>
-<p>git checkout命令加上-b参数表示创建并切换，相当于以下两条命令：git branch dev  git checkout dev<br>git merge命令用于合并指定分支到当前分支。<br>git branch -d dev：删除分支</p>
-<p>在实际开发中，我们应该按照几个基本原则进行分支管理：<br>首先，master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；<br>那在哪干活呢？干活都在dev分支上，也就是说，dev分支是不稳定的，到某个时候，比如1.0版本发布时，再把dev分支合并到master上，在master分支发布1.0版本；<br>你和你的小伙伴们每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可以了。</p>
+        <h1 id="什么是Git"><a href="#什么是Git" class="headerlink" title="什么是Git"></a>什么是Git</h1><p>目前世界上最先进的分布式版本控制系统</p>
+<h1 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h1><p>版本库就是一个仓库，里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪<br>将当前目录变为仓库：git init<br>将文件添加到暂存区：git add 文件名 [可选：另一个文件名]<br>将暂存区提交到仓库：git commit –m “描述”</p>
+<h1 id="时光机穿梭"><a href="#时光机穿梭" class="headerlink" title="时光机穿梭"></a>时光机穿梭</h1><p>掌握仓库当前的状态：git status  查看某个具体文件的改变：git diff wenjian.txt</p>
+<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><p>git log:显示最近到最远的提交日志(回到过去)<br>git中HEAD表示当前版本，上一个版本是HEAD^<br>git reset –hard HEAD^：回退到上一个版本<br>git reset –hard 1094a^：回到某一个版本<br>git reflog：记录每一次的命令(回到未来)</p>
+<h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><p>工作区就是你在电脑里能看到的目录<br>.git文件不是工作区是一个Git的版本库，版本库中存了很多东西，最重要的是stage或者index的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的指针HEAD<br><img src="/2018/12/05/Git/p1.png" alt="jiegou" title="图示"></p>
+<h2 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h2><p>git checkout – readme.txt意思就是，把readme.txt文件在工作区的修改全部撤销，这里有两种情况：<br>&emsp;&emsp;一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。总之，就是让这个文件回到最近一次git commit或git add时的状态。<br>git reset HEAD <file>可以把暂存区的修改撤销掉（unstage），重新放回工作区<br>git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。</file></p>
+<h2 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h2><p>git rm：用于删除一个文件(暂存区)</p>
+<h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><p>ssh-keygen -t rsa -C “<a href="mailto:1084930331@qq.com" target="_blank" rel="noopener">1084930331@qq.com</a>“：申请密钥</p>
+<h2 id="添加远程库"><a href="#添加远程库" class="headerlink" title="添加远程库"></a>添加远程库</h2><p>git remote add origin <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:michaelliao/learngit.git添加后，远程库的名字就是origin，这是Git默认的叫法，也可以改成别的，但是origin这个名字一看就知道是远程库。<br>git push -u origin master把本地库的内容推送到远程，用git push命令，实际上是把当前分支master推送到远程。由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令<br>之后就用git push origin master推送最新的修改<br>一开始的时候，master分支是一条线，Git用master指向最新的提交，再用HEAD指向master，就能确定当前分支，以及当前分支的提交点：</p>
+<h2 id="从远程库克隆"><a href="#从远程库克隆" class="headerlink" title="从远程库克隆"></a>从远程库克隆</h2><p>git clone <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:michaelliao/gitskills.git</p>
+<h1 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h1><h2 id="创建和合并分支"><a href="#创建和合并分支" class="headerlink" title="创建和合并分支"></a>创建和合并分支</h2><p><img src="/2018/12/05/Git/p2.png" alt="jiegou"><br>git checkout命令加上-b参数表示创建并切换，相当于以下两条命令：git branch dev  git checkout dev<br>git branch命令查看当前分支，一般回到master分支上然后进行merge合并<br>git merge命令用于合并指定分支到当前分支。<br>git branch -d dev：删除分支</p>
+<h2 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h2><p>解决冲突就是把Git合并失败的文件手动编辑为我们希望的内容，再提交。<br>用git log –graph命令可以看到分支合并图。</p>
+<h2 id="分支管理策略"><a href="#分支管理策略" class="headerlink" title="分支管理策略"></a>分支管理策略</h2><p>在实际开发中，我们应该按照几个基本原则进行分支管理：<br>首先，master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；<br>那在哪干活呢？干活都在dev分支上，也就是说，dev分支是不稳定的，到某个时候，比如1.0版本发布时，再把dev分支合并到master上，在master分支发布1.0版本；<br>你和你的小伙伴们每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可以了。</p>
 <p>Git还提供了一个stash功能，可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作<br>工作区是干净的，刚才的工作现场存到哪去了？用git stash list命令看看：<br>工作现场还在，Git把stash内容存在某个地方了，但是需要恢复一下，有两个办法：<br>一是用git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除；<br>另一种方式是用git stash pop，恢复的同时把stash内容也删了：</p>
 <h2 id="Feature分支"><a href="#Feature分支" class="headerlink" title="Feature分支"></a>Feature分支</h2><p>开发一个新feature，最好新建一个分支；<br>如果要丢弃一个没有被合并过的分支，可以通过git branch -D <name>强行删除</name></p>
-<h2 id="多人协作"><a href="#多人协作" class="headerlink" title="多人协作"></a>多人协作</h2><p>master分支是主分支，因此要时刻与远程同步；<br>dev分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；<br>bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；<br>feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。<br>现在，你的小伙伴要在dev分支上开发，就必须创建远程origin的dev分支到本地，于是他用这个命令创建本地dev分支：git checkout -b dev origin/dev<br>多人协作<br>阅读: 499206<br>当你从远程仓库克隆时，实际上Git自动把本地的master分支和远程的master分支对应起来了，并且，远程仓库的默认名称是origin。</p>
-<p>要查看远程库的信息，用git remote：</p>
-<p>$ git remote<br>origin<br>或者，用git remote -v显示更详细的信息：</p>
-<p>$ git remote -v<br>origin  <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:michaelliao/learngit.git (fetch)<br>origin  <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:michaelliao/learngit.git (push)<br>上面显示了可以抓取和推送的origin的地址。如果没有推送权限，就看不到push的地址。</p>
-<p>推送分支<br>推送分支，就是把该分支上的所有本地提交推送到远程库。推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：</p>
-<p>$ git push origin master<br>如果要推送其他分支，比如dev，就改成：</p>
-<p>$ git push origin dev<br>但是，并不是一定要把本地分支往远程推送，那么，哪些分支需要推送，哪些不需要呢？</p>
-<p>master分支是主分支，因此要时刻与远程同步；</p>
-<p>dev分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；</p>
-<p>bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；</p>
-<p>feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。</p>
-<p>总之，就是在Git中，分支完全可以在本地自己藏着玩，是否推送，视你的心情而定！</p>
-<p>抓取分支<br>多人协作时，大家都会往master和dev分支上推送各自的修改。</p>
-<p>现在，模拟一个你的小伙伴，可以在另一台电脑（注意要把SSH Key添加到GitHub）或者同一台电脑的另一个目录下克隆：</p>
-<p>$ git clone <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:michaelliao/learngit.git<br>Cloning into ‘learngit’…<br>remote: Counting objects: 40, done.<br>remote: Compressing objects: 100% (21/21), done.<br>remote: Total 40 (delta 14), reused 40 (delta 14), pack-reused 0<br>Receiving objects: 100% (40/40), done.<br>Resolving deltas: 100% (14/14), done.<br>当你的小伙伴从远程库clone时，默认情况下，你的小伙伴只能看到本地的master分支。不信可以用git branch命令看看：</p>
-<p>$ git branch</p>
-<ul>
-<li>master<br>现在，你的小伙伴要在dev分支上开发，就必须创建远程origin的dev分支到本地，于是他用这个命令创建本地dev分支：</li>
-</ul>
-<p>$ git checkout -b dev origin/dev<br>现在，他就可以在dev上继续修改，然后，时不时地把dev分支push到远程：</p>
-<p>$ git add env.txt</p>
-<p>$ git commit -m “add env”<br>[dev 7a5e5dd] add env<br> 1 file changed, 1 insertion(+)<br> create mode 100644 env.txt</p>
-<p>$ git push origin dev<br>Counting objects: 3, done.<br>Delta compression using up to 4 threads.<br>Compressing objects: 100% (2/2), done.<br>Writing objects: 100% (3/3), 308 bytes | 308.00 KiB/s, done.<br>Total 3 (delta 0), reused 0 (delta 0)<br>To github.com:michaelliao/learngit.git<br>   f52c633..7a5e5dd  dev -&gt; dev<br> 你的小伙伴已经向origin/dev分支推送了他的提交，而碰巧你也对同样的文件作了修改，并试图推送：</p>
-<p>$ cat env.txt<br>env</p>
-<p>$ git add env.txt</p>
-<p>$ git commit -m “add new env”<br>[dev 7bd91f1] add new env<br> 1 file changed, 1 insertion(+)<br> create mode 100644 env.txt</p>
-<p>$ git push origin dev<br>To github.com:michaelliao/learngit.git<br> ! [rejected]        dev -&gt; dev (non-fast-forward)<br>error: failed to push some refs to <a href="mailto:&#39;git@github.com" target="_blank" rel="noopener">&#39;git@github.com</a>:michaelliao/learngit.git’<br>hint: Updates were rejected because the tip of your current branch is behind<br>hint: its remote counterpart. Integrate the remote changes (e.g.<br>hint: ‘git pull …’) before pushing again.<br>hint: See the ‘Note about fast-forwards’ in ‘git push –help’ for details.<br>推送失败，因为你的小伙伴的最新提交和你试图推送的提交有冲突，解决办法也很简单，Git已经提示我们，先用git pull把最新的提交从origin/dev抓下来，然后，在本地合并，解决冲突，再推送：</p>
-<p>$ git pull<br>There is no tracking information for the current branch.<br>Please specify which branch you want to merge with.<br>See git-pull(1) for details.</p>
-<pre><code>git pull &lt;remote&gt; &lt;branch&gt;
-</code></pre><p>If you wish to set tracking information for this branch you can do so with:</p>
-<pre><code>git branch --set-upstream-to=origin/&lt;branch&gt; dev
-</code></pre><p>git pull也失败了，原因是没有指定本地dev分支与远程origin/dev分支的链接，根据提示，设置dev和origin/dev的链接：</p>
-<p>$ git branch –set-upstream-to=origin/dev dev<br>Branch ‘dev’ set up to track remote branch ‘dev’ from ‘origin’.<br>再pull：</p>
-<p>$ git pull<br>Auto-merging env.txt<br>CONFLICT (add/add): Merge conflict in env.txt<br>Automatic merge failed; fix conflicts and then commit the result.<br>这回git pull成功，但是合并有冲突，需要手动解决，解决的方法和分支管理中的解决冲突完全一样。解决后，提交，再push：</p>
-<p>$ git commit -m “fix env conflict”<br>[dev 57c53ab] fix env conflict</p>
-<p>$ git push origin dev<br>Counting objects: 6, done.<br>Delta compression using up to 4 threads.<br>Compressing objects: 100% (4/4), done.<br>Writing objects: 100% (6/6), 621 bytes | 621.00 KiB/s, done.<br>Total 6 (delta 0), reused 0 (delta 0)<br>To github.com:michaelliao/learngit.git<br>   7a5e5dd..57c53ab  dev -&gt; dev<br> 因此，多人协作的工作模式通常是这样：<br>首先，可以试图用git push origin <branch-name>推送自己的修改；<br>如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；<br>如果合并有冲突，则解决冲突，并在本地提交；<br>没有冲突或者解决掉冲突后，再用git push origin <branch-name>推送就能成功！<br>如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令git branch –set-upstream-to <branch-name> origin/<branch-name>。<br>$ git log –graph –pretty=oneline –abbrev-commit：有图的历史提交的commit</branch-name></branch-name></branch-name></branch-name></p>
-<h1 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h1><h2 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h2><p>默认标签是打在最新提交的commit上的，找到对应的分支，然后git tag <name>打标签 注意，标签不是按时间顺序列出，而是按字母排序的。可以用git show <tagname>查看标签信息：</tagname></name></p>
-<h2 id="删除标签"><a href="#删除标签" class="headerlink" title="删除标签"></a>删除标签</h2><p>命令git push origin <tagname>可以推送一个本地标签；<br>命令git push origin –tags可以推送全部未推送过的本地标签；<br>命令git tag -d <tagname>可以删除一个本地标签；<br>命令git push origin :refs/tags/<tagname>可以删除一个远程标签</tagname></tagname></tagname></p>
+<h2 id="多人协作"><a href="#多人协作" class="headerlink" title="多人协作"></a>多人协作</h2><p>当你从远程仓库克隆时，实际上Git自动把本地的master分支和远程的master分支对应起来了，并且，远程仓库的默认名称是origin<br>git remote：查看远程库的信息加上-v显示更详细的信息<br>git push origin master：把master推送给远程库origin<br>git pull把最新的提交从origin/dev抓下来</p>
+<h1 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h1><h2 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h2><p>先切换到要打标签的分支上，然后git tag <name>就可以了，默认打在最新提交的commit上<br>git tag <name> f52c633：对具体的id打标签<br>git tag：查看标签<br>git show &lt;tag_name&gt;：显示标签信息</name></name></p>
+<h2 id="操作标签"><a href="#操作标签" class="headerlink" title="操作标签"></a>操作标签</h2><p>删除标签：git tag -d <tagname><br>删除远程标签：git push origin :refs/tags/<tagname><br>推送某个标签到远程：git push origin <tagname></tagname></tagname></tagname></p>
 
       
     </div>
@@ -573,7 +551,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Feature分支"><span class="nav-number">1.</span> <span class="nav-text">Feature分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多人协作"><span class="nav-number">2.</span> <span class="nav-text">多人协作</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#标签管理"><span class="nav-number"></span> <span class="nav-text">标签管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建标签"><span class="nav-number">1.</span> <span class="nav-text">创建标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除标签"><span class="nav-number">2.</span> <span class="nav-text">删除标签</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是Git"><span class="nav-number">1.</span> <span class="nav-text">什么是Git</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建版本库"><span class="nav-number">2.</span> <span class="nav-text">创建版本库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时光机穿梭"><span class="nav-number">3.</span> <span class="nav-text">时光机穿梭</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#版本回退"><span class="nav-number">3.1.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工作区和暂存区"><span class="nav-number">3.2.</span> <span class="nav-text">工作区和暂存区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#撤销修改"><span class="nav-number">3.3.</span> <span class="nav-text">撤销修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除文件"><span class="nav-number">3.4.</span> <span class="nav-text">删除文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#远程仓库"><span class="nav-number">4.</span> <span class="nav-text">远程仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加远程库"><span class="nav-number">4.1.</span> <span class="nav-text">添加远程库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从远程库克隆"><span class="nav-number">4.2.</span> <span class="nav-text">从远程库克隆</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分支管理"><span class="nav-number">5.</span> <span class="nav-text">分支管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建和合并分支"><span class="nav-number">5.1.</span> <span class="nav-text">创建和合并分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决冲突"><span class="nav-number">5.2.</span> <span class="nav-text">解决冲突</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支管理策略"><span class="nav-number">5.3.</span> <span class="nav-text">分支管理策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feature分支"><span class="nav-number">5.4.</span> <span class="nav-text">Feature分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多人协作"><span class="nav-number">5.5.</span> <span class="nav-text">多人协作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标签管理"><span class="nav-number">6.</span> <span class="nav-text">标签管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建标签"><span class="nav-number">6.1.</span> <span class="nav-text">创建标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作标签"><span class="nav-number">6.2.</span> <span class="nav-text">操作标签</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -630,7 +608,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共16.1k字</span>
+  <span class="post-count">博客全站共14.9k字</span>
 </div>
         
 
