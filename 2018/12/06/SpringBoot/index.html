@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="说明云计算大作业目的是学习调用华为云的API，然后前后端的框架选择了SpringBoot #">
+<meta name="description" content="说明云计算大作业目的是学习调用华为云的API，然后前后端的框架选择了SpringBoot Spring的简史第一阶段：Spring 1.x时代，随着项目的扩大，xml配置文件放到不同的配置文件第二阶段：注解配置，Spring提供声明Bean的注解，大大减少了配置量。应用的基本配置用xml，业务配置用注解第三阶段：Java配置，Spring提供了Java配置，使用Java配置可以让你更理解你所配置的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot">
 <meta property="og:url" content="http://yoursite.com/2018/12/06/SpringBoot/index.html">
 <meta property="og:site_name" content="MybRose_blog">
-<meta property="og:description" content="说明云计算大作业目的是学习调用华为云的API，然后前后端的框架选择了SpringBoot #">
+<meta property="og:description" content="说明云计算大作业目的是学习调用华为云的API，然后前后端的框架选择了SpringBoot Spring的简史第一阶段：Spring 1.x时代，随着项目的扩大，xml配置文件放到不同的配置文件第二阶段：注解配置，Spring提供声明Bean的注解，大大减少了配置量。应用的基本配置用xml，业务配置用注解第三阶段：Java配置，Spring提供了Java配置，使用Java配置可以让你更理解你所配置的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-08T02:07:29.373Z">
+<meta property="og:updated_time" content="2018-12-19T02:32:04.196Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot">
-<meta name="twitter:description" content="说明云计算大作业目的是学习调用华为云的API，然后前后端的框架选择了SpringBoot #">
+<meta name="twitter:description" content="说明云计算大作业目的是学习调用华为云的API，然后前后端的框架选择了SpringBoot Spring的简史第一阶段：Spring 1.x时代，随着项目的扩大，xml配置文件放到不同的配置文件第二阶段：注解配置，Spring提供声明Bean的注解，大大减少了配置量。应用的基本配置用xml，业务配置用注解第三阶段：Java配置，Spring提供了Java配置，使用Java配置可以让你更理解你所配置的">
 
 
 
@@ -332,7 +332,15 @@
 
       
         <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>云计算大作业目的是学习调用华为云的API，然后前后端的框架选择了SpringBoot</p>
-<p># </p>
+<h1 id="Spring的简史"><a href="#Spring的简史" class="headerlink" title="Spring的简史"></a>Spring的简史</h1><p>第一阶段：Spring 1.x时代，随着项目的扩大，xml配置文件放到不同的配置文件<br>第二阶段：注解配置，Spring提供声明Bean的注解，大大减少了配置量。应用的基本配置用xml，业务配置用注解<br>第三阶段：Java配置，Spring提供了Java配置，使用Java配置可以让你更理解你所配置的Bean。<br>SpringBoot：使用Spring Boot很容易创建一个独立运行、准生产级别的基于Spring框架的项目，使用Spring Boot你可以不用或者只需要很少的Spring配置</p>
+<h1 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h1><p>@RestController：注解相当于@ResponseBody ＋ @Controller。使用@Controller 注解，在对应的方法上，视图解析器可以解析return 的jsp,html页面，并且跳转到相应页。若返回json等内容到页面，则需要加@ResponseBody注解，但使用@RestController这个注解，就不能返回jsp,html页面，视图解析器无法解析jsp,html页面<br>@RequestMapping：配置web请求的映射<br>@PostMapping：@RequestMapping(method = RequestMethod.POST)的缩写<br>@GetMapping：@RequestMapping(method = RequestMethod.GET)的缩写<br>GET和POST最直观的区别就是GET把参数包含在URL中，POST通过request body传递参数<br>@RequestParam：GET和POST中请求传的参数会自动赋值到其注解的变量上<br>@RequestBody：用来处理content-type不是默认的application/x-www-form-urlcoded编码的内容，一般是来处理application/json类型。假如我有一个User类，拥有如下字段：String userName;String pwd;那么上述参数可以改为以下形式：@RequestBody User user 这种形式会将JSON字符串中的值赋予user中对应的属性上。需要注意的是，JSON字符串中的key必须对应user中的属性名，否则是请求不过去的。<br>HttpServletRequest：代表客户端的请求，当客户端通过HTTP协议访问服务器时，HTTP请求头中的所有信息都封装在这个对象中，通过这个对象提供的方法，可以获得客户端请求的所有信息</p>
+<h1 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h1><h2 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h2><p>在WEB开发中，服务器可以为每个用户浏览器创建一个会话对象（session对象），注意：一个浏览器独占一个session对象(默认情况下)。因此，在需要保存用户数据时，服务器程序可以把用户数据写到用户浏览器独占的session中，当用户使用浏览器访问其它程序时，其它程序可以从用户的session中取出该用户的数据，为用户服务</p>
+<h2 id="Session和Cookie的主要区别"><a href="#Session和Cookie的主要区别" class="headerlink" title="Session和Cookie的主要区别"></a>Session和Cookie的主要区别</h2><p>Cookie是把用户的数据写给用户的浏览器<br>Session技术是把用户的数据写到独占的Session中<br>Session对象由服务器创建，开发人员可以调用request对象的getSession方法得到session对象</p>
+<h2 id="Session实现原理"><a href="#Session实现原理" class="headerlink" title="Session实现原理"></a>Session实现原理</h2><p>服务器创建sesssion出来后，会把session的id号，以cookie的形式回写给客户机，只要客户机的浏览器不关，再去访问服务器时，都会带着session的id号去，服务器发现客户机浏览器带session id过来了，就会使用内存中与之对应的session为之服务</p>
+<h1 id="mapper"><a href="#mapper" class="headerlink" title="mapper"></a>mapper</h1><p>为一个接口，它的方法实现与数据库相关<br>在mapper映射文件.xml文件中的头写入<mapper namespace="com.example.demo.mapper.UserMapper">表示调用的相关mapper为UserMapper。id为映射的方法，parameterType为输入参数。resultType为返回参数</mapper></p>
+<h1 id="service"><a href="#service" class="headerlink" title="service"></a>service</h1><p>包含一个接口类和接口实现类impl<br>impl类中包含注解@service和@Autowired的mapper接口对象，用该接口对象调用对数据库操作的方法，在controller中有@Autowired的service接口对象</p>
+<h1 id="model"><a href="#model" class="headerlink" title="model"></a>model</h1><p>实体类</p>
+<h1 id="application-properties"><a href="#application-properties" class="headerlink" title="application.properties"></a>application.properties</h1><p>配置数据库：spring.datasource.username=root spring.datasource.password=xxx<br>spring.datasource.driver-class-name=com.mysql.jdbc.Driver<br>spring.datasource.url=jdbc:mysql://127.0.0.1:3306/数据库名?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=UTC&amp;allowMultiQueries=true<br>配置thymeleaf：spring.thymeleaf.cache=true<br>spring.thymeleaf.prefix=classpath:/templates/<br>spring.thymeleaf.suffix=.html<br>spring.thymeleaf.mode=HTML5<br>spring.thymeleaf.encoding=UTF-8<br>配置mybatis：</p>
 
       
     </div>
@@ -448,7 +456,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -459,7 +467,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -470,7 +478,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -503,7 +511,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring的简史"><span class="nav-number">2.</span> <span class="nav-text">Spring的简史</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Controller"><span class="nav-number">3.</span> <span class="nav-text">Controller</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Session"><span class="nav-number">4.</span> <span class="nav-text">Session</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单介绍"><span class="nav-number">4.1.</span> <span class="nav-text">简单介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Session和Cookie的主要区别"><span class="nav-number">4.2.</span> <span class="nav-text">Session和Cookie的主要区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Session实现原理"><span class="nav-number">4.3.</span> <span class="nav-text">Session实现原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mapper"><span class="nav-number">5.</span> <span class="nav-text">mapper</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#service"><span class="nav-number">6.</span> <span class="nav-text">service</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#model"><span class="nav-number">7.</span> <span class="nav-text">model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#application-properties"><span class="nav-number">8.</span> <span class="nav-text">application.properties</span></a></li></ol></div>
             
 
           </div>
@@ -560,7 +568,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共14.9k字</span>
+  <span class="post-count">博客全站共16.1k字</span>
 </div>
         
 
