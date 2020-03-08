@@ -109,18 +109,25 @@
 
 
 
-<meta name="description" content="这个人很懒，什么都没有写">
+<meta name="description" content="分治算法分治策略的基本思想1原始问题划分为规模小的子问题 2递归或者迭代的求解每个子问题 3将子问题综合得到原问题的解注意子问题和原始问题的性质完全一样子问题之间彼此独立的求解递归停止时子问题可以直接求解 例子：二分检索思想：通过不断和中位数进行比较将问题的规模减半w(n) = w(n/2) +1w(n) =logn例子：二分归并排序思想：将原问题划分为规模为n/2的子问题无限划分直到只有一个数w">
 <meta name="keywords" content="算法设计与分析">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法设计与分析">
 <meta property="og:url" content="http://yoursite.com/2020/03/06/算法设计与分析/index.html">
 <meta property="og:site_name" content="MybRose_blog">
-<meta property="og:description" content="这个人很懒，什么都没有写">
+<meta property="og:description" content="分治算法分治策略的基本思想1原始问题划分为规模小的子问题 2递归或者迭代的求解每个子问题 3将子问题综合得到原问题的解注意子问题和原始问题的性质完全一样子问题之间彼此独立的求解递归停止时子问题可以直接求解 例子：二分检索思想：通过不断和中位数进行比较将问题的规模减半w(n) = w(n/2) +1w(n) =logn例子：二分归并排序思想：将原问题划分为规模为n/2的子问题无限划分直到只有一个数w">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-06T11:22:12.751Z">
+<meta property="og:image" content="http://yoursite.com/2020/03/06/算法设计与分析/55.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/06/算法设计与分析/66.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/06/算法设计与分析/11.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/06/算法设计与分析/22.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/06/算法设计与分析/33.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/06/算法设计与分析/44.png">
+<meta property="og:updated_time" content="2020-03-08T09:16:42.734Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法设计与分析">
-<meta name="twitter:description" content="这个人很懒，什么都没有写">
+<meta name="twitter:description" content="分治算法分治策略的基本思想1原始问题划分为规模小的子问题 2递归或者迭代的求解每个子问题 3将子问题综合得到原问题的解注意子问题和原始问题的性质完全一样子问题之间彼此独立的求解递归停止时子问题可以直接求解 例子：二分检索思想：通过不断和中位数进行比较将问题的规模减半w(n) = w(n/2) +1w(n) =logn例子：二分归并排序思想：将原问题划分为规模为n/2的子问题无限划分直到只有一个数w">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/06/算法设计与分析/55.png">
 
 
 
@@ -384,7 +391,12 @@
       
 
       
-        
+        <h1 id="分治算法"><a href="#分治算法" class="headerlink" title="分治算法"></a>分治算法</h1><h2 id="分治策略的基本思想"><a href="#分治策略的基本思想" class="headerlink" title="分治策略的基本思想"></a>分治策略的基本思想</h2><p>1原始问题划分为规模小的子问题 2递归或者迭代的求解每个子问题 3将子问题综合得到原问题的解<br><strong>注意</strong><br>子问题和原始问题的性质完全一样<br>子问题之间彼此独立的求解<br>递归停止时子问题可以直接求解</p>
+<p><strong>例子：二分检索</strong><br>思想：通过不断和中位数进行比较将问题的规模减半<br>w(n) = w(n/2) +1<br>w(n) =logn<br><strong>例子：二分归并排序</strong><br>思想：将原问题划分为规模为n/2的子问题无限划分直到只有一个数<br>w(n) = 2w(n/2)+n-1<br>w(1)=0 推出<br>w(n) = nlogn -n+1<br><strong>例子：Hanoi塔递归的算法</strong><br>T(n) = 2T(n-1) +1<br>T(1) = 1<br>T(n) = 2^n-1<br><strong>例子：芯片测试</strong><br><strong>输入</strong>：n个芯片，好芯片比坏芯片多一片   <strong>问题</strong>：设计一种测试方法从n个芯片中挑出一个好的芯片   <strong>要求</strong>：使用最少的测试次数<br><img src="/2020/03/06/算法设计与分析/55.png" alt="sd" title="测试"><br><img src="/2020/03/06/算法设计与分析/66.png" alt="sd" title="判定"><br>分治算法的设计思想：假设n为偶数，两两一组进行测试淘汰，好好的任留一片，其他情况都抛弃。 递归截至条件为<strong>n&lt;=3</strong>一次测试可以得到好芯片。<br><strong>n为奇数的特殊处理：</strong>当n为奇数的时候，增加一轮对它的单独测试，如果是好的算法结束，否则淘汰它<br>W(n) = w(n/2)+O(n)<br>w(3)=1 W(2)=w(1)=0推出w(n)=O(n)</p>
+<p><strong>例子：快速排序</strong><br>最坏情况达到O(n^2) 最好的情况达到O(nlogn)<br><strong>例子：幂乘算法以及应用</strong><br>分治算法划分</p>
+<h2 id="改进分治算法的策略"><a href="#改进分治算法的策略" class="headerlink" title="改进分治算法的策略"></a>改进分治算法的策略</h2><h3 id="减少子问题的数量"><a href="#减少子问题的数量" class="headerlink" title="减少子问题的数量"></a>减少子问题的数量</h3><h3 id="增加预处理"><a href="#增加预处理" class="headerlink" title="增加预处理"></a>增加预处理</h3><p>例子：平面点对问题<br>输入：平面点集p中有n个点，n&gt;1<br>蛮力算法：<br>C(n,2) 计算最小距离 O(n*2)<br>分治策略：p划为大小相等的两个平面，在每一边找距离最小的，然后找跨边界的两个点的最小距离，找这些中的最小距离，其中跨边界找点的范围要在边界向外延申的距离&amp;为最小的左右两边的点的距离<br><img src="/2020/03/06/算法设计与分析/11.png" alt="sd14" title="划分"><br><img src="/2020/03/06/算法设计与分析/22.png" alt="sd14" title="算法分析"><br><strong>增加预处理</strong><br>原算法：在每次划分的时候对数组重新排序<br>改进：<br>1.在递归前对x,y排序，作为预处理<br>2.在划分时候对数组x,y进行拆分时间为O(n)<br><img src="/2020/03/06/算法设计与分析/33.png" alt="sd14" title="改进"></p>
+<h2 id="选择最大和最小的问题"><a href="#选择最大和最小的问题" class="headerlink" title="选择最大和最小的问题"></a>选择最大和最小的问题</h2><p>蛮力算法：2*n-3的比较次数<br>锦标赛算法：分组进行比较，利用空间换时间<br><img src="/2020/03/06/算法设计与分析/44.png" alt="sd14" title="例子"><br>时间复杂度的分析：W(n) = n + [logn] -2;</p>
+<h2 id="选择第k小的数字"><a href="#选择第k小的数字" class="headerlink" title="选择第k小的数字"></a>选择第k小的数字</h2>
       
     </div>
     
@@ -488,8 +500,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -552,6 +573,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分治算法"><span class="nav-number">1.</span> <span class="nav-text">分治算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分治策略的基本思想"><span class="nav-number">1.1.</span> <span class="nav-text">分治策略的基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改进分治算法的策略"><span class="nav-number">1.2.</span> <span class="nav-text">改进分治算法的策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#减少子问题的数量"><span class="nav-number">1.2.1.</span> <span class="nav-text">减少子问题的数量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增加预处理"><span class="nav-number">1.2.2.</span> <span class="nav-text">增加预处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择最大和最小的问题"><span class="nav-number">1.3.</span> <span class="nav-text">选择最大和最小的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择第k小的数字"><span class="nav-number">1.4.</span> <span class="nav-text">选择第k小的数字</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
     <div id="music163player">
@@ -601,7 +638,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共19.4k字</span>
+  <span class="post-count">博客全站共20.1k字</span>
 </div>
         
 
@@ -777,3 +814,11 @@
 </html>
 <!-- 页面点击小红心 -->
 <script type="text/javascript" src="/js/src/clicklove.js"></script>
+<!-- 雪花特效 -->
+<script type="text/javascript">
+  var windowWidth = $(window).width();
+  if (windowWidth > 480) {
+    document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+  }
+</script>
+<script type="text/javascript" src="//libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
