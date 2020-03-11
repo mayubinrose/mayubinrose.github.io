@@ -112,7 +112,7 @@
 <meta name="description" content="分治算法分治策略的基本思想1原始问题划分为规模小的子问题 2递归或者迭代的求解每个子问题 3将子问题综合得到原问题的解注意子问题和原始问题的性质完全一样子问题之间彼此独立的求解递归停止时子问题可以直接求解 例子：二分检索思想：通过不断和中位数进行比较将问题的规模减半w(n) = w(n/2) +1w(n) =logn例子：二分归并排序思想：将原问题划分为规模为n/2的子问题无限划分直到只有一个数w">
 <meta name="keywords" content="算法设计与分析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法设计与分析">
+<meta property="og:title" content="算法设计与分析之分治算法">
 <meta property="og:url" content="http://yoursite.com/2020/03/06/算法设计与分析/index.html">
 <meta property="og:site_name" content="MybRose_blog">
 <meta property="og:description" content="分治算法分治策略的基本思想1原始问题划分为规模小的子问题 2递归或者迭代的求解每个子问题 3将子问题综合得到原问题的解注意子问题和原始问题的性质完全一样子问题之间彼此独立的求解递归停止时子问题可以直接求解 例子：二分检索思想：通过不断和中位数进行比较将问题的规模减半w(n) = w(n/2) +1w(n) =logn例子：二分归并排序思想：将原问题划分为规模为n/2的子问题无限划分直到只有一个数w">
@@ -123,9 +123,13 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/06/算法设计与分析/22.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/06/算法设计与分析/33.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/06/算法设计与分析/44.png">
-<meta property="og:updated_time" content="2020-03-08T09:16:42.734Z">
+<meta property="og:image" content="http://yoursite.com/2020/03/06/算法设计与分析/77.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/06/算法设计与分析/88.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/06/算法设计与分析/99.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/06/算法设计与分析/100.png">
+<meta property="og:updated_time" content="2020-03-11T03:00:36.215Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="算法设计与分析">
+<meta name="twitter:title" content="算法设计与分析之分治算法">
 <meta name="twitter:description" content="分治算法分治策略的基本思想1原始问题划分为规模小的子问题 2递归或者迭代的求解每个子问题 3将子问题综合得到原问题的解注意子问题和原始问题的性质完全一样子问题之间彼此独立的求解递归停止时子问题可以直接求解 例子：二分检索思想：通过不断和中位数进行比较将问题的规模减半w(n) = w(n/2) +1w(n) =logn例子：二分归并排序思想：将原问题划分为规模为n/2的子问题无限划分直到只有一个数w">
 <meta name="twitter:image" content="http://yoursite.com/2020/03/06/算法设计与分析/55.png">
 
@@ -163,7 +167,7 @@
 
 
 
-  <title>算法设计与分析 | MybRose_blog</title>
+  <title>算法设计与分析之分治算法 | MybRose_blog</title>
   
 
 
@@ -319,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">算法设计与分析</h1>
+          <h1 class="post-title" itemprop="name headline">算法设计与分析之分治算法</h1>
         
 
         <div class="post-meta">
@@ -396,7 +400,10 @@
 <p><strong>例子：快速排序</strong><br>最坏情况达到O(n^2) 最好的情况达到O(nlogn)<br><strong>例子：幂乘算法以及应用</strong><br>分治算法划分</p>
 <h2 id="改进分治算法的策略"><a href="#改进分治算法的策略" class="headerlink" title="改进分治算法的策略"></a>改进分治算法的策略</h2><h3 id="减少子问题的数量"><a href="#减少子问题的数量" class="headerlink" title="减少子问题的数量"></a>减少子问题的数量</h3><h3 id="增加预处理"><a href="#增加预处理" class="headerlink" title="增加预处理"></a>增加预处理</h3><p>例子：平面点对问题<br>输入：平面点集p中有n个点，n&gt;1<br>蛮力算法：<br>C(n,2) 计算最小距离 O(n*2)<br>分治策略：p划为大小相等的两个平面，在每一边找距离最小的，然后找跨边界的两个点的最小距离，找这些中的最小距离，其中跨边界找点的范围要在边界向外延申的距离&amp;为最小的左右两边的点的距离<br><img src="/2020/03/06/算法设计与分析/11.png" alt="sd14" title="划分"><br><img src="/2020/03/06/算法设计与分析/22.png" alt="sd14" title="算法分析"><br><strong>增加预处理</strong><br>原算法：在每次划分的时候对数组重新排序<br>改进：<br>1.在递归前对x,y排序，作为预处理<br>2.在划分时候对数组x,y进行拆分时间为O(n)<br><img src="/2020/03/06/算法设计与分析/33.png" alt="sd14" title="改进"></p>
 <h2 id="选择最大和最小的问题"><a href="#选择最大和最小的问题" class="headerlink" title="选择最大和最小的问题"></a>选择最大和最小的问题</h2><p>蛮力算法：2*n-3的比较次数<br>锦标赛算法：分组进行比较，利用空间换时间<br><img src="/2020/03/06/算法设计与分析/44.png" alt="sd14" title="例子"><br>时间复杂度的分析：W(n) = n + [logn] -2;</p>
-<h2 id="选择第k小的数字"><a href="#选择第k小的数字" class="headerlink" title="选择第k小的数字"></a>选择第k小的数字</h2>
+<h2 id="选择第k小的数字"><a href="#选择第k小的数字" class="headerlink" title="选择第k小的数字"></a>选择第k小的数字</h2><p>简单算法：调用k次选择最小的算法,时间复杂度为O(kn)或者先排序后输出第k小的算法,时间复杂度为O(nlogn)<br>分治算法：选择一个标准数将s划分为s1与s2，s1都比m小，s2都比m大<br><img src="/2020/03/06/算法设计与分析/77.png" alt="sd14" title="划分"><br>时间复杂度分析：w(n) = w(n/5)+w(7n/10)+cn算出来的结果是w(n) =O(nlogn)</p>
+<h2 id="卷积及其应用"><a href="#卷积及其应用" class="headerlink" title="卷积及其应用"></a>卷积及其应用</h2><p><img src="/2020/03/06/算法设计与分析/88.png" alt="sd14"><br>卷积的应用为信号平滑处理，卷积与多项式乘法的系数也相关<br>卷积计算：蛮力算法，相当于多项式乘法，时间复杂度为O(n^3)&emsp;快速傅里叶变换</p>
+<h2 id="平面集的凸包"><a href="#平面集的凸包" class="headerlink" title="平面集的凸包"></a>平面集的凸包</h2><p>问题：给定大量离散点的集合，求一个最小的凸多边形，使得所有点都在里面或者边上<br>分治算法：1.链接最大纵坐标和最小的纵坐标点的线段划分左点集与右点集 &emsp;2.确定距离线段d最远的点p在三角形内部的点都删除，在三角形外的构成子问题<br><img src="/2020/03/06/算法设计与分析/99.png" alt="sd14"><br><img src="/2020/03/06/算法设计与分析/100.png" alt="sd14"><br>时间复杂度分析：<br>w(n) =w(n-1)+O(n)<br>w(3)=O(1)（最坏情况为O(n^2)）<br>凸包算法：O(nlogn)</p>
+
       
     </div>
     
@@ -527,7 +534,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -582,7 +589,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分治算法"><span class="nav-number">1.</span> <span class="nav-text">分治算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分治策略的基本思想"><span class="nav-number">1.1.</span> <span class="nav-text">分治策略的基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改进分治算法的策略"><span class="nav-number">1.2.</span> <span class="nav-text">改进分治算法的策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#减少子问题的数量"><span class="nav-number">1.2.1.</span> <span class="nav-text">减少子问题的数量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增加预处理"><span class="nav-number">1.2.2.</span> <span class="nav-text">增加预处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择最大和最小的问题"><span class="nav-number">1.3.</span> <span class="nav-text">选择最大和最小的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择第k小的数字"><span class="nav-number">1.4.</span> <span class="nav-text">选择第k小的数字</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分治算法"><span class="nav-number">1.</span> <span class="nav-text">分治算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分治策略的基本思想"><span class="nav-number">1.1.</span> <span class="nav-text">分治策略的基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改进分治算法的策略"><span class="nav-number">1.2.</span> <span class="nav-text">改进分治算法的策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#减少子问题的数量"><span class="nav-number">1.2.1.</span> <span class="nav-text">减少子问题的数量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增加预处理"><span class="nav-number">1.2.2.</span> <span class="nav-text">增加预处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择最大和最小的问题"><span class="nav-number">1.3.</span> <span class="nav-text">选择最大和最小的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择第k小的数字"><span class="nav-number">1.4.</span> <span class="nav-text">选择第k小的数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积及其应用"><span class="nav-number">1.5.</span> <span class="nav-text">卷积及其应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平面集的凸包"><span class="nav-number">1.6.</span> <span class="nav-text">平面集的凸包</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -638,7 +645,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共20.1k字</span>
+  <span class="post-count">博客全站共22.1k字</span>
 </div>
         
 
@@ -812,15 +819,7 @@
 
 </body>
 </html>
-<!-- 页面点击小红心 -->
-<script type="text/javascript" src="/js/src/clicklove.js"></script>
 
-<!-- 雪花特效 -->
-<script type="text/javascript" src="/js/src/snow.js">
-  var windowWidth = $(window).width();
-  if (windowWidth > 480) {
-    document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
-  }
-</script>
 
-<script type="text/javascript" src="//libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+
+

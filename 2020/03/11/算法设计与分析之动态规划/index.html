@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #D4D4D4; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #D4D4D4;    /*上边框颜色*/
+        border-left-color: #D4D4D4;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "9b241e1b"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算法设计与分析,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="动态规划例子：最短路径问题输入：起点集合与终点集合。输出：一条从起始到终点的最短路径蛮力算法：考察每一条，如果网络的层数为k则路径条数接近2^k动态规划算法：多阶段决策过程，每步求解的问题是后面阶段求解问题的子问题，每一步依赖于前步骤的决策结果 优化原则：最优子结构性质12优化函数的特点：任何最短路的子路径相对于子问题始终点最短优化原则：一个最优决策的任何子序列本身也是相对于子序列的最优决策序列">
+<meta name="keywords" content="算法设计与分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法设计与分析之动态规划">
+<meta property="og:url" content="http://yoursite.com/2020/03/11/算法设计与分析之动态规划/index.html">
+<meta property="og:site_name" content="MybRose_blog">
+<meta property="og:description" content="动态规划例子：最短路径问题输入：起点集合与终点集合。输出：一条从起始到终点的最短路径蛮力算法：考察每一条，如果网络的层数为k则路径条数接近2^k动态规划算法：多阶段决策过程，每步求解的问题是后面阶段求解问题的子问题，每一步依赖于前步骤的决策结果 优化原则：最优子结构性质12优化函数的特点：任何最短路的子路径相对于子问题始终点最短优化原则：一个最优决策的任何子序列本身也是相对于子序列的最优决策序列">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2020/03/11/算法设计与分析之动态规划/11.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/11/算法设计与分析之动态规划/22.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/11/算法设计与分析之动态规划/33.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/11/算法设计与分析之动态规划/44.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/11/算法设计与分析之动态规划/66.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/11/算法设计与分析之动态规划/77.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/11/算法设计与分析之动态规划/55.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/11/算法设计与分析之动态规划/88.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/11/算法设计与分析之动态规划/99.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/11/算法设计与分析之动态规划/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/11/算法设计与分析之动态规划/2.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/11/算法设计与分析之动态规划/3.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/11/算法设计与分析之动态规划/4.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/11/算法设计与分析之动态规划/5.png">
+<meta property="og:updated_time" content="2020-03-11T04:59:58.616Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法设计与分析之动态规划">
+<meta name="twitter:description" content="动态规划例子：最短路径问题输入：起点集合与终点集合。输出：一条从起始到终点的最短路径蛮力算法：考察每一条，如果网络的层数为k则路径条数接近2^k动态规划算法：多阶段决策过程，每步求解的问题是后面阶段求解问题的子问题，每一步依赖于前步骤的决策结果 优化原则：最优子结构性质12优化函数的特点：任何最短路的子路径相对于子问题始终点最短优化原则：一个最优决策的任何子序列本身也是相对于子序列的最优决策序列">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/11/算法设计与分析之动态规划/11.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Mayubin'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/11/算法设计与分析之动态规划/">
+
+
+
+
+
+  <title>算法设计与分析之动态规划 | MybRose_blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/mayubinrose"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MybRose_blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/11/算法设计与分析之动态规划/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mayubin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang2.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MybRose_blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">算法设计与分析之动态规划</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-11T10:58:56+08:00">
+                2020-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/复试/" itemprop="url" rel="index">
+                    <span itemprop="name">复试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p><strong>例子：最短路径问题</strong><br>输入：起点集合与终点集合。输出：一条从起始到终点的最短路径<br>蛮力算法：考察每一条，如果网络的层数为k则路径条数接近2^k<br>动态规划算法：多阶段决策过程，每步求解的问题是后面阶段求解问题的子问题，每一步依赖于前步骤的决策结果<br><img src="/2020/03/11/算法设计与分析之动态规划/11.png" alt="sd"></p>
+<h2 id="优化原则：最优子结构性质"><a href="#优化原则：最优子结构性质" class="headerlink" title="优化原则：最优子结构性质"></a>优化原则：最优子结构性质</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">优化函数的特点：任何最短路的子路径相对于子问题始终点最短</span><br><span class="line">优化原则：一个最优决策的任何子序列本身也是相对于子序列的最优决策序列</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/03/11/算法设计与分析之动态规划/22.png" alt="sd"></p>
+<h2 id="例子：矩阵链相乘"><a href="#例子：矩阵链相乘" class="headerlink" title="例子：矩阵链相乘"></a>例子：矩阵链相乘</h2><p>问题：Ai为Pi-1xPi阶矩阵，确定乘法顺序，使得元素相乘的总次数最少<br>输入：n个矩阵的行数与列数以向量形式给出<br>输出：矩阵链乘法加上括号的位置<br>分析：基本运算次数，计算每个元素的总计乘法次数为ijk<br>算法分析<br>1.蛮力算法<br>加上n个括号的方法有卡特兰数级别的方法数，是一个指数级别<br>2.动态规划算法<br>子问题划分：设置最好的划分的运算次数：m[i,j]<br>子问题的依赖关系：最优划分最后一次相乘发生在矩阵k的位置<br>优化函数的递推方程：<br><img src="/2020/03/11/算法设计与分析之动态规划/33.png" alt="sd"></p>
+<h3 id="动态规划算法的递归实现"><a href="#动态规划算法的递归实现" class="headerlink" title="动态规划算法的递归实现"></a>动态规划算法的递归实现</h3><p><img src="/2020/03/11/算法设计与分析之动态规划/44.png" alt="sd"><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">时间复杂度分析：通过数学归纳法容易证明T(n)&gt;=2^(n-1)</span><br><span class="line">递归实现效率不高，多个子问题重复计算</span><br></pre></td></tr></table></figure></p>
+<h3 id="动态规划算法的迭代实现"><a href="#动态规划算法的迭代实现" class="headerlink" title="动态规划算法的迭代实现"></a>动态规划算法的迭代实现</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">对于矩阵相乘算法的子问题的分析：长度为x的子问题有n-x个</span><br><span class="line">时间复杂度分析：需要构建备忘录与标记函数。O(n^3)</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/03/11/算法设计与分析之动态规划/66.png" alt="sd"><br><img src="/2020/03/11/算法设计与分析之动态规划/77.png" alt="sd"><br>两种方法的比较：迭代算法的时间复杂度比递归的小，但是消耗空间<br>动态规划时间复杂度：备忘录各项计算量之和加上追踪解工作量<br><strong>动态规划的要素：1.划分子问题2.定义优化函数，确定是否满足最优子结构3.列出递推方程和边界条件4.设计备忘录5.考虑是否使用标记函数6.计算时间复杂度</strong></p>
+<h2 id="例子：投资问题"><a href="#例子：投资问题" class="headerlink" title="例子：投资问题"></a>例子：投资问题</h2><p>问题：m元钱，n项投资项目，函数fi（x）表示将x投入第i个项目的效益，求使得总的效益最大的投资方案<br>建模：目标函数是f1(x1)+···+fn(xn)的最大值。约束条件是所有的x相加为m<br><strong>子问题的界定与计算顺序：由参数k与x界定，k为考虑对项目1到k的投资，x表示投资的总钱数不超过x</strong><br><strong>优化函数的递推方程：Fk(x)：x元投资给前k个项目的最大收益</strong><img src="/2020/03/11/算法设计与分析之动态规划/55.png" alt="sd"><br><strong>备忘录和解</strong><br><img src="/2020/03/11/算法设计与分析之动态规划/88.png" alt="sd"><br>其中表格第二个数据表示的是投资给这个项目的钱数<br><strong>时间复杂度分析：备忘录中有m行n列，一共mn项，xk的取值有x+1种取法，计算Fk(x)项需要x+1次加法与x次比较，加法与比较的所有项求和得到w(n) =O(nm^2)</strong></p>
+<h2 id="例子：背包问题"><a href="#例子：背包问题" class="headerlink" title="例子：背包问题"></a>例子：背包问题</h2><p>问题：可以放入背包的物品有n种，每种物体的重量和价值为wi与vi，背包的最大重量限制为b，怎么样选择使得价值最大</p>
+<p>建模：目标函数为求价值乘以个数的之和的最大值，约束条件为个数乘以重量求和的不超过b<br><strong>子问题界定与计算顺序：由参数k与y界定，k表示对于物品1到k的选择，y表示的是总重量不超过y。</strong><br><strong>优化函数的递推方程：</strong><img src="/2020/03/11/算法设计与分析之动态规划/99.png" alt="sd"><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">对比：相比较与投资问题，这里的b为钱数m，投资项目为物品种数效益相当于价值</span><br><span class="line">关键在于背包问题中有一个每一个物品都有一个重量这个条件在约束</span><br><span class="line">所以如上图所示，递归方程其实是一样的，只是写法不同而已。</span><br><span class="line">第一种的递推方程是一次只减少一个最后一个物品的重量，依次可以递推下去得到优化解</span><br></pre></td></tr></table></figure></p>
+<p><strong>标记函数：通过最大标号可以得出最大物品至少装了一件或者哪些没装</strong><br><img src="/2020/03/11/算法设计与分析之动态规划/1.png" alt="sd"><br><strong>实例追踪解：通过标记函数得到的最大物品，然后减去这个最大物品的重量迭代下去就可以得到每个物品的重量，然后可以得到价值</strong><br><img src="/2020/03/11/算法设计与分析之动态规划/2.png" alt="sd"><br><strong>时间复杂度分析：备忘录的计算需要nb项，每项常数时间O(nb)</strong><br>背包问题的推广：1.0-1背包，每个物品要么装要么不装，且只有一个2.多背包问题，m个背包，背包j装入的最大重量为Bj在满足所有背包的约束条件下使得物品价值最大3.二维背包问题，多个约束条件，不仅仅有重量还有体积约束</p>
+<h2 id="例子：最长公共子序列"><a href="#例子：最长公共子序列" class="headerlink" title="例子：最长公共子序列"></a>例子：最长公共子序列</h2><p>问题：给定两个序列，求xy的最长公共子序列，要求字母出现的顺序一样的<br>算法：<br>1.蛮力算法：x的长度m，y的长度n。依次检查x的每个子序列在y中是否出现。时间复杂度分析：每个子序列O(n)时间，X有2^m个子序列，最坏情况的时间复杂度为O(n2^m)<br>2.动态规划：<br><strong>子问题的界定与子问题的依赖关系</strong><br><img src="/2020/03/11/算法设计与分析之动态规划/3.png" alt="sd"><br>满足优化原则以及子问题的重叠性<br><strong>递推方程</strong><br><img src="/2020/03/11/算法设计与分析之动态规划/4.png" alt="sd"><br><strong>标记函数</strong><br><img src="/2020/03/11/算法设计与分析之动态规划/5.png" alt="sd"><br>通过标记函数遇到左上则输出该数，然后向左上方移动，遇到向上或者向左移动则移动即可<br><strong>时间与空间复杂度分析：标记函数迭代次数为O(mn)次，都是O(mn)</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法设计与分析/" rel="tag"># 算法设计与分析</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/06/逻辑推理题/" rel="next" title="逻辑推理题">
+                <i class="fa fa-chevron-left"></i> 逻辑推理题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/touxiang2.png" alt="Mayubin">
+            
+              <p class="site-author-name" itemprop="name">Mayubin</p>
+              <p class="site-description motion-element" itemprop="description">这个人很懒，什么都没有写</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#动态规划"><span class="nav-number">1.</span> <span class="nav-text">动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优化原则：最优子结构性质"><span class="nav-number">1.1.</span> <span class="nav-text">优化原则：最优子结构性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子：矩阵链相乘"><span class="nav-number">1.2.</span> <span class="nav-text">例子：矩阵链相乘</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#动态规划算法的递归实现"><span class="nav-number">1.2.1.</span> <span class="nav-text">动态规划算法的递归实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态规划算法的迭代实现"><span class="nav-number">1.2.2.</span> <span class="nav-text">动态规划算法的迭代实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子：投资问题"><span class="nav-number">1.3.</span> <span class="nav-text">例子：投资问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子：背包问题"><span class="nav-number">1.4.</span> <span class="nav-text">例子：背包问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子：最长公共子序列"><span class="nav-number">1.5.</span> <span class="nav-text">例子：最长公共子序列</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+    <div id="music163player">
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=29578009&auto=1&height=66">
+      </iframe>
+    </div>
+    </div>
+    
+  </aside>
+
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mayubin</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i>
+
+</div>
+
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共22.1k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
+
+
+
+
