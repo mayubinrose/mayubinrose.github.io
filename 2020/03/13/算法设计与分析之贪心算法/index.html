@@ -98,7 +98,7 @@
 
 
 
-  <meta name="keywords" content="JavaScript,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -109,18 +109,17 @@
 
 
 
-<meta name="description" content="写一点自己的理解吧点击函数的写法点击函数经常使用，最简单的就是var bianliang =document.getElementById(“id”);bianliang.onclick=function(){}或者bianliang.on(“click”,funciton()){}或者在前端界面的id处写一个onclick=”test()”，然后在JS中写function test() ajax">
-<meta name="keywords" content="JavaScript">
+<meta name="description" content="这个人很懒，什么都没有写">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript">
-<meta property="og:url" content="http://yoursite.com/2018/12/19/JavaScript/index.html">
+<meta property="og:title" content=" 算法设计与分析之贪心算法">
+<meta property="og:url" content="http://yoursite.com/2020/03/13/算法设计与分析之贪心算法/index.html">
 <meta property="og:site_name" content="MybRose_blog">
-<meta property="og:description" content="写一点自己的理解吧点击函数的写法点击函数经常使用，最简单的就是var bianliang =document.getElementById(“id”);bianliang.onclick=function(){}或者bianliang.on(“click”,funciton()){}或者在前端界面的id处写一个onclick=”test()”，然后在JS中写function test() ajax">
+<meta property="og:description" content="这个人很懒，什么都没有写">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-27T02:57:43.162Z">
+<meta property="og:updated_time" content="2020-03-13T02:07:36.371Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript">
-<meta name="twitter:description" content="写一点自己的理解吧点击函数的写法点击函数经常使用，最简单的就是var bianliang =document.getElementById(“id”);bianliang.onclick=function(){}或者bianliang.on(“click”,funciton()){}或者在前端界面的id处写一个onclick=”test()”，然后在JS中写function test() ajax">
+<meta name="twitter:title" content=" 算法设计与分析之贪心算法">
+<meta name="twitter:description" content="这个人很懒，什么都没有写">
 
 
 
@@ -150,13 +149,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/19/JavaScript/">
+  <link rel="canonical" href="http://yoursite.com/2020/03/13/算法设计与分析之贪心算法/">
 
 
 
 
 
-  <title>JavaScript | MybRose_blog</title>
+  <title> 算法设计与分析之贪心算法 | MybRose_blog</title>
   
 
 
@@ -295,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/19/JavaScript/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/13/算法设计与分析之贪心算法/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mayubin">
@@ -312,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript</h1>
+          <h1 class="post-title" itemprop="name headline"> 算法设计与分析之贪心算法</h1>
         
 
         <div class="post-meta">
@@ -324,8 +323,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-19T15:14:03+08:00">
-                2018-12-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-13T10:07:36+08:00">
+                2020-03-13
               </time>
             
 
@@ -334,28 +333,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -384,12 +361,7 @@
       
 
       
-        <h1 id="写一点自己的理解吧"><a href="#写一点自己的理解吧" class="headerlink" title="写一点自己的理解吧"></a>写一点自己的理解吧</h1><h2 id="点击函数的写法"><a href="#点击函数的写法" class="headerlink" title="点击函数的写法"></a>点击函数的写法</h2><p>点击函数经常使用，最简单的就是<br>var bianliang =document.getElementById(“id”);<br>bianliang.onclick=function(){}或者bianliang.on(“click”,funciton()){}<br>或者在前端界面的id处写一个onclick=”test()”，然后在JS中写function test()</p>
-<h2 id="ajax和getJSON"><a href="#ajax和getJSON" class="headerlink" title="ajax和getJSON"></a>ajax和getJSON</h2><p> $.getJSON(<br>     url,            //请求URL<br>     [data],         //传参，可选参数<br>     [callback]      //回调函数，可选参数<br> 　);<br>ajax异步传递数据，用的真的很频繁<br>$.ajax({<br>            type: “post/get”,<br>            url: “”,<br>            data: JSON.stringify({“key”: value}),<br>            dataType: “json”,<br>            contentType: “application/json;charset=UTF-8”,<br>            success: [callback]{<br>            },<br>        })</p>
-<h2 id="document"><a href="#document" class="headerlink" title="document"></a>document</h2><p>document.querySelector(“#id”)：读取某个id里面的元素<br>document.getElementById(“id”)</p>
-<h2 id="canvas"><a href="#canvas" class="headerlink" title="canvas"></a>canvas</h2><p>canvas对象表示一个html画布<br>var canvas1 = document.getElementById(‘canvas1’);<br>var context1 = canvas1.getContext(‘2d’);<br>context1.drawImage(video,0, 0, 300, 300);//前两个确定左上角开始画的坐标，后两个确定宽和高</p>
-<h2 id="浏览器对象navigator"><a href="#浏览器对象navigator" class="headerlink" title="浏览器对象navigator"></a>浏览器对象navigator</h2><p>获取用户浏览器摄像头<br>navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;</p>
-
+        
       
     </div>
     
@@ -414,12 +386,6 @@
     
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
-          
-        </div>
-      
 
       
       
@@ -429,8 +395,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/12/代码优化/" rel="next" title="代码优化">
-                <i class="fa fa-chevron-left"></i> 代码优化
+              <a href="/2020/03/12/C语言之往年试题/" rel="next" title="C语言之往年试题">
+                <i class="fa fa-chevron-left"></i> C语言之往年试题
               </a>
             
           </div>
@@ -438,10 +404,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/27/React/" rel="prev" title="React">
-                React <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -493,17 +455,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -565,22 +518,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写一点自己的理解吧"><span class="nav-number">1.</span> <span class="nav-text">写一点自己的理解吧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#点击函数的写法"><span class="nav-number">1.1.</span> <span class="nav-text">点击函数的写法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ajax和getJSON"><span class="nav-number">1.2.</span> <span class="nav-text">ajax和getJSON</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#document"><span class="nav-number">1.3.</span> <span class="nav-text">document</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#canvas"><span class="nav-number">1.4.</span> <span class="nav-text">canvas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器对象navigator"><span class="nav-number">1.5.</span> <span class="nav-text">浏览器对象navigator</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
