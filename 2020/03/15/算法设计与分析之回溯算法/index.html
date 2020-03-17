@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #D4D4D4; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #D4D4D4;    /*上边框颜色*/
+        border-left-color: #D4D4D4;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "9b241e1b"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算法设计与分析,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="回溯算法基本思想12345671.适用：求解搜索问题和优化问题2.搜索空间：树，结点对应部分解向量，可行解在树叶上3.搜索过程：采用系统的方法隐含的遍历搜索树4.搜索策略：深度优先，宽度优先，函数优先，宽深结合5.结点分支判定条件：满足约束条件，分支扩张解向量，不满足约束条件，回溯到该结点的父节点6.结点状态：动态生成，分为白色黑色灰色结点7.存储：当前路径 适用条件：多米诺性质：符合k+1的解同">
+<meta name="keywords" content="算法设计与分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法设计与分析之回溯与分支界限算法">
+<meta property="og:url" content="http://yoursite.com/2020/03/15/算法设计与分析之回溯算法/index.html">
+<meta property="og:site_name" content="MybRose_blog">
+<meta property="og:description" content="回溯算法基本思想12345671.适用：求解搜索问题和优化问题2.搜索空间：树，结点对应部分解向量，可行解在树叶上3.搜索过程：采用系统的方法隐含的遍历搜索树4.搜索策略：深度优先，宽度优先，函数优先，宽深结合5.结点分支判定条件：满足约束条件，分支扩张解向量，不满足约束条件，回溯到该结点的父节点6.结点状态：动态生成，分为白色黑色灰色结点7.存储：当前路径 适用条件：多米诺性质：符合k+1的解同">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2020/03/15/算法设计与分析之回溯算法/3.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/15/算法设计与分析之回溯算法/4.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/15/算法设计与分析之回溯算法/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/15/算法设计与分析之回溯算法/2.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/15/算法设计与分析之回溯算法/5.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/15/算法设计与分析之回溯算法/6.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/15/算法设计与分析之回溯算法/7.png">
+<meta property="og:updated_time" content="2020-03-16T14:45:24.704Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法设计与分析之回溯与分支界限算法">
+<meta name="twitter:description" content="回溯算法基本思想12345671.适用：求解搜索问题和优化问题2.搜索空间：树，结点对应部分解向量，可行解在树叶上3.搜索过程：采用系统的方法隐含的遍历搜索树4.搜索策略：深度优先，宽度优先，函数优先，宽深结合5.结点分支判定条件：满足约束条件，分支扩张解向量，不满足约束条件，回溯到该结点的父节点6.结点状态：动态生成，分为白色黑色灰色结点7.存储：当前路径 适用条件：多米诺性质：符合k+1的解同">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/15/算法设计与分析之回溯算法/3.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Mayubin'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/15/算法设计与分析之回溯算法/">
+
+
+
+
+
+  <title>算法设计与分析之回溯与分支界限算法 | MybRose_blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/mayubinrose"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MybRose_blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/15/算法设计与分析之回溯算法/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mayubin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang2.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MybRose_blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">算法设计与分析之回溯与分支界限算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-15T09:09:26+08:00">
+                2020-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法设计与分析/" itemprop="url" rel="index">
+                    <span itemprop="name">算法设计与分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="回溯算法基本思想"><a href="#回溯算法基本思想" class="headerlink" title="回溯算法基本思想"></a>回溯算法基本思想</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.适用：求解搜索问题和优化问题</span><br><span class="line">2.搜索空间：树，结点对应部分解向量，可行解在树叶上</span><br><span class="line">3.搜索过程：采用系统的方法隐含的遍历搜索树</span><br><span class="line">4.搜索策略：深度优先，宽度优先，函数优先，宽深结合</span><br><span class="line">5.结点分支判定条件：满足约束条件，分支扩张解向量，不满足约束条件，回溯到该结点的父节点</span><br><span class="line">6.结点状态：动态生成，分为白色黑色灰色结点</span><br><span class="line">7.存储：当前路径</span><br></pre></td></tr></table></figure>
+<p><strong>适用条件：多米诺性质：符合k+1的解同样符合k的解的性质，以及逆否命题的成立</strong><br><img src="/2020/03/15/算法设计与分析之回溯算法/3.png" alt="sd"><br><img src="/2020/03/15/算法设计与分析之回溯算法/4.png" alt="sd"></p>
+<h2 id="回溯算法的实现"><a href="#回溯算法的实现" class="headerlink" title="回溯算法的实现"></a>回溯算法的实现</h2><p>递归实现与迭代实现</p>
+<h2 id="例子：4后问题"><a href="#例子：4后问题" class="headerlink" title="例子：4后问题"></a>例子：4后问题</h2><p>问题：在4*4的方格棋盘上放置皇后，使得没有两个在同一行，同一列，对角线</p>
+<h2 id="例子-0-1背包问题"><a href="#例子-0-1背包问题" class="headerlink" title="例子:0-1背包问题"></a>例子:0-1背包问题</h2><p>问题：有n种物品，每种只有一个，第i种物品价值为vi，重量为wi，如何选择使得总重量不超过B，而价值达到最大<br><strong>回溯算法或者贪心算法都可以，并且类似于最小装载问题</strong><br><img src="/2020/03/15/算法设计与分析之回溯算法/1.png" alt="sd"></p>
+<h2 id="例子-货郎问题"><a href="#例子-货郎问题" class="headerlink" title="例子:货郎问题"></a>例子:货郎问题</h2><p>问题：有n个城市，已知任两个城市之间的距离，求一条每个城市都经过一次的回路，使得总长度最小<br><img src="/2020/03/15/算法设计与分析之回溯算法/2.png" alt="sd"><br>搜索空间：排列树，有（n-1）!片树叶</p>
+<h2 id="例子：装载问题"><a href="#例子：装载问题" class="headerlink" title="例子：装载问题"></a>例子：装载问题</h2><p>问题：与之前的装载问题不同，这里有两艘轮船，载重分别为c1和c2，所有的集装箱的重量和小于c1+c2，求合理的方案，所有的箱子都上船<br>算法思想：令第一艘船的装入量为w1<br>1.用回溯算法使得c1-w1达到最小的装载方案<br>2.然后判断剩下的总重量是否满足第二艘船<br><img src="/2020/03/15/算法设计与分析之回溯算法/5.png" alt="sd"><br>每一层的选择都有两个，所以时间复杂度为O(2^n)</p>
+<h2 id="例子：图的着色"><a href="#例子：图的着色" class="headerlink" title="例子：图的着色"></a>例子：图的着色</h2><p>问题：无向连通图G与m种颜色的集合，用这些颜色给图的顶点着色，每个顶点一种颜色，要求每条边的两个顶点的颜色不同<br>约束条件：顶点k+1的邻接表中结点用过的颜色不能再用，如果邻接表结点用过m种，则结点k+1没法着色，从该节点回溯到父节点，满足多米诺性质<br>搜索策略：深度优先<br>时间复杂度：O(nm^n)<br><img src="/2020/03/15/算法设计与分析之回溯算法/6.png" alt="sd"><br><strong>时间复杂度与改进途径:根据对称性，只需要搜索1/3的解空间</strong></p>
+<h2 id="搜索树结点的估计"><a href="#搜索树结点的估计" class="headerlink" title="搜索树结点的估计"></a>搜索树结点的估计</h2><p><strong>Monte Carlo方法</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.从根开始，随机选择一条路径，直到不能分支为止</span><br><span class="line">2.假定搜索树的其他的分支与以上随机选出的路径一样，计数搜索树的点数</span><br><span class="line">3.重复1，2，将结点数进行概率平均</span><br></pre></td></tr></table></figure></p>
+<p>例如对于四后问题的搜索树采用Monte Carlo方法进行估计<br><img src="/2020/03/15/算法设计与分析之回溯算法/7.png" alt="sd"><br>剩下的没有给出图示，进行多次抽样，每次给出的计算平均节点数</p>
+<h2 id="分支界限及其应用"><a href="#分支界限及其应用" class="headerlink" title="分支界限及其应用"></a>分支界限及其应用</h2><h2 id="最大团问题"><a href="#最大团问题" class="headerlink" title="最大团问题"></a>最大团问题</h2><p>最大团：顶点数最多的团，团中包含的顶点是一个完全图<br>问题：给定无向图，求最大团<br>蛮力算法：对每个顶点子集，检查是否构成团，检查每对顶点之间是否有边，有2^n个子集<br>分支界限：</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法设计与分析/" rel="tag"># 算法设计与分析</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/13/算法设计与分析之贪心算法/" rel="next" title=" 算法设计与分析之贪心算法">
+                <i class="fa fa-chevron-left"></i>  算法设计与分析之贪心算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/touxiang2.png" alt="Mayubin">
+            
+              <p class="site-author-name" itemprop="name">Mayubin</p>
+              <p class="site-description motion-element" itemprop="description">这个人很懒，什么都没有写</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#回溯算法基本思想"><span class="nav-number">1.</span> <span class="nav-text">回溯算法基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回溯算法的实现"><span class="nav-number">2.</span> <span class="nav-text">回溯算法的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子：4后问题"><span class="nav-number">3.</span> <span class="nav-text">例子：4后问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子-0-1背包问题"><span class="nav-number">4.</span> <span class="nav-text">例子:0-1背包问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子-货郎问题"><span class="nav-number">5.</span> <span class="nav-text">例子:货郎问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子：装载问题"><span class="nav-number">6.</span> <span class="nav-text">例子：装载问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子：图的着色"><span class="nav-number">7.</span> <span class="nav-text">例子：图的着色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搜索树结点的估计"><span class="nav-number">8.</span> <span class="nav-text">搜索树结点的估计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支界限及其应用"><span class="nav-number">9.</span> <span class="nav-text">分支界限及其应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最大团问题"><span class="nav-number">10.</span> <span class="nav-text">最大团问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+    <div id="music163player">
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=29578009&auto=1&height=66">
+      </iframe>
+    </div>
+    </div>
+    
+  </aside>
+
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mayubin</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i>
+
+</div>
+
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共30k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
+
+
+
+
