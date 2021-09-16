@@ -3,7 +3,8 @@ layout: titile
 title: Git
 date: 2018-12-05 17:32:36
 tags: Git
-categories: Git
+top: 98
+categories: 开发岗
 ---
 # 什么是Git
 目前世界上最先进的分布式版本控制系统
