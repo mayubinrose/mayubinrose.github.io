@@ -47,4 +47,41 @@ public:
     }
 };
 ```
+<!--more-->
+## 剑指offer30 包含最小值函数的栈
+思路：设置两个栈a,b 栈a进行数据的添加删除等等操作，关键问题是解决在O(1)的时间找到栈的最小元素，我们在每次入栈的时候进行判断。
+1.如果当前入栈值小于栈顶元素，那么当前入栈值应该同时应该添加到栈b中
+2.如果当前栈a中是空栈，那么直接入栈a
+3.出栈的时候，判断当前出栈值和当前b中的栈顶值的大小比较，如果相同的话，那么b的值也要弹出，如果a的出栈值比b的栈顶大，不要管
+```c++
+class MinStack {
+public:
+    /** initialize your data structure here. */
+    stack<int> minstk; 
+    stack<int> stk;
+    MinStack() {
+        
+    }
+    
+    void push(int x) {
+        stk.push(x);
+        if(minstk.empty() || minstk.top() >= x){
+            minstk.push(x);
+        }
+    }
+    
+    void pop() {
+        if(minstk.top() == stk.top()) minstk.pop();
+        stk.pop();
 
+    }
+    
+    int top() {
+        return stk.top();
+    }
+    
+    int getMin() {
+        return minstk.top();
+    }
+};
+```

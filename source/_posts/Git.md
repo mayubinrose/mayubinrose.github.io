@@ -81,3 +81,14 @@ git show <tag_name>：显示标签信息
 删除标签：git tag -d <tagname>
 删除远程标签：git push origin :refs/tags/<tagname>
 推送某个标签到远程：git push origin <tagname>
+## 实际操作
+```bash
+添加到暂存区
+git add .
+合并到本地分支
+git commit -m ""
+将本地分支同步到远程origin的hexo分支
+git push orgin hexo 
+从远处下载分支hexo
+git clone -b hexo https://github.com/mayubinrose/mayubinrose.github.io.git
+```
