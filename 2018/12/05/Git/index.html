@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/12/05/Git/p1.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/05/Git/p2.png">
-<meta property="og:updated_time" content="2021-03-13T01:55:59.709Z">
+<meta property="og:updated_time" content="2021-09-16T13:15:04.601Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git">
 <meta name="twitter:description" content="什么是Git目前世界上最先进的分布式版本控制系统 创建版本库版本库就是一个仓库，里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪将当前目录变为仓库：git init将文件添加到暂存区：git add 文件名 [可选：另一个文件名]将暂存区提交到仓库：git commit –m “描述”">
@@ -192,12 +192,17 @@
 <h2 id="多人协作"><a href="#多人协作" class="headerlink" title="多人协作"></a>多人协作</h2><p>当你从远程仓库克隆时，实际上Git自动把本地的master分支和远程的master分支对应起来了，并且，远程仓库的默认名称是origin<br>git remote：查看远程库的信息加上-v显示更详细的信息<br>git push origin master：把master推送给远程库origin<br>git pull把最新的提交从origin/dev抓下来</p>
 <h1 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h1><h2 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h2><p>先切换到要打标签的分支上，然后git tag <name>就可以了，默认打在最新提交的commit上<br>git tag <name> f52c633：对具体的id打标签<br>git tag：查看标签<br>git show &lt;tag_name&gt;：显示标签信息</name></name></p>
 <h2 id="操作标签"><a href="#操作标签" class="headerlink" title="操作标签"></a>操作标签</h2><p>删除标签：git tag -d <tagname><br>删除远程标签：git push origin :refs/tags/<tagname><br>推送某个标签到远程：git push origin <tagname></tagname></tagname></tagname></p>
-
+<h2 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">添加到暂存区</span><br><span class="line">git add .</span><br><span class="line">合并到本地分支</span><br><span class="line">git commit -m <span class="string">""</span></span><br><span class="line">将本地分支同步到远程origin的hexo分支</span><br><span class="line">git push orgin hexo </span><br><span class="line">从远处下载分支hexo</span><br><span class="line">git <span class="built_in">clone</span> -b hexo https://github.com/mayubinrose/mayubinrose.github.io.git</span><br></pre></td></tr></table></figure>
       
 
       
     </div>
     <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
       
       
 	<div class="article-tag tagcloud">
@@ -217,7 +222,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
+        			<a href="/categories/开发岗//" class="article-tag-list-link color4">开发岗</a>
         		</li>
       		
 		</ul>
@@ -324,7 +329,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是Git"><span class="toc-number">1.</span> <span class="toc-text">什么是Git</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#创建版本库"><span class="toc-number">2.</span> <span class="toc-text">创建版本库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#时光机穿梭"><span class="toc-number">3.</span> <span class="toc-text">时光机穿梭</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#版本回退"><span class="toc-number">3.1.</span> <span class="toc-text">版本回退</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工作区和暂存区"><span class="toc-number">3.2.</span> <span class="toc-text">工作区和暂存区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#撤销修改"><span class="toc-number">3.3.</span> <span class="toc-text">撤销修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除文件"><span class="toc-number">3.4.</span> <span class="toc-text">删除文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#远程仓库"><span class="toc-number">4.</span> <span class="toc-text">远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#添加远程库"><span class="toc-number">4.1.</span> <span class="toc-text">添加远程库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从远程库克隆"><span class="toc-number">4.2.</span> <span class="toc-text">从远程库克隆</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分支管理"><span class="toc-number">5.</span> <span class="toc-text">分支管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建和合并分支"><span class="toc-number">5.1.</span> <span class="toc-text">创建和合并分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决冲突"><span class="toc-number">5.2.</span> <span class="toc-text">解决冲突</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分支管理策略"><span class="toc-number">5.3.</span> <span class="toc-text">分支管理策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Feature分支"><span class="toc-number">5.4.</span> <span class="toc-text">Feature分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多人协作"><span class="toc-number">5.5.</span> <span class="toc-text">多人协作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#标签管理"><span class="toc-number">6.</span> <span class="toc-text">标签管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建标签"><span class="toc-number">6.1.</span> <span class="toc-text">创建标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作标签"><span class="toc-number">6.2.</span> <span class="toc-text">操作标签</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是Git"><span class="toc-number">1.</span> <span class="toc-text">什么是Git</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#创建版本库"><span class="toc-number">2.</span> <span class="toc-text">创建版本库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#时光机穿梭"><span class="toc-number">3.</span> <span class="toc-text">时光机穿梭</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#版本回退"><span class="toc-number">3.1.</span> <span class="toc-text">版本回退</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工作区和暂存区"><span class="toc-number">3.2.</span> <span class="toc-text">工作区和暂存区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#撤销修改"><span class="toc-number">3.3.</span> <span class="toc-text">撤销修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除文件"><span class="toc-number">3.4.</span> <span class="toc-text">删除文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#远程仓库"><span class="toc-number">4.</span> <span class="toc-text">远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#添加远程库"><span class="toc-number">4.1.</span> <span class="toc-text">添加远程库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从远程库克隆"><span class="toc-number">4.2.</span> <span class="toc-text">从远程库克隆</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分支管理"><span class="toc-number">5.</span> <span class="toc-text">分支管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建和合并分支"><span class="toc-number">5.1.</span> <span class="toc-text">创建和合并分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决冲突"><span class="toc-number">5.2.</span> <span class="toc-text">解决冲突</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分支管理策略"><span class="toc-number">5.3.</span> <span class="toc-text">分支管理策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Feature分支"><span class="toc-number">5.4.</span> <span class="toc-text">Feature分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多人协作"><span class="toc-number">5.5.</span> <span class="toc-text">多人协作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#标签管理"><span class="toc-number">6.</span> <span class="toc-text">标签管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建标签"><span class="toc-number">6.1.</span> <span class="toc-text">创建标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作标签"><span class="toc-number">6.2.</span> <span class="toc-text">操作标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实际操作"><span class="toc-number">6.3.</span> <span class="toc-text">实际操作</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -444,23 +449,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">❤</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,11 +457,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">智能证券投资学</a>
+                <a href="javascript:void(0)" class="js-tag color4">算法题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">❤</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">矩阵分析</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -484,7 +489,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">矩阵分析</a>
+                <a href="javascript:void(0)" class="js-tag color3">智能证券投资学</a>
               </li>
              
               <li class="article-tag-list-item">
