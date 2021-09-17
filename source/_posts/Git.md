@@ -82,8 +82,7 @@ git show <tag_name>：显示标签信息
 删除远程标签：git push origin :refs/tags/<tagname>
 推送某个标签到远程：git push origin <tagname>
 ## 实际操作
-```bash
-
+```python
 将本地分支同步到远程origin的hexo分支
 git push orgin hexo 
 从远处下载分支hexo
@@ -121,14 +120,16 @@ ssh-add ~/.ssh/newname
 如果报错
 ssh-agent bash
 在~/.ssh目录下找到config没有的话 touch config
-**Host git@github.com:mayubinrose/Graduation.git
-HostName github.com
-PreferredAuthentications publickey
-IdentityFile ~/.ssh/graduation-rsa
-
-Host git@github.com:mayubinrose/mayubinrose.github.io.git
-HostName github.com
-PreferredAuthentications publickey
-IdentityFile ~/.ssh/id_rsa**
+# Host git@github.com:mayubinrose/Graduation.git
+# HostName github.com
+# PreferredAuthentications publickey
+# IdentityFile ~/.ssh/graduation-rsa
+# Host git@github.com:mayubinrose/mayubinrose.github.io.git
+# HostName github.com
+# PreferredAuthentications publickey
+# IdentityFile ~/.ssh/id_rsa
 最后在仓库的setting处设置key添加即可
+如果push出错
+git pull --rebase origin master
+然后push即可
 ```
