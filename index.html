@@ -347,7 +347,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="什么是Git"><a href="#什么是Git" class="headerlink" title="什么是Git"></a>什么是Git</h1><p>目前世界上最先进的分布式版本控制系统</p>
-<h1 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h1><p>版本库就是一个仓库，里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪<br>将当前目录变为仓库：git init<br>将文件添加到暂存区：git add 文件名 [可选：另一个文件名]<br>将暂存区提交到仓库：git commit –m “描述”<br></p>
+<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><p>git log:显示最近到最远的提交日志(回到过去)<br>git中HEAD表示当前版本，上一个版本是HEAD^<br>git reset –hard HEAD^：回退到上一个版本<br>git reset –hard 1094a^：回到某一个版本<br>git reflog：记录每一次的命令(回到未来)</p>
+<h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><p>工作区就是你在电脑里能看到的目录<br>.git文件不是工作区是一个Git的版本库，版本库中存了很多东西，最重要的是stage或者index的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的指针HEAD<br><img src="/2018/12/05/Git/p1.png" alt="jiegou" title="图示"><br></p>
         
           <a class="article-more-a" href="/2018/12/05/Git/#more">more >></a>
         
