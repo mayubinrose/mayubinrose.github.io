@@ -100,9 +100,9 @@ git checkout -b dev
 git add .
 合并到当前分支
 git commit -m ""
-查看当前的分支
-git branch
-先切换到master，将dev分支的工作成果合并到master上
+先切换到master
+git checkout master
+将dev分支的工作成果合并到master上
 git merge dev
 删除分支
 git branch -d dev
