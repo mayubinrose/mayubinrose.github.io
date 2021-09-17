@@ -65,3 +65,12 @@ IdentityFile ~/.ssh/id_rsa
 如果push出错
 git pull --rebase origin master
 然后push即可
+# 本地修改拉取远程仓库代码
+--hard 参数撤销工作区中所有未提交的修改内容，将暂存区与工作区都回到上一次版本，并删除之前的所有信息提交
+git reset --hard
+然后拉取
+git pull origin hexo:hexo 
+如果本地的想要保存修改 保存当前工作进度，会把暂存区和工作区的改动保存起来
+git stash save "message" git stash list 
+然后拉取git pull 之后弹出当前保存的进度
+git stash pop
