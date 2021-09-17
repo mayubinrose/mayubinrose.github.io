@@ -74,3 +74,5 @@ git pull origin hexo:hexo
 git stash save "message" git stash list 
 然后拉取git pull 之后弹出当前保存的进度
 git stash pop
+本地分支与远程库建立连接
+git branch -u origin/master master
