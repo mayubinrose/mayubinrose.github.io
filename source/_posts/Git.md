@@ -106,4 +106,29 @@ git checkout master
 git merge dev
 删除分支
 git branch -d dev
+# 将本地代码远程连接到git上
+本地新建一个空文件夹
+git init
+然后将代码复制进来
+git add .
+git commit -m "fisrt"
+将本地仓库和远程连接
+git remote add origin git@...
+为了实现push操作需要生成key
+ssh-keygen -t rsa -C "邮箱号" -f  ~/.ssh/newname
+将生成的各个私钥文件添加到引擎中
+ssh-add ~/.ssh/newname
+如果报错
+ssh-agent bash
+在~/.ssh目录下找到config没有的话 touch config
+**Host git@github.com:mayubinrose/Graduation.git
+HostName github.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/graduation-rsa
+
+Host git@github.com:mayubinrose/mayubinrose.github.io.git
+HostName github.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/id_rsa**
+最后在仓库的setting处设置key添加即可
 ```
