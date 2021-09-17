@@ -83,12 +83,27 @@ git show <tag_name>：显示标签信息
 推送某个标签到远程：git push origin <tagname>
 ## 实际操作
 ```bash
-添加到暂存区
-git add .
-合并到本地分支
-git commit -m ""
+
 将本地分支同步到远程origin的hexo分支
 git push orgin hexo 
 从远处下载分支hexo
 git clone -b hexo https://github.com/mayubinrose/mayubinrose.github.io.git
+##分支操作
+创建分支
+git branch dev
+切换分支
+git checkout dev
+创建并切换
+git checkout -b dev
+分支上修改完全后
+添加到暂存区
+git add .
+合并到当前分支
+git commit -m ""
+查看当前的分支
+git branch
+先切换到master，将dev分支的工作成果合并到master上
+git merge dev
+删除分支
+git branch -d dev
 ```
