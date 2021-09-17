@@ -47,7 +47,7 @@ public:
     }
 };
 ```
-<!--more-->
+ <!--more--> 
 ## 剑指offer30 包含最小值函数的栈
 思路：设置两个栈a,b 栈a进行数据的添加删除等等操作，关键问题是解决在O(1)的时间找到栈的最小元素，我们在每次入栈的时候进行判断。
 1.如果当前入栈值小于栈顶元素，那么当前入栈值应该同时应该添加到栈b中
@@ -82,6 +82,79 @@ public:
     
     int getMin() {
         return minstk.top();
+    }
+};
+```
+## 剑指offer06 从尾打印链表
+```c++
+class Solution {
+public:
+    vector<int> reversePrint(ListNode* head) {
+        stack<ListNode*> stack;
+        vector<int> res;
+       for(auto p =  head;  p ; p = p ->next){
+           stack.push(p);
+       }
+        while(!stack.empty()){
+            res.push_back(stack.top()->val);
+            stack.pop();
+        }
+        return res;
+    }
+};
+```
+## 剑指offer24 反转链表
+思路：直接反转每次遍历，遍历完全链表，while(head) 而不是head->next;
+```c++
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if(!head) return head;
+        ListNode* dummy = new ListNode(-1);
+        dummy->next =NULL;
+        while(head){
+            auto r = head->next;
+            head->next = dummy->next;
+            dummy->next = head;
+            head = r;
+        }
+        return dummy->next;
+    }
+};
+```
+## 剑指offer35 复杂链表的复制
+思路：给每个节点复制一个小弟节点，然后在小弟节点上操作
+1.复制random节点的时候需要判断p->random 是否是空节点，非空才可以进行小弟节点random
+2.分开两个链表的时候，对于要分开的链表我们设置一个dummy以及一个一开始指向dummy的cur去操作，这样不会出现双next的情况，最终返回dummy->next即可
+```c++
+class Solution {
+public:
+    Node* copyRandomList(Node* head) {
+        if(!head) return head;
+        // 给每个节点创建一个小弟
+        for(auto p = head ; p ; p = p ->next->next){
+            Node* new_p = new Node(p->val);
+            new_p->next = p->next;
+            p->next = new_p;
+        }
+        for(auto p = head ; p ; p = p ->next->next){
+            auto q = p->next;
+            // 小弟的random指向的是大哥的random的下一个
+            if(p->random){
+                q->random = p->random ->next;
+            }
+        }
+        // 最后将两个分开
+        Node* dummy = new Node(-1);
+        dummy->next = head->next;
+        auto cur = dummy;
+        for(auto p = head; p ; p = p ->next){
+            auto q = p->next;
+            cur->next = q;
+            cur = q;
+            p->next = q->next;
+        }
+        return dummy->next;
     }
 };
 ```
