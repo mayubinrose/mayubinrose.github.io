@@ -76,3 +76,6 @@ git stash save "message" git stash list
 git stash pop
 本地分支与远程库建立连接
 git branch -u origin/master master
+查看本地分支与远程分支对应的链接情况
+git branch -vv
+我来测试
