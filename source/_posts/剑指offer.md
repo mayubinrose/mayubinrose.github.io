@@ -158,3 +158,43 @@ public:
     }
 };
 ```
+### 剑指offer05 替换空格
+```c++
+class Solution {
+public:
+    string replaceSpace(string s) {
+        int n = s.size();
+        string res = "";
+        for(int i = 0 , j = 0 ; i  < n ; i ++){
+            if(s[i] == ' '){
+                res.push_back('%');
+                res.push_back('2');
+                res.push_back('0');
+            }else{
+                 res.push_back(s[i]);
+            }
+        }
+        return res;
+    }
+    
+};
+```
+### 剑指offer58 左旋转字符串
+```c++
+class Solution {
+public:
+    string reverseLeftWords(string s, int n) {
+        string res = "";
+        string a = "";
+        string b = "";
+        for(int i = 0 ; i < n ; i ++){
+            a.push_back(s[i]);
+        }
+        for(int j = n ; j < s.size() ; j ++){
+            b.push_back(s[j]);
+        }
+        res = b + a;
+        return res;
+    }
+};
+```

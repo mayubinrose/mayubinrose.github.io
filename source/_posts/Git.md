@@ -78,4 +78,5 @@ git stash pop
 git branch -u origin/master master
 查看本地分支与远程分支对应的链接情况
 git branch -vv
-我来测试
+**git push <远程主机名> <本地分支名>:<远程分支名>
+git pull <远程主机名> <远程分支名>:<本地分支名>**
