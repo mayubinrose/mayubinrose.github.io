@@ -158,7 +158,7 @@ public:
     }
 };
 ```
-### 剑指offer05 替换空格
+## 剑指offer05 替换空格
 ```c++
 class Solution {
 public:
@@ -195,6 +195,71 @@ public:
         }
         res = b + a;
         return res;
+    }
+};
+```
+## 剑指offer03 数组中重复的数字
+```c++
+class Solution {
+public:
+    int findRepeatNumber(vector<int>& nums) {
+        unordered_set<int> hash;
+        for(int i = 0 ; i < nums.size();  i ++){
+            if(hash.count(nums[i]) == 0){
+                hash.insert(nums[i]);
+            }
+            else{
+                return nums[i];
+            }
+        }
+        return nums[nums.size() - 1];
+    }
+};
+```
+### 剑指offer53 在排序数组中查找数字I
+思路：二分查找的思想，与原始的二分查找的模板有所不同，while中的条件带上=，然后循环体中l与r都含有加一减一的操作，这样就不会出现死循环的结果，构造函数找到target的最右边的坐标
+1、如果mid值小于target，l = mid + 1
+2、如果mid值大于target，r = mid - 1
+3、如果mid等于target，如果我们要找到最右边的target，同样l = mid + 1 ，反之如果我们要找到最左边的target，r = mid -1 
+最后找最右边的target，返回l ，找最左边的target，返回r。
+注意：这里可以加上特判条件，当我们找最右边或者最左边的target的时候，一次二分之后，可以通过特判当前找到的数是否是target，如果不是说明整个区间都没有target，可以直接返回0
+```c++
+class Solution {
+public:
+    int findright(vector<int>& nums , int target){
+        int l = 0 ,r = nums.size() - 1;
+        while(l <= r){
+            int mid = (l + r) >> 1;
+            if(nums[mid] <= target) {
+                l = mid + 1;
+            }else{
+                r = mid -1;
+            }
+        }
+        return l ;
+    }
+    int search(vector<int>& nums, int target) {
+        return findright(nums , target) - findright(nums , target-1);
+    }
+};
+```
+## 剑指offer53 0到n-1中缺失的数字
+思路：二分法，左子数字：nums[i] == i，右子数组nums[i] != i ，循环结束的时候l指向第一个右子数组的第一个也就是返回值，r指向左子数组的最后一个
+```c++
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        // 首先是一个递增的区间，这里的二分判断依据是当前数字的值和它的下标之间的比较
+        int  l = 0 ,  r = nums.size() -1;
+        // 找到第一个大于的点
+        while(l <= r){
+            int mid = (l + r)>> 1;
+            if(nums[mid] == mid) l = mid + 1;
+            else{
+                r = mid -1;
+            }
+        }
+        return l;
     }
 };
 ```
