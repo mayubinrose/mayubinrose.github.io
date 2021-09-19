@@ -80,3 +80,6 @@ git branch -u origin/master master
 git branch -vv
 **git push <远程主机名> <本地分支名>:<远程分支名>
 git pull <远程主机名> <远程分支名>:<本地分支名>**
+将远程库的更新合并到本地库中，--rebase的作用是取消本地库中的commit，并把他们接到更新后的版本库中
+git pull --rebase origin hexo
+
