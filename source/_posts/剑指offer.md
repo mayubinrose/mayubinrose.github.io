@@ -2,7 +2,7 @@
 layout: title
 title: 剑指offer
 date: 2021-09-16 20:36:47
-tags: 算法题
+tags: [算法题,开发岗]
 top: 99 
 categories: 开发岗
 ---
@@ -179,7 +179,7 @@ public:
     
 };
 ```
-### 剑指offer58 左旋转字符串
+## 剑指offer58 左旋转字符串
 ```c++
 class Solution {
 public:
@@ -216,7 +216,7 @@ public:
     }
 };
 ```
-### 剑指offer53 在排序数组中查找数字I
+## 剑指offer53 在排序数组中查找数字I
 思路：二分查找的思想，与原始的二分查找的模板有所不同，while中的条件带上=，然后循环体中l与r都含有加一减一的操作，这样就不会出现死循环的结果，构造函数找到target的最右边的坐标
 1、如果mid值小于target，l = mid + 1
 2、如果mid值大于target，r = mid - 1

@@ -2,7 +2,7 @@
 layout: titile
 title: Git
 date: 2018-12-05 17:32:36
-tags: Git
+tags: [Git,开发岗]
 top: 98
 categories: 开发岗
 ---
