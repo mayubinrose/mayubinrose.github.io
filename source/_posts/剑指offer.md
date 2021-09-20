@@ -263,4 +263,64 @@ public:
     }
 };
 ```
-## 剑指offer
+## 剑指offer04 二维数组的查找
+思路：将整个二维数组进行翻转，整体就转换为一个类似树的形式，丛树根开始遍历，如果小于target，向右子树移动，如果大于target就向左子树移动
+```c++
+class Solution {
+public:
+    bool findNumberIn2DArray(vector<vector<int>>& matrix, int target) {
+        if(matrix.size() == 0) return false;
+        int i = matrix.size() -1  , j = 0;
+        while(j < matrix[0].size() && i >= 0){
+            if(matrix[i][j] < target) j ++;
+            else if(matrix[i][j] > target) {
+                 i -- ;
+            }
+            else return true;
+        }
+        return false;
+    }
+};
+```
+## 剑指offer11 旋转数组的最小数字
+思路：难点在nums[mid] == nums[r]的情况下，如何操作，这里直接r = r-1 ，因为相等的情况无法判断右子数组的最小值出现在哪一边。证明r=r-1的正确性：
+1.当旋转点x < r, 执行r = r - 1 易知无影响
+2.当旋转点x == r ，执行r = r - 1 丢失了旋转点，但是最终返回的值与旋转点的值大小相同，因为由于x ==r nums[x] == nums[r] == nums[mid] <= nums[l]， 同时mid一定在左数组中，有nums[l] <= nums[mid] ，所以nums[l] == nums[mid]，所以左数组的所有值都相同都等于nums[x]所以得证。
+```c++
+class Solution {
+public:
+// 二分法 分为左子数组 和右子数组 左子树组的所有数字都是大于右子数组的所有数字的
+// 左右数组都是单调递增的 如果nums[mid] < nums[r]  r = mid  如果nums[mid] > nums[r] l = mid + 1
+// 如果nums[mid] ==nums[r] 是无法判断在哪个区间的 所以直接r = r -1
+    int minArray(vector<int>& nums) {
+        int l = 0 , r = nums.size() - 1;
+        while(l < r){
+            int mid  = (l + r) >> 1;
+            if(nums[mid] < nums[r]){
+                r = mid;
+            }else if (nums[mid] > nums[r]){
+                l = mid + 1;
+            }else if(nums[mid] == nums[r]){
+                r = r - 1;
+            }
+        }
+        return nums[r];
+    }
+};
+```
+## 剑指offer50 第一个只出现一次的字符
+```c++
+class Solution {
+public:
+    char firstUniqChar(string s) {
+        unordered_map<char, bool > hash;
+        for(int i = 0 ; i < s.size(); i ++){
+            hash[s[i]] = hash.find(s[i]) == hash.end();
+        }
+        for(int i = 0 ; i < s.size() ; i++){
+            if(hash[s[i]] ) return s[i];
+        }
+        return ' ';
+    }
+};
+```
