@@ -324,3 +324,109 @@ public:
     }
 };
 ```
+## 剑指offer32 从上到下打印二叉树I,II,III
+```c++
+class Solution {
+public:
+    vector<int> levelOrder(TreeNode* root) {
+        vector<int> res;
+        int last = -1;
+        queue<TreeNode*> q;
+        if(!root)return res;
+        q.push(root);
+        while(!q.empty()){
+            auto cur = q.front();
+            q.pop();
+            res.push_back(cur->val);
+            auto left = cur->left;
+            if(left) q.push(left);
+            auto right = cur->right;
+            if(right) q.push(right);
+        }
+        return res;
+    }
+};
+//思路：使用q.size()来判断每一行有多少个数字
+class Solution {
+public:
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> res;
+        queue<TreeNode* >q ; 
+        if(!root) return res;
+        q.push(root);
+        while(!q.empty()){
+            vector<int> path;
+            int n = q.size();
+            for(int i = 0 ; i < n ; i ++){
+                auto cur = q.front();
+                q.pop();
+                path.push_back(cur->val);
+                if(cur->left) q.push(cur->left);
+                if(cur->right) q.push(cur->right);
+            }
+            res.push_back(path);
+        }
+        return res;
+    }
+};
+class Solution {
+public:
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> res;
+        queue<TreeNode*> q;
+        if(!root) return res;
+        q.push(root);
+        while(!q.empty()){
+            int n = q.size();
+            vector<int> path;
+            for(int i = 0 ; i < n; i ++){
+                auto cur = q.front();
+                q.pop();
+                path.push_back(cur->val);
+                if(cur->left) q.push(cur->left);
+                if(cur->right) q.push(cur->right);
+            }
+            res.push_back(path);
+        }
+        for(int i = 0 ; i < res.size() ;i ++){
+            if(i % 2 ==1) {
+                reverse(res[i].begin() , res[i].end());       
+            }
+        }
+        return res;
+    }
+};
+class Solution {
+public:
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> res;
+        deque<TreeNode*> q;
+        if(!root) return res;
+        q.push_back(root);
+        int level = 0;
+        while(!q.empty()){
+            int n = q.size();
+            vector<int> path;
+            for(int i = 0 ;i < n ; i ++){
+                if(level & 1){
+                    auto cur = q.back();
+                    q.pop_back();
+                    path.push_back(cur->val);
+                    if(cur->right) q.push_front(cur->right);
+                    if(cur->left)  q.push_front(cur->left);
+                }else{
+                    auto cur = q.front();
+                    q.pop_front();
+                    path.push_back(cur->val);
+                    if(cur->left) q.push_back(cur->left);
+                    if(cur->right)  q.push_back(cur->right);
+                }
+            }
+            res.push_back(path);
+            level++;
+        }
+        return res;
+    }
+};
+```
+
