@@ -429,4 +429,57 @@ public:
     }
 };
 ```
-
+## 剑指offer26 树的子结构
+思路：先序遍历树A，每次从该节点开始去找是否包含子树B
+定义函数dfs(a,b)表示从节点a开始去找是否包含节点b子树，当b为空表示b已经匹配完全，返回true，如果a为空，表示没法继续匹配了，返回false，如果两个值都不一样，返回false，如果两个值相同，那么去匹配a的左和b的左以及a的右和b的右
+```c++
+class Solution {
+public:
+// 分为两步，1.先序遍历每个树A中的每个节点 2.判断每个节点为根节点是否包含B树
+    bool isSubStructure(TreeNode* A, TreeNode* B) {
+        if(!A || !B) return false;
+        return (dfs(A , B) || isSubStructure(A->left , B) || isSubStructure(A->right , B)); 
+    }
+    // 判断a中是否包含b
+    bool dfs(TreeNode* a , TreeNode* b){
+        if(b == NULL) return true;
+        if(a == NULL) return false;
+        if(a->val != b->val) return false;
+        return dfs(a->left , b->left) && dfs(a->right , b->right);
+    }
+};
+```
+## 剑指offer27 二叉树的镜像
+思路：将整体进行递归，左子树放到右子树 右子树放到左子树 一开始要设置两个临时遍历right left 放置中途的改变
+```c++
+class Solution {
+public:
+    TreeNode* mirrorTree(TreeNode* root) {
+        if(!root) return NULL;
+        auto right = mirrorTree(root->left);
+        auto left = mirrorTree(root->right);
+        root->left  = left;
+        root->right = right;
+        return root;
+    }
+};
+```
+## 剑指offer28 对称的二叉树
+```c++
+class Solution {
+public:
+// 判断一个树是对称的 也就是判断左右子树是否对称
+    bool isSymmetric(TreeNode* root) {
+        if(!root) return true;
+        return dfs(root->left , root->right);
+    }
+    // 判断a b两个树是否是对称的
+    bool dfs(TreeNode* a , TreeNode* b){
+        if(!b && a)return false;
+        if(!a && b)return false;
+        if(!a && !b)return true;
+        if(a->val == b->val ) return dfs(a->left ,b->right) && dfs(a->right , b ->left);
+        else return false;
+    }
+};
+```
