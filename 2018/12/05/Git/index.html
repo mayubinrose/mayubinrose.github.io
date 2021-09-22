@@ -9,7 +9,7 @@
   <title>Git | MybRose_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="什么是Git目前世界上最先进的分布式版本控制系统 版本回退git log:显示最近到最远的提交日志(回到过去)git中HEAD表示当前版本，上一个版本是HEAD^git reset –hard HEAD^：回退到上一个版本git reset –hard 1094a^：回到某一个版本git reflog：记录每一次的命令(回到未来) 工作区和暂存区工作区就是你在电脑里能看到的目录.git文件不是工作">
-<meta name="keywords" content="Git">
+<meta name="keywords" content="Git,开发岗">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git">
 <meta property="og:url" content="http://yoursite.com/2018/12/05/Git/index.html">
@@ -17,7 +17,7 @@
 <meta property="og:description" content="什么是Git目前世界上最先进的分布式版本控制系统 版本回退git log:显示最近到最远的提交日志(回到过去)git中HEAD表示当前版本，上一个版本是HEAD^git reset –hard HEAD^：回退到上一个版本git reset –hard 1094a^：回到某一个版本git reflog：记录每一次的命令(回到未来) 工作区和暂存区工作区就是你在电脑里能看到的目录.git文件不是工作">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/12/05/Git/p1.png">
-<meta property="og:updated_time" content="2021-09-17T06:05:41.712Z">
+<meta property="og:updated_time" content="2021-09-22T07:48:15.302Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git">
 <meta name="twitter:description" content="什么是Git目前世界上最先进的分布式版本控制系统 版本回退git log:显示最近到最远的提交日志(回到过去)git中HEAD表示当前版本，上一个版本是HEAD^git reset –hard HEAD^：回退到上一个版本git reset –hard 1094a^：回到某一个版本git reflog：记录每一次的命令(回到未来) 工作区和暂存区工作区就是你在电脑里能看到的目录.git文件不是工作">
@@ -178,6 +178,7 @@
 <h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><p>工作区就是你在电脑里能看到的目录<br>.git文件不是工作区是一个Git的版本库，版本库中存了很多东西，最重要的是stage或者index的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的指针HEAD<br><img src="/2018/12/05/Git/p1.png" alt="jiegou" title="图示"><br> <a id="more"></a> </p>
 <h1 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h1><h2 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h2><p>创建分支<br>git branch dev<br>切换分支<br>git checkout dev<br>创建并切换<br>git checkout -b dev<br>分支上修改完全后<br>添加到暂存区<br>git add .<br>合并到当前分支<br>git commit -m “”<br>先切换到master<br>git checkout master<br>将dev分支的工作成果合并到master上<br>git merge dev<br>删除分支<br>git branch -d dev</p>
 <h2 id="将本地代码远程连接到git上"><a href="#将本地代码远程连接到git上" class="headerlink" title="将本地代码远程连接到git上"></a>将本地代码远程连接到git上</h2><p>本地新建一个空文件夹<br>git init<br>然后将代码复制进来<br>git add .<br>git commit -m “fisrt”<br>将本地仓库和远程连接<br>git remote add origin git@…<br>为了实现push操作需要生成key<br>ssh-keygen -t rsa -C “邮箱号” -f  ~/.ssh/newname<br>将生成的各个私钥文件添加到引擎中<br>ssh-add ~/.ssh/newname<br>如果报错<br>ssh-agent bash<br>在~/.ssh目录下找到config没有的话 touch config<br>Host <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:mayubinrose/Graduation.git<br>HostName github.com<br>PreferredAuthentications publickey<br>IdentityFile ~/.ssh/graduation-rsa<br>Host <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:mayubinrose/mayubinrose.github.io.git<br>HostName github.com<br>PreferredAuthentications publickey<br>IdentityFile ~/.ssh/id_rsa<br>最后在仓库的setting处设置key添加即可<br>如果push出错<br>git pull –rebase origin master<br>然后push即可</p>
+<h1 id="本地修改拉取远程仓库代码"><a href="#本地修改拉取远程仓库代码" class="headerlink" title="本地修改拉取远程仓库代码"></a>本地修改拉取远程仓库代码</h1><p>放弃所有本地操作，直接合并到远程库最新的操作<br>git fetch –all ： 下载远程库的最新内容，不做和合并<br>git reset –hard origin/hexo ：重置后不保留暂存区和工作区<br>git pull origin hexo:hexo ：拉取<br>如果本地的想要保存修改 保存当前工作进度，会把暂存区和工作区的改动保存起来<br>git stash save “message” git stash list<br>然后拉取git pull 之后弹出当前保存的进度<br>git stash pop<br>本地分支与远程库建立连接<br>git branch -u origin/master master<br>查看本地分支与远程分支对应的链接情况<br>git branch -vv<br><strong>git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;<br>git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</strong><br>将远程库的更新合并到本地库中，–rebase的作用是取消本地库中的commit，并把他们接到更新后的版本库中<br>git pull –rebase origin hexo</p>
 
       
 
@@ -197,6 +198,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">开发岗</a>
         		</li>
       		
 		</ul>
@@ -315,7 +320,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是Git"><span class="toc-number">1.</span> <span class="toc-text">什么是Git</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#版本回退"><span class="toc-number">1.1.</span> <span class="toc-text">版本回退</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工作区和暂存区"><span class="toc-number">1.2.</span> <span class="toc-text">工作区和暂存区</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实际操作"><span class="toc-number">2.</span> <span class="toc-text">实际操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分支操作"><span class="toc-number">2.1.</span> <span class="toc-text">分支操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将本地代码远程连接到git上"><span class="toc-number">2.2.</span> <span class="toc-text">将本地代码远程连接到git上</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是Git"><span class="toc-number">1.</span> <span class="toc-text">什么是Git</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#版本回退"><span class="toc-number">1.1.</span> <span class="toc-text">版本回退</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工作区和暂存区"><span class="toc-number">1.2.</span> <span class="toc-text">工作区和暂存区</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实际操作"><span class="toc-number">2.</span> <span class="toc-text">实际操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分支操作"><span class="toc-number">2.1.</span> <span class="toc-text">分支操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将本地代码远程连接到git上"><span class="toc-number">2.2.</span> <span class="toc-text">将本地代码远程连接到git上</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#本地修改拉取远程仓库代码"><span class="toc-number">3.</span> <span class="toc-text">本地修改拉取远程仓库代码</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -500,6 +505,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">开发岗</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">课题</a>
               </li>
             
             <div class="clearfix"></div>
