@@ -483,3 +483,40 @@ public:
     }
 };
 ```
+## 剑指offer10 斐波那契数列
+```c++
+class Solution {
+public:
+    int fib(int n) {
+        if(n == 1) return 1;
+        if(n == 0 )return 0;
+        int a = 0 ,b = 1;
+        int sum = 0 ;
+        int MOL = 1e9 + 7;
+        for(int i = 2; i <= n  ; i ++){
+            sum = (a  + b) %MOL;
+            a = b ; 
+            b = sum ;   
+        }
+        return sum;
+    }
+};
+```
+## 剑指offer63 股票的最大利润
+```c++
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        if(!prices.size()) return 0;
+        int n = prices.size();
+        int MIN_PRICE = prices[0];
+        int res = 0 ;
+        // 去找到哪一天卖出去
+        for(int i = 0 ; i < n ; i ++){
+            MIN_PRICE = min(MIN_PRICE , prices[i]);
+            res = max(res , prices[i] - MIN_PRICE);
+        }
+        return res;
+    }
+};
+```
