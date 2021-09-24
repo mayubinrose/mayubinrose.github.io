@@ -14,11 +14,11 @@ git中HEAD表示当前版本，上一个版本是HEAD^
 git reset --hard HEAD^：回退到上一个版本
 git reset --hard 1094a^：回到某一个版本
 git reflog：记录每一次的命令(回到未来)
+ <!--more--> 
 ## 工作区和暂存区
 工作区就是你在电脑里能看到的目录
 .git文件不是工作区是一个Git的版本库，版本库中存了很多东西，最重要的是stage或者index的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的指针HEAD
 ![jiegou](/Git/p1.png "图示")
- <!--more--> 
 # 实际操作
 ## 分支操作
 创建分支

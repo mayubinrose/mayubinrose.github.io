@@ -9,6 +9,7 @@ categories: 开发岗
 ## 剑指offer09 用两个栈实现队列
 解题思路：
 整体的思路是采用两个栈进行操作，第一个栈进行入栈操作，第二站进行删除操作，这里题目的输出值表示每次操作的输出值，当每次入栈的时候，直接将入栈值放入a中，当出队的时候，判断b是否为空，如果是空，那么判断a是否为空，都是空那么表示没有元素了，直接返回-1，反之将a中所有元素出栈然后入栈b，最后返回b的栈顶元素。
+ <!--more--> 
 ```c++
 class CQueue {
     stack<int> a  , b ; 
@@ -47,7 +48,6 @@ public:
     }
 };
 ```
- <!--more--> 
 ## 剑指offer30 包含最小值函数的栈
 思路：设置两个栈a,b 栈a进行数据的添加删除等等操作，关键问题是解决在O(1)的时间找到栈的最小元素，我们在每次入栈的时候进行判断。
 1.如果当前入栈值小于栈顶元素，那么当前入栈值应该同时应该添加到栈b中
@@ -517,6 +517,50 @@ public:
             res = max(res , prices[i] - MIN_PRICE);
         }
         return res;
+    }
+};
+```
+## 剑指offer42 连续子数组的最大和
+```c++
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> f(n + 1 , 0 );
+        // fi 表示前i个数字的连续子数组的最大值 返回值为
+        f[1] = nums[0];
+        int res = f[1];
+        for(int i = 2 ; i <= n ; i ++){
+            f[i] = max(f[i - 1] , 0 ) + nums[i - 1];
+        }
+        for(int i = 1 ; i <= n ; i ++){
+            res  = max(res, f[i]);
+        }
+        return res;
+    }
+};
+```
+## 剑指offer47 礼物的最大价值
+```c++
+class Solution {
+public:
+    int maxValue(vector<vector<int>>& grid) {
+        // 设置f[i][j] 表示达到ij点的时候可以获取的礼物价值的最大值
+        int m = grid.size();
+        if(!m ) return 0;
+        int n = grid[0].size();
+        vector<vector<int>> f(m + 1 ,  vector<int> (n + 1 , 0 ));
+        f[0][0] = grid[0][0];
+        //状态转移：f[i][j] = max(f[i-1][j] ,f[i][j-1]) + grid[i][j]
+        for(int i = 0; i < m ; i ++){
+            for(int j = 0 ; j < n ; j ++){
+                if(!i && !j) f[i][j] =grid[0][0];
+                if(i == 0 && j ) f[0][j] = f[0][j - 1] + grid[0][j];
+                if(j == 0 && i ) f[i][0] = f[i - 1][0] + grid[i][0];
+                if(i && j ) f[i][j] = max(f[i-1][j] , f[i][j-1]) +grid[i][j];
+            }
+        }
+        return f[m-1][n-1];
     }
 };
 ```
