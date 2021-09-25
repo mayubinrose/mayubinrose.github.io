@@ -564,3 +564,80 @@ public:
     }
 };
 ```
+## 剑指offer46 把数字翻译为字符串
+注意：num转换为string to_string()，初始化的f[0]==f[1]==1，没有数字和一个数字转换为字符串的方案数都是1次
+```c++
+class Solution {
+public:
+    int translateNum(int num) {
+        string str = to_string(num);
+        int n = str.size();
+        //f[i]表示num的前i个数字可以翻译成字符串的方案个数,返回值为f[n]
+        vector<int> f(n + 1, 0);
+        f[0] = 1;
+        f[1] = 1;
+        for(int i = 2 ; i <= n ; i ++){
+            f[i] = f[i - 1];
+            int cur = 10* (str[i - 2] - '0') + str[i - 1] - '0';
+            if(cur <= 25 && cur >= 10){
+                f[i] += f[i - 2];
+            }
+        }
+        return f[n];
+    }
+    
+};
+```
+## 剑指offer48 最长不含重复字符的子串
+方法一：滑动窗口，我们判断的时候不是根据窗口的最前面进行判断，而是在窗口的末尾处进行判断，通过末尾的数量去移动起始窗口的位置
+方法二：动态规划+哈希表，哈希表存储的是每个字符的最右边的位置，由于在C++中没有找到当前字符的时候返回的是0，所以我们需要将整体的字符的 s = ' '+s，这样可以区分找到第一个位置和没有找到
+```c++
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int n = s.size();
+        int i = 0 , j = 0 ; 
+        int res = 0 ;
+        unordered_map<char,int> map ; 
+        while(j < n){
+            map[s[j]] ++;
+            // 所有的判断条件在s[j]处
+            while(map[s[j]] > 1){
+                map[s[i]] --;
+                i ++ ;
+            }
+            res = max(res , j - i + 1);
+            j ++;
+        }
+        return res;
+    }
+};
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int n = s.size();
+        if(n == 0 )return 0 ;
+        s = ' ' + s;
+        vector<int> f(n + 1 , 0 );
+        // f[i] 表示s的前i个字符长度的最长的不包含重复子串的最长子字符串的长度 ,返回值为f[n]中的最大值
+        // 状态转移方程，当我们遍历到s[i]，我们向前找到最近的一个和s[i]相同的字符s[j]，
+        // 1. 如果j< 0，说明前一段是找不到相同的f[i] = f[i-1] +1 
+        // 2. 如果 i - j > f[i-1] ，说明找到的j的位置已经是越过去最长子串的长度，此时f[i] = f[i-1] + 1;
+        // 3. 如果 i - j <= f[i-1] ，说明找的的j的位置是在最长子串之内，那么此时f[i] = i - j ;
+        // 设置哈希表存储每个字符出现的最右边的位置
+        f[1] = 1;
+        f[0] = 0;
+        int res = 0;
+        unordered_map<char , int> map;
+        for(int i = 1 ; i <= n ; i ++){
+            // 一开始的是找不到的 返回的是位置0 ， 先去找到i位置左边的最近的一个相同字符的下标，然后再给当前字符赋值最右边位置
+            int j = map[s[i]];
+            map[s[i]] = i ;
+            if(i - j > f[i - 1]) f[i] = f[i - 1] + 1;
+            if(i - j <= f[i - 1]) f[i] = i - j ;
+             res = max(res , f[i]);
+        }
+        return res;
+    }
+};
+```
