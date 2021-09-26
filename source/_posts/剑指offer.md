@@ -641,3 +641,43 @@ public:
     }
 };
 ```
+## 剑指offer18 删除链表的节点
+
+```c++
+class Solution {
+public:
+    ListNode* deleteNode(ListNode* head, int val) {
+        ListNode* dummy = new ListNode(-1);
+        dummy->next = head;
+        auto p = head , q = dummy;
+        while(p){
+            if(p->val == val){
+                q->next = p->next;
+            }
+            p = p ->next;
+            q = q->next ;
+        }
+        return dummy->next;
+    }   
+};
+```
+## 剑指offer22 链表中倒数第k个节点
+```c++
+class Solution {
+public:
+    ListNode* getKthFromEnd(ListNode* head, int k) {
+        int n = 0 ; 
+        ListNode* dummy = new ListNode(-1);
+        dummy->next  = head;
+        while(dummy->next){
+            n ++;
+            dummy = dummy->next;
+        }
+        int cnt = n - k  ;
+        while(cnt --){
+            head  =head->next;
+        }
+        return head;
+    }
+};
+```
