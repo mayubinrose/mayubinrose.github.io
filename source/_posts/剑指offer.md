@@ -678,6 +678,147 @@ public:
             head  =head->next;
         }
         return head;
+    }sdsd
+};
+```
+## 剑指offer25 合并两个排序的链表
+```c++
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        ListNode* dummy = new ListNode(-1);
+        dummy->next = NULL;
+        auto p = dummy;
+        while(l1 && l2){
+            auto r1 = l1->next;
+            auto r2 = l2->next;
+            if(l1->val < l2->val){
+                l1->next  =NULL;
+                p->next = l1;
+                p = p->next;
+                l1 = r1;
+            }else{
+                l2->next = NULL;
+                p->next = l2;
+                p = p->next;
+                l2 = r2;
+            }
+        }
+        if(l1) p->next = l1 ; 
+        if(l2) p ->next = l2;
+        return dummy->next;
     }
 };
 ```
+## 剑指offer52 两个链表的第一个公共节点
+```c++
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        ListNode* pa = headA;
+        ListNode* pb = headB;
+        while(pa != pb){
+            pa = pa != NULL ? pa->next: headB;
+            pb = pb != NULL ? pb->next : headA;
+        }
+        return pa;
+    }
+};
+```
+## 剑指offer21 调整数组顺序使得奇数在前面
+思路：双指针，快慢指针
+```c++
+class Solution {
+public:
+    vector<int> exchange(vector<int>& nums) {
+        int n  = nums.size();
+        int left = 0 , right = n - 1;
+        while(left < right){
+            if(nums[left] % 2 == 1){
+                left++;
+                continue;
+            }
+            if(nums[right] % 2 == 0 ){
+                right -- ;
+                continue;
+            }
+            swap(nums[right --] , nums[left ++]);
+        }
+        return nums;
+    }
+};
+```
+## 剑指offer57 和为s的两个数
+思路：双指针算法，利用数组递增的性质
+```c++
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int n = nums.size();
+        int left = 0 , right = n - 1;
+        while(left < right){
+            int sum = nums[left] + nums[right];
+            if(sum == target) return {nums[left] , nums[right]};
+            else if(sum < target) {
+                left ++;
+            }else{
+                right -- ;
+            }
+        }
+        return {};
+    }
+};
+```
+## 剑指offer58 翻转单词顺序
+思路：先将前后的空格去掉，然后将每个单词进行反转存储在容器中，最后反向从容器中取单词合并组成最终答案。这题关键是很多细节部分
+1.当s为空，当s为纯空格需要进行特判
+2.当我们把前后的空格去掉之后，为了方便找每个单词，给最后一个字符后再加上一个空格
+```c++
+class Solution {
+public:
+    string reverseWords(string s) {
+        int n = s.size();
+        if(n == 0)return "";
+        //第一步将空格处理
+        int i = 0 , j = n - 1;
+        while(s[i] ==' ' && i < n) i ++ ;
+        if(i == n )return "";
+        while(s[j] == ' ' && j >= 0 ) j --;
+        s = s.substr(i , j - i + 1);
+        // 第二步开始翻转
+        s = s + ' ';
+        vector<string> res;
+        i = 0 , j = 0 ;
+        while(j < s.size() ){
+            if(s[j] != ' ') {
+                j ++;
+            }
+            if(s[j] == ' '){
+                string cur = s.substr(i , j - i );
+                res.push_back(cur);
+                while(s[j]==' '){
+                    j++;
+                }
+                i = j ;
+            }
+        }
+        string ans = "";
+        for(int i = res.size() - 1 ; i >= 0 ; i --){
+            ans += res[i];
+            ans += ' ';
+        }
+        ans.pop_back();
+        return ans;
+    }
+};
+```
+
+
+
+
+
+
+
+
+
+
