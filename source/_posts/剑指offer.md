@@ -812,6 +812,95 @@ public:
     }
 };
 ```
+## 剑指offer12 矩阵中的路径
+关键处，在返回的时候，应该写if(dfs)return ，而不是直接return dfs 。这两者的区别为当dfs为false的时候，只是说明当前的起始节点找不到路径，而后者是如果一条路径找不到直接返回了。
+```c++
+class Solution {
+public: 
+    //  设置一个标记容器，当走过当前的字符的时候，标记为True
+    vector<vector<bool>> st;
+    int dx[4] = {0 , 1 , 0 , -1};
+    int dy[4] = {1 , 0 , -1 , 0};
+    int m , n;
+    bool exist(vector<vector<char>>& board, string word) {
+        m = board.size();
+        if(!m) return false;
+        n = board[0].size();
+        st = vector<vector<bool>>(m  , vector<bool>(n , false));
+        for(int i = 0 ; i < m ; i ++){
+            for(int j = 0 ; j < n ; j ++){
+                if(dfs(board , word , 0 , i , j ) ) return true;
+            }
+        }
+        return false;
+    }
+    bool dfs(vector<vector<char>> & board , string word , int u ,int x, int y){
+        // 首先判断当前的字符是否为board上xy处的点如果不是直接返回false
+        if(word[u] != board[x][y]) return false;
+        // 当前遍历的点正好是表格上的点，那么判断是否正好遍历到了最后一个  如果是的话直接返回true
+        if(u == word.size()-1 ){
+            return true;
+        }
+        // 当前字符没有遍历过，那么设置遍历好了，然后走到下一个字符
+        if(!st[x][y]){
+            st[x][y] = true;
+            for(int i = 0 ; i < 4; i ++){
+                int a = dx[i] + x;
+                int b = dy[i] + y;
+                if(a >= 0 && a < m && b>= 0 && b< n && !st[a][b]){
+                    if(dfs(board , word , u+1 , a  ,b)) return true;
+                }
+            }
+            st[x][y] = false;
+        }
+        return false;
+     }
+};
+```
+## 剑指offer13 机器人的运动范围
+思路：广度优先遍历一般采用的是队列的形式存储已经遍历的节点，这里采用的是负对角线斜向下的广度优先遍历方法
+```c++
+class Solution {
+public:
+    int count(int x,int y){
+        int res = 0 ;
+        while(x){
+            res += x%10;
+            x /= 10;
+        }
+        while(y){
+            res += y%10;
+            y /= 10;
+        }
+        return res;
+    }
+    int movingCount(int m, int n, int k) {
+        int dx[2] = {0 , 1};
+        int dy[2] = {1 , 0};
+        if(!k) return 1;
+        queue<pair<int , int>> q;
+        vector<vector<bool>> st(m , vector<bool>(n , false));
+        q.push(make_pair(0 , 0 ));
+        st[0][0] = true;
+        int res = 1;
+        while(!q.empty()){
+            auto [a,b] = q.front();
+            q.pop();
+            for(int i = 0; i < 2 ; i ++){
+                int x = a  + dx[i];
+                int y = b + dy[i];
+                if(x <0 || x >= m || y <0 || y >= n || st[x][y] || count(x , y) > k ){
+                    continue;
+                }
+                q.push(make_pair(x,y));
+                res ++;
+                st[x][y] = true;
+            }
+        }
+        return res;
+    }
+};
+```
 
 
 
