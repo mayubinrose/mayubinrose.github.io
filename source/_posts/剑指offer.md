@@ -901,8 +901,83 @@ public:
     }
 };
 ```
-
-
+## 剑指offer34 二叉树中和为某一值的路径
+思路：整体分为两步，一步是进行前序遍历，第二步是在遍历的过程中进行记录，每次遍历到一个节点我们将这个节点的值进行记录
+1.当路径达到了空节点的时候，我们直接返回
+2.当路径达到了叶子节点同时此时的路径之和正好等于目标值，我们添加到res中
+```c++
+class Solution {
+public:
+    vector<vector<int>> res;    
+    vector<int> path;
+    vector<vector<int>> pathSum(TreeNode* root, int target) {
+        if(!root) return res;
+        dfs(root , target);
+        return res;
+    }
+    void dfs(TreeNode* root , int sum){
+        // 前序遍历 如果当前遍历到了空节点 那么直接返回
+        if(!root) return ;
+        sum -= root->val;
+        path.push_back(root->val);
+        if(sum == 0  && root->left == NULL && root->right == NULL)res.push_back(path);
+        if(root->left) dfs(root->left, sum);
+        if(root->right) dfs(root->right , sum);
+        path.pop_back();
+    }
+};
+```
+## 剑指offer36 二叉搜索树与双向链表
+```c++
+class Solution {
+public:
+// 二叉搜索树的中序遍历就是一个递增的序列，我们中序遍历的过程中找到前一个节点以及后一个节点，然后将两个节点进行连接，如果前一个节点是空的话，说明当前节点就是最小的节点，最终遍历完全之后，head指向的是头，pre指向的是尾部，然后head->left= pre pre->right=head
+// 初始化head节点和pre节点什么都没有指向，然后head的
+    Node* head;
+    Node* pre;
+    Node* treeToDoublyList(Node* root) {
+        if(!root)return NULL;
+        dfs(root);
+        // 最终结束的时候head指向最前一个 pre指向最后一个 cur指向了NULL 返回
+        head->left = pre;
+        pre->right = head;
+        return head;
+    }
+    void dfs(Node* cur){
+        // 当前遍历的节点是空说明已经走到最后了
+        if(cur == NULL) return ;
+        dfs(cur->left);
+        // 如果当前节点的前一个是空表示当前节点没有前一个小于它的节点，那么它就是最小的，所以head指向它
+        if(pre == NULL) head =cur;
+        else{
+            pre->right = cur;
+            cur->left = pre;
+        }
+        pre = cur;
+        dfs(cur->right);
+    }
+};
+```
+## 剑指offer53 二叉搜索树的第k大的数
+```c++
+class Solution {
+public:
+    int res = 0;
+    int k = 0;
+    int kthLargest(TreeNode* root, int _k) {
+        if(!root) return 0;
+        k = _k;
+        dfs(root);
+        return res;
+    }
+    void dfs(TreeNode* root) {
+        if(!root) return ;
+        dfs(root->right);
+        if(--k == 0 )res = root->val;
+        dfs(root->left);
+    }
+};
+```
 
 
 
