@@ -978,7 +978,65 @@ public:
     }
 };
 ```
-
+## 剑指offer45 把数组排成最小的数
+将快排应用在字符串中间，一个数比另一个大的时候，那么它在前面形成的数字的大小是要更大的
+```c++
+class Solution {
+public:
+// c++中string类型可以直接进行比较操作
+    string minNumber(vector<int>& nums) {
+        string res = "";
+        vector<string> strs;
+        for(auto c:nums) strs.push_back(to_string(c));
+        int  n =strs.size();
+        QuickSort(strs , 0 , n - 1);
+        for(auto c:strs){
+            res.append(c);
+        }
+        return res;
+    }
+    int Patition(vector<string>& strs , int low , int high){
+        string temp = strs[low];
+        string pivot = strs[low];
+        while(low < high) {
+            while(strs[high] + pivot >= pivot + strs[high] && low < high) high--;
+            strs[low] = strs[high];
+            while(strs[low] + pivot <= pivot + strs[low] && low < high) low++;
+            strs[high] = strs[low];
+        }
+        strs[low] = temp;
+        return low;
+    }
+    void QuickSort(vector<string>& strs, int low , int high){
+        if(low >= high) return ;
+        int p = Patition(strs , low , high);
+        QuickSort(strs, low, p - 1);
+        QuickSort(strs, p + 1, high);
+    }
+};
+```
+## 剑指offer61 扑克牌中的顺子
+满足顺子的条件有
+1.最大值减去最小值的差值小于5（不算大小王）
+2.没有重复的数字
+```c++
+class Solution {
+public:
+    bool isStraight(vector<int>& nums) {
+        int n = nums.size();
+        unordered_set<int> Set;
+        int ss = 14 , mm = 0;
+        for(int i = 0 ; i < n ; i++){
+            if(nums[i] == 0 )continue;
+            if(Set.count(nums[i])) return false;
+            mm = max(mm ,nums[i]);
+            ss = min(ss , nums[i]);
+            Set.insert(nums[i]);
+        }
+        return mm - ss < 5;
+    }
+};
+```
 
 
 
