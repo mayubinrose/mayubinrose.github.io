@@ -1037,6 +1037,65 @@ public:
     }
 };
 ```
+## 剑指offer40 最小的k个数字
+思路：大根堆，c++中的优先队列就是大根堆，每次存储最小的k个数字，如果当前的数字小于大根堆中的最小的数字，那么直接弹出堆顶元素，优先队列的pop()是堆顶元素，push是加入进去，top()也是堆顶元素
+```c++
+class Solution {
+public:
+    vector<int> getLeastNumbers(vector<int>& arr, int k) {
+        vector<int> res(k , 0);
+        if(k == 0 )return res;
+        // 大根堆
+        priority_queue<int , vector<int> , less<int>> Q;
+        // 小根堆
+        // priority_queue<int , vector<int> , greater<int>> Q;
+        for(int i = 0 ; i < k ; i ++){
+            Q.push(arr[i]);
+        }
+        for(int i = k ; i < arr.size() ; i ++){
+            if(Q.top() > arr[i]){
+                Q.pop();
+                Q.push(arr[i]);
+            }
+        }
+        for(int i = 0 ; i < k ; i ++){
+            res[i] = Q.top();
+            Q.pop();
+        }
+        return res;
+    }
+};
+```
+## 剑指offer41 数据流中的中位数
+```c++
+class MedianFinder {
+public:
+    /** initialize your data structure here. */
+    //设置一个大根堆一个小根堆
+    priority_queue<int,vector<int> ,less<int>> Big;
+    priority_queue<int,vector<int> ,greater<int>> Small;
+    MedianFinder() {
+        
+    }
+    void addNum(int num) {
+        // 每次保证大根堆的数字总数是大于小根堆的总数，或者两个堆的数量相同，返回值就是大根堆的堆顶，或者两个堆的堆顶之和的平均值
+        // 在大根堆中洗礼一下得到一个大根堆的最大值
+        Big.push(num);
+        int top = Big.top();
+        Big.pop();
+        Small.push(top);
+        if(Small.size() > Big.size()){
+            int top2 = Small.top();
+            Small.pop();
+            Big.push(top2);
+        }
+    }
+    double findMedian() {
+        if(Small.size() == Big.size()) return (double)(Big.top() + Small.top())/2;
+        else return (double)Big.top();
+    }
+};
+ ```
 
 
 
