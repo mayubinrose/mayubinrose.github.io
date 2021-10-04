@@ -1096,6 +1096,106 @@ public:
     }
 };
  ```
+ ## 剑指offer55 二叉树的深度
+ ```c++
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        if(!root) return 0;
+        int left = maxDepth(root->left);
+        int right = maxDepth(root->right);
+        return max(left, right) + 1;
+    }
+};
+```
+## 剑指offer55 平衡二叉树
+平衡二叉树不仅仅当前的左右子树的高度差不能超过1，同时左右子树的高度差也不能超过一
+```c++
+class Solution {
+public:
+    bool isBalanced(TreeNode* root) {
+        if(!root) return true;
+        int left = maxDepth(root->left);
+        int right = maxDepth(root->right);
+        if(left > right + 1 || right > left + 1)return false;
+        return isBalanced(root->left) && isBalanced(root->right);
+    }
+    int maxDepth(TreeNode* cur){
+        if(!cur) return 0;
+        int left = maxDepth(cur->left);
+        int right = maxDepth(cur->right);
+        return max(left  , right) +1;
+    }
+};
+```
+## 剑指offer68 二叉搜索树的最近公共祖先节点
+```c++
+class Solution {
+public:
+// 分为三种情况，如果p的值小于root的值但是q的值大于root的值那么直接返回root
+// 如果 p q 在同一边都在root的左边，那么直接递归到左子树去 反之递归到右子树
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        // 始终保持p的节点值小于q的节点值
+        if(p -> val > q->val) swap(p , q);
+        if(root->val >= p->val && root->val <= q->val) return root;
+        if(q->val < root->val) return lowestCommonAncestor(root->left , p , q);
+        else return lowestCommonAncestor(root->right , p , q);
+    }
+};
+```
+## 剑指offer68 II 二叉树的最近公共祖先
+方法一：直接找到到当前节点的路径，然后从根开始遍历路径中是否存在相同的祖先节点，如果存在则直接返回
+方法二：递归
+```c++
+class Solution {
+public:
+// 得到一条从des到cur的路径
+    bool dfs(TreeNode* cur , TreeNode* des , vector<TreeNode*>& path){
+        if(cur == NULL) return false;
+        if(cur == des) {
+            path.push_back(cur);
+            return true;
+        }
+        if(dfs(cur ->left , des , path ) || dfs(cur->right , des ,path)){
+            cout<<path[0]->val;
+            path.push_back(cur);
+            return true;
+        }
+        return false;
+    }
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        vector<TreeNode*> pathP ;
+        vector<TreeNode*> pathQ;
+        // 得到两条从p和q出发到root的路径
+        dfs(root , p , pathP);
+        dfs(root , q , pathQ);
+        // 转变路径之后得到两条从root出发到q p的路径
+        reverse(pathQ.begin(),pathQ.end());
+        reverse(pathP.begin(),pathP.end());
+        int len = min(pathP.size() , pathQ.size());
+        for(int i = len-1 ; i >= 0  ; i --){
+            if(pathP[i] == pathQ[i]){
+                return pathP[i];
+            }
+        }
+        return NULL;
+    }
+};
+class Solution {
+public:
+// 递归方法如果当前的root等于p或者q那么直接返回q或者p
+// 在左右子树中找p或者q的公共祖先，如果找到的left或者right都是空说明，左右子树都不存在p或者q，那么返回NULL
+// 如果左子树为空，返回右反之返回左，左右都不是空，返回root
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if(root == NULL || root == q || root == p) return root;
+        auto left = lowestCommonAncestor(root->left , p , q) ;
+        auto right = lowestCommonAncestor(root->right , p , q);
+        if(left==NULL) return right;
+        if(right == NULL) return left;
+        return root;
+    }
+};
+```
 
 
 
