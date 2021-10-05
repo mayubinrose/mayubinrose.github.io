@@ -1196,7 +1196,76 @@ public:
     }
 };
 ```
-
+## 剑指offer07 重建二叉树
+使用一个map找到每个中序中的数字的位置，通过位置找到左右子树的开始与结束的节点位置
+```c++
+class Solution {
+public:
+// 递归构造方法，在前序遍历中是根左右  中序中是左根右
+    unordered_map<int,int>  map;
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        for(int i = 0 ;i < inorder.size() ; i ++) map[inorder[i]] = i ; 
+        int len = preorder.size();
+        TreeNode* root = dfs(preorder , inorder , 0 , len -1 , 0 , len - 1);
+        return root;
+    }
+    TreeNode*  dfs(vector<int>& preorder , vector<int>& inorder , int pl , int pr , int il , int ir){
+        if(pl > pr) return NULL;
+        TreeNode* root = new TreeNode(preorder[pl]);
+        int k = map[root->val];
+        // k是根的位置 k-1-il是递归下去的长度
+        root->left = dfs(preorder , inorder , pl + 1 ,pl + 1 + k - 1 - il ,il , il + k - 1);
+        root->right = dfs(preorder , inorder , pl + 1 + k - 1 - il + 1 , pr , k + 1 , ir);
+        return root;
+    }
+};
+```
+## 剑指offer16 值的整数次平方
+快速幂的方法：注意边界值的处理
+```c++
+class Solution {
+public:
+// 快速幂的方法，任何一个数字n可以转换为一个二进制数，当这个二进制数字 x^n == x^1001 = x^2^3*1 * x^2^0*1
+    double myPow(double x, int n) {
+        // 如果n是int类型的最小值 -2147483648,2147483647 需要转换为-n 的时候会出错
+        long b = n ;
+        if(n < 0 ){
+            x = 1  / x;
+            b = -b;
+        }
+        double res = 1.0;
+        while(b > 0 ){
+            if(b & 1 == 1) res = res * x;
+            x = x *x ;
+            b >>= 1;
+        }
+        return res;
+    }
+};
+```
+## 剑指offer33 二叉搜素树的后序遍历序列
+```c++
+class Solution {
+public:
+    bool verifyPostorder(vector<int>& postorder) {
+        int len = postorder.size();
+        return dfs(postorder , 0 , len - 1);
+    }
+    bool dfs(vector<int>& postorder ,int  l , int r){
+        // 如果开始节点的位置大于等于结尾的位置，说明这个后序节点没有问题了
+        if(l >= r) return true;
+        int k = l ;
+        while(k < r && postorder[k] <  postorder[r]) k ++ ;
+        // k == r表示没有右子树 全部是左子树
+        if(k == r)  return dfs(postorder , l , r - 1);
+        int temp = k ;
+        while(k < r && postorder[k] > postorder[r]) k ++;
+        // 一次遍历完全后，k应该为结尾节点 如果不是直接返回false
+        if(k < r) return false; 
+        return dfs(postorder, l , temp - 1 ) && dfs(postorder, temp , r - 1);
+    }
+};
+```
 
 
 
