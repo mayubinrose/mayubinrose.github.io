@@ -1266,6 +1266,49 @@ public:
     }
 };
 ```
+## 剑指offer15 二进制中1的个数
+```c++
+class Solution {
+public:
+// 无符号整数的n 
+    int hammingWeight(uint32_t n) {
+        int res = 0 ;
+        long long  m = n ;
+        while(m){
+            res += m & 1;
+            m >>= 1;
+        }
+        return res;
+    }
+};
+```
+## 剑指offer65 不用加减乘除做加法
+每一位的和转换为亦或操作，每一位的进位操作转换为求与然后右移一位操作，求和的方法就是循环使用亦或，然后将进位赋值给b
+```c++
+class Solution {
+public:
+// 计算机中int类型是以补码形式存在的
+// a b 和  进位
+// 0 0 0   0 
+// 0 1 1   0 
+// 1 0 1   0
+// 1 1 0   1  和的计算的为非进位的亦或运算，进位的计算为a & b >> 1
+    int add(int a, int b) {
+        int res = 0 ; 
+        while(b ){
+            cout <<"a为"<< a << endl;
+            cout <<"b为"<< b << endl;
+            // 首先计算进位的数值  c++ 中负数不支持左移位 ，所以要转换为无符号
+            int c = (unsigned int)(a & b ) << 1;
+            cout <<"c为"<< c << endl;
+            // 然后计算和，直接将和合并到a中去
+            a ^= b;
+            b = c ;
+        }
+        return a ; 
+    }
+};
+```
 
 
 
