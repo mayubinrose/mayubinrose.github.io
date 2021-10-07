@@ -1309,6 +1309,29 @@ public:
     }
 };
 ```
+## 剑指offer56 数组中数字出现的次数
+```c++
+class Solution {
+public:
+// 一共有两个数字是不一样的，所有的数字进行亦或处理之后，得到了就是这两个数字的亦或值
+// 这个两个数字是不一样的，所以得到的这个异或值中为1的部分肯定是两个数不同的位，我们找到第一个这样的位，就可以将两个数字区分开来了
+    vector<int> singleNumbers(vector<int>& nums) {
+        int x = 0 , y = 0 , m = 1, temp = 0;
+        for(auto num: nums){
+            temp ^= num;
+        }
+        // 找到第一个为1的位
+        while((temp & m) == 0 ){
+            m <<= 1;
+        }
+        for(auto num :nums){
+            if(num & m )  x^= num;
+            else y^= num;
+        }
+        return {x,y};
+    }
+};
+```
 
 
 
