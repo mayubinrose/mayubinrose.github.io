@@ -1332,9 +1332,134 @@ public:
     }
 };
 ```
-
-
-
+## 剑指offer39 数组中的众数
+记作众数的票数为1 非众数的票数为-1 总体的票数之和是>0的，如果遍历过程中前一段的票数之和为0了，表示众数没有出现在前一段，后一段的票数之和仍然是大于0的，众数出现在后一段中
+```c++
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int res = 0 ;
+        int n = nums.size();
+        int vote = 0;
+        for(int i = 0 ; i < n ; i ++){
+            if(vote == 0) res = nums[i];
+            if(nums[i] == res) vote++;
+            else vote -- ;
+        }
+        return res;
+    }
+};
+```
+## 剑指offer66 构建乘积数组
+分成两段计算乘积，前一段的乘积再乘以后一段的乘积得到最终的结果
+```c++
+class Solution {
+public:
+    vector<int> constructArr(vector<int>& a) {
+        int n = a.size();
+        if(!n) return {};
+        vector<int> b(n, 0);
+        b[0]=1;
+        // 最终得到的b[i]为从0到i-1这一段的数字之积
+        for(int i = 1 ; i < n ; i ++){
+            b[i] = b[i-1] * a[i - 1 ];
+        }
+        int temp = 1;
+        // temp得到从i往后的一段的乘积
+        for(int i = n - 2; i >= 0 ; i --){
+            temp = temp * a[i + 1];
+            b[i] = b[i] * temp;
+        }
+        return b;
+    }
+};
+```
+## 剑指offer14 剪绳子
+```c++
+class Solution {
+public:
+    int cuttingRope(int n) {
+        // 2*2*2 小于3 * 3
+        int res = 1 ;
+        if(n <= 3){
+            if(n == 3)return 2;
+            if(n == 2)return 1;
+        }
+        while(n > 3){
+            n-=3;
+            res *= 3;
+        }
+        if(n == 3){
+            res *=3;
+        }
+        if(n == 1 ) {
+            res /=3;
+            res *=4;
+        }
+        if(n == 2) res *= 2;
+        return res;
+    }
+};
+```
+## 剑指offer57 和为s的连续正常序列
+```c++
+class Solution {
+public:
+    vector<vector<int>> findContinuousSequence(int target) {
+        vector<int> path;
+        vector<vector<int>> res;
+        // 滑动窗口 左闭右开 
+        int left = 1 , right = 1 ;
+        int sum = 0 ;
+        while(left <= target / 2){
+            if(sum < target){
+                sum += right;
+                right ++ ;
+            }
+            else if (sum > target){
+                sum -= left;
+                left ++ ;
+            }else{
+                for(int i = left ; i < right ; i++){
+                    path.push_back(i);
+                }
+                res.push_back(path);
+                path.clear();
+                sum -= left;
+                left ++ ;
+            }
+        }
+        return res;
+    }
+};
+```
+## 剑指offer62 圆圈中最后剩下的数字
+方法一：数学方法，每次删除一个然后下一个数字顶上去，最终剩下的坐标肯定是下标0，每次加上长度然后取模得到下一轮的下标直到到最后的结果。
+方法二：递归方法加上数学方法，get(n , m) ，如果n为1，返回的下标就是0，每次删除一个数字之后得到最终的
+```c++
+class Solution {
+public:
+    int lastRemaining(int n, int m) {
+        int res = 0 ;
+        for(int i = 2 ; i <= n ; i++){
+            res = (res + m ) % i ; 
+        }
+        return res;
+    }
+};
+class Solution {
+public:
+// 递归的方法
+    int get(int n , int m ){
+        if(n == 1) return 0;
+        int x = get(n - 1 , m);
+        return (m%n  + x) % n ;
+    }
+    int lastRemaining(int n, int m) {
+        return get(n , m);
+    }
+};
+```
 
 
 
