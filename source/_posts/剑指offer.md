@@ -1460,6 +1460,61 @@ public:
     }
 };
 ```
+## 剑指offer29 顺时针打印矩阵
+```c++
+class Solution {
+public:
+    vector<vector<bool>> st ;
+    int dx[4] = {0 , 1 , 0 , -1 };
+    int dy[4] = {1 , 0 , -1 , 0 };
+    vector<int> res;
+    int d = 0 ;
+    int m , n ;
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        m = matrix.size();
+        if(!m) return res;
+        n = matrix[0].size();
+        st = vector<vector<bool>>(m , vector<bool>(n , false));
+        for(int i = 0 , x = 0 , y = 0 ; i < m * n ; i ++){
+            st[x][y] = true;
+            res.push_back(matrix[x][y]);
+            int a = x + dx[d];
+            int b = y + dy[d];
+            // 这里不能用while由于当所有的数字都遍历完全后，会一直进入死循环，因为周围全部都是true
+            if(a >= m || a < 0 || b >= n ||  b < 0  || st[a][b] == true) {
+                cout<<"循环内部:"<< a << ' ' << b ;
+                d = (d + 1) % 4;
+                a = x + dx[d];
+                b = y + dy[d];
+            }
+            cout<< "这是："<<a <<" "<< b;
+            x = a; 
+            y = b;
+        }
+        return res;
+    }
+};
+```
+## 剑指offer31 栈的压入、弹出序列
+```c++
+class Solution {
+public:
+// 使用一个栈进行模拟操作，如果这个栈最终的模拟结果可以实现空栈，说明可以达到目标
+// 如果最后这个栈不能为空说明不能，由于栈中的数字都是互不相同的，所有每次遇到一个可以出栈的数字就得马上出栈
+    bool validateStackSequences(vector<int>& pushed, vector<int>& popped) {
+        stack<int> stk ; 
+        int count  = 0 ; 
+        for(int i = 0 ; i < pushed.size(); i ++){
+            stk.push(pushed[i]);
+            while(!stk.empty() && stk.top() == popped[count]){
+                stk.pop();
+                count ++; 
+            }
+        }
+        return stk.empty();
+    }
+};
+```
 
 
 
