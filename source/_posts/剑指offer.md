@@ -1515,6 +1515,73 @@ public:
     }
 };
 ```
+## 剑指offer20 表示数值的字符串
+分为两个函数一个是判断是否为无符号一个是判断为有符号的
+```c++
+class Solution {
+public:
+    bool scaninteger(string s , int& index){
+        if(s[index] == '+' || s[index] == '-') {
+            index ++;
+        }
+        return unsignedInterger(s , index);
+    }
+    bool unsignedInterger(string s , int& index){
+        int begin = index;
+        while(index < s.size()  && s[index] >= '0' && s[index] <= '9'){
+            index++;
+        }
+        return begin < index;
 
+    }
+    bool isNumber(string s) {
+        if(s.size() == 0)return false;
+        int k = 0;
+        while(s[k] == ' ') k ++;
+        bool res = scaninteger(s , k);
+        if(s[k] == '.'){
+            k ++;
+            res = unsignedInterger(s , k ) || res;
+        }
+        if(s[k] == 'e' || s[k] == 'E'){
+            k ++;
+            res = scaninteger(s, k) && res;
+        }
+        while(s[k] == ' ') k ++;
+        return res && k == s.size();
+    }
+};
+```
+## 剑指offer67 字符串转换为整数
+```c++
+class Solution {
+public:
+    int strToInt(string s) {
+        int n = s.size();
+        int res = 0 ;
+        int i = 0 ;
+        int sign = 1;
+        while(s[i] == ' ' && i < n){
+            i ++ ;
+        }
+        if(s[i] == '+'){
+            i ++;
+        }else if(s[i] == '-'){
+            i ++ ;
+            sign = -1;
+        }
+        for( ; i < n ; i ++){
+            if(s[i] < '0' || s[i] > '9') break;
+            int x = s[i] - '0';
+            if(sign == 1 && res > (INT_MAX - x)/10) return INT_MAX;
+            if(sign == -1 && -res < (INT_MIN + x)/10 )return INT_MIN;
+            // 因为负数的绝对值要大于正数的绝对值 ,此时res一直存储的是正数部分 ,所以这里要进行特判,如果当前的数字正好大小就是负数的最小值直接返回
+            if(-res * 10 - x == INT_MIN) return INT_MIN;
+            res = res * 10 + x;
+        }
+        return res * sign;
+    }
+};
+```
 
 
