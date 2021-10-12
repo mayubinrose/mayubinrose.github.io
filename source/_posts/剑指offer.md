@@ -1583,5 +1583,69 @@ public:
     }
 };
 ```
+## 剑指offer59 滑动窗口的最大值
+双端队列的使用：存储的数据是下标，从队头到队尾是单调递减的
+```c++
+class Solution {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        vector<int> res;
+        deque<int> q;
+        // front到back是存储的下标 而且是单调递减的
+        for(int i = 0 ;i < nums.size() ; i ++){
+            // 如果比最大值的下标要超过了k 说明窗口达到极限了，弹出队头
+            while(!q.empty() && i - q.front() >= k) q.pop_front();
+            // 如果存储的下标值比最小的还要大，队尾要出队，因为要保持单调递减的特点
+            while(!q.empty() && nums[q.back()] <= nums[i]) q.pop_back();
+            q.push_back(i);
+            if(i >= k-1){
+                res.push_back(nums[q.front()]);
+            }
+        }
+        return res;
+    }
+};
+```
+## 剑指offer59 队列的最大值
+双端队列中一直存储的不是当前队列中的最大值的情况，保持着当只要是出队的数字不等于当前的双端的队头的数字，双端的队头就一定是当前队列中最大的数字。
+```c++
+class MaxQueue {
+public:
+    // 双端队列来存储
+    queue<int> q;
+    deque<int> dq;
+    MaxQueue() {
 
+    }
+    int max_value() {
+        if(dq.size() == 0 )return -1;
+        return dq.front();
+    }
+    
+    void push_back(int value) {
+        q.push(value);
+        if(dq.empty()){
+            dq.push_back(value);
+        }else if(value > dq.front()){
+            dq.clear();
+            dq.push_back(value);
+        }else{
+            while(dq.back() < value){
+                dq.pop_back();
+            }
+            dq.push_back(value);
+        }
+    }
+    
+    int pop_front() {
+        if(q.empty()) return -1;
+        int top = q.front();
+        q.pop();
+        if(top == dq.front()){
+            dq.pop_front();
+        }
+        return top;
+    }
+};
+```
 
