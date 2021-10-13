@@ -1648,4 +1648,108 @@ public:
     }
 };
 ```
+## 剑指offer37 序列化二叉树
+```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Codec {
+public:
+    // Encodes a tree to a single string.
+    string serialize(TreeNode* root) {
+        string res = "";
+        if(!root) return res;
+        queue<TreeNode*> q ;
+        q.push(root);
+        while(!q.empty()){
+            auto cur  = q.front();
+            q.pop();
+            if(cur == NULL){
+                res += "#";
+                res += ',';
+            }else{
+                res += to_string(cur->val);
+                res += ',';
+                q.push(cur->left);
+                q.push(cur->right);
+            }
+        }
+        return res;
+    }
 
+    // Decodes your encoded data to tree.
+    TreeNode* deserialize(string data) {
+        vector<TreeNode*> nodes;
+        if(data.size() == 0 )return NULL;
+        int j =0 ;
+        while(j < data.size()){
+            string temp = "";
+            while(data[j] != ','){
+                temp += data[j];
+                j ++;
+            }
+            if(temp == "#"){
+                nodes.push_back(NULL);
+            }else{
+                auto cur = new TreeNode(stoi(temp));
+                nodes.push_back(cur);
+            }
+            j ++ ;
+        }
+        int pos = 1;
+        for(int i = 0 ; i < nodes.size() ; i ++){
+            if(nodes[i] == NULL) continue;
+            nodes[i]->left = nodes[pos ++];
+            nodes[i]->right = nodes[pos++];
+        }
+        return nodes[0];
+    }
+};
+```
+## 剑指offer38 字符串的排列2
+```c++
+class Solution {
+public:
+    vector<string > res;
+    vector<char> path;
+    vector<bool> std;
+    vector<string> permutation(string s) {
+        int n = s.size();
+        path =vector<char>(n , 0);
+        sort(s.begin() , s.end());
+        std.resize(n , false);
+        dfs(s , 0 , 0 );
+        return res;
+    }
+    void dfs(string s , int  u , int start ){
+        if(u == s.size()) {
+            string cur ="";
+            for(auto c: path){
+                cur += c;
+            }
+            res.push_back(cur);
+            return ;
+        }
+        for(int i = start ; i < s.size() ; i ++){
+            if(!std[i]){
+                std[i] = true;
+                path[i] = s[u];
+                if(u + 1 < s.size() && s[u] == s[u + 1]){
+                    dfs(s , u + 1 , i + 1 );
+                }
+                else{
+                    dfs(s , u + 1 , 0 );
+                }
+                std[i] = false;
+            }
+        }
+    }
+
+};
+```
