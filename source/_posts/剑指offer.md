@@ -1752,4 +1752,74 @@ public:
     }
 
 };
+class Solution {
+public:
+    vector<string> res;
+    vector<string> permutation(string s) {
+        dfs(s , 0);
+        return res;
+    }
+    void dfs(string s , int u){
+        if(u == s.size() - 1) {
+            cout<< s << endl;
+            // u为当前的要放置数字的位置，如果当前的位置已经到达最后一个了 直接将s添加到答案中，
+            res.push_back(s);
+            return ;
+        }
+         // st是临时变量，记录了当前已经出现的字符的情况
+        set<int> st;
+        for(int i = u ; i < s.size() ;i ++){
+            // 每种字符在i这个位置只固定了一次，在i这个位置不存在重复出现的字符
+            if(st.find(s[i]) != st.end() ) continue;
+            st.insert(s[i]);
+            swap(s[i] , s[u]);
+            dfs(s , u + 1);
+            swap(s[i] , s[u]);
+        }
+    }
+};
+```
+## 剑指offer49 丑数
+```c++
+class Solution {
+public:
+// 动态规划  丑数一定也是丑数乘以一个数字得到的 , 第n个丑数是前面n-1个数字中某一个数乘以2 乘以3 乘以5 中的最小值得到的
+    int nthUglyNumber(int n) {
+        vector<int> f(n, 0 );
+        f[0] = 1;
+        int a = 0 ,b = 0, c = 0;
+        for(int i = 1 ; i < n ; i ++){
+            int cura = f[a] * 2;
+            int curb = f[b] * 3;
+            int curc = f[c] * 5;
+            int minp = min(min(cura , curb) ,curc);
+            if(minp == cura) a ++ ; 
+            if(minp == curb) b ++ ;
+            if(minp == curc) c ++ ;
+            f[i] = minp ;
+        }
+        return f[n - 1];
+    }
+};
+```
+## 剑指offer60 n个骰子的点数
+```c++
+class Solution {
+public:
+// tmp 由dp向前递推得到，每次递推产生的范围与n相关
+// 动态规划，f[i][x]表示i个筛子产生的值为x的概率，我们从前向后递推，f[i][x] = 求和f[i-1][x-j] * 1/6 j 的范围是1到6
+    vector<double> dicesProbability(int n) {
+        vector<double> dp (6 , 1.0/6.0);
+        for(int i = 2;  i <= n ; i ++){
+            vector<double> tmp (5 * i + 1 , 0 );
+            for(int j = 0; j < dp.size() ; j ++){
+                for(int k = 0 ; k < 6 ; k ++){
+                    tmp[j + k] += dp[j] * 1.0/6.0;
+                }
+            }
+            dp = tmp;
+        }
+        return dp;
+    }
+};
 ```
