@@ -1823,3 +1823,77 @@ public:
     }
 };
 ```
+## 剑指offer19 正则表达式匹配
+```c++
+class Solution {
+public:
+    bool isMatch(string s, string p) {
+        int m = s.size();
+        int n = p.size();
+        s = ' ' + s;
+        p = ' ' + p;
+        // 相当于给fij 前面扩充一位后面扩充一位，返回值为fm+1 n+1
+        vector<vector<bool>> f(m + 2 , vector<bool> (n + 2, false));
+        // 00 表示都没有字符时是匹配的，所以返回值f[m+1][n+1]表示前m个与前n个是匹配的
+        f[0][0] = true;
+        for(int i = 1 ; i <= m + 1 ; i ++){
+            for(int j = 1 ; j <= n + 1; j ++){
+                // 这里都是 j-1 i-1来当作找到的s与p的当前下标 因为遍历的ij的开始值为1 f的范围从0到m+1 m+2个数字
+                // 当前相同或者当前可以任意匹配，直接由前面得到
+                if(p[j-1] == s[i-1] || p[j-1] == '.'){
+                    f[i][j] = f[i-1][j -1];
+                }
+                // 当前的j>=2 是一定的，因为如果j为1 那么表示第一个就是*，*一定是要在一个字符之后的
+                // 当前为* 要分情况讨论 ，如果 *的前一个不能匹配并且*的前一个不是.，那么说明*只可以和前一个字符一块表示为空
+                if(p[j-1] == '*' ){
+                    if(p[j-2] != s[i-1] && p[j-2] != '.') {
+                        f[i][j] = f[i][j-2];
+                    }
+                    // 如果当前的*的前一个可以匹配或者*的前一个是.
+                    // f[i][j-1] 表示a*匹配为a，f[i][j-2]表示a*匹配为空
+                    // 关键是f[i-1][j],表示s无视当前的i位，前面一段如果可以匹配的话，当前的i位再加上一个相同的a也一定可以匹配上
+                    else {
+                        f[i][j] = f[i-1][j] || f[i][j-1] || f[i][j-2];
+                    }
+                }
+            }
+        }
+        return f[m+1][n+1];
+    }
+};
+```
+## 剑指offer51 数组中的逆序对
+每次从左边的数字中放置一个数字的时候，右边的当前下标以左开始的部分都是比当前的左边的数字要小的，此时count+= (j - (mid + 1)) ，得到最终的count，归并排序的过程中
+```c++
+class Solution {
+public:
+    int mergeSort(vector<int> & nums , vector<int>& tmp , int l , int r){
+        if(l >= r) return 0;
+        int mid = (l + r )/ 2;
+        int count = mergeSort(nums , tmp , l , mid) + mergeSort(nums , tmp , mid + 1 , r);
+        int i = l , j = mid + 1 , pos = l;
+        while(i <= mid && j <= r){
+            if(nums[i] <= nums[j]){
+                tmp[pos ++ ] = nums[i ++];
+                count += (j - (mid + 1));
+            }else{
+                tmp[pos++]  = nums[j ++ ];
+            }
+        }
+        while(i <= mid){
+            tmp[pos ++ ] = nums[i++];
+            count += (j - (mid + 1));
+        }
+        while(j <= r){
+            tmp[pos ++ ]= nums[j ++];
+        }
+        copy(tmp.begin() + l , tmp.begin() + r + 1 , nums.begin() + l);
+        return count;
+    }
+    int reversePairs(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> tmp(n );
+        return mergeSort(nums , tmp , 0 , n - 1);
+    }
+};
+```
