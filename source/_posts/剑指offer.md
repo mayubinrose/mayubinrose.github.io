@@ -1897,3 +1897,84 @@ public:
     }
 };
 ```
+## 剑指offer14 剪绳子
+```c++
+class Solution {
+public:
+    int cuttingRope(int n) {
+        long long  res = 1;
+        long long CUR = 1e9 +7 ;
+        if(n <= 3) return n-1;
+        if(n % 3 == 1){
+            res = 4 ; 
+            n -= 4;
+        }
+        if(n % 3 == 2){
+            res = 2;
+            n -=2;
+        }
+        while(n){
+            res =  res % CUR * 3;
+            n -=3;
+        }
+        return res % CUR;
+    }
+};
+```
+## 剑指offer43 1~n整数中1出现的次数
+```c++
+class Solution {
+public:
+// 数位dp的算法，n = ancdefg 考虑每一个位出现的1的个数，然后加和得到最终所有的位的1的和
+// 如果当前位为 0 那么当前可以出现的1的个数为 [0 - abc-1] * [0 - 999]
+// 如果当前位为 1 那么当前可以出现的1的个数为 [0 - abc -1] * [0 - 999] + [0 - efg]
+// 如果当前位大于1 那么当前可以出现1的个数为 [0 - abc] * [0 - 999]
+    int countDigitOne(int n) {
+        int res = 0 ;
+        vector<int>nums;
+        while(n) {
+            nums.push_back(n % 10 );
+            n /= 10;
+        }
+        reverse(nums.begin() , nums.end());
+        for(int i = 0 ; i < nums.size() ; i ++){
+            int d = nums[i];
+            int left = 0 , right = 0 ,p = 1;
+            for(int k = 0 ; k < i ; k ++){
+                left = left * 10  +nums[k];
+            }
+            for(int j = i + 1 ; j < nums.size(); j ++){
+                right = right * 10 + nums[j];
+                p = p * 10;
+            }
+            if(d == 0) res += left * p;
+            else if (d == 1)res += left * p + right + 1;
+            else res += (left + 1) * p;
+        }
+        return res;
+    }
+};
+```
+## 剑指offer44 数字序列中某一位的数字
+```c++
+class Solution {
+public:
+// 首先找到第n位数字出现在一个几位数中，然后在这个几位数中找到是第几个，然后确定了数字之后找到是这个数字的第几位
+    int findNthDigit(int n) {
+        // k是这个几位数的个数，t是这个几位数一共有多少个，s是这个几位数的开始
+        long long  k = 1 , t = 9 , s = 1;
+        while(n > k * t){
+            n -= k * t;
+            k ++ ; 
+            t = 10 * t;
+            s = 10 * s;
+        }
+        // 现在的n是当前位数开始的第n个
+        // 确定s是在这个几位数的第几个，       
+        // n是第n/k上取整个k位数，n/k上取整也就是(n+k-1)/k下取整
+        s += (n + k - 1) / k - 1;
+        int cur = n % k != 0 ? n % k : k;
+        return to_string(s)[cur - 1] - '0';
+    }
+};
+```
