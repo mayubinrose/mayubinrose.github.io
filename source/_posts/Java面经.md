@@ -5,10 +5,8 @@ date: 2022-03-10 14:58:06
 tags: 开发岗
 top: 199
 categories: 开发岗
-
 ---
 # 面试
-
 ## 线程
 
 ### 怎么创建多线程
@@ -21,9 +19,9 @@ categories: 开发岗
 ```
  <!--more--> 
 
-![image-20220304093445388](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304093445388.png)
+<!-- ![image-20220304093445388](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304093445388.png) -->
 
-![image-20220304094837276](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304094837276.png)
+<!-- ![image-20220304094837276](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304094837276.png) -->
 
 ### 进程的生命进程
 
@@ -33,7 +31,7 @@ categories: 开发岗
 
 解决办法：减少suspend()的使用，避免嵌套同步，减少同步资源的定义
 
-![image-20220304095626881](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304095626881.png)
+<!-- ![image-20220304095626881](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304095626881.png) -->
 
 ### synchronized和lock的区别
 
@@ -41,7 +39,7 @@ categories: 开发岗
 - lock需要自己显示的释放锁，但是syn是隐式的释放锁
 - syn是java关键字是JVM层面实现加锁和解锁，lock是在代码层面实现加锁和解锁，Lock锁JVM将花费较少的时间来调度线程，性能更好，具有更好的扩展性 lock->同步代码块->同步方法
 
-##  Java基础
+## Java基础
 
 ### JVM
 
@@ -61,7 +59,7 @@ Jvm是java虚拟机的意思，运行钱，java源代码编译为字节码.class
 
 private：类中 default：同一个包下面也可以 protected：不同包的子类都可以 public 同一个工程 对于class的修饰只能public和default
 
-![image-20220304134655669](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304134655669.png)
+<!-- ![image-20220304134655669](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304134655669.png) -->
 
 ### ==和equals
 
@@ -84,33 +82,33 @@ private：类中 default：同一个包下面也可以 protected：不同包的�
 
 + 某个类只能存在一个对线实例，该方法构造器private，就不能随便new一个对象，只能调用该类的某个静态方法返回类内部创建的对象，然而静态方法只能访问静态变量，所以变量也是静态的，
 
-![image-20220304141017711](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304141017711.png)
+<!-- ![image-20220304141017711](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304141017711.png) -->
 
 + 懒汉式，存在线程安全问题
 
-![image-20220304141738232](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304141738232.png)
+<!-- ![image-20220304141738232](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304141738232.png) -->
 
 ### 代理模式
 
 是java开发中使用最多的一种设计模式，代理设计就是为其他对象提供一种代理控制对这个对象的访问
 
-![image-20220304150059365](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304150059365.png)
+<!-- ![image-20220304150059365](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304150059365.png) -->
 
-![image-20220304150115424](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304150115424.png)
+<!-- ![image-20220304150115424](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304150115424.png) -->
 
 ### 工厂设计模式
 
 + 简单工厂模式，通过一个共同的接口来指向新创建的对象，如果要新加入新的产品，需要修改已有代码 
 
-  ![image-20220304150603116](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304150603116.png)
+  <!-- ![image-20220304150603116](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304150603116.png) -->
 
 + 工厂方法模式：生成具体的产品的任务发给了具体的产品工厂
 
-![image-20220304150726576](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304150726576.png)
+<!-- ![image-20220304150726576](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304150726576.png) -->
 
 + 抽象工厂模式：针对多类产品，在抽象工厂中增加创建新产品的接口，并在具体子工厂中实现新加产品的创建
 
-![image-20220304151619291](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304151619291.png)
+<!-- ![image-20220304151619291](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304151619291.png) -->
 
 ## 异常处理机制
 
@@ -135,7 +133,7 @@ private：类中 default：同一个包下面也可以 protected：不同包的�
 
 分为Collection和Map两种
 
-![image-20220304161103475](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304161103475.png)
+<!-- ![image-20220304161103475](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304161103475.png) -->
 
 
 
@@ -159,7 +157,7 @@ private：类中 default：同一个包下面也可以 protected：不同包的�
 
 ## MAP
 
-<img src="C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304161127219.png" alt="image-20220304161127219" style="zoom:50%;" />
+<!-- <img src="C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304161127219.png" alt="image-20220304161127219" style="zoom:50%;" /> -->
 
 ### Hashmap
 
@@ -188,9 +186,9 @@ private：类中 default：同一个包下面也可以 protected：不同包的�
   + 字节流：8bit
   + 字符流：16bit
 
-![image-20220304212205056](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304212205056.png)
+<!-- ![image-20220304212205056](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304212205056.png) -->
 
-<img src="C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304212659499.png" alt="image-20220304212659499" style="zoom:50%;" />
+<!-- <img src="C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304212659499.png" alt="image-20220304212659499" style="zoom:50%;" /> -->
 
 ### 序列化和反序列化
 
@@ -200,11 +198,11 @@ private：类中 default：同一个包下面也可以 protected：不同包的�
 
 ## 反射（动态语言）
 
-<img src="C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305095953011.png" alt="image-20220305095953011" style="zoom:80%;" />
+<!-- <img src="C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305095953011.png" alt="image-20220305095953011" style="zoom:80%;" /> -->
 
-<img src="C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305100712108.png" alt="image-20220305100712108" style="zoom: 67%;" />
+<!-- <img src="C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305100712108.png" alt="image-20220305100712108" style="zoom: 67%;" /> -->
 
-<img src="C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305094108355.png" alt="image-20220305094108355" style="zoom: 67%;" />
+<!-- <img src="C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305094108355.png" alt="image-20220305094108355" style="zoom: 67%;" /> -->
 
 # Java虚拟机面试题
 
@@ -296,7 +294,7 @@ private：类中 default：同一个包下面也可以 protected：不同包的�
 
 + 创建类实现接口BeanPostProcessor,创建后置处理器postProcessBeforeInitialization  postProcessAfterInitialization
 
-<img src="C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305105943035.png" alt="image-20220305105943035" style="zoom:50%;" />
+<!-- <img src="C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305105943035.png" alt="image-20220305105943035" style="zoom:50%;" /> -->
 
 ### XML自动装配
 
@@ -381,11 +379,11 @@ private：类中 default：同一个包下面也可以 protected：不同包的�
 
      + 创建接口实现类代理对象,增强类的方法
 
-     ![image-20220305112811071](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305112811071.png)
+     <!-- ![image-20220305112811071](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305112811071.png) -->
 
    + 没有接口的情况下,使用CGLIB动态代理
 
-     ![image-20220305112817921](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305112817921.png)
+     <!-- ![image-20220305112817921](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305112817921.png) -->
 
 #### JDK动态代理
 
@@ -579,7 +577,7 @@ C：控制层，controller，接受请求和响应浏览器
 10. DispatcherServlet 对view进行渲染视图
 11. Dispatcherservlet 响应用户
 
-![image-20220307151856553](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220307151856553.png)
+<!-- ![image-20220307151856553](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220307151856553.png) -->
 
 ### springmvc的优点
 
@@ -728,7 +726,7 @@ String userName = new String(request.getParamter("userName").getBytes("ISO8859-1
 
 ### 说说mybatis的工作原理
 
-![img](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/4/13/1717343a66d9566c~tplv-t2oaga2asx-watermark.awebp)
+<!-- ![img](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/4/13/1717343a66d9566c~tplv-t2oaga2asx-watermark.awebp) -->
 
 1. 读取配置文件
 2. 加载映射文件
@@ -773,13 +771,13 @@ String userName = new String(request.getParamter("userName").getBytes("ISO8859-1
 
 1. 高性能
 
-   ![img](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xNDUzNDg2OS02N2YxOGVmY2FmZTQ2NjlhLmpwZw?x-oss-process=image/format,png)
+   <!-- ![img](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xNDUzNDg2OS02N2YxOGVmY2FmZTQ2NjlhLmpwZw?x-oss-process=image/format,png) -->
 
 2. 高并发
 
 ​    直接操作缓存能够承受的请求是远远大于直接访问数据库的，所以我们可以考虑把数据库中的部分数据转移到缓存中去，这样用户的一部分请求会直接到缓存这里而不用经过数据库
 
-![img](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xNDUzNDg2OS0wOWIxZDI3OWEwNWVmNWJjLmpwZw?x-oss-process=image/format,png)
+<!-- ![img](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xNDUzNDg2OS0wOWIxZDI3OWEwNWVmNWJjLmpwZw?x-oss-process=image/format,png) -->
 
 ### Redis为什么这么快
 
@@ -857,7 +855,7 @@ String userName = new String(request.getParamter("userName").getBytes("ISO8859-1
 + 中断：当外围设别完成用户请求的操作后，会向CPU发送响应的中断信号，CPU会暂停执行下一条指令而去执行与中断信号对应的处理程序。比如硬盘读写操作完成，系统会切换到硬盘读写的中断处理程序中执行后续操作等。
 + 异常：发生异常，就会触发由当前运行进程切换到处理此异常的内核相关程序，比如缺页异常
 
-![image-20220305215303096](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305215303096.png)
+<!-- ![image-20220305215303096](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305215303096.png) -->
 
 ### 什么是实时系统
 
@@ -922,7 +920,7 @@ String userName = new String(request.getParamter("userName").getBytes("ISO8859-1
 
 新建就绪运行阻塞结束
 
-![image-20220306100208112](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220306100208112.png)
+<!-- ![image-20220306100208112](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220306100208112.png) -->
 
 ### 进程的调度算法
 
@@ -1001,7 +999,7 @@ String userName = new String(request.getParamter("userName").getBytes("ISO8859-1
 + 引用计数算法,判断对象的引用数量
 + 互相引用的两个对象永远不会回收
 
-![image-20220305161816756](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305161816756.png)
+<!-- ![image-20220305161816756](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305161816756.png) -->
 
 + 可达性分析算法:判断对象的引用链是否可达来决定对象是否可以被回收
 + 当一个对象到GC root 没有任何引用链相连,则证明这个对象是不可用的
@@ -1011,24 +1009,23 @@ String userName = new String(request.getParamter("userName").getBytes("ISO8859-1
 1. 标记清除算法
    + 从根集合扫描,对存活的对象标记,标记完毕后,再扫描整个空间中未被标记的对象进行回收,
 
-![image-20220305165243659](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305165243659.png)
+<!-- ![image-20220305165243659](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305165243659.png) -->
 
 2. 复制算法
 
    + 将内存按照容量划分为大小相等的两块,每次只使用其中的一块,当这块的内存用完了,就将还存活的复制到另外一块上面,然后把已经使用过的内存空间一次清理掉
 
-     ![image-20220305165457566](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305165457566.png)
+     <!-- ![image-20220305165457566](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305165457566.png) -->
 
 3. 标记整理算法
    + 让所有存活的对象都向一端移动,然后直接清理掉端边界以外的内存,类似于磁盘清理的过程
    + 标记整理不会产生产生内存碎片,但是标记清除算法会产生内存碎片
 
-![image-20220305170014813](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305170014813.png)
+<!-- ![image-20220305170014813](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305170014813.png) -->
 
 4. 分代收集算法
    + 生代对象存活率低，就采用复制算法；老年代存活率高，就用标记清除算法或者标记整理算法。Java堆内存一般可以分为新生代、老年代和永久代三个模块
    + 新生代:**新生代的目标就是尽可能快速的收集掉那些生命周期短的对象，一般情况下，所有新生成的对象首先都是放在新生代的**
    + 老年代:**老年代存放的都是一些生命周期较长的对象，就像上面所叙述的那样，在新生代中经历了N次垃圾回收后仍然存活的对象就会被放到老年代中**
    + 永久代:**永久代主要用于存放静态文件，如Java类、方法等。**
-
 
