@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>编译原理第二章 | MybRose_blog</title>
+  <title>Java面经 | MybRose_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="语言概述语言是一定的群里进行信息交流的一种工具单词是按照一定的规则由字符组成的串句子是按照一定的规则由单词组成的串程序是按照一定的规则由语句组成的串语言是语句的集合程序设计语言：组成程序的所有语句的集合程序：满足语法规则的语句序列语句：满足语法规则的单词序列单词：满足词法规则的字符串">
-<meta name="keywords" content="编译原理">
+  <meta name="description" content="面试线程怎么创建多线程12341 继承Thread类,1.继承Thread类，然后重写里面的run方法，创建一个子类对象，然后调用线程对象start方法也就是调用run方法启动线程，一个线程只可以调用一次start方法2 实现Runnable接口，1.定义子类实现Runnable接口，子类中重写Runnable中run方法，通过tread类含参构造器创建线程对象，将runnable接口的子类对象作">
+<meta name="keywords" content="开发岗">
 <meta property="og:type" content="article">
-<meta property="og:title" content="编译原理第二章">
-<meta property="og:url" content="http://yoursite.com/2018/11/22/编译原理第二章/index.html">
+<meta property="og:title" content="Java面经">
+<meta property="og:url" content="http://yoursite.com/2022/03/10/Java面经/index.html">
 <meta property="og:site_name" content="MybRose_blog">
-<meta property="og:description" content="语言概述语言是一定的群里进行信息交流的一种工具单词是按照一定的规则由字符组成的串句子是按照一定的规则由单词组成的串程序是按照一定的规则由语句组成的串语言是语句的集合程序设计语言：组成程序的所有语句的集合程序：满足语法规则的语句序列语句：满足语法规则的单词序列单词：满足词法规则的字符串">
+<meta property="og:description" content="面试线程怎么创建多线程12341 继承Thread类,1.继承Thread类，然后重写里面的run方法，创建一个子类对象，然后调用线程对象start方法也就是调用run方法启动线程，一个线程只可以调用一次start方法2 实现Runnable接口，1.定义子类实现Runnable接口，子类中重写Runnable中run方法，通过tread类含参构造器创建线程对象，将runnable接口的子类对象作">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-09-22T07:44:21.348Z">
+<meta property="og:updated_time" content="2022-03-10T07:30:57.725Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="编译原理第二章">
-<meta name="twitter:description" content="语言概述语言是一定的群里进行信息交流的一种工具单词是按照一定的规则由字符组成的串句子是按照一定的规则由单词组成的串程序是按照一定的规则由语句组成的串语言是语句的集合程序设计语言：组成程序的所有语句的集合程序：满足语法规则的语句序列语句：满足语法规则的单词序列单词：满足词法规则的字符串">
+<meta name="twitter:title" content="Java面经">
+<meta name="twitter:description" content="面试线程怎么创建多线程12341 继承Thread类,1.继承Thread类，然后重写里面的run方法，创建一个子类对象，然后调用线程对象start方法也就是调用run方法启动线程，一个线程只可以调用一次start方法2 实现Runnable接口，1.定义子类实现Runnable接口，子类中重写Runnable中run方法，通过tread类含参构造器创建线程对象，将runnable接口的子类对象作">
   
     <link rel="alternative" href="/atom.xml" title="MybRose_blog" type="application/atom+xml">
   
@@ -151,32 +151,709 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="title-编译原理第二章" class="article article-type-title " itemscope="" itemprop="blogPost">
+            <article id="title-Java面经" class="article article-type-title " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      编译原理第二章
+      Java面经
     </h1>
   
 
         
-        <a href="/2018/11/22/编译原理第二章/" class="archive-article-date">
-  	<time datetime="2018-11-22T12:45:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-22</time>
+        <a href="/2022/03/10/Java面经/" class="archive-article-date">
+  	<time datetime="2022-03-10T06:58:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="语言概述"><a href="#语言概述" class="headerlink" title="语言概述"></a>语言概述</h1><p>语言是一定的群里进行信息交流的一种工具<br><strong>单词</strong>是按照一定的规则由字符组成的串<br><strong>句子</strong>是按照一定的规则由单词组成的串<br><strong>程序</strong>是按照一定的规则由语句组成的串<br><strong>语言</strong>是语句的集合<br><strong>程序设计语言</strong>：组成程序的所有语句的集合<br><strong>程序</strong>：满足语法规则的语句序列<br><strong>语句</strong>：满足语法规则的单词序列<br><strong>单词</strong>：满足词法规则的字符串<br> <a id="more"></a> </p>
-<h1 id="基本定义"><a href="#基本定义" class="headerlink" title="基本定义"></a>基本定义</h1><p><strong>字母表</strong>是一个非空的有穷集合具有<strong>整体性</strong>和<strong>可辨认性</strong><br>x,y的<strong>并置</strong>是由串x直接连接串y组成的<br>x=yz，y是x的<strong>前缀</strong></p>
-<h1 id="文法的定义"><a href="#文法的定义" class="headerlink" title="文法的定义"></a>文法的定义</h1><p><strong>非终结符V</strong><br><strong>终结符T</strong><br><strong>产生式P</strong><br><strong>开始符号S</strong><br>句型和句子句子中都是非终结符，句型中可以有终结符</p>
-<h1 id="文法的分类"><a href="#文法的分类" class="headerlink" title="文法的分类"></a>文法的分类</h1><p>0型文法：短语结构文法(PSG)<br>1型文法：上下文有关文法(CSG)<br>2型文法：上下文无关文法(CFG)，产生式的左边都是非终结符<br>3型文法：正则文法(RG)<br>左线性文法：A-&gt;Ba or A-&gt;a 右线性文法：A-&gt;aB or A-&gt;a 统称为正则文法<br>判断文法：约定RG,CFG,CSG中可以含有形如A-&gt;ε的产生式，可以推出常数的是正则文法</p>
-<h1 id="CFG的语法树"><a href="#CFG的语法树" class="headerlink" title="CFG的语法树"></a>CFG的语法树</h1><p><strong>短语</strong>首先是至少推出两步，子树的最外圈。一棵子树的所有叶子自左至右排列起来形成一个相对于子树根的短语<br><strong>直接短语</strong>推到底的往上一层就是。仅有父子两代的一棵子树，它的所有叶子自左至右排列起来所形成的符号串<br><strong>句柄</strong>最左边的直接短语。一个句型的分析树中最左那棵只有父子两代的子树的所有叶子的自左至右排列<br><strong>素短语</strong>是一个短语，至少含有一个终结符，并且除它自身以外没有其他的素短语<br>最左规约为规范归约，最右推导为规范推导</p>
-<h1 id="CFG的二义性"><a href="#CFG的二义性" class="headerlink" title="CFG的二义性"></a>CFG的二义性</h1><p>对于任意的CFG如果存在两颗不同的语法树<br>二义性问题无法判定但是可以找到一些充分条件，满足这些充分条件的文法就是无二义性的</p>
+        <h1 id="面试"><a href="#面试" class="headerlink" title="面试"></a>面试</h1><h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><h3 id="怎么创建多线程"><a href="#怎么创建多线程" class="headerlink" title="怎么创建多线程"></a>怎么创建多线程</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> 继承Thread类,<span class="number">1</span>.继承Thread类，然后重写里面的run方法，创建一个子类对象，然后调用线程对象start方法也就是调用run方法启动线程，一个线程只可以调用一次start方法</span><br><span class="line"><span class="number">2</span> 实现Runnable接口，<span class="number">1</span>.定义子类实现Runnable接口，子类中重写Runnable中run方法，通过tread类含参构造器创建线程对象，将runnable接口的子类对象作为实际的参数传递给thread类中的构造器，调用Thread类的start方法，也就是调用了Runnable中子类接口的run方法</span><br><span class="line"><span class="number">3</span> 实现Callable接口，<span class="number">1</span>.相比runnable中实现run方法，多了一个返回值，方法可以抛出异常，支持泛型的返回值以及借助FutureTask类来获取返回结果</span><br><span class="line"><span class="number">4</span> 使用线程池例如用Executor框架</span><br></pre></td></tr></table></figure>
+ <a id="more"></a> 
+<!-- ![image-20220304093445388](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304093445388.png) -->
+<!-- ![image-20220304094837276](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304094837276.png) -->
+<h3 id="进程的生命进程"><a href="#进程的生命进程" class="headerlink" title="进程的生命进程"></a>进程的生命进程</h3><p><strong>sleep()yield()方法是暂停当前线程的执行，但是不会释放锁，wait()是当前线程暂停，释放锁，suspend（）方法是将线程挂起，但是该线程不会释放锁</strong>，反过来就是sleep时间到了，notify()唤醒正在排队等待同步资源的线程中优先级最高者结束等待，notifyall()唤醒正在排队资源的所有线程结束等待，resume()重新调用。</p>
+<h3 id="死锁，两个线程都占用对方需要的资源不放手，"><a href="#死锁，两个线程都占用对方需要的资源不放手，" class="headerlink" title="死锁，两个线程都占用对方需要的资源不放手，"></a>死锁，两个线程都占用对方需要的资源不放手，</h3><p>解决办法：减少suspend()的使用，避免嵌套同步，减少同步资源的定义</p>
+<!-- ![image-20220304095626881](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304095626881.png) -->
+<h3 id="synchronized和lock的区别"><a href="#synchronized和lock的区别" class="headerlink" title="synchronized和lock的区别"></a>synchronized和lock的区别</h3><ul>
+<li>位置：lock只能写在代码块中，syn可以写在代码块和方法中</li>
+<li>lock需要自己显示的释放锁，但是syn是隐式的释放锁</li>
+<li>syn是java关键字是JVM层面实现加锁和解锁，lock是在代码层面实现加锁和解锁，Lock锁JVM将花费较少的时间来调度线程，性能更好，具有更好的扩展性 lock-&gt;同步代码块-&gt;同步方法</li>
+</ul>
+<h2 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h2><h3 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h3><p>Jvm是java虚拟机的意思，运行钱，java源代码编译为字节码.class，程序运行时，jvm将字节码翻译成特地平台下的机器码运行，只要在不同的平台安装jvm就可以运行 jdk = jre+开发工具集 jre = jvm + javase标准类库</p>
+<h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><p><strong>封装继承多态</strong>，继承实现父类，</p>
+<ul>
+<li>重载：同名方法，参数个数或者参数类型不同就可以，与返回值类型无关，只看参数列表，且参数列表必须不同</li>
+<li><p>重写：子类重写父类方法</p>
+</li>
+<li><p>多态：Person p = new Student()，父类的引用指向子类的对象，属性是在编译时确定的，如果编译的时候是person类型，那么就没有school成员变量，<strong>不能访问子类添加的属性和方法</strong></p>
+</li>
+<li>继承：单继承和多层继承，不能有多重继承</li>
+</ul>
+<h3 id="访问权限修饰符"><a href="#访问权限修饰符" class="headerlink" title="访问权限修饰符"></a>访问权限修饰符</h3><p>private：类中 default：同一个包下面也可以 protected：不同包的子类都可以 public 同一个工程 对于class的修饰只能public和default</p>
+<!-- ![image-20220304134655669](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304134655669.png) -->
+<h3 id="和equals"><a href="#和equals" class="headerlink" title="==和equals"></a>==和equals</h3><ul>
+<li>equals，所有的类都是继承了object类，所以都有equals方法，只能比较引用类型，作用和==相同，比较的是是否指向同一个对象，但是具体到不同的类File，String，Date等等包装类中，他们都重写了该方法，所以最后的比较的是内容</li>
+<li>==在基本类型的比较中比较的就是值，在引用类型中比较的就是内存地址，也就是判断是否是一个对象</li>
+</ul>
+<h3 id="static"><a href="#static" class="headerlink" title="static"></a>static</h3><ul>
+<li>随着类的加载而加载，优先于对象的存在，修饰的成员被所有的对象共享，访问权限允许时，可不创建对象直接被类调用</li>
+<li>static方法只可以访问类的static修饰的属性和方法，不能访问类的非static结构（类还没有创建对象）</li>
+<li>static中不能用thissuper</li>
+</ul>
+<h3 id="object中的类"><a href="#object中的类" class="headerlink" title="object中的类"></a>object中的类</h3><ul>
+<li>getClass equals hashCode() toString() wait() notify() notifyall()</li>
+</ul>
+<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><h3 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h3><ul>
+<li>某个类只能存在一个对线实例，该方法构造器private，就不能随便new一个对象，只能调用该类的某个静态方法返回类内部创建的对象，然而静态方法只能访问静态变量，所以变量也是静态的，</li>
+</ul>
+<!-- ![image-20220304141017711](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304141017711.png) -->
+<ul>
+<li>懒汉式，存在线程安全问题</li>
+</ul>
+<!-- ![image-20220304141738232](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304141738232.png) -->
+<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><p>是java开发中使用最多的一种设计模式，代理设计就是为其他对象提供一种代理控制对这个对象的访问</p>
+<!-- ![image-20220304150059365](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304150059365.png) -->
+<!-- ![image-20220304150115424](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304150115424.png) -->
+<h3 id="工厂设计模式"><a href="#工厂设计模式" class="headerlink" title="工厂设计模式"></a>工厂设计模式</h3><ul>
+<li><p>简单工厂模式，通过一个共同的接口来指向新创建的对象，如果要新加入新的产品，需要修改已有代码 </p>
+<!-- ![image-20220304150603116](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304150603116.png) -->
+</li>
+<li><p>工厂方法模式：生成具体的产品的任务发给了具体的产品工厂</p>
+</li>
+</ul>
+<!-- ![image-20220304150726576](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304150726576.png) -->
+<ul>
+<li>抽象工厂模式：针对多类产品，在抽象工厂中增加创建新产品的接口，并在具体子工厂中实现新加产品的创建</li>
+</ul>
+<!-- ![image-20220304151619291](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304151619291.png) -->
+<h2 id="异常处理机制"><a href="#异常处理机制" class="headerlink" title="异常处理机制"></a>异常处理机制</h2><ul>
+<li>try catch finally  无论是否异常，都会执行finally</li>
+<li>throws 异常类型 抛出异常</li>
+</ul>
+<h2 id="常用类"><a href="#常用类" class="headerlink" title="常用类"></a>常用类</h2><ul>
+<li>栈：基本类型变量，对象的引用</li>
+<li>堆：new出来的对象实例</li>
+<li>常量池：常量值，常量与常量的拼接还是在常量池，不重复，但是堆是可以重复的  <strong>如果拼接的结果调用 intern() 方法 返回值 就 在常量池中</strong></li>
+<li></li>
+</ul>
+<h3 id="StringBuffer和StringBuilder"><a href="#StringBuffer和StringBuilder" class="headerlink" title="StringBuffer和StringBuilder"></a>StringBuffer和StringBuilder</h3><ul>
+<li>都是可变的字符序列，而且提供相关功能的方法也一样</li>
+<li>Stringbuffer是效率低的线程安全的 Stringbuilder是效率高不安全的</li>
+</ul>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><p>分为Collection和Map两种</p>
+<!-- ![image-20220304161103475](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304161103475.png) -->
+<h3 id="ArrayList和LinkedList-Vector的异同"><a href="#ArrayList和LinkedList-Vector的异同" class="headerlink" title="ArrayList和LinkedList Vector的异同"></a>ArrayList和LinkedList Vector的异同</h3><ul>
+<li>ArrayList和LinkedList。两周都是线程不安全的但是执行效率高，ArrayList是实现了基于动态数组，LinkedList是基于链表的数据结构，随机访问get和set，linkedlist是要移动指针，所以插入删除更快</li>
+<li>ArrayList和vector的区别，vector是同步类，线程安全，效率低，但是ArrayList的效率高，vector每次扩容请求其大小的两倍，Arraylist是1.5倍</li>
+</ul>
+<h3 id="LinkedHashset"><a href="#LinkedHashset" class="headerlink" title="LinkedHashset"></a>LinkedHashset</h3><ul>
+<li>先计算hashcode然后如果code相同判断是否equals如果相同则不添加，如果不同，则链表方式添加</li>
+</ul>
+<h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><ul>
+<li>添加元素：先计算hashcode值，然后根据值找到散列位置，如果两个元素的哈希值相同，那么比较equals，如果也相同，那么存储失败，如果不相同，那么会保存该元素，但是该位置有元素了，那么链表方式继续连接</li>
+<li>如果equals相同但是hashcode值不同，那么会将他们存储在不同的位置依然可以添加成功</li>
+</ul>
+<h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><p>是排序set的实现类，保证集合元素处于排序状态，底层是红黑树</p>
+<h2 id="MAP"><a href="#MAP" class="headerlink" title="MAP"></a>MAP</h2><!-- <img src="C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304161127219.png" alt="image-20220304161127219" style="zoom:50%;" /> -->
+<h3 id="Hashmap"><a href="#Hashmap" class="headerlink" title="Hashmap"></a>Hashmap</h3><ul>
+<li>负载因子越大密度越大，碰撞的几率越高，链表越容易长，次数越多，性能下降</li>
+<li>扩容机制：达到负载因子直接翻倍</li>
+<li>添加元素：首先计算key的哈希值，然后处理哈希值得到位置，如果没有元素直接添加，如果有，则循环依次比较hash值，如果彼此hash值不同，则直接添加成功，如果hash相同，比较equals，如果相同，替换，反之添加到后端，长度达到8，转为红黑树</li>
+</ul>
+<p>判断两个key相等的标准，两个key通过比较</p>
+<h3 id="Hashtable"><a href="#Hashtable" class="headerlink" title="Hashtable"></a>Hashtable</h3><ul>
+<li>线程安全但是效率低，不可以使用null作为键和值</li>
+</ul>
+<h3 id="HashSet和HashMap的区别"><a href="#HashSet和HashMap的区别" class="headerlink" title="HashSet和HashMap的区别"></a>HashSet和HashMap的区别</h3><ul>
+<li>一个实现的是map一个是set</li>
+<li>一个存储的是键值对，一个存储的无序不重复的对象</li>
+<li>HashMap是一个put方式将元素放入map中，HashSet是add()方法将元素放入set中，HashMap比较快，因为使用键来获取值，</li>
+</ul>
+<h2 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h2><h3 id="IO原理"><a href="#IO原理" class="headerlink" title="IO原理"></a>IO原理</h3><ul>
+<li>用于处理设备之间的数据传输，java程序中，对于数据的输入输出操作以流的方式进行，输入：外部数据到内存中，输出，内存数据输出到磁盘光盘中</li>
+<li>分类：<ul>
+<li>字节流：8bit</li>
+<li>字符流：16bit</li>
+</ul>
+</li>
+</ul>
+<!-- ![image-20220304212205056](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304212205056.png) -->
+<!-- <img src="C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220304212659499.png" alt="image-20220304212659499" style="zoom:50%;" /> -->
+<h3 id="序列化和反序列化"><a href="#序列化和反序列化" class="headerlink" title="序列化和反序列化"></a>序列化和反序列化</h3><ul>
+<li>将对象转化为字节序列，这些序列可以保存在磁盘上 ，也可以在网络中传输</li>
+<li>实现Serializable接口</li>
+<li>需要使用对象流ObjectInputStream和ObjectOutPutStream，在序列化时需要</li>
+</ul>
+<h2 id="反射（动态语言）"><a href="#反射（动态语言）" class="headerlink" title="反射（动态语言）"></a>反射（动态语言）</h2><!-- <img src="C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305095953011.png" alt="image-20220305095953011" style="zoom:80%;" /> -->
+<!-- <img src="C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305100712108.png" alt="image-20220305100712108" style="zoom: 67%;" /> -->
+<!-- <img src="C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305094108355.png" alt="image-20220305094108355" style="zoom: 67%;" /> -->
+<h1 id="Java虚拟机面试题"><a href="#Java虚拟机面试题" class="headerlink" title="Java虚拟机面试题"></a>Java虚拟机面试题</h1><h3 id="java运行的步骤"><a href="#java运行的步骤" class="headerlink" title="java运行的步骤"></a>java运行的步骤</h3><ol>
+<li>编写.java文件</li>
+<li>利用编译器javac讲源代码翻译为字节码文件，字节码文件的后缀为.class</li>
+<li>解释器运行字节码文件</li>
+<li>JVM包含了类加载器 运行时数据区，执行引擎。类加载器将类的.class文件中的二进制数据读入到内存中，将其放在运行时数据区的方法区内</li>
+</ol>
+<h3 id="java存在内存泄露吗"><a href="#java存在内存泄露吗" class="headerlink" title="java存在内存泄露吗"></a>java存在内存泄露吗</h3><ul>
+<li><p>不再被使用的对象或者变量一直占据在内存中，java是有GC垃圾回收机制的，</p>
+</li>
+<li><p>长生命周期的对象持有短生命周期对象的应用就可能发生泄露</p>
+</li>
+</ul>
+<h3 id="简述GC垃圾回收机制"><a href="#简述GC垃圾回收机制" class="headerlink" title="简述GC垃圾回收机制"></a>简述GC垃圾回收机制</h3><ul>
+<li>java中程序员不需要显示的释放一个对象的内存，而是由虚拟机自行执行，JVM中，有一个垃圾回收线程，低优先级的，正常情况下不会执行，只有在虚拟机空闲或者当前堆内存不足，才会触发执行，扫描没有被引用的对象，将他们添加到要回收的集合中进行回收</li>
+</ul>
+<h3 id="怎么判断对象是否可以被回收？"><a href="#怎么判断对象是否可以被回收？" class="headerlink" title="怎么判断对象是否可以被回收？"></a>怎么判断对象是否可以被回收？</h3><ul>
+<li>引用计数器法：每个对象创建一个引用计数，有对象引用时计数器加1，引用被释放时计数-1，当计数器为0的时候就可以被回收，但是不能解决循环引用的问题</li>
+<li>可达性分析：从GCroot开始向下搜索，搜索所走过的路径称为引用链，当一个对象没有任何引用链，说明可以被回收了</li>
+</ul>
+<h3 id="JVM有哪些垃圾回收算法"><a href="#JVM有哪些垃圾回收算法" class="headerlink" title="JVM有哪些垃圾回收算法"></a>JVM有哪些垃圾回收算法</h3><ul>
+<li>标记清除算法：标记无用对象，然后进行清除回收</li>
+<li>复制算法：将内存分为两个大小相等的内存区域，当一块用完的时候将活的对象复制到另一块上，然后把已经使用的内存空间进行清除</li>
+<li>标记整理算法：标记无用对象，让所有存活的对象都向一端移动，然后直接清除掉边界以外的内存</li>
+<li>分代算法：根据对象存活周期将内存划分为几块，一般为新生代和老生代，新生代采用复制，老生代采用整理算法</li>
+</ul>
+<h2 id="虚拟机内加载机制"><a href="#虚拟机内加载机制" class="headerlink" title="虚拟机内加载机制"></a>虚拟机内加载机制</h2><h3 id="java类加载机制"><a href="#java类加载机制" class="headerlink" title="java类加载机制"></a>java类加载机制</h3><h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h1><h2 id="IOC（BeanFactory接口）"><a href="#IOC（BeanFactory接口）" class="headerlink" title="IOC（BeanFactory接口）"></a>IOC（BeanFactory接口）</h2><ul>
+<li>IOC 控制反转，将对象创建和对象之间的调用过程，交给spring进行管理</li>
+<li>底层原理：工厂模式和反射以及xml解析</li>
+</ul>
+<h2 id="IOC操作Bean管理XML方式"><a href="#IOC操作Bean管理XML方式" class="headerlink" title="IOC操作Bean管理XML方式"></a>IOC操作Bean管理XML方式</h2><h3 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h3><ul>
+<li>spring创建对象</li>
+<li>spring注入属性，依赖注入</li>
+</ul>
+<ol>
+<li>基于xml方式创建对象</li>
+<li>基于xml方式注入对象</li>
+<li>注入方式<ul>
+<li>使用set方法注入<ul>
+<li>直接创建类然后定义属性和对应的set方法</li>
+<li>在配置文件中创建对象配置属性注入 property name value </li>
+</ul>
+</li>
+<li>使用有参构造器进行注入<ul>
+<li>创建类然后构造有参构造器</li>
+<li>spring配置文件中使用construct-arg name value 进行属性注入</li>
+</ul>
+</li>
+<li>p名称空间注入<ul>
+<li>添加p名称空间在配置文件中</li>
+<li>在配置文件使用p:bxxx进行属性注入</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="FactoryBean"><a href="#FactoryBean" class="headerlink" title="FactoryBean"></a>FactoryBean</h3><ul>
+<li>工厂bean：在配置文件中定义bean的类型可以和返回类型不一样<ul>
+<li>创建类，让这个类作为工厂bean，实现FactoryBean的接口</li>
+<li>实现接口里面的方法，在实现的方法中定义返回的bean类型</li>
+</ul>
+</li>
+</ul>
+<h3 id="Bean作用域"><a href="#Bean作用域" class="headerlink" title="Bean作用域"></a>Bean作用域</h3><ul>
+<li><p>默认bean是单实例</p>
+</li>
+<li><p>如果要修改：scope = prototype singleton ，多实例是在getBean方法创建多实例对象，singlton是在加载配置文件创建单实例对象</p>
+</li>
+</ul>
+<h3 id="Bean生命周期"><a href="#Bean生命周期" class="headerlink" title="Bean生命周期"></a>Bean生命周期</h3><ul>
+<li>构造器创建bean实例，无参数构造器</li>
+<li>调用set方法设置属性值</li>
+<li>调用bean的初始化方法</li>
+<li>bean可以使用</li>
+<li>当容器管理使用bean的销毁方法</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span> = <span class="string">"orders"</span> <span class="attr">class</span> = <span class="string">"com.atguigu.Orders"</span> <span class="attr">init-method</span> = <span class="string">"initMethod"</span> <span class="attr">destroy-method</span> =<span class="string">"destroyMethod"</span> &gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">//配置后置处理器</span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myBeanPost"</span> <span class="attr">class</span>=<span class="string">"com.atguigu.spring5.bean.MyBeanPost"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建类实现接口BeanPostProcessor,创建后置处理器postProcessBeforeInitialization  postProcessAfterInitialization</li>
+</ul>
+<!-- <img src="C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305105943035.png" alt="image-20220305105943035" style="zoom:50%;" /> -->
+<h3 id="XML自动装配"><a href="#XML自动装配" class="headerlink" title="XML自动装配"></a>XML自动装配</h3><ol>
+<li>根据指定装配规则自动将属性进行注入</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 根据名称或者根据类型进行注入</span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"emp"</span> <span class="attr">class</span>=<span class="string">"com.atguigu.spring5.autowire.Emp"</span> <span class="attr">autowire</span>=<span class="string">"byType"</span>&gt;</span> <span class="tag">&lt;/<span class="name">bean</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dept"</span> <span class="attr">class</span>=<span class="string">"com.atguigu.spring5.autowire.Dept"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="外部属性文件"><a href="#外部属性文件" class="headerlink" title="外部属性文件"></a>外部属性文件</h3><ol>
+<li><p>直接配置数据库信息</p>
+<ul>
+<li>配置德鲁伊连接池</li>
+<li>引入jar包</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dataSource"</span> <span class="attr">class</span>=<span class="string">"com.alibaba.druid.pool.DruidDataSource"</span>&gt;</span> <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClassName"</span> <span class="attr">value</span>=<span class="string">"com.mysql.jdbc.Driver"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span> <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"jdbc:mysql://localhost:3306/userDb"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span> <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"root"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span> <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"root"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><p>引入外部属性文件配置数据库连接池</p>
+<ul>
+<li><p>创建外部属性文件,properties格式文件,写数据库信息</p>
+</li>
+<li><p>外部属性引入到spring配置文件中</p>
+<ul>
+<li>引入context名称空间</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--引入外部属性文件--&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">context:property-placeholder</span> <span class="attr">location</span>=<span class="string">"classpath:jdbc.properties"</span>/&gt;</span> </span><br><span class="line"><span class="comment">&lt;!--配置连接池--&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dataSource"</span> <span class="attr">class</span>=<span class="string">"com.alibaba.druid.pool.DruidDataSource"</span>&gt;</span> <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClassName"</span> <span class="attr">value</span>=<span class="string">"$&#123;prop.driverClass&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span> <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"$&#123;prop.url&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span> <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"$&#123;prop.userName&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span> <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"$&#123;prop.password&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="IOC操作Bean管理-注解方式"><a href="#IOC操作Bean管理-注解方式" class="headerlink" title="IOC操作Bean管理(注解方式)"></a>IOC操作Bean管理(注解方式)</h2><ul>
+<li>Spring针对Bean管理中创建对象提供注解<br>（1）@Component : 托管到Spring容器进行管理<br>（2）@Service:业务逻辑层<br>（3）@Controller:控制器<br>（4）@Repository:数据访问层</li>
+</ul>
+<ul>
+<li>上面四个注解功能是一样的，都可以用来创建bean实例</li>
+</ul>
+<ol>
+<li><p>基于注解方式创建对象</p>
+<ul>
+<li><p>引入依赖</p>
+</li>
+<li><p>开启组件扫描</p>
+</li>
+<li><p>创建类在类上面添加创建对象的注解</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com.atguigu"</span>  <span class="attr">use-default-filters</span> = <span class="string">"false"</span>&gt;</span></span><br><span class="line">    // 包含什么扫描和不包含</span><br><span class="line">	<span class="tag">&lt;<span class="name">context:include-filter</span> <span class="attr">type</span> = <span class="string">"annotation"</span> <span class="attr">expression</span>=<span class="string">"org.springframework.stereotype.Controller"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:exclude-filter</span> <span class="attr">type</span>=<span class="string">"annotation"</span><span class="attr">...</span></span></span><br><span class="line">&lt;/context:component-scan&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>基于注解方式实现属性注入</p>
+<ul>
+<li>@Autowired:根据属性类型进行自动装配</li>
+<li>@Qualifier:根据名称进行注入</li>
+<li>@Resource:名称和类型都可以注入</li>
+</ul>
+</li>
+</ol>
+<h2 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h2><ol>
+<li>面向切面编程,利用AOP可以将业务逻辑的各个部分进行隔离,</li>
+<li>不修改源代码的方法,主干功能中添加新功能</li>
+</ol>
+<h3 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h3><ol>
+<li><p>动态代理,代理模式</p>
+<ul>
+<li><p>有接口的情况下,jdk动态代理</p>
+<ul>
+<li>创建接口实现类代理对象,增强类的方法</li>
+</ul>
+<!-- ![image-20220305112811071](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305112811071.png) -->
+</li>
+<li><p>没有接口的情况下,使用CGLIB动态代理</p>
+<!-- ![image-20220305112817921](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305112817921.png) -->
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="JDK动态代理"><a href="#JDK动态代理" class="headerlink" title="JDK动态代理"></a>JDK动态代理</h4><ol>
+<li><p>使用Proxy类里面的方法创建代理对象</p>
+<ul>
+<li>调用newProxyInstance方法</li>
+<li>参数:类加载器,增强方法所在类,实现这个接口InvocationHandler,创建代理对象,写增强部分</li>
+</ul>
+</li>
+<li><p>编写JDK动态代理代码</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">（<span class="number">1</span>）创建接口，定义方法 <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserDao</span> </span>&#123; <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>; <span class="function"><span class="keyword">public</span> String <span class="title">update</span><span class="params">(String id)</span></span>; &#125;</span><br><span class="line">（<span class="number">2</span>）创建接口实现类，实现方法 <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title">UserDao</span> </span>&#123; <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123; <span class="keyword">return</span> a+b; &#125; <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> String <span class="title">update</span><span class="params">(String id)</span> </span>&#123; <span class="keyword">return</span> id; &#125; &#125;</span><br><span class="line">（<span class="number">3</span>）使用Proxy类创建接口代理对象</span><br><span class="line">    <span class="comment">//创建代理对象</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserDaoProxy</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Object obj;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserDaoProxy</span><span class="params">(Object o)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.obj= o;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//增强方法</span></span><br><span class="line">    <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">	<span class="comment">//方法之前</span></span><br><span class="line">        System.out.println(<span class="string">"方法之前执行...."</span>+method.getName()+<span class="string">" :传递的参数..."</span>+ Arrays.toString(args));</span><br><span class="line">        <span class="comment">// 增强方法</span></span><br><span class="line">        Object res = method.invoke(obj , args);</span><br><span class="line">        <span class="comment">// 方法之后</span></span><br><span class="line">        System.out.println(<span class="string">"方法之后执行...."</span>+obj); </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//使用Proxy类创建接口代理对象</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JDKProxy</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; </span><br><span class="line">            Class[] interfaces =  &#123;UserDao.class&#125;;</span><br><span class="line">            UserDaoImpl user = <span class="keyword">new</span> UserDaoImpl();</span><br><span class="line">            UserDao dao = (UserDao)Proxy.newProxyInstance(JDKproxy.class.getClassLoader(),interfaces,<span class="keyword">new</span> UserDaoProxy(user));</span><br><span class="line">            <span class="keyword">int</span> res = dao.add(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h3><ol>
+<li>连接点:可以被增强的方法,</li>
+<li>切入点:实际被增强的方法</li>
+<li>通知(增强):实际增强的逻辑部分 前置 后置 环绕 异常 最终通知</li>
+<li>切面:把通知应用到切入点的过程</li>
+</ol>
+<h3 id="AspectJ实现AOP操作"><a href="#AspectJ实现AOP操作" class="headerlink" title="AspectJ实现AOP操作"></a>AspectJ实现AOP操作</h3><ul>
+<li><p>一般使用注解方式</p>
+</li>
+<li><p>切入点表达式:（语法结构： execution([权限修饰符] [返回类型] [类全路径] <a href="[参数列表]">方法名称</a> )</p>
+<p>execution(<em> com.atguigu.dao.BookDao.</em> (..))</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>.创建类:<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123; <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">()</span> </span>&#123; System.out.println(<span class="string">"add......."</span>); &#125; &#125;</span><br><span class="line"><span class="number">2</span>.创建增强类:编写增强逻辑</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserProxy</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//前置通知 </span></span><br><span class="line">        System.out.println(<span class="string">"before......"</span>); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="number">3</span>、进行通知的配置</span><br><span class="line">    （<span class="number">1</span>）在spring配置文件中，开启注解扫描</span><br><span class="line">    &lt;context:component-scan base-package="com.atguigu.spring5.aopanno"&gt;&lt;/context:component-scan&gt;</span><br><span class="line">     (<span class="number">2</span>) 使用注解创建User和UserProxy对象</span><br><span class="line">     (<span class="number">3</span>)在增强类上面添加注解 <span class="meta">@Aspect</span></span><br><span class="line">        <span class="meta">@Component</span> </span><br><span class="line">        <span class="meta">@Aspect</span> </span><br><span class="line">        <span class="comment">//生成代理对象</span></span><br><span class="line">        <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserProxy</span> </span>&#123;</span><br><span class="line">      (<span class="number">4</span>) 在spring配置文件中开启生成代理对象</span><br><span class="line">        &lt;aop:aspectj-autoproxy&gt;&lt;/aop:aspectj-autoproxy&gt;</span><br><span class="line"><span class="number">4</span>.配置不同类型的通知</span><br><span class="line">      （<span class="number">1</span>）在增强类的里面，在作为通知方法上面添加通知类型注解，使用切入点表达式配置</span><br><span class="line">            <span class="meta">@Before</span>(value = <span class="string">"execution(* com.atguigu.spring5.aopanno.User.add(..))"</span>)</span><br><span class="line">            <span class="meta">@AfterReturning</span>(value = <span class="string">"execution(* com.atguigu.spring5.aopanno.User.add(..))"</span>)</span><br><span class="line">            <span class="meta">@After</span>(value = <span class="string">"execution(* com.atguigu.spring5.aopanno.User.add(..))"</span>)</span><br><span class="line">            <span class="meta">@AfterThrowing</span>(value = <span class="string">"execution(* com.atguigu.spring5.aopanno.User.add(..))"</span>)</span><br><span class="line">            <span class="meta">@Around</span>(value = <span class="string">"execution(* com.atguigu.spring5.aopanno.User.add(..))"</span>)</span><br><span class="line"><span class="number">5</span>.相同的切入点抽取</span><br><span class="line">    <span class="meta">@Pointcut</span>(value = <span class="string">"execution(* com.atguigu.spring5.aopanno.User.add(..))"</span>)</span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pointdemo</span><span class="params">()</span> </span>&#123; &#125;</span><br><span class="line">     <span class="meta">@Before</span>(value = <span class="string">"pointdemo()"</span>)</span><br><span class="line"> <span class="number">6</span>、有多个增强类多同一个方法进行增强，设置增强类优先级</span><br><span class="line">     （<span class="number">1</span>）在增强类上面添加注解 <span class="meta">@Order</span>(数字类型值)，数字类型值越小优先级越高</span><br></pre></td></tr></table></figure>
+<h3 id="AspectJ-配置文件"><a href="#AspectJ-配置文件" class="headerlink" title="AspectJ 配置文件"></a>AspectJ 配置文件</h3><ol>
+<li><p>创建两个类创建方法</p>
+</li>
+<li><p>在spring配置文件中创建两个类对象</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--创建对象--&gt;</span> <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"book"</span> <span class="attr">class</span>=<span class="string">"com.atguigu.spring5.aopxml.Book"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span> <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"bookProxy"</span> <span class="attr">class</span>=<span class="string">"com.atguigu.spring5.aopxml.BookProxy"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在spring配置文件中配置切入点</p>
+</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">aop:config</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--切入点--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">id</span>=<span class="string">"p"</span><span class="attr">expression</span>=<span class="string">"execution(* com.atguigu.spring5.aopxml.Book.buy(..))"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--配置切面--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aop:aspect</span> <span class="attr">ref</span> = <span class="string">"bookProxy"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--增强作用在具体的方法上--&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">aop:before</span> <span class="attr">mothod</span>=<span class="string">"before"</span> <span class="attr">pointcut-ref</span> =<span class="string">"p"</span>&gt;</span><span class="tag">&lt;/<span class="name">aop:before</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">aop:aspect</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><h3 id="什么是事务"><a href="#什么是事务" class="headerlink" title="什么是事务"></a>什么是事务</h3><ol>
+<li>数据库操作最基本的单元，逻辑上一组操作要么都成功要么都失败</li>
+<li>事务的特性<ul>
+<li>原子性：要么都成功要么都失败</li>
+<li>一致性：事务必须使数据库从一个一致性状态变换到另外一个一致性状态，事务按照预期生效，数据的状态就是预期的状态</li>
+<li>隔离性：不同事务之间的操作互不影响</li>
+<li>持久性：产生的结果对数据库的影响是持久的</li>
+</ul>
+</li>
+</ol>
+<h3 id="Spring事务操作"><a href="#Spring事务操作" class="headerlink" title="Spring事务操作"></a>Spring事务操作</h3><ol>
+<li>事务添加到Javaee三层结构中的service中</li>
+<li>进行事务管理</li>
+<li>声明式事务管理 编程式事务管理<ul>
+<li>基于注解方式</li>
+<li>基于xml配置文件方式</li>
+</ul>
+</li>
+<li>在Spring进行声明式事务管理，底层使用AOP原理</li>
+</ol>
+<h3 id="注解方式配置事务管理器"><a href="#注解方式配置事务管理器" class="headerlink" title="注解方式配置事务管理器"></a>注解方式配置事务管理器</h3><ol>
+<li><p>在spring配置文件中配置事务管理器</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"transactionManager"</span> <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.datasource.DataSourceTransactionManager"</span>&gt;</span> <span class="comment">&lt;!--注入数据源--&gt;</span> 		注入数据源	</span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在spring配置文件中开启事务注解</p>
+<ul>
+<li><p>引入名称空间 tx</p>
+</li>
+<li><p>开启事务注解</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tx:annotation-driven</span> <span class="attr">transaction-manager</span>=<span class="string">"transactionManager"</span>&gt;</span><span class="tag">&lt;/<span class="name">tx:annotation-driven</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>在service类上面添加事务注解</p>
+<p>（1）@Transactional，这个注解添加到类上面，也可以添加方法上面<br>（2）如果把这个注解添加类上面，这个类里面所有的方法都添加事务<br>（3）如果把这个注解添加方法上面，为这个方法添加事务</p>
+</li>
+</ol>
+<h1 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h1><h3 id="什么是MVC"><a href="#什么是MVC" class="headerlink" title="什么是MVC"></a>什么是MVC</h3><p>MVC是一种软件架构的思想，软件按照模型，视图和控制器来划分</p>
+<p>M：model 工程中的javabean 处理数据</p>
+<ul>
+<li>分为实体bean ：user</li>
+<li>业务处理bean：Service或者Dao对象，专门用于处理业务逻辑和数据访问</li>
+</ul>
+<p>V：view 视图层，工程中html或者jsp页面，交互展示数据</p>
+<p>C：控制层，controller，接受请求和响应浏览器</p>
+<h3 id="什么是SpringMVC"><a href="#什么是SpringMVC" class="headerlink" title="什么是SpringMVC"></a>什么是SpringMVC</h3><p>是一个基于java的实现了mvc设计模式的请求驱动类型的轻量级web框架，将mvc三个部分分离，将web层进行职责解耦，把复杂的web应用分成逻辑清晰的及部分</p>
+<h3 id="springmvc的流程"><a href="#springmvc的流程" class="headerlink" title="springmvc的流程"></a>springmvc的流程</h3><ol>
+<li>用户发送请求到前端控制器DispatcherServlet</li>
+<li>DispatcherServlet收到之后，调用HandlerMapping处理器映射器，请求获取Handler</li>
+<li>处理器映射器根据请求url找到具体的处理器handler，生成处理器对象及处理器拦截器，一并返回给DispatcherServlet</li>
+<li>DispatcherServlet调用HandlerAdapter处理器适配器，请求执行Handler</li>
+<li>HandlerAdapter经过适配调用，具体处理器进行处理业务逻辑</li>
+<li>Handler执行完成返回Modelandview</li>
+<li>HandlerAdapter将handler执行结果Modelandview返回给DispatcherServlet</li>
+<li>DispatcherServlet 将modelandview传给viewresolver视图解析器进行解析</li>
+<li>vieresolver解析返回具体的view</li>
+<li>DispatcherServlet 对view进行渲染视图</li>
+<li>Dispatcherservlet 响应用户</li>
+</ol>
+<!-- ![image-20220307151856553](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220307151856553.png) -->
+<h3 id="springmvc的优点"><a href="#springmvc的优点" class="headerlink" title="springmvc的优点"></a>springmvc的优点</h3><ol>
+<li>可以支持各种视图技术，不仅仅局限于jsp</li>
+<li>与spring框架集成</li>
+<li>清晰的角色分配，前端控制器，请求到处理器映射，处理器适配器，视图解析器</li>
+<li>支持各种请求资源的映射策略</li>
+</ol>
+<h3 id="springmvc怎么样设定重定向和转发的"><a href="#springmvc怎么样设定重定向和转发的" class="headerlink" title="springmvc怎么样设定重定向和转发的"></a>springmvc怎么样设定重定向和转发的</h3><p>转发：前面加上forward </p>
+<p>从定向：redirect</p>
+<h3 id="springmvc的常用注解有哪些"><a href="#springmvc的常用注解有哪些" class="headerlink" title="springmvc的常用注解有哪些"></a>springmvc的常用注解有哪些</h3><p>@RequestMapping 用于处理请求url映射的注解，用于类或方法上，</p>
+<p>@RequestBody：注解实现接受http请求的json数据，将json转化为java对象</p>
+<p>@ResponseBody:注解实现将controller方法返回对象转换为json对象相应给客户</p>
+<h3 id="Springmvc的控制器的注解一般用哪个，有没有别的注解可以代替"><a href="#Springmvc的控制器的注解一般用哪个，有没有别的注解可以代替" class="headerlink" title="Springmvc的控制器的注解一般用哪个，有没有别的注解可以代替"></a>Springmvc的控制器的注解一般用哪个，有没有别的注解可以代替</h3><ul>
+<li>一般用controller 也可以使用restcontroller </li>
+</ul>
+<h3 id="如何解决POST请求中文乱码问题，GET的又如何处理"><a href="#如何解决POST请求中文乱码问题，GET的又如何处理" class="headerlink" title="如何解决POST请求中文乱码问题，GET的又如何处理"></a>如何解决POST请求中文乱码问题，GET的又如何处理</h3><ol>
+<li>解决post请求乱码问题，配置一个CharacterEncodingFilter过滤器，设置为utf-8</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.springframework.web.filter.CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>utf-8<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>get请求中文参数乱码解决方法</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">①修改tomcat配置文件添加编码与工程编码一致，如下：</span><br><span class="line"><span class="tag">&lt;<span class="name">ConnectorURIEncoding="utf-8"</span> <span class="attr">connectionTimeout</span>=<span class="string">"20000"</span> <span class="attr">port</span>=<span class="string">"8080"</span> <span class="attr">protocol</span>=<span class="string">"HTTP/1.1"</span> <span class="attr">redirectPort</span>=<span class="string">"8443"</span>/&gt;</span></span><br><span class="line">②另外一种方法对参数进行重新编码：</span><br><span class="line">String userName = new String(request.getParamter("userName").getBytes("ISO8859-1"),"utf-8")</span><br></pre></td></tr></table></figure>
+<h3 id="springmvc拦截器怎么写的"><a href="#springmvc拦截器怎么写的" class="headerlink" title="springmvc拦截器怎么写的"></a>springmvc拦截器怎么写的</h3><ul>
+<li>实现HandlerInterceptor接口，一个是继承适配器类，接着在接口方法中，实现处理逻辑，然后在Springmvc的配置文件中配置拦截器就可以</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置SpringMvc的拦截器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mvc:interceptors</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置一个拦截器的Bean就可以了 默认是对所有请求都拦截 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myInterceptor"</span> <span class="attr">class</span>=<span class="string">"com.zwp.action.MyHandlerInterceptor"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">&lt;!-- 只针对部分请求拦截 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">mvc:mapping</span> <span class="attr">path</span>=<span class="string">"/modelMap.do"</span> /&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"com.zwp.action.MyHandlerInterceptorAdapter"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mvc:interceptors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="注解原理"><a href="#注解原理" class="headerlink" title="注解原理"></a>注解原理</h3><ol>
+<li>什么是注解<ul>
+<li>注解是代码一种特殊标记，用于在编译类加载运行时进行解析和使用，并执行响应的处理。本质是继承了Annotation的接口，具体实现类是JDK动态代理生成的代理类，</li>
+</ul>
+</li>
+</ol>
+<h3 id="Springmvc怎么和ajax相互调用的"><a href="#Springmvc怎么和ajax相互调用的" class="headerlink" title="Springmvc怎么和ajax相互调用的"></a>Springmvc怎么和ajax相互调用的</h3><p>通过jackson框架可以把java里面的对象直接转化为js可以识别的json对象</p>
+<ul>
+<li>引入jackson包</li>
+<li>配置文件配置json映射</li>
+<li>在接受ajax方法里面可以直接返回object list等但是方法前面要加上@ResponseBody注解</li>
+</ul>
+<h3 id="springmvc异常处理"><a href="#springmvc异常处理" class="headerlink" title="springmvc异常处理"></a>springmvc异常处理</h3><p>可以将异常抛给spring框架，由spring框架来处理，我们只需要配置简单的异常处理器，在异常处理器中添视图页面</p>
+<h3 id="Springmvc的控制器是不是单例模式，如果是有什么问题，怎么解决"><a href="#Springmvc的控制器是不是单例模式，如果是有什么问题，怎么解决" class="headerlink" title="Springmvc的控制器是不是单例模式，如果是有什么问题，怎么解决"></a>Springmvc的控制器是不是单例模式，如果是有什么问题，怎么解决</h3><p>单例模式，在多线程访问的时候有线程安全问题，解决方案是在控制器里面不能写可变状态量，如果需要使用这些可变状态，可以使用TreadLocal机制解决，为每个线程单独生成一个变量副本</p>
+<h1 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h1><h3 id="什么是Mybatis"><a href="#什么是Mybatis" class="headerlink" title="什么是Mybatis"></a>什么是Mybatis</h3><ul>
+<li>一个半对象关系映射框架，支持定制化SQL，存储过程以及高级映射，避免了JDBC代码和手动设置参数以及获取结果集</li>
+</ul>
+<h3 id="Mybatis优点"><a href="#Mybatis优点" class="headerlink" title="Mybatis优点"></a>Mybatis优点</h3><ul>
+<li><p>基于SQL语句编程，不会对应用程序或者数据库的现有设计造成影响，SQL写在xml下，解除sql与程序代码的耦合</p>
+</li>
+<li><p>减少了JDBC代码量，消除了JDBC冗余代码，不需要手动开关连接</p>
+</li>
+<li>很好的和Spring集成</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>对数据库的移植性差，不能随便更换数据库</li>
+<li>sql编写的工作量大，对开发人员编写sql有要求</li>
+</ul>
+<h3 id="Hibernate和Mybatis的区别"><a href="#Hibernate和Mybatis的区别" class="headerlink" title="Hibernate和Mybatis的区别"></a>Hibernate和Mybatis的区别</h3><ul>
+<li>同：都是对jdbc的封装，都是持久层的框架，都用于dao层的开发</li>
+<li>不同：映射关系：Mybatis是一个半自动的框架，配置java对象和sql语句执行结果的对应关系，hibernate是一个全表映射的框架，</li>
+</ul>
+<h3 id="ORM-对象关系映射"><a href="#ORM-对象关系映射" class="headerlink" title="ORM 对象关系映射"></a>ORM 对象关系映射</h3><p>解决关系型数据和简单java对象的映射关系的技术，扫描描述对象和数据库之间的元数据，将程序中的对象自动持久化到关系型数据库中</p>
+<h3 id="传统JDBC开发存在的问题，mybatis如何解决"><a href="#传统JDBC开发存在的问题，mybatis如何解决" class="headerlink" title="传统JDBC开发存在的问题，mybatis如何解决"></a>传统JDBC开发存在的问题，mybatis如何解决</h3><ul>
+<li>数据库连接创建，频繁释放系统资源浪费从而影响系统性能，使用数据库连接池 ：<strong>在mybatis-config.xml中配置数据链接池，使用连接池管理数据库连接。</strong></li>
+<li>Sql语句写在代码中造成代码不易维护，实际应用sql变化的可能较大，sql变动需要改变java代码  <strong>解决：将Sql语句配置在XXXXmapper.xml文件中与java代码分离</strong>。</li>
+<li>向sql语句传参数麻烦，<strong>Mybatis自动将java对象映射到sql语句中</strong></li>
+<li>对结果集解析麻烦，sql变化导致解析代码变， <strong>解决：Mybatis自动将sql执行结果映射至java对象。</strong></li>
+</ul>
+<h2 id="Mybatis架构"><a href="#Mybatis架构" class="headerlink" title="Mybatis架构"></a>Mybatis架构</h2><h3 id="Mybatis编程步骤"><a href="#Mybatis编程步骤" class="headerlink" title="Mybatis编程步骤"></a>Mybatis编程步骤</h3><ol>
+<li>创建sqlsessionfactory</li>
+<li>通过sqlsessionfactory 创建sqlsession</li>
+<li>通过sqlsession执行数据库操作</li>
+<li>调用session.commit()提交事务</li>
+<li>调用session.close()关闭会话</li>
+</ol>
+<h3 id="说说mybatis的工作原理"><a href="#说说mybatis的工作原理" class="headerlink" title="说说mybatis的工作原理"></a>说说mybatis的工作原理</h3><!-- ![img](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/4/13/1717343a66d9566c~tplv-t2oaga2asx-watermark.awebp) -->
+<ol>
+<li>读取配置文件</li>
+<li>加载映射文件</li>
+<li>构造会话工厂</li>
+<li>创建会话对象</li>
+<li>Executor执行器</li>
+<li>MappedStatement对象</li>
+<li>输入参数映射 ，输出结果映射</li>
+</ol>
+<h3 id="缓存机制"><a href="#缓存机制" class="headerlink" title="缓存机制"></a>缓存机制</h3><ul>
+<li>一级缓存：执行多次查询条件相同的sql，这样就会优先命中一级缓存，避免直接对数据库进行查询，提高性能</li>
+<li>二级缓存：多个Sqlsession之间要共享缓存的话，则需要使用二级缓存。</li>
+</ul>
+<h3 id="使用Mybatis的mapper调用接口有哪些要求"><a href="#使用Mybatis的mapper调用接口有哪些要求" class="headerlink" title="使用Mybatis的mapper调用接口有哪些要求"></a>使用Mybatis的mapper调用接口有哪些要求</h3><ol>
+<li>接口方法名和mapper.xml中定义的每个sql的id相同</li>
+<li>mapper接口方法的输入类型参数和mapper.xml中定义的每个sql的parameterType类型相同</li>
+<li>mapper接口方法的输出参数类型和mapper.xml中定义的每个sql的resultType类型相同</li>
+<li>namespace必须是mapper接口的类路径</li>
+</ol>
+<h3 id="Dao接口的原理"><a href="#Dao接口的原理" class="headerlink" title="Dao接口的原理"></a>Dao接口的原理</h3><p>是jdk动态代理，使用jdk动态代理为dao接口生成代理proxy对象，代理对象会拦截接口方法，转而执行mappedstatement所代表的sql，然后将sql执行结果返回</p>
+<h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><ul>
+<li>高性能非关系型Nosql键值对数据库</li>
+<li>redis可以存储键和五种不同类型的值之间的映射，键的类型只能是字符串，值的类型为字符串，列表，集合，散列表，有序集合</li>
+<li>数据库存在内存中，读写很快，</li>
+</ul>
+<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><ul>
+<li><p>优点：读写性能优异，11万次/s 写8万次/s</p>
+</li>
+<li><p>支持数据持久化，AOF 和RDB持久化方式</p>
+</li>
+<li>支持事务，所有操作都是原子性的，</li>
+<li>zset list hash string set</li>
+<li>支持主从复制，主机自动将数据同步到从机，读写分离</li>
+</ul>
+<h3 id="为什么要用Redis-为什么要用缓存"><a href="#为什么要用Redis-为什么要用缓存" class="headerlink" title="为什么要用Redis 为什么要用缓存"></a>为什么要用Redis 为什么要用缓存</h3><ol>
+<li><p>高性能</p>
+<!-- ![img](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xNDUzNDg2OS02N2YxOGVmY2FmZTQ2NjlhLmpwZw?x-oss-process=image/format,png) -->
+</li>
+<li><p>高并发</p>
+</li>
+</ol>
+<p>​    直接操作缓存能够承受的请求是远远大于直接访问数据库的，所以我们可以考虑把数据库中的部分数据转移到缓存中去，这样用户的一部分请求会直接到缓存这里而不用经过数据库</p>
+<!-- ![img](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xNDUzNDg2OS0wOWIxZDI3OWEwNWVmNWJjLmpwZw?x-oss-process=image/format,png) -->
+<h3 id="Redis为什么这么快"><a href="#Redis为什么这么快" class="headerlink" title="Redis为什么这么快"></a>Redis为什么这么快</h3><ol>
+<li>完全基于内存</li>
+<li>数据结构简单，对数据的操作也简单，</li>
+<li>单线程，避免了换入换出操作</li>
+<li>使用多路IO复用模型，非阻塞IO</li>
+<li>使用底层模型不同</li>
+</ol>
+<h2 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h2><h3 id="什么是持久化"><a href="#什么是持久化" class="headerlink" title="什么是持久化"></a>什么是持久化</h3><p>把内存中的数据写到磁盘，防止宕机内存数据丢失</p>
+<h3 id="redis持久化的机制，各自优缺点"><a href="#redis持久化的机制，各自优缺点" class="headerlink" title="redis持久化的机制，各自优缺点"></a>redis持久化的机制，各自优缺点</h3><ul>
+<li>RDB，redisdatabase，快照，一定时间就保存在磁盘中，数据安全性低，（隔一段时间进行持久化，如果持久化之间redis发生故障会发生数据丢失）但是效率高</li>
+<li>AOF持久化，所有的命令记录以redis命令请求协议的格式完全持久化存储保存为aof文件，每次写的指令都保存在日志，然后重启redis就会将持久化的日志中文件恢复数据</li>
+<li><strong>优先使用aof恢复数据</strong> ， 但是效率低，数据大启动效率低 aof文件比rdb大，恢复慢</li>
+</ul>
+<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="什么是操作系统"><a href="#什么是操作系统" class="headerlink" title="什么是操作系统"></a>什么是操作系统</h3><ul>
+<li>操作系统是管理计算机硬件和软件的程序</li>
+<li>向下屏蔽了硬件的复杂性，向上提供给用户对软件操作的便利性</li>
+</ul>
+<h3 id="操作系统的主要功能"><a href="#操作系统的主要功能" class="headerlink" title="操作系统的主要功能"></a>操作系统的主要功能</h3><ul>
+<li>内存管理，进程管理，文件管理，设备管理，提供用户接口</li>
+</ul>
+<h3 id="软件访问硬件的几种方式"><a href="#软件访问硬件的几种方式" class="headerlink" title="软件访问硬件的几种方式"></a>软件访问硬件的几种方式</h3><ul>
+<li>IO操作，分为串行和并行</li>
+<li>直接访问：直接访问由用户进程控制主存或者CPU和外围设备之间的信息传送</li>
+<li>中断驱动：</li>
+<li>DMA直接内存访问：DMA控制方式，</li>
+<li>通道控制方式：</li>
+</ul>
+<h3 id="操作系统的主要目的是什么"><a href="#操作系统的主要目的是什么" class="headerlink" title="操作系统的主要目的是什么"></a>操作系统的主要目的是什么</h3><ul>
+<li>管理计算机资源，CPU 内存 磁盘 外部设备等等</li>
+<li>提供一种图形界面，方便用户</li>
+<li>方便软件使用计算机硬件设备提供的资源</li>
+</ul>
+<h3 id="种类有哪些"><a href="#种类有哪些" class="headerlink" title="种类有哪些"></a>种类有哪些</h3><ul>
+<li>windows linux macos</li>
+</ul>
+<h3 id="Linux系统下的app为什么不能在windows下运行"><a href="#Linux系统下的app为什么不能在windows下运行" class="headerlink" title="Linux系统下的app为什么不能在windows下运行"></a>Linux系统下的app为什么不能在windows下运行</h3><ul>
+<li>格式不同，linux下的可执行文件是elf格式，但是windows下是pe文件格式</li>
+<li>API 不同，linux下的API是系统调用，通过软中断实现，windows下的api是放在动态连接库文件中的，也就是DDL</li>
+</ul>
+<h3 id="操作系统的结构"><a href="#操作系统的结构" class="headerlink" title="操作系统的结构"></a>操作系统的结构</h3><ul>
+<li><p>单体系统</p>
+</li>
+<li><p>分层系统</p>
+</li>
+<li>微内核</li>
+<li>客户服务器模式</li>
+</ul>
+<h3 id="什么是用户态和内核态"><a href="#什么是用户态和内核态" class="headerlink" title="什么是用户态和内核态"></a>什么是用户态和内核态</h3><ul>
+<li>内核态：处于内核态的CPU可以访问任意的数据，外围设备，网卡硬盘等等，从一个程序切换到另一个程序，占用CPU不会发生抢占的情况，一般处于特权级0的状态是内核态</li>
+<li>用户态：受限的访问内存，不允许访问外围设备，用户态的CPU不允许独占，CPU可以被其他程序获取</li>
+</ul>
+<h3 id="用户态和内核态如何切换"><a href="#用户态和内核态如何切换" class="headerlink" title="用户态和内核态如何切换"></a>用户态和内核态如何切换</h3><ul>
+<li>系统调用：用户态主动切换到内核态的一种方式，fork就是创建一个新进程的系统调用</li>
+<li>中断：当外围设别完成用户请求的操作后，会向CPU发送响应的中断信号，CPU会暂停执行下一条指令而去执行与中断信号对应的处理程序。比如硬盘读写操作完成，系统会切换到硬盘读写的中断处理程序中执行后续操作等。</li>
+<li>异常：发生异常，就会触发由当前运行进程切换到处理此异常的内核相关程序，比如缺页异常</li>
+</ul>
+<!-- ![image-20220305215303096](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305215303096.png) -->
+<h3 id="什么是实时系统"><a href="#什么是实时系统" class="headerlink" title="什么是实时系统"></a>什么是实时系统</h3><ul>
+<li><p>软实时和硬实时，比如汽车生产车间，焊接机器必须在某一时刻内完成焊接，焊接的太早或者太晚都会对汽车造成永久性伤害。</p>
+</li>
+<li><p>比如数字音频、多媒体、手机都是属于软实时操作系统。</p>
+</li>
+</ul>
+<h3 id="Linux操作系统的启动过程"><a href="#Linux操作系统的启动过程" class="headerlink" title="Linux操作系统的启动过程"></a>Linux操作系统的启动过程</h3><h2 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h2><h3 id="进程和线程，区别"><a href="#进程和线程，区别" class="headerlink" title="进程和线程，区别"></a>进程和线程，区别</h3><ul>
+<li>进程中可以包含多条线程</li>
+<li>进程之间相互独立，各个线程之间可能相互影响，共享数据</li>
+<li>进程对资源的开销更大，利于资源的保护和管理。线程的创建执行开销小，但是不利于资源的保护</li>
+</ul>
+<p>线程私有的：</p>
+<ul>
+<li>程序计数器：接下来的执行指令的地址</li>
+<li>栈指针 所属线程的栈区</li>
+<li>函数运行使用的寄存器</li>
+</ul>
+<p>共有：</p>
+<ul>
+<li>代码区</li>
+<li>堆区</li>
+<li>数据区</li>
+</ul>
+<h3 id="什么是上下文切换"><a href="#什么是上下文切换" class="headerlink" title="什么是上下文切换"></a>什么是上下文切换</h3><ul>
+<li>将 CPU资源从一个进程分配给另一个进程的机制</li>
+</ul>
+<h3 id="多线程的好处"><a href="#多线程的好处" class="headerlink" title="多线程的好处"></a>多线程的好处</h3><ul>
+<li>提高执行效率 经济适用 提高用户使用流畅感</li>
+</ul>
+<h3 id="进程终止的方式"><a href="#进程终止的方式" class="headerlink" title="进程终止的方式"></a>进程终止的方式</h3><ul>
+<li>正常退出 进程执行完毕</li>
+<li>错误退出 文件不存在</li>
+<li>严重错误 除0 引用不存在的内存</li>
+<li>被其他进程杀死 kill </li>
+</ul>
+<h3 id="进程间的通信方式"><a href="#进程间的通信方式" class="headerlink" title="进程间的通信方式"></a>进程间的通信方式</h3><ul>
+<li>匿名管道、管道：实质就是一个内核缓冲区，只能用于亲缘关系的进程通信</li>
+<li>有名管道：支持不是亲缘关系的进程之间的通信</li>
+<li>信号：终止信号，退出信号，结束进程信号 SIGINT：终止信号 SIGQUIT：退出信号 SIGKILL：结束进程信号 SIGCLD：子进程退出信号</li>
+<li>消息队列：存放在内核中的消息链表，内核重启或者显示的删除一个消息队列才会真的删除</li>
+<li>共享内存：多个进程可以直接读写同一块内存空间，需要依靠同步机制来实现进程同步</li>
+<li>信号量：信号量是一个计数器，用于多进程对共享数据的访问，信号量的意图在于进程间同步。</li>
+<li>套接字：ip加端口号</li>
+</ul>
+<h3 id="不同进程不能同时操作一个资源"><a href="#不同进程不能同时操作一个资源" class="headerlink" title="不同进程不能同时操作一个资源"></a>不同进程不能同时操作一个资源</h3><ol>
+<li>竞态条件：多个进程同时对一共享数据进行修改，从而影响程序的正常运行叫做竞态条件</li>
+<li>临界区：禁止一个或多个进程在同一时刻对共享资源进行读写 互斥条件</li>
+<li>忙等互斥：当一个进程对资源修改的时候，其他进程必须等待，进程之间要有互斥性</li>
+</ol>
+<h3 id="进程的状态"><a href="#进程的状态" class="headerlink" title="进程的状态"></a>进程的状态</h3><p>新建就绪运行阻塞结束</p>
+<!-- ![image-20220306100208112](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220306100208112.png) -->
+<h3 id="进程的调度算法"><a href="#进程的调度算法" class="headerlink" title="进程的调度算法"></a>进程的调度算法</h3><ul>
+<li>先来先服务:FIFO</li>
+<li>最短作业优先：进程运行时间最短的先</li>
+<li>时间片轮转：每个进程给固定的时间段  分时系统：Round Robin，将时间片以相同部分循环分配给每个进程</li>
+<li>优先级调度算法：哪个进程优先就调用哪个</li>
+</ul>
+<h3 id="影响调度程序的指标"><a href="#影响调度程序的指标" class="headerlink" title="影响调度程序的指标"></a>影响调度程序的指标</h3><ul>
+<li>CPU使用率 </li>
+<li>等待时间：进程等待时间</li>
+<li>吞吐量</li>
+<li>响应时间</li>
+<li>周转时间</li>
+</ul>
+<h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><h3 id="什么是虚拟内存"><a href="#什么是虚拟内存" class="headerlink" title="什么是虚拟内存"></a>什么是虚拟内存</h3><ul>
+<li>操作系统为每一个进程提供一个独立的虚拟地址空间</li>
+<li>方便进程有进行内存的访问</li>
+<li>使有限的物理内存可以运行一个比他大很多的程序，每个程序有自己的地址空间，空间被分割成很多快，每一块叫做一页</li>
+</ul>
+<h3 id="分页和分段机制"><a href="#分页和分段机制" class="headerlink" title="分页和分段机制"></a>分页和分段机制</h3><ul>
+<li>分段：把虚拟内存分为多个独立的地址空间，每个地址空间可以动态增长，互不影响，每个段可以单独进行控制，有助于保护和共享</li>
+<li>分页：将虚拟内存分为页面，将物理内存分为页框，实现一对一映射</li>
+</ul>
+<h3 id="页表的作用"><a href="#页表的作用" class="headerlink" title="页表的作用"></a>页表的作用</h3><ul>
+<li>虚拟内存到物理内存的映射，TBL快表，当请求一个虚拟地址时，处理器检查是否缓存了该虚拟地址的映射，如果命中则直接返回物理地址，否则通过页表搜索对应的物理地址</li>
+<li>多级页表可以节约地址转化的空间</li>
+</ul>
+<h3 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h3><ul>
+<li>最优页面置换算法 ：将来最久没被使用的算法，不太可行</li>
+<li>最近最少未使用：LRU，</li>
+<li>FIFO：最先进入的放在表头，最后进入的放在表尾，缺页中断，直接淘汰表头的页面</li>
+<li>第二次机会页面置换算法：记录每个页面的R位，如果为1表示最近有访问，将其清0，然后放入表尾，继续检查下一个表头，直到遇到R为0</li>
+<li>时钟页面置换算法：</li>
+</ul>
+<h3 id="虚拟内存的实现方式"><a href="#虚拟内存的实现方式" class="headerlink" title="虚拟内存的实现方式"></a>虚拟内存的实现方式</h3><ol>
+<li>需要页表机制，缺页中断机制，地址变换机制</li>
+</ol>
+<ul>
+<li>请求分页存储管理：只要求将当前需要的一部分页面装入内存，请求调页和页面置换的功能</li>
+<li>请求分段存储管理：将若干个分段装入内存，便可以启动作业运行，在作业运行过程中，如果要访问的分段不在内存中，则通过调段功能将其调入，</li>
+<li>请求段页式存储管理：</li>
+</ul>
+<h2 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h2><h3 id="什么是僵尸进程"><a href="#什么是僵尸进程" class="headerlink" title="什么是僵尸进程"></a>什么是僵尸进程</h3><ul>
+<li>已完成处于终止状态，但在进程表中仍然存在的进程，</li>
+</ul>
+<h3 id="死锁产生的必要条件"><a href="#死锁产生的必要条件" class="headerlink" title="死锁产生的必要条件"></a>死锁产生的必要条件</h3><ul>
+<li>互斥：每个资源都被分配了一个进程或者资源是可用的</li>
+<li>保持和等待条件：已经获取资源的进程被认为可以获取新的资源</li>
+<li>不可强占：不可以强行占用其他进程所使用的资源</li>
+<li>循环等待：一定有两个或者以上的进程组成一个循环，每个进程都等待下一个进程释放的资源</li>
+</ul>
+<h3 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h3><p>如何确定一个对象是否可以被回收</p>
+<ul>
+<li>引用计数算法,判断对象的引用数量</li>
+<li>互相引用的两个对象永远不会回收</li>
+</ul>
+<!-- ![image-20220305161816756](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305161816756.png) -->
+<ul>
+<li>可达性分析算法:判断对象的引用链是否可达来决定对象是否可以被回收</li>
+<li>当一个对象到GC root 没有任何引用链相连,则证明这个对象是不可用的</li>
+</ul>
+<h3 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h3><ol>
+<li>标记清除算法<ul>
+<li>从根集合扫描,对存活的对象标记,标记完毕后,再扫描整个空间中未被标记的对象进行回收,</li>
+</ul>
+</li>
+</ol>
+<!-- ![image-20220305165243659](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305165243659.png) -->
+<ol start="2">
+<li><p>复制算法</p>
+<ul>
+<li><p>将内存按照容量划分为大小相等的两块,每次只使用其中的一块,当这块的内存用完了,就将还存活的复制到另外一块上面,然后把已经使用过的内存空间一次清理掉</p>
+<!-- ![image-20220305165457566](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305165457566.png) -->
+</li>
+</ul>
+</li>
+<li><p>标记整理算法</p>
+<ul>
+<li>让所有存活的对象都向一端移动,然后直接清理掉端边界以外的内存,类似于磁盘清理的过程</li>
+<li>标记整理不会产生产生内存碎片,但是标记清除算法会产生内存碎片</li>
+</ul>
+</li>
+</ol>
+<!-- ![image-20220305170014813](C:\Users\lab\AppData\Roaming\Typora\typora-user-images\image-20220305170014813.png) -->
+<ol start="4">
+<li>分代收集算法<ul>
+<li>生代对象存活率低，就采用复制算法；老年代存活率高，就用标记清除算法或者标记整理算法。Java堆内存一般可以分为新生代、老年代和永久代三个模块</li>
+<li>新生代:<strong>新生代的目标就是尽可能快速的收集掉那些生命周期短的对象，一般情况下，所有新生成的对象首先都是放在新生代的</strong></li>
+<li>老年代:<strong>老年代存放的都是一些生命周期较长的对象，就像上面所叙述的那样，在新生代中经历了N次垃圾回收后仍然存活的对象就会被放到老年代中</strong></li>
+<li>永久代:<strong>永久代主要用于存放静态文件，如Java类、方法等。</strong></li>
+</ul>
+</li>
+</ol>
 
       
 
@@ -184,13 +861,18 @@
     </div>
     <div class="article-info article-info-index">
       
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
+      
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">编译原理</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">开发岗</a>
         		</li>
       		
 		</ul>
@@ -202,7 +884,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/课程//" class="article-tag-list-link color3">课程</a>
+        			<a href="/categories/开发岗//" class="article-tag-list-link color4">开发岗</a>
         		</li>
       		
 		</ul>
@@ -257,7 +939,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/11/22/编译原理第二章/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2022/03/10/Java面经/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -271,18 +953,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/11/23/编译原理词法分析/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          编译原理词法分析
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/11/21/编译原理第一章/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">编译原理第一章</div>
+    <a href="/2021/09/23/代码随想录/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">代码随想录</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -309,7 +982,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#语言概述"><span class="toc-number">1.</span> <span class="toc-text">语言概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基本定义"><span class="toc-number">2.</span> <span class="toc-text">基本定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文法的定义"><span class="toc-number">3.</span> <span class="toc-text">文法的定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文法的分类"><span class="toc-number">4.</span> <span class="toc-text">文法的分类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CFG的语法树"><span class="toc-number">5.</span> <span class="toc-text">CFG的语法树</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CFG的二义性"><span class="toc-number">6.</span> <span class="toc-text">CFG的二义性</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#面试"><span class="toc-number">1.</span> <span class="toc-text">面试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#线程"><span class="toc-number">1.1.</span> <span class="toc-text">线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#怎么创建多线程"><span class="toc-number">1.1.1.</span> <span class="toc-text">怎么创建多线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程的生命进程"><span class="toc-number">1.1.2.</span> <span class="toc-text">进程的生命进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#死锁，两个线程都占用对方需要的资源不放手，"><span class="toc-number">1.1.3.</span> <span class="toc-text">死锁，两个线程都占用对方需要的资源不放手，</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#synchronized和lock的区别"><span class="toc-number">1.1.4.</span> <span class="toc-text">synchronized和lock的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java基础"><span class="toc-number">1.2.</span> <span class="toc-text">Java基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JVM"><span class="toc-number">1.2.1.</span> <span class="toc-text">JVM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#面向对象"><span class="toc-number">1.2.2.</span> <span class="toc-text">面向对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#访问权限修饰符"><span class="toc-number">1.2.3.</span> <span class="toc-text">访问权限修饰符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#和equals"><span class="toc-number">1.2.4.</span> <span class="toc-text">==和equals</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static"><span class="toc-number">1.2.5.</span> <span class="toc-text">static</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#object中的类"><span class="toc-number">1.2.6.</span> <span class="toc-text">object中的类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计模式"><span class="toc-number">1.3.</span> <span class="toc-text">设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单例设计模式"><span class="toc-number">1.3.1.</span> <span class="toc-text">单例设计模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代理模式"><span class="toc-number">1.3.2.</span> <span class="toc-text">代理模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工厂设计模式"><span class="toc-number">1.3.3.</span> <span class="toc-text">工厂设计模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#异常处理机制"><span class="toc-number">1.4.</span> <span class="toc-text">异常处理机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用类"><span class="toc-number">1.5.</span> <span class="toc-text">常用类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#StringBuffer和StringBuilder"><span class="toc-number">1.5.1.</span> <span class="toc-text">StringBuffer和StringBuilder</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集合"><span class="toc-number">1.6.</span> <span class="toc-text">集合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Collection"><span class="toc-number">1.7.</span> <span class="toc-text">Collection</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ArrayList和LinkedList-Vector的异同"><span class="toc-number">1.7.1.</span> <span class="toc-text">ArrayList和LinkedList Vector的异同</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedHashset"><span class="toc-number">1.7.2.</span> <span class="toc-text">LinkedHashset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashSet"><span class="toc-number">1.7.3.</span> <span class="toc-text">HashSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TreeSet"><span class="toc-number">1.7.4.</span> <span class="toc-text">TreeSet</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MAP"><span class="toc-number">1.8.</span> <span class="toc-text">MAP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hashmap"><span class="toc-number">1.8.1.</span> <span class="toc-text">Hashmap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hashtable"><span class="toc-number">1.8.2.</span> <span class="toc-text">Hashtable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashSet和HashMap的区别"><span class="toc-number">1.8.3.</span> <span class="toc-text">HashSet和HashMap的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO"><span class="toc-number">1.9.</span> <span class="toc-text">IO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IO原理"><span class="toc-number">1.9.1.</span> <span class="toc-text">IO原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#序列化和反序列化"><span class="toc-number">1.9.2.</span> <span class="toc-text">序列化和反序列化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反射（动态语言）"><span class="toc-number">1.10.</span> <span class="toc-text">反射（动态语言）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java虚拟机面试题"><span class="toc-number">2.</span> <span class="toc-text">Java虚拟机面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java运行的步骤"><span class="toc-number">2.0.1.</span> <span class="toc-text">java运行的步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#java存在内存泄露吗"><span class="toc-number">2.0.2.</span> <span class="toc-text">java存在内存泄露吗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#简述GC垃圾回收机制"><span class="toc-number">2.0.3.</span> <span class="toc-text">简述GC垃圾回收机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#怎么判断对象是否可以被回收？"><span class="toc-number">2.0.4.</span> <span class="toc-text">怎么判断对象是否可以被回收？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JVM有哪些垃圾回收算法"><span class="toc-number">2.0.5.</span> <span class="toc-text">JVM有哪些垃圾回收算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟机内加载机制"><span class="toc-number">2.1.</span> <span class="toc-text">虚拟机内加载机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java类加载机制"><span class="toc-number">2.1.1.</span> <span class="toc-text">java类加载机制</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring"><span class="toc-number">3.</span> <span class="toc-text">Spring</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IOC（BeanFactory接口）"><span class="toc-number">3.1.</span> <span class="toc-text">IOC（BeanFactory接口）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IOC操作Bean管理XML方式"><span class="toc-number">3.2.</span> <span class="toc-text">IOC操作Bean管理XML方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#依赖注入"><span class="toc-number">3.2.1.</span> <span class="toc-text">依赖注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FactoryBean"><span class="toc-number">3.2.2.</span> <span class="toc-text">FactoryBean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bean作用域"><span class="toc-number">3.2.3.</span> <span class="toc-text">Bean作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bean生命周期"><span class="toc-number">3.2.4.</span> <span class="toc-text">Bean生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XML自动装配"><span class="toc-number">3.2.5.</span> <span class="toc-text">XML自动装配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#外部属性文件"><span class="toc-number">3.2.6.</span> <span class="toc-text">外部属性文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IOC操作Bean管理-注解方式"><span class="toc-number">3.3.</span> <span class="toc-text">IOC操作Bean管理(注解方式)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AOP"><span class="toc-number">3.4.</span> <span class="toc-text">AOP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#底层原理"><span class="toc-number">3.4.1.</span> <span class="toc-text">底层原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JDK动态代理"><span class="toc-number">3.4.1.1.</span> <span class="toc-text">JDK动态代理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#术语"><span class="toc-number">3.4.2.</span> <span class="toc-text">术语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AspectJ实现AOP操作"><span class="toc-number">3.4.3.</span> <span class="toc-text">AspectJ实现AOP操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AspectJ-配置文件"><span class="toc-number">3.4.4.</span> <span class="toc-text">AspectJ 配置文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务"><span class="toc-number">3.5.</span> <span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是事务"><span class="toc-number">3.5.1.</span> <span class="toc-text">什么是事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring事务操作"><span class="toc-number">3.5.2.</span> <span class="toc-text">Spring事务操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注解方式配置事务管理器"><span class="toc-number">3.5.3.</span> <span class="toc-text">注解方式配置事务管理器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringMVC"><span class="toc-number">4.</span> <span class="toc-text">SpringMVC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是MVC"><span class="toc-number">4.0.1.</span> <span class="toc-text">什么是MVC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是SpringMVC"><span class="toc-number">4.0.2.</span> <span class="toc-text">什么是SpringMVC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#springmvc的流程"><span class="toc-number">4.0.3.</span> <span class="toc-text">springmvc的流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#springmvc的优点"><span class="toc-number">4.0.4.</span> <span class="toc-text">springmvc的优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#springmvc怎么样设定重定向和转发的"><span class="toc-number">4.0.5.</span> <span class="toc-text">springmvc怎么样设定重定向和转发的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#springmvc的常用注解有哪些"><span class="toc-number">4.0.6.</span> <span class="toc-text">springmvc的常用注解有哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Springmvc的控制器的注解一般用哪个，有没有别的注解可以代替"><span class="toc-number">4.0.7.</span> <span class="toc-text">Springmvc的控制器的注解一般用哪个，有没有别的注解可以代替</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何解决POST请求中文乱码问题，GET的又如何处理"><span class="toc-number">4.0.8.</span> <span class="toc-text">如何解决POST请求中文乱码问题，GET的又如何处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#springmvc拦截器怎么写的"><span class="toc-number">4.0.9.</span> <span class="toc-text">springmvc拦截器怎么写的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注解原理"><span class="toc-number">4.0.10.</span> <span class="toc-text">注解原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Springmvc怎么和ajax相互调用的"><span class="toc-number">4.0.11.</span> <span class="toc-text">Springmvc怎么和ajax相互调用的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#springmvc异常处理"><span class="toc-number">4.0.12.</span> <span class="toc-text">springmvc异常处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Springmvc的控制器是不是单例模式，如果是有什么问题，怎么解决"><span class="toc-number">4.0.13.</span> <span class="toc-text">Springmvc的控制器是不是单例模式，如果是有什么问题，怎么解决</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Mybatis"><span class="toc-number">5.</span> <span class="toc-text">Mybatis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是Mybatis"><span class="toc-number">5.0.1.</span> <span class="toc-text">什么是Mybatis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mybatis优点"><span class="toc-number">5.0.2.</span> <span class="toc-text">Mybatis优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-number">5.0.3.</span> <span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hibernate和Mybatis的区别"><span class="toc-number">5.0.4.</span> <span class="toc-text">Hibernate和Mybatis的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ORM-对象关系映射"><span class="toc-number">5.0.5.</span> <span class="toc-text">ORM 对象关系映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#传统JDBC开发存在的问题，mybatis如何解决"><span class="toc-number">5.0.6.</span> <span class="toc-text">传统JDBC开发存在的问题，mybatis如何解决</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mybatis架构"><span class="toc-number">5.1.</span> <span class="toc-text">Mybatis架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mybatis编程步骤"><span class="toc-number">5.1.1.</span> <span class="toc-text">Mybatis编程步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说说mybatis的工作原理"><span class="toc-number">5.1.2.</span> <span class="toc-text">说说mybatis的工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存机制"><span class="toc-number">5.1.3.</span> <span class="toc-text">缓存机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Mybatis的mapper调用接口有哪些要求"><span class="toc-number">5.1.4.</span> <span class="toc-text">使用Mybatis的mapper调用接口有哪些要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dao接口的原理"><span class="toc-number">5.1.5.</span> <span class="toc-text">Dao接口的原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis"><span class="toc-number">6.</span> <span class="toc-text">Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优缺点"><span class="toc-number">6.0.1.</span> <span class="toc-text">优缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么要用Redis-为什么要用缓存"><span class="toc-number">6.0.2.</span> <span class="toc-text">为什么要用Redis 为什么要用缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis为什么这么快"><span class="toc-number">6.0.3.</span> <span class="toc-text">Redis为什么这么快</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#持久化"><span class="toc-number">6.1.</span> <span class="toc-text">持久化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是持久化"><span class="toc-number">6.1.1.</span> <span class="toc-text">什么是持久化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis持久化的机制，各自优缺点"><span class="toc-number">6.1.2.</span> <span class="toc-text">redis持久化的机制，各自优缺点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#操作系统"><span class="toc-number">7.</span> <span class="toc-text">操作系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">7.1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是操作系统"><span class="toc-number">7.1.1.</span> <span class="toc-text">什么是操作系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作系统的主要功能"><span class="toc-number">7.1.2.</span> <span class="toc-text">操作系统的主要功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#软件访问硬件的几种方式"><span class="toc-number">7.1.3.</span> <span class="toc-text">软件访问硬件的几种方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作系统的主要目的是什么"><span class="toc-number">7.1.4.</span> <span class="toc-text">操作系统的主要目的是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#种类有哪些"><span class="toc-number">7.1.5.</span> <span class="toc-text">种类有哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux系统下的app为什么不能在windows下运行"><span class="toc-number">7.1.6.</span> <span class="toc-text">Linux系统下的app为什么不能在windows下运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作系统的结构"><span class="toc-number">7.1.7.</span> <span class="toc-text">操作系统的结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是用户态和内核态"><span class="toc-number">7.1.8.</span> <span class="toc-text">什么是用户态和内核态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用户态和内核态如何切换"><span class="toc-number">7.1.9.</span> <span class="toc-text">用户态和内核态如何切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是实时系统"><span class="toc-number">7.1.10.</span> <span class="toc-text">什么是实时系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux操作系统的启动过程"><span class="toc-number">7.1.11.</span> <span class="toc-text">Linux操作系统的启动过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程管理"><span class="toc-number">7.2.</span> <span class="toc-text">进程管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#进程和线程，区别"><span class="toc-number">7.2.1.</span> <span class="toc-text">进程和线程，区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是上下文切换"><span class="toc-number">7.2.2.</span> <span class="toc-text">什么是上下文切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多线程的好处"><span class="toc-number">7.2.3.</span> <span class="toc-text">多线程的好处</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程终止的方式"><span class="toc-number">7.2.4.</span> <span class="toc-text">进程终止的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程间的通信方式"><span class="toc-number">7.2.5.</span> <span class="toc-text">进程间的通信方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不同进程不能同时操作一个资源"><span class="toc-number">7.2.6.</span> <span class="toc-text">不同进程不能同时操作一个资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程的状态"><span class="toc-number">7.2.7.</span> <span class="toc-text">进程的状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程的调度算法"><span class="toc-number">7.2.8.</span> <span class="toc-text">进程的调度算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#影响调度程序的指标"><span class="toc-number">7.2.9.</span> <span class="toc-text">影响调度程序的指标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存管理"><span class="toc-number">7.3.</span> <span class="toc-text">内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是虚拟内存"><span class="toc-number">7.3.1.</span> <span class="toc-text">什么是虚拟内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分页和分段机制"><span class="toc-number">7.3.2.</span> <span class="toc-text">分页和分段机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页表的作用"><span class="toc-number">7.3.3.</span> <span class="toc-text">页表的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页面置换算法"><span class="toc-number">7.3.4.</span> <span class="toc-text">页面置换算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟内存的实现方式"><span class="toc-number">7.3.5.</span> <span class="toc-text">虚拟内存的实现方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#死锁"><span class="toc-number">7.4.</span> <span class="toc-text">死锁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是僵尸进程"><span class="toc-number">7.4.1.</span> <span class="toc-text">什么是僵尸进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#死锁产生的必要条件"><span class="toc-number">7.4.2.</span> <span class="toc-text">死锁产生的必要条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#垃圾回收机制"><span class="toc-number">7.4.3.</span> <span class="toc-text">垃圾回收机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#垃圾收集算法"><span class="toc-number">7.4.4.</span> <span class="toc-text">垃圾收集算法</span></a></li></ol></li></ol></li>
                     </div>
                 </span>
             </div>
