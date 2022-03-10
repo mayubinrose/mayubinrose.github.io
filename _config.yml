@@ -100,7 +100,7 @@ jsonContent:
 deploy:
   type: git
   repo: git@github.com:mayubinrose/mayubinrose.github.io.git
-  #repo: https://github.com/mayubinrose/mayubinrose.github.io.git
+  # repo: https://github.com/mayubinrose/mayubinrose.github.io.git
   #repo: git@github.com:mayubinrose/mayubinrose.github.io.git
   branch: master
   name: mayubinrose
