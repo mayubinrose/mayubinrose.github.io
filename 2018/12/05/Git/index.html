@@ -9,7 +9,7 @@
   <title>Git | MybRose_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="什么是Git目前世界上最先进的分布式版本控制系统 版本回退git log:显示最近到最远的提交日志(回到过去)git中HEAD表示当前版本，上一个版本是HEAD^git reset –hard HEAD^：回退到上一个版本git reset –hard 1094a^：回到某一个版本git reflog：记录每一次的命令(回到未来)">
-<meta name="keywords" content="开发岗,Git">
+<meta name="keywords" content="Git,开发岗">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git">
 <meta property="og:url" content="http://yoursite.com/2018/12/05/Git/index.html">
@@ -17,7 +17,7 @@
 <meta property="og:description" content="什么是Git目前世界上最先进的分布式版本控制系统 版本回退git log:显示最近到最远的提交日志(回到过去)git中HEAD表示当前版本，上一个版本是HEAD^git reset –hard HEAD^：回退到上一个版本git reset –hard 1094a^：回到某一个版本git reflog：记录每一次的命令(回到未来)">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/12/05/Git/p1.png">
-<meta property="og:updated_time" content="2021-09-24T01:53:01.493Z">
+<meta property="og:updated_time" content="2022-12-05T14:55:58.262Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git">
 <meta name="twitter:description" content="什么是Git目前世界上最先进的分布式版本控制系统 版本回退git log:显示最近到最远的提交日志(回到过去)git中HEAD表示当前版本，上一个版本是HEAD^git reset –hard HEAD^：回退到上一个版本git reset –hard 1094a^：回到某一个版本git reflog：记录每一次的命令(回到未来)">
@@ -179,6 +179,7 @@
 <h1 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h1><h2 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h2><p>创建分支<br>git branch dev<br>切换分支<br>git checkout dev<br>创建并切换<br>git checkout -b dev<br>分支上修改完全后<br>添加到暂存区<br>git add .<br>合并到当前分支<br>git commit -m “”<br>先切换到master<br>git checkout master<br>将dev分支的工作成果合并到master上<br>git merge dev<br>删除分支<br>git branch -d dev</p>
 <h2 id="将本地代码远程连接到git上"><a href="#将本地代码远程连接到git上" class="headerlink" title="将本地代码远程连接到git上"></a>将本地代码远程连接到git上</h2><p>本地新建一个空文件夹<br>git init<br>然后将代码复制进来<br>git add .<br>git commit -m “fisrt”<br>将本地仓库和远程连接<br>git remote add origin git@…<br>为了实现push操作需要生成key<br>ssh-keygen -t rsa -C “邮箱号” -f  ~/.ssh/newname<br>将生成的各个私钥文件添加到引擎中<br>ssh-add ~/.ssh/newname<br>如果报错<br>ssh-agent bash<br>在~/.ssh目录下找到config没有的话 touch config<br>Host <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:mayubinrose/Graduation.git<br>HostName github.com<br>PreferredAuthentications publickey<br>IdentityFile ~/.ssh/graduation-rsa<br>Host <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:mayubinrose/mayubinrose.github.io.git<br>HostName github.com<br>PreferredAuthentications publickey<br>IdentityFile ~/.ssh/id_rsa<br>最后在仓库的setting处设置key添加即可<br>如果push出错<br>git pull –rebase origin master<br>然后push即可</p>
 <h1 id="本地修改拉取远程仓库代码"><a href="#本地修改拉取远程仓库代码" class="headerlink" title="本地修改拉取远程仓库代码"></a>本地修改拉取远程仓库代码</h1><p>放弃所有本地操作，直接合并到远程库最新的操作<br>git fetch –all ： 下载远程库的最新内容，不做和合并<br>git reset –hard origin/hexo ：重置后不保留暂存区和工作区<br>git pull origin hexo:hexo ：拉取<br>如果本地的想要保存修改 保存当前工作进度，会把暂存区和工作区的改动保存起来<br>git stash save “message” git stash list<br>然后拉取git pull 之后弹出当前保存的进度<br>git stash pop<br>本地分支与远程库建立连接<br>git branch -u origin/master master<br>查看本地分支与远程分支对应的链接情况<br>git branch -vv<br><strong>git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;<br>git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</strong><br>将远程库的更新合并到本地库中，–rebase的作用是取消本地库中的commit，并把他们接到更新后的版本库中<br>git pull –rebase origin hexo</p>
+<h1 id="如何在别人的开源项目中提交自己的Pull-Request"><a href="#如何在别人的开源项目中提交自己的Pull-Request" class="headerlink" title="如何在别人的开源项目中提交自己的Pull Request ?"></a>如何在别人的开源项目中提交自己的Pull Request ?</h1><p>先在本地创建一个空文件夹,里面准备放克隆过来的代码. –&gt; 我在本地Downloads文件夹下创建了一个名为 gitMessagekit 的文件夹.<br>在”终端”中通过cd命令进入到gitMessagekit文件夹下(将”自己电脑的用户名”换成你自己的电脑的用户名). –&gt; cd /Users/自己电脑的用户名/Downloads/gitMessagekit<br>在”终端”输入克隆命令 git clone 开源项目源代码的url. –&gt; git clone <a href="https://github.com/MessageKit/MessageKit.git" target="_blank" rel="noopener">https://github.com/MessageKit/MessageKit.git</a><br>进入到克隆所在的文件夹. –&gt; cd /Users/自己电脑的用户名/Downloads/gitMessagekit/MessageKit<br>用查看命令查看一下开源项目都有多少个分支. –&gt; git branch -a<br>找到自己要切换的分支,准备切换分支,在这里我要切换到3.0.0-beta分支. –&gt; git checkout remotes/origin/3.0.0-beta<br>基于远程分支新建本地分支(3.0.0-beta),2条命令. –&gt; git branch 3.0.0-beta git checkout 3.0.0-beta<br>打开/Users/自己电脑的用户名/Downloads/gitMessagekit/MessageKit该路径下的代码,对代码进行修改.<br>添加修改. –&gt; git add 你修改的文件<br>提交修改. –&gt; git commit -m “fix 某某问题”<br>去自己的git仓库,准备fork一下开源项目MessageKit到自己的仓库(repository)中.<br>即将关联自己fork过的项目. –&gt; git remote add upstream <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:xxjldh/MessageKit.git<br>推送本地的分支(3.0.0-beta)到自己fork过的仓库中,2条命令. –&gt; git fetch origin git merge origin/3.0.0-beta<br>在即将提交时出现这样一个错误,<a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>: Permission denied (publickey).解决办法(<a href="https://www.jianshu.com/p/f22d02c7d943" target="_blank" rel="noopener">https://www.jianshu.com/p/f22d02c7d943</a>)<br>最后push自己的分支到自己fork过的仓库中. –&gt; git push upstream 3.0.0-beta<br>在开源项目<a href="https://github.com/MessageKit/MessageKit.git的pull" target="_blank" rel="noopener">https://github.com/MessageKit/MessageKit.git的pull</a> request中添加自己刚修改过的文件, 点”comment pull request”即可.</p>
 
       
 
@@ -197,11 +198,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">开发岗</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">开发岗</a>
         		</li>
       		
 		</ul>
@@ -320,7 +321,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是Git"><span class="toc-number">1.</span> <span class="toc-text">什么是Git</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#版本回退"><span class="toc-number">1.1.</span> <span class="toc-text">版本回退</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工作区和暂存区"><span class="toc-number">1.2.</span> <span class="toc-text">工作区和暂存区</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实际操作"><span class="toc-number">2.</span> <span class="toc-text">实际操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分支操作"><span class="toc-number">2.1.</span> <span class="toc-text">分支操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将本地代码远程连接到git上"><span class="toc-number">2.2.</span> <span class="toc-text">将本地代码远程连接到git上</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#本地修改拉取远程仓库代码"><span class="toc-number">3.</span> <span class="toc-text">本地修改拉取远程仓库代码</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是Git"><span class="toc-number">1.</span> <span class="toc-text">什么是Git</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#版本回退"><span class="toc-number">1.1.</span> <span class="toc-text">版本回退</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工作区和暂存区"><span class="toc-number">1.2.</span> <span class="toc-text">工作区和暂存区</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实际操作"><span class="toc-number">2.</span> <span class="toc-text">实际操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分支操作"><span class="toc-number">2.1.</span> <span class="toc-text">分支操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将本地代码远程连接到git上"><span class="toc-number">2.2.</span> <span class="toc-text">将本地代码远程连接到git上</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#本地修改拉取远程仓库代码"><span class="toc-number">3.</span> <span class="toc-text">本地修改拉取远程仓库代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何在别人的开源项目中提交自己的Pull-Request"><span class="toc-number">4.</span> <span class="toc-text">如何在别人的开源项目中提交自己的Pull Request ?</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -424,7 +425,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color4">C语言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -432,7 +437,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C语言</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Javaee</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -448,19 +457,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Javaee</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">编译原理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,11 +465,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">❤</a>
+                <a href="javascript:void(0)" class="js-tag color5">编译原理</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">算法题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">❤</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -484,11 +485,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">现代密码学</a>
+                <a href="javascript:void(0)" class="js-tag color1">游戏化思维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">游戏化思维</a>
+                <a href="javascript:void(0)" class="js-tag color1">现代密码学</a>
               </li>
              
               <li class="article-tag-list-item">
