@@ -382,11 +382,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">开发岗</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">开发岗</a>
         		</li>
       		
 		</ul>
@@ -533,6 +533,187 @@
 
 
   
+    <article id="title-ElasticSearch" class="article article-type-title  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/12/05/ElasticSearch/">ElasticSearch</a>
+    </h1>
+  
+
+        
+        <a href="/2022/12/05/ElasticSearch/" class="archive-article-date">
+  	<time datetime="2022-12-05T15:15:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ES"><a href="#ES" class="headerlink" title="ES"></a>ES</h1><p>面向文档的文档型数据库</p>
+<p>索引类型文档字段</p>
+<p>倒排索引：关键字和文章id关联起来</p>
+<p>正向索引  </p>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>索引就是数据库</p>
+<p>PUT  ip/shopping，必须是幂等性</p>
+<p>得到索引</p>
+<p>GET ip/_cat/indices?v</p>
+<p>添加文档</p>
+<p>POST ip/shopping/_doc/1001</p>
+<p> 添加文档 body中添加json文件，不一定是幂等性</p>
+<p>得到文档</p>
+<p>GET ip/shopping/_doc/1001</p>
+<p>GET ip/shopping/_search 所有的数据</p>
+<p>修改文档</p>
+<ul>
+<li>全量更新，完全覆盖<ul>
+<li>PUT ip/shopping/_doc/1001 body里面是所有的</li>
+</ul>
+</li>
+<li>局部更新<ul>
+<li>POST ip/shopping/_update/1001  body里面不是所有的</li>
+</ul>
+</li>
+</ul>
+<p>删除文档</p>
+<p>DELETE ip/shopping/_doc/1001</p>
+<h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET   ip/shopping/_search body里面 写query ,match , match_all ,from ,size, _source 指定查询,sort</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/12/05/ElasticSearch/1.png" alt="image-20221023134259856"></p>
+<p><img src="/2022/12/05/ElasticSearch/2.png" alt="image-20221023134259856"></p>
+<p><img src="/2022/12/05/ElasticSearch/3.png" alt="image-20221023134259856"></p>
+<p><img src="/2022/12/05/ElasticSearch/4.png" alt="image-20221023134259856"></p>
+<p><img src="/2022/12/05/ElasticSearch/5.png" alt="image-20221023134259856"></p>
+<p><img src="/2022/12/05/ElasticSearch/6.png" alt="image-20221023134259856"></p>
+<p><img src="/2022/12/05/ElasticSearch/7.png" alt="image-20221023134259856"><br>分组：AggregationBuilders.terms(“名”).filed(“字段”)</p>
+<h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><h3 id="创建索引的过程，写入数据："><a href="#创建索引的过程，写入数据：" class="headerlink" title="创建索引的过程，写入数据："></a>创建索引的过程，写入数据：</h3><ol>
+<li>协调节点根据hash找到要写入的主分片，转到指定的节点。</li>
+<li>主分片保存</li>
+<li>同步到副分片</li>
+<li>依次返回</li>
+</ol>
+<p><img src="/2022/12/05/ElasticSearch/8.png" alt="image-20221023134259856"></p>
+<h3 id="搜索的过程："><a href="#搜索的过程：" class="headerlink" title="搜索的过程："></a>搜索的过程：</h3><ol>
+<li>Query then fetch</li>
+<li>广播到索引中每一个分片，包括主分片和副本分片，每个分片在本地执行搜索构建一个匹配文档大小的from+size的优先队列<ul>
+<li>搜索的时候是查询的Filesystem cache 的，但是还有数据在Memory buffer 所以近实时</li>
+</ul>
+</li>
+<li>每个分片返回优先队列给协调节点，协调节点进行全局排序后产生一个结果列表</li>
+<li>fetch操作。协调向相关的分片提交多个get请求。进入到下面的查询文档的过程</li>
+</ol>
+<h3 id="查询文档的过程："><a href="#查询文档的过程：" class="headerlink" title="查询文档的过程："></a>查询文档的过程：</h3><ol>
+<li>发送get查询请求到协调节点</li>
+<li>计算数据所在的分片，以及全部的副本位置</li>
+<li>轮询所有的节点</li>
+<li>请求转发给具体的节点</li>
+<li>返回查询结果，结果返回给客户端</li>
+</ol>
+<p><img src="/2022/12/05/ElasticSearch/9.png" alt="image-20221023134259856"></p>
+<h3 id="索引文档的过程，底层"><a href="#索引文档的过程，底层" class="headerlink" title="索引文档的过程，底层"></a>索引文档的过程，底层</h3><ol>
+<li>协调节点通过文档id参与计算，得到文档要放在哪个分片中 shard = hash(document_id) % (num_of_primary_shards)</li>
+<li>先写到Memory Buffer 以及同时写到 Translog中，然后定时写入到Filesystem Cache 这个过程叫做Refresh 通常一秒一次</li>
+<li>通过Translog 保证数据的可靠性，只有 Filesystem Cache  中写到磁盘的时候才会清除掉。flush的时候</li>
+<li>flush：30分钟或者Translog中的太大，512M的时候。</li>
+</ol>
+<p><img src="/2022/12/05/ElasticSearch/10.png" alt="image-20221023134259856"></p>
+<h3 id="更新和删除文档"><a href="#更新和删除文档" class="headerlink" title="更新和删除文档"></a>更新和删除文档</h3><ol>
+<li>更新和删除也都是写操作，但是文档是不可变的，所以不能被删除或者改动展示</li>
+<li>磁盘上每个segment都有一个del文件，只是在del文件中标记为删除，在结果中被过滤。</li>
+<li>更新：新的文档被创建的时候，指定一个版本号，旧版本的文档在del文件中标记为删除，新版本的索引到一个新段。旧的可以匹配查询，但是结果中被过滤</li>
+</ol>
+<h3 id="常用请求"><a href="#常用请求" class="headerlink" title="常用请求"></a>常用请求</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 查询所有的 不会计算得分</span></span><br><span class="line">GET _search</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"query"</span>: &#123;</span><br><span class="line">    <span class="string">"match_all"</span>: &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 或者关系 mill 或者lane 模糊查询 </span></span><br><span class="line">GET /bank/_search</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"query"</span>: &#123; <span class="string">"match"</span>: &#123; <span class="string">"address"</span>: <span class="string">"mill lane"</span> &#125; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># match_phrase 包含两个</span></span><br><span class="line">GET /bank/_search</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"query"</span>: &#123; <span class="string">"match_phrase"</span>: &#123; <span class="string">"address"</span>: <span class="string">"mill lane"</span> &#125; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># bool 组合多个查询条件 </span></span><br><span class="line">GET /bank/_search</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"query"</span>: &#123;</span><br><span class="line">    <span class="string">"bool"</span>: &#123;</span><br><span class="line">      <span class="string">"must"</span>: [</span><br><span class="line">        &#123; <span class="string">"match"</span>: &#123; <span class="string">"age"</span>: <span class="string">"40"</span> &#125; &#125;</span><br><span class="line">      ],</span><br><span class="line">      <span class="string">"must_not"</span>: [</span><br><span class="line">        &#123; <span class="string">"match"</span>: &#123; <span class="string">"state"</span>: <span class="string">"ID"</span> &#125; &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 聚合</span></span><br><span class="line">GET /bank/_search</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"size"</span>: 0,</span><br><span class="line">  <span class="string">"aggs"</span>: &#123;</span><br><span class="line">    <span class="string">"group_by_state"</span>: &#123;</span><br><span class="line">      <span class="string">"terms"</span>: &#123;</span><br><span class="line">        <span class="string">"field"</span>: <span class="string">"state.keyword"</span>, <span class="comment"># 先按照id进行聚合 </span></span><br><span class="line">        <span class="string">"order"</span>: &#123;</span><br><span class="line">          <span class="string">"average_balance"</span>: <span class="string">"desc"</span> <span class="comment"># 最后将平均值按照降序排序</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">"aggs"</span>: &#123;</span><br><span class="line">        <span class="string">"average_balance"</span>: &#123; <span class="comment"># 聚合成功之后再按照平均值进行聚合  </span></span><br><span class="line">          <span class="string">"avg"</span>: &#123;</span><br><span class="line">            <span class="string">"field"</span>: <span class="string">"balance"</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># should和must在同一层一起使用失效的问题。 最终查询出来的是错误的 并非 sex==男&amp;&amp;(score==70||socre==80)</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="string">"query"</span>: &#123;</span><br><span class="line">      <span class="string">"bool"</span>: &#123;</span><br><span class="line">         <span class="string">"must"</span>: [</span><br><span class="line">            &#123;<span class="string">"term"</span>: &#123;<span class="string">"sex"</span>: &#123;<span class="string">"value"</span>: <span class="string">"男"</span>&#125;&#125;&#125; <span class="comment"># term是精确查询</span></span><br><span class="line">         ],</span><br><span class="line">         <span class="string">"should"</span>: [</span><br><span class="line">            &#123;<span class="string">"term"</span>: &#123; <span class="string">"score"</span>: &#123;<span class="string">"value"</span>: <span class="string">"70"</span>&#125;&#125;&#125;,</span><br><span class="line">            &#123;<span class="string">"term"</span>: &#123;<span class="string">"score"</span>: &#123;<span class="string">"value"</span>: <span class="string">"80"</span>&#125;&#125;&#125;</span><br><span class="line">         ]</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 改正：(sex==男&amp;&amp;score==70)||(sex==男&amp;&amp;socre==80)</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="string">"query"</span>: &#123;</span><br><span class="line">      <span class="string">"bool"</span>: &#123;</span><br><span class="line">         <span class="string">"should"</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">               <span class="string">"bool"</span>: &#123;</span><br><span class="line">                  <span class="string">"must"</span>: [</span><br><span class="line">                     &#123;<span class="string">"term"</span>: &#123;<span class="string">"sex"</span>: <span class="string">"男"</span>&#125;&#125;,</span><br><span class="line">                     &#123;<span class="string">"term"</span>: &#123;<span class="string">"score"</span>: <span class="string">"70"</span>&#125;&#125;</span><br><span class="line">                  ]</span><br><span class="line">               &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">               <span class="string">"bool"</span>: &#123;</span><br><span class="line">                  <span class="string">"must"</span>: [</span><br><span class="line">                     &#123;<span class="string">"term"</span>: &#123;<span class="string">"sex"</span>: <span class="string">"男"</span>&#125;&#125;,</span><br><span class="line">                     &#123;<span class="string">"term"</span>: &#123;<span class="string">"score"</span>: <span class="string">"80"</span>&#125;&#125;</span><br><span class="line">                  ]</span><br><span class="line">               &#125;</span><br><span class="line">            &#125;</span><br><span class="line">         ]</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 改正二：再嵌套一层bool，must和should 在同一层会失效，必须再嵌套一层</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="string">"query"</span>: &#123;</span><br><span class="line">      <span class="string">"bool"</span>: &#123;</span><br><span class="line">         <span class="string">"must"</span>: [</span><br><span class="line">            &#123;<span class="string">"term"</span>: &#123;<span class="string">"sex"</span>: &#123;<span class="string">"value"</span>: <span class="string">"男"</span>&#125;&#125;&#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="string">"bool"</span>: &#123;</span><br><span class="line">                  <span class="string">"should"</span>: [</span><br><span class="line">                     &#123;<span class="string">"term"</span>: &#123;<span class="string">"score"</span>: &#123;<span class="string">"value"</span>: <span class="string">"70"</span>&#125;&#125;&#125;,</span><br><span class="line">                     &#123;<span class="string">"term"</span>: &#123;<span class="string">"score"</span>: &#123;<span class="string">"value"</span>: <span class="string">"80"</span>&#125;&#125;&#125;</span><br><span class="line">                  ]</span><br><span class="line">               &#125;</span><br><span class="line">            &#125;</span><br><span class="line">         ]</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="nested"><a href="#nested" class="headerlink" title="nested"></a>nested</h3><p>nested类型是<strong>对象数据类型</strong>的专用版本，它允许对象数组以可以彼此独立查询的方式进行索引</p>
+<p>基本数据类型</p>
+<ol>
+<li>Text 支持分词，全文检索,支持模糊、精确查询，<strong>不支持聚合,排序操作</strong>。<ul>
+<li>存储全文搜索数据, 例如: 邮箱内容、地址、代码块、博客文章内容等</li>
+</ul>
+</li>
+<li>KeyWord 不进行分词，直接索引,支持模糊、支持精确匹配，<strong>支持聚合、排序操作</strong>。<ul>
+<li>存储邮箱号码、url、name、title，手机号码、主机名、状态码、邮政编码、标签、年龄、性别等数据。</li>
+</ul>
+</li>
+<li>Date  日期格式的字符串，比如 “2018-01-13” 或 “2018-01-13 12:10:30” <ul>
+<li>内部会将日期数据转换为UTC，并存储为milliseconds-since-the-epoch的long型整数。</li>
+</ul>
+</li>
+<li>Boolean true false</li>
+<li>Array</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">PUT /gulimall_product</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"mappings"</span>: &#123;</span><br><span class="line">    <span class="string">"properties"</span>: &#123;</span><br><span class="line">      <span class="string">"skuId"</span>: &#123;</span><br><span class="line">        <span class="string">"type"</span>: <span class="string">"long"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">"skuTitle"</span>: &#123;</span><br><span class="line">        <span class="string">"type"</span>: <span class="string">"text"</span>,</span><br><span class="line">        <span class="string">"analyzer"</span>: <span class="string">"ik_smart"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">"skuPrice"</span>: &#123;</span><br><span class="line">        <span class="string">"type"</span>: <span class="string">"keyword"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">"attrs"</span>: &#123;</span><br><span class="line">        <span class="string">"type"</span>: <span class="string">"nested"</span>, <span class="comment"># 对象类型</span></span><br><span class="line">        <span class="string">"properties"</span>: &#123;</span><br><span class="line">          <span class="string">"attrId"</span>: &#123;</span><br><span class="line">            <span class="string">"type"</span>: <span class="string">"long"</span></span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="string">"attrName"</span>: &#123;</span><br><span class="line">            <span class="string">"type"</span>: <span class="string">"keyword"</span></span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="string">"attrValue"</span>: &#123;</span><br><span class="line">            <span class="string">"type"</span>: <span class="string">"keyword"</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 新增blog 和评论</span></span><br><span class="line">POST blog_new/blog/2</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"title"</span>: <span class="string">"Hero"</span>,</span><br><span class="line">  <span class="string">"body"</span>: <span class="string">"Hero test body..."</span>,</span><br><span class="line">  <span class="string">"tags"</span>: [<span class="string">"Heros"</span>, <span class="string">"happy"</span>],</span><br><span class="line">  <span class="string">"published_on"</span>: <span class="string">"6 Oct 2018"</span>,</span><br><span class="line">  <span class="string">"comments"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"steve"</span>,</span><br><span class="line">      <span class="string">"age"</span>: 24,</span><br><span class="line">      <span class="string">"rating"</span>: 18,</span><br><span class="line">      <span class="string">"comment"</span>: <span class="string">"Nice article.."</span>,</span><br><span class="line">      <span class="string">"commented_on"</span>: <span class="string">"3 Nov 2018"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询评论字段中评论姓名=William并且评论age=34的blog信息</span></span><br><span class="line">GET /blog_new/_search?pretty</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"query"</span>: &#123;</span><br><span class="line">    <span class="string">"bool"</span>: &#123;</span><br><span class="line">      <span class="string">"must"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="string">"nested"</span>: &#123;</span><br><span class="line">            <span class="string">"path"</span>: <span class="string">"comments"</span>,</span><br><span class="line">            <span class="string">"query"</span>: &#123;</span><br><span class="line">              <span class="string">"bool"</span>: &#123;</span><br><span class="line">                <span class="string">"must"</span>: [</span><br><span class="line">                  &#123;</span><br><span class="line">                    <span class="string">"match"</span>: &#123;</span><br><span class="line">                      <span class="string">"comments.name"</span>: <span class="string">"William"</span></span><br><span class="line">                    &#125;</span><br><span class="line">                  &#125;,</span><br><span class="line">                  &#123;</span><br><span class="line">                    <span class="string">"match"</span>: &#123;</span><br><span class="line">                      <span class="string">"comments.age"</span>: 34</span><br><span class="line">                    &#125;</span><br><span class="line">                  &#125;</span><br><span class="line">                ]</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ES</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/开发岗//" class="article-tag-list-link color4">开发岗</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/12/05/ElasticSearch/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="titile-Git" class="article article-type-titile  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -575,11 +756,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">开发岗</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">开发岗</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
         		</li>
       		
 		</ul>
@@ -970,93 +1151,6 @@
 
 
   
-    <article id="title-矩阵分析" class="article article-type-title  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/28/矩阵分析/">矩阵分析</a>
-    </h1>
-  
-
-        
-        <a href="/2020/11/28/矩阵分析/" class="archive-article-date">
-  	<time datetime="2020-11-28T06:57:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="常考定义"><a href="#常考定义" class="headerlink" title="常考定义"></a>常考定义</h1><p>1.一般空间向量基的定义<br><img src="/2020/11/28/矩阵分析/20.png" alt="sd"><br></p>
-        
-          <a class="article-more-a" href="/2020/11/28/矩阵分析/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">矩阵分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/课程//" class="article-tag-list-link color3">课程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/11/28/矩阵分析/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1146,6 +1240,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">开发岗</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C语言</a>
               </li>
              
@@ -1154,11 +1256,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">开发岗</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1166,15 +1264,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">课题</a>
+                <a href="javascript:void(0)" class="js-tag color3">ES</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1186,6 +1276,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">课题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">编译原理</a>
               </li>
              
@@ -1194,11 +1292,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">❤</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color2">❤</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1206,19 +1304,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">游戏化思维</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">现代密码学</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">矩阵分析</a>
+                <a href="javascript:void(0)" class="js-tag color1">游戏化思维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">离散数学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">矩阵分析</a>
               </li>
              
               <li class="article-tag-list-item">
