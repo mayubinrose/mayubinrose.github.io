@@ -83,3 +83,21 @@ git pull <远程主机名> <远程分支名>:<本地分支名>**
 将远程库的更新合并到本地库中，--rebase的作用是取消本地库中的commit，并把他们接到更新后的版本库中
 git pull --rebase origin hexo
 
+# 如何在别人的开源项目中提交自己的Pull Request ?
+
+先在本地创建一个空文件夹,里面准备放克隆过来的代码. --> 我在本地Downloads文件夹下创建了一个名为 gitMessagekit 的文件夹.
+在"终端"中通过cd命令进入到gitMessagekit文件夹下(将"自己电脑的用户名"换成你自己的电脑的用户名). --> cd /Users/自己电脑的用户名/Downloads/gitMessagekit
+在"终端"输入克隆命令 git clone 开源项目源代码的url. --> git clone https://github.com/MessageKit/MessageKit.git
+进入到克隆所在的文件夹. --> cd /Users/自己电脑的用户名/Downloads/gitMessagekit/MessageKit
+用查看命令查看一下开源项目都有多少个分支. --> git branch -a
+找到自己要切换的分支,准备切换分支,在这里我要切换到3.0.0-beta分支. --> git checkout remotes/origin/3.0.0-beta
+基于远程分支新建本地分支(3.0.0-beta),2条命令. --> git branch 3.0.0-beta git checkout 3.0.0-beta
+打开/Users/自己电脑的用户名/Downloads/gitMessagekit/MessageKit该路径下的代码,对代码进行修改.
+添加修改. --> git add 你修改的文件
+提交修改. --> git commit -m "fix 某某问题"
+去自己的git仓库,准备fork一下开源项目MessageKit到自己的仓库(repository)中.
+即将关联自己fork过的项目. --> git remote add upstream git@github.com:xxjldh/MessageKit.git
+推送本地的分支(3.0.0-beta)到自己fork过的仓库中,2条命令. --> git fetch origin git merge origin/3.0.0-beta
+在即将提交时出现这样一个错误,git@github.com: Permission denied (publickey).解决办法(https://www.jianshu.com/p/f22d02c7d943)
+最后push自己的分支到自己fork过的仓库中. --> git push upstream 3.0.0-beta
+在开源项目https://github.com/MessageKit/MessageKit.git的pull request中添加自己刚修改过的文件, 点"comment pull request"即可.
