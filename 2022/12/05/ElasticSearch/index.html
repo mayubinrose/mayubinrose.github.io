@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>ElasticSearch | MybRose_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ES面向文档的文档型数据库 索引类型文档字段 倒排索引：关键字和文章id关联起来 正向索引   基本操作索引就是数据库 PUT  ip/shopping，必须是幂等性 得到索引 GET ip/_cat/indices?v 添加文档 POST ip/shopping/_doc/1001  添加文档 body中添加json文件，不一定是幂等性 得到文档 GET ip/shopping/_doc/100">
+  <meta name="description" content="ES面向文档的文档型数据库 索引类型文档字段 倒排索引：关键字和文章id关联起来 正向索引   基本操作">
 <meta name="keywords" content="ES">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ElasticSearch">
 <meta property="og:url" content="http://yoursite.com/2022/12/05/ElasticSearch/index.html">
 <meta property="og:site_name" content="MybRose_blog">
-<meta property="og:description" content="ES面向文档的文档型数据库 索引类型文档字段 倒排索引：关键字和文章id关联起来 正向索引   基本操作索引就是数据库 PUT  ip/shopping，必须是幂等性 得到索引 GET ip/_cat/indices?v 添加文档 POST ip/shopping/_doc/1001  添加文档 body中添加json文件，不一定是幂等性 得到文档 GET ip/shopping/_doc/100">
+<meta property="og:description" content="ES面向文档的文档型数据库 索引类型文档字段 倒排索引：关键字和文章id关联起来 正向索引   基本操作">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2022/12/05/ElasticSearch/1.png">
 <meta property="og:image" content="http://yoursite.com/2022/12/05/ElasticSearch/2.png">
@@ -26,10 +26,10 @@
 <meta property="og:image" content="http://yoursite.com/2022/12/05/ElasticSearch/8.png">
 <meta property="og:image" content="http://yoursite.com/2022/12/05/ElasticSearch/9.png">
 <meta property="og:image" content="http://yoursite.com/2022/12/05/ElasticSearch/10.png">
-<meta property="og:updated_time" content="2022-12-05T15:21:46.493Z">
+<meta property="og:updated_time" content="2022-12-13T09:29:50.092Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ElasticSearch">
-<meta name="twitter:description" content="ES面向文档的文档型数据库 索引类型文档字段 倒排索引：关键字和文章id关联起来 正向索引   基本操作索引就是数据库 PUT  ip/shopping，必须是幂等性 得到索引 GET ip/_cat/indices?v 添加文档 POST ip/shopping/_doc/1001  添加文档 body中添加json文件，不一定是幂等性 得到文档 GET ip/shopping/_doc/100">
+<meta name="twitter:description" content="ES面向文档的文档型数据库 索引类型文档字段 倒排索引：关键字和文章id关联起来 正向索引   基本操作">
 <meta name="twitter:image" content="http://yoursite.com/2022/12/05/ElasticSearch/1.png">
   
     <link rel="alternative" href="/atom.xml" title="MybRose_blog" type="application/atom+xml">
@@ -186,7 +186,8 @@
 <p>索引类型文档字段</p>
 <p>倒排索引：关键字和文章id关联起来</p>
 <p>正向索引  </p>
-<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>索引就是数据库</p>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2> <a id="more"></a> 
+<p>索引就是数据库</p>
 <p>PUT  ip/shopping，必须是幂等性</p>
 <p>得到索引</p>
 <p>GET ip/_cat/indices?v</p>
@@ -518,27 +519,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Javaee</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ES</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -550,7 +531,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Javaee</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">编译原理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">❤</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -559,10 +560,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">❤</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -578,11 +575,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">离散数学</a>
+                <a href="javascript:void(0)" class="js-tag color5">矩阵分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">矩阵分析</a>
+                <a href="javascript:void(0)" class="js-tag color5">离散数学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -599,6 +596,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ES</a>
               </li>
             
             <div class="clearfix"></div>
